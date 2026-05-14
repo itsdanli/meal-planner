@@ -1,0 +1,457 @@
+[
+  {
+    "id": "black-bean-tacos",
+    "name": "Black Bean Tacos",
+    "bucket": "mx",
+    "bucketLabel": "Mexican",
+    "time": 20,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Lightly refried black beans with aromatic veggies and spices in warm corn tortillas. Based on the highly rated Love & Lemons recipe.",
+    "source": "loveandlemons.com",
+    "ingredients": [
+      { "id": "i1", "name": "black beans (15oz can, liquid reserved)", "amount": 2, "unit": "cans", "category": "pantry" },
+      { "id": "i2", "name": "small yellow onion, diced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i3", "name": "jalapeño, seeded and diced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i4", "name": "garlic cloves, minced", "amount": 3, "unit": null, "category": "produce" },
+      { "id": "i5", "name": "taco seasoning", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i6", "name": "avocado oil or olive oil", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i7", "name": "corn tortillas (6-inch)", "amount": 12, "unit": null, "category": "grains" },
+      { "id": "i8", "name": "shredded red cabbage", "amount": 2, "unit": "cups", "category": "produce" },
+      { "id": "i9", "name": "avocado, sliced", "amount": 2, "unit": null, "category": "produce" },
+      { "id": "i10", "name": "fresh lime juice", "amount": 2, "unit": "tbsp", "category": "produce" },
+      { "id": "i11", "name": "plain Greek yogurt or sour cream", "amount": 0.5, "unit": "cup", "category": "dairy" },
+      { "id": "i12", "name": "fresh cilantro", "amount": 0.25, "unit": "cup", "category": "produce" },
+      { "id": "i13", "name": "kosher salt", "amount": 0.5, "unit": "tsp", "category": "pantry" }
+    ],
+    "steps": [
+      "Reserve ½ cup of liquid from one can of black beans, then drain and rinse both cans.",
+      "Heat oil in a large skillet over medium heat. Add onion, jalapeño, garlic, and salt. Cook stirring occasionally for 8 minutes until softened.",
+      "Stir in taco seasoning and cook 1 minute. Add beans and ¼ cup of the reserved bean liquid. Cook 5–8 minutes until thick, mashing some beans with the back of a spoon.",
+      "Warm tortillas directly over a gas burner 30 seconds per side, or in a dry skillet.",
+      "Mix Greek yogurt with lime juice to make a quick crema. Assemble tacos with bean filling, cabbage, avocado, crema, and cilantro."
+    ],
+    "proteins": [
+      { "name": "Skirt steak strips", "amount": "1 lb", "instructions": "Season with salt, pepper, and cumin. Cook in a hot cast iron skillet 2–3 min per side. Rest 5 min then slice thin against the grain." },
+      { "name": "Chicken thighs (boneless)", "amount": "1 lb", "instructions": "Pound thin. Season with taco seasoning. Cook in oiled skillet over medium-high 4–5 min per side." },
+      { "name": "Shrimp (large, peeled)", "amount": "1 lb", "instructions": "Toss with chili powder, cumin, salt. Cook in hot skillet 1–2 min per side until pink." }
+    ]
+  },
+  {
+    "id": "veggie-burrito-bowls",
+    "name": "Veggie Burrito Bowls",
+    "bucket": "mx",
+    "bucketLabel": "Mexican",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Fajita-spiced peppers and onions over rice with pinto beans and all your favorite toppings. A complete weeknight bowl.",
+    "source": "original based on classic technique",
+    "ingredients": [
+      { "id": "i1", "name": "long-grain white rice (microwave packet, 8.8oz)", "amount": 2, "unit": "packets", "category": "grains" },
+      { "id": "i2", "name": "pinto beans (15oz can), drained and rinsed", "amount": 1, "unit": "can", "category": "pantry" },
+      { "id": "i3", "name": "bell peppers (red, yellow, or orange), sliced", "amount": 3, "unit": null, "category": "produce" },
+      { "id": "i4", "name": "large yellow onion, sliced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i5", "name": "fajita or taco seasoning", "amount": 2, "unit": "tbsp", "category": "pantry" },
+      { "id": "i6", "name": "olive oil", "amount": 2, "unit": "tbsp", "category": "pantry" },
+      { "id": "i7", "name": "shredded Mexican cheese blend", "amount": 1, "unit": "cup", "category": "dairy" },
+      { "id": "i8", "name": "sour cream or Greek yogurt", "amount": 0.5, "unit": "cup", "category": "dairy" },
+      { "id": "i9", "name": "fresh salsa or pico de gallo", "amount": 1, "unit": "cup", "category": "produce" },
+      { "id": "i10", "name": "avocado, sliced", "amount": 2, "unit": null, "category": "produce" },
+      { "id": "i11", "name": "fresh lime juice", "amount": 1, "unit": "tbsp", "category": "produce" },
+      { "id": "i12", "name": "fresh cilantro (optional)", "amount": 0.25, "unit": "cup", "category": "produce" }
+    ],
+    "steps": [
+      "Heat olive oil in a large skillet over medium-high. Add peppers and onion with fajita seasoning. Cook 7–8 minutes tossing occasionally until softened and lightly charred.",
+      "Warm beans in a small saucepan over medium heat with a splash of water and a pinch of salt, 4–5 minutes.",
+      "Cook rice packets in microwave per package directions (usually 90 seconds).",
+      "Build bowls: rice base, then peppers and onions, beans, cheese, salsa, avocado, and sour cream. Finish with lime juice."
+    ],
+    "proteins": [
+      { "name": "Chicken breast (sliced)", "amount": "1 lb", "instructions": "Slice thin. Toss with fajita seasoning. Cook in same skillet as peppers 6–7 min. Remove before cooking veg, or cook alongside." },
+      { "name": "Ground beef 80/20", "amount": "1 lb", "instructions": "Brown in a separate skillet over medium-high, breaking up, 8–10 min. Drain fat. Season with 1 tsp cumin, 1 tsp chili powder." },
+      { "name": "Chorizo (Mexican-style)", "amount": "8 oz", "instructions": "Remove casing. Brown in skillet over medium 7–8 min, breaking up. Drain excess fat." }
+    ]
+  },
+  {
+    "id": "shakshuka",
+    "name": "Shakshuka",
+    "bucket": "med",
+    "bucketLabel": "Mediterranean",
+    "time": 25,
+    "servings": 4,
+    "leftovers": false,
+    "description": "Eggs poached in a rich, spiced tomato and bell pepper sauce. Based on the widely praised Kitchn recipe with 14oz crushed tomatoes and harissa.",
+    "source": "thekitchn.com",
+    "ingredients": [
+      { "id": "i1", "name": "crushed tomatoes (14oz can)", "amount": 1, "unit": "can", "category": "pantry" },
+      { "id": "i2", "name": "large eggs", "amount": 6, "unit": null, "category": "dairy" },
+      { "id": "i3", "name": "large yellow onion, diced (about 1½ cups)", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i4", "name": "medium red bell pepper, diced (about 1 cup)", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i5", "name": "garlic cloves, coarsely chopped", "amount": 2, "unit": null, "category": "produce" },
+      { "id": "i6", "name": "tomato paste", "amount": 2, "unit": "tbsp", "category": "pantry" },
+      { "id": "i7", "name": "harissa paste (optional but recommended)", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i8", "name": "ground cumin", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i9", "name": "smoked paprika", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i10", "name": "kosher salt", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i11", "name": "black pepper", "amount": 0.5, "unit": "tsp", "category": "pantry" },
+      { "id": "i12", "name": "olive oil", "amount": 2, "unit": "tbsp", "category": "pantry" },
+      { "id": "i13", "name": "fresh lemon juice (½ medium lemon)", "amount": 2, "unit": "tbsp", "category": "produce" },
+      { "id": "i14", "name": "water (to rinse can)", "amount": 0.25, "unit": "cup", "category": "pantry" },
+      { "id": "i15", "name": "crumbled feta cheese", "amount": 0.25, "unit": "cup", "category": "dairy" },
+      { "id": "i16", "name": "fresh cilantro or flat-leaf parsley, chopped", "amount": 3, "unit": "tbsp", "category": "produce" },
+      { "id": "i17", "name": "pita or crusty bread, for serving", "amount": 4, "unit": "pieces", "category": "grains" }
+    ],
+    "steps": [
+      "Heat olive oil in a large deep skillet over medium heat. Add onion and bell pepper and cook stirring occasionally 6–8 minutes until translucent and softened.",
+      "Add garlic, tomato paste, and harissa. Cook stirring until tomato paste darkens slightly, about 2 minutes.",
+      "Add crushed tomatoes. Pour ¼ cup water into the empty can, swirl, and add to the skillet. Add lemon juice, cumin, paprika, salt, and pepper. Stir to combine.",
+      "Simmer over medium-low, stirring often, for 15 minutes until sauce thickens.",
+      "Use a spoon to make 6 wells in the sauce. Crack one egg into each well. Cover and cook 4–8 minutes depending on how set you like the yolks.",
+      "Remove from heat. Top with feta, fresh herbs, and extra red pepper flakes if desired. Serve immediately with pita."
+    ],
+    "proteins": [
+      { "name": "Merguez sausage", "amount": "8 oz", "instructions": "Slice into rounds. Brown in a separate pan 5–6 min. Add directly to your bowl on top of the shakshuka." },
+      { "name": "Ground lamb", "amount": "0.5 lb", "instructions": "Brown in separate pan with a pinch of cumin and salt 7–8 min. Spoon onto your portion before adding eggs to the sauce, or serve alongside." },
+      { "name": "Halloumi (pan-fried)", "amount": "8 oz block", "instructions": "Slice ¼-inch thick. Cook in a dry nonstick skillet 1–2 min per side until golden. Lay over the top of your portion." }
+    ]
+  },
+  {
+    "id": "greek-grain-bowl",
+    "name": "Greek Grain Bowl",
+    "bucket": "med",
+    "bucketLabel": "Mediterranean",
+    "time": 20,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Nutty farro with cucumber, cherry tomatoes, kalamata olives, and feta in a bright lemon-herb dressing.",
+    "source": "classic Mediterranean technique",
+    "ingredients": [
+      { "id": "i1", "name": "quick-cook farro (10-minute packet, 8.5oz)", "amount": 2, "unit": "packets", "category": "grains" },
+      { "id": "i2", "name": "cherry tomatoes, halved", "amount": 2, "unit": "cups", "category": "produce" },
+      { "id": "i3", "name": "English cucumber, diced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i4", "name": "kalamata olives, pitted and halved", "amount": 0.5, "unit": "cup", "category": "pantry" },
+      { "id": "i5", "name": "crumbled feta cheese", "amount": 0.75, "unit": "cup", "category": "dairy" },
+      { "id": "i6", "name": "roasted red peppers (jarred), sliced", "amount": 0.5, "unit": "cup", "category": "pantry" },
+      { "id": "i7", "name": "fresh flat-leaf parsley, chopped", "amount": 0.5, "unit": "cup", "category": "produce" },
+      { "id": "i8", "name": "extra-virgin olive oil", "amount": 3, "unit": "tbsp", "category": "pantry" },
+      { "id": "i9", "name": "fresh lemon juice (1 large lemon)", "amount": 3, "unit": "tbsp", "category": "produce" },
+      { "id": "i10", "name": "dried oregano", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i11", "name": "garlic clove, minced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i12", "name": "kosher salt and black pepper", "amount": 1, "unit": "tsp", "category": "pantry" }
+    ],
+    "steps": [
+      "Cook farro packets per package directions (usually 10 minutes in boiling water). Drain and spread out briefly to cool.",
+      "While farro cooks, whisk together olive oil, lemon juice, oregano, garlic, salt, and pepper in a large bowl.",
+      "Add farro to the dressing bowl and toss. Add tomatoes, cucumber, olives, roasted peppers, and parsley. Toss again.",
+      "Divide into bowls and top generously with crumbled feta. Serve warm or at room temperature."
+    ],
+    "proteins": [
+      { "name": "Chicken thighs (boneless)", "amount": "1 lb", "instructions": "Season with salt, pepper, and oregano. Cook in oiled skillet over medium-high 5–6 min per side. Rest 5 min, slice, and lay over your bowl." },
+      { "name": "Lamb loin chops", "amount": "4 chops", "instructions": "Season with salt, pepper, garlic powder. Cook in a hot cast iron 3–4 min per side for medium. Rest before slicing." },
+      { "name": "Shrimp (large, peeled)", "amount": "1 lb", "instructions": "Toss with olive oil, oregano, lemon zest, salt, pepper. Sear in hot skillet 1–2 min per side." }
+    ]
+  },
+  {
+    "id": "pasta-e-fagioli",
+    "name": "Pasta e Fagioli",
+    "bucket": "it",
+    "bucketLabel": "Italian",
+    "time": 30,
+    "servings": 6,
+    "leftovers": true,
+    "description": "Classic Italian soup with two types of beans, small pasta, crushed tomatoes, and Parmesan. Based on the Cookie & Kate and Love & Lemons recipes with 250+ five-star reviews.",
+    "source": "cookieandkate.com / loveandlemons.com",
+    "ingredients": [
+      { "id": "i1", "name": "ditalini or small shell pasta, dry", "amount": 1, "unit": "cup", "category": "grains" },
+      { "id": "i2", "name": "cannellini beans (15oz can), drained and rinsed", "amount": 2, "unit": "cans", "category": "pantry" },
+      { "id": "i3", "name": "crushed tomatoes (15oz can)", "amount": 1, "unit": "can", "category": "pantry" },
+      { "id": "i4", "name": "low-sodium vegetable broth", "amount": 4, "unit": "cups", "category": "pantry" },
+      { "id": "i5", "name": "large yellow onion, finely diced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i6", "name": "medium carrots, finely diced", "amount": 2, "unit": null, "category": "produce" },
+      { "id": "i7", "name": "celery stalks, finely diced", "amount": 2, "unit": null, "category": "produce" },
+      { "id": "i8", "name": "garlic cloves, minced", "amount": 4, "unit": null, "category": "produce" },
+      { "id": "i9", "name": "extra-virgin olive oil", "amount": 3, "unit": "tbsp", "category": "pantry" },
+      { "id": "i10", "name": "dried rosemary", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i11", "name": "dried oregano", "amount": 0.5, "unit": "tsp", "category": "pantry" },
+      { "id": "i12", "name": "red pepper flakes", "amount": 0.25, "unit": "tsp", "category": "pantry" },
+      { "id": "i13", "name": "Parmesan rind (from a block) + more grated to serve", "amount": 1, "unit": "piece", "category": "dairy" },
+      { "id": "i14", "name": "kosher salt and black pepper", "amount": 1.5, "unit": "tsp", "category": "pantry" },
+      { "id": "i15", "name": "fresh flat-leaf parsley, chopped", "amount": 0.25, "unit": "cup", "category": "produce" }
+    ],
+    "steps": [
+      "Heat olive oil in a large Dutch oven or heavy pot over medium heat. Add onion, carrots, celery, and ½ tsp salt. Cook stirring often 6–8 minutes until soft.",
+      "Add garlic, rosemary, oregano, and red pepper flakes. Stir 1 minute until fragrant.",
+      "Add crushed tomatoes and stir. Add beans, broth, Parmesan rind, remaining salt, and several grinds of black pepper. Bring to a simmer.",
+      "Cook 10 minutes. Scoop out 1½ cups of soup (avoiding the Parmesan rind), blend until smooth, and stir back in for a creamy texture.",
+      "Add dry pasta and simmer 10 more minutes until al dente. Remove Parmesan rind. Stir in parsley. Taste and adjust salt.",
+      "Serve with grated Parmesan and a drizzle of olive oil. Note: pasta absorbs broth as leftovers sit — add a splash of broth when reheating."
+    ],
+    "proteins": [
+      { "name": "Italian sausage links", "amount": "4 links (about 1 lb)", "instructions": "Slice into rounds. Brown in a separate skillet over medium 7–8 min. Serve alongside or spoon onto your bowl." },
+      { "name": "Pancetta, diced", "amount": "4 oz", "instructions": "Cook in a small skillet over medium until crispy, 6–7 min. Drain on paper towels. Crumble over your bowl at the end." },
+      { "name": "Ground beef 80/20", "amount": "0.5 lb", "instructions": "Brown in a separate pan with a pinch of oregano and salt, 8–10 min. Drain fat. Spoon onto your bowl." }
+    ]
+  },
+  {
+    "id": "zucchini-aglio-e-olio",
+    "name": "Zucchini Aglio e Olio",
+    "bucket": "it",
+    "bucketLabel": "Italian",
+    "time": 20,
+    "servings": 4,
+    "leftovers": false,
+    "description": "The classic Roman pasta — spaghetti in garlic-infused olive oil with crispy golden zucchini, lemon zest, and Parmesan. Simple, elegant, and fast.",
+    "source": "classic Italian technique",
+    "ingredients": [
+      { "id": "i1", "name": "spaghetti or linguine, dry", "amount": 12, "unit": "oz", "category": "grains" },
+      { "id": "i2", "name": "medium zucchini, sliced into thin rounds", "amount": 3, "unit": null, "category": "produce" },
+      { "id": "i3", "name": "garlic cloves, thinly sliced", "amount": 6, "unit": null, "category": "produce" },
+      { "id": "i4", "name": "extra-virgin olive oil (good quality)", "amount": 0.5, "unit": "cup", "category": "pantry" },
+      { "id": "i5", "name": "red pepper flakes", "amount": 0.5, "unit": "tsp", "category": "pantry" },
+      { "id": "i6", "name": "lemon zest (1 large lemon)", "amount": 2, "unit": "tsp", "category": "produce" },
+      { "id": "i7", "name": "fresh lemon juice", "amount": 2, "unit": "tbsp", "category": "produce" },
+      { "id": "i8", "name": "finely grated Parmesan cheese", "amount": 1, "unit": "cup", "category": "dairy" },
+      { "id": "i9", "name": "fresh flat-leaf parsley, chopped", "amount": 0.5, "unit": "cup", "category": "produce" },
+      { "id": "i10", "name": "kosher salt", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i11", "name": "black pepper", "amount": 0.5, "unit": "tsp", "category": "pantry" }
+    ],
+    "steps": [
+      "Bring a large pot of water to a boil. Salt generously (1 tbsp). Cook spaghetti 1 minute less than package directions. Reserve 1½ cups pasta water before draining.",
+      "While pasta cooks, heat olive oil in a large skillet over medium. Add sliced garlic and cook slowly 3–4 minutes until golden (not brown). Add red pepper flakes and cook 30 seconds. Remove garlic with a slotted spoon and set aside.",
+      "Raise heat to medium-high. Add zucchini slices in a single layer with a pinch of salt. Cook undisturbed 2 minutes per side until golden. Work in batches if needed.",
+      "Add drained pasta to the skillet. Add ½ cup pasta water and toss vigorously to emulsify the oil and water into a glossy sauce. Add more pasta water as needed.",
+      "Remove from heat. Add lemon zest, lemon juice, Parmesan, and parsley. Toss to coat. Top with the reserved golden garlic. Season with black pepper and serve immediately."
+    ],
+    "proteins": [
+      { "name": "Large shrimp (peeled, deveined)", "amount": "1 lb", "instructions": "Season with salt, pepper, lemon zest. Cook in a separate pan in butter and garlic 1–2 min per side. Pile on top of your portion." },
+      { "name": "Chicken breast (thin-cut or pounded)", "amount": "1 lb", "instructions": "Season with salt, pepper. Cook in oiled skillet over medium-high 3–4 min per side until golden. Slice and lay over your bowl." },
+      { "name": "Italian sausage (removed from casing)", "amount": "8 oz", "instructions": "Brown and crumble in a separate skillet over medium, 7–8 min. Drain and spoon onto your portion." }
+    ]
+  },
+  {
+    "id": "thai-peanut-noodles",
+    "name": "Thai Peanut Noodles",
+    "bucket": "as",
+    "bucketLabel": "Asian",
+    "time": 20,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Rice noodles tossed in a creamy, sweet-spicy peanut sauce with shredded carrots, cucumber, and edamame. Based on the widely loved Nora Cooks recipe.",
+    "source": "noracooks.com",
+    "ingredients": [
+      { "id": "i1", "name": "rice noodles (pad thai-style, 8oz)", "amount": 8, "unit": "oz", "category": "grains" },
+      { "id": "i2", "name": "natural creamy peanut butter", "amount": 0.25, "unit": "cup", "category": "pantry" },
+      { "id": "i3", "name": "low-sodium soy sauce or tamari", "amount": 0.25, "unit": "cup", "category": "pantry" },
+      { "id": "i4", "name": "fresh lime juice (2 limes)", "amount": 3, "unit": "tbsp", "category": "produce" },
+      { "id": "i5", "name": "rice vinegar", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i6", "name": "honey or agave syrup", "amount": 2, "unit": "tbsp", "category": "pantry" },
+      { "id": "i7", "name": "sriracha hot sauce", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i8", "name": "garlic cloves, minced", "amount": 2, "unit": null, "category": "produce" },
+      { "id": "i9", "name": "sesame oil", "amount": 2, "unit": "tsp", "category": "pantry" },
+      { "id": "i10", "name": "frozen shelled edamame, thawed", "amount": 1.5, "unit": "cups", "category": "pantry" },
+      { "id": "i11", "name": "English cucumber, julienned or thinly sliced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i12", "name": "shredded carrots", "amount": 1, "unit": "cup", "category": "produce" },
+      { "id": "i13", "name": "green onions, sliced thin", "amount": 4, "unit": null, "category": "produce" },
+      { "id": "i14", "name": "roasted peanuts, roughly chopped", "amount": 0.25, "unit": "cup", "category": "pantry" },
+      { "id": "i15", "name": "fresh cilantro", "amount": 0.25, "unit": "cup", "category": "produce" },
+      { "id": "i16", "name": "sesame seeds", "amount": 1, "unit": "tbsp", "category": "pantry" }
+    ],
+    "steps": [
+      "Cook rice noodles according to package directions. Drain and rinse well under cold water to prevent sticking. Toss with ½ tsp sesame oil while still warm.",
+      "Whisk together peanut butter, soy sauce, lime juice, rice vinegar, honey, sriracha, garlic, and sesame oil in a bowl until smooth. If the sauce is too thick, add 1–2 tbsp warm water.",
+      "Add noodles to a large bowl with edamame, cucumber, carrots, and green onions. Pour peanut sauce over and toss to coat evenly.",
+      "Divide into bowls. Top with chopped peanuts, sesame seeds, and cilantro. Serve with extra lime wedges and sriracha on the side."
+    ],
+    "proteins": [
+      { "name": "Chicken breast, sliced thin", "amount": "1 lb", "instructions": "Poach in barely simmering salted water 12 min, or pan-sear in oil 3–4 min per side over medium-high. Shred or slice and fan over your bowl." },
+      { "name": "Large shrimp (peeled)", "amount": "1 lb", "instructions": "Toss with a little sesame oil, salt, pinch of red pepper. Sear in hot skillet 1–2 min per side. Lay on top of your bowl." },
+      { "name": "Ground pork", "amount": "0.5 lb", "instructions": "Brown in skillet over medium-high 7–8 min, breaking up. Season with 1 tbsp soy sauce, pinch of ginger. Spoon onto your bowl." }
+    ]
+  },
+  {
+    "id": "garlic-noodle-stir-fry",
+    "name": "Garlic Noodle Stir-Fry",
+    "bucket": "as",
+    "bucketLabel": "Asian",
+    "time": 20,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Lo mein noodles with bok choy in a punchy soy-garlic-oyster sauce. High heat, fast cook, big flavor.",
+    "source": "classic Chinese-American technique",
+    "ingredients": [
+      { "id": "i1", "name": "lo mein noodles (fresh or dried), 8oz", "amount": 8, "unit": "oz", "category": "grains" },
+      { "id": "i2", "name": "baby bok choy, halved lengthwise", "amount": 4, "unit": "heads", "category": "produce" },
+      { "id": "i3", "name": "garlic cloves, minced", "amount": 5, "unit": null, "category": "produce" },
+      { "id": "i4", "name": "fresh ginger, grated", "amount": 1, "unit": "tsp", "category": "produce" },
+      { "id": "i5", "name": "low-sodium soy sauce", "amount": 3, "unit": "tbsp", "category": "pantry" },
+      { "id": "i6", "name": "oyster sauce (or vegetarian oyster/hoisin sauce)", "amount": 2, "unit": "tbsp", "category": "pantry" },
+      { "id": "i7", "name": "sesame oil", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i8", "name": "vegetable or avocado oil (for stir-frying)", "amount": 2, "unit": "tbsp", "category": "pantry" },
+      { "id": "i9", "name": "sugar or honey", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i10", "name": "red pepper flakes", "amount": 0.25, "unit": "tsp", "category": "pantry" },
+      { "id": "i11", "name": "green onions, cut into 1-inch pieces", "amount": 4, "unit": null, "category": "produce" },
+      { "id": "i12", "name": "sesame seeds", "amount": 1, "unit": "tbsp", "category": "pantry" }
+    ],
+    "steps": [
+      "Cook noodles per package directions, 1 minute less than directed. Drain and toss with ½ tsp sesame oil. Set aside.",
+      "Mix together soy sauce, oyster sauce, sesame oil, sugar, and red pepper flakes in a small bowl. Set the sauce aside.",
+      "Heat a wok or large skillet over high heat until smoking hot. Add vegetable oil. Add garlic and ginger and stir-fry 30 seconds.",
+      "Add bok choy cut-side down and cook undisturbed 2 minutes. Flip and cook another 1 minute. Push to the side.",
+      "Add noodles to the center of the pan. Pour sauce over and toss everything together on high heat for 1–2 minutes. Add green onions, toss once more.",
+      "Plate and top with sesame seeds. Serve immediately."
+    ],
+    "proteins": [
+      { "name": "Flank or skirt steak, thin-sliced against grain", "amount": "1 lb", "instructions": "Marinate 5 min in 1 tbsp soy sauce + 1 tsp sesame oil. Sear in a separate hot skillet 2–3 min per side. Slice thin and lay over your bowl." },
+      { "name": "Chicken thighs (boneless), sliced thin", "amount": "1 lb", "instructions": "Cook in hot oiled skillet over medium-high 6–7 min tossing. Season with soy sauce and a splash of sesame oil." },
+      { "name": "Extra-firm tofu, pressed and cubed", "amount": "14 oz block", "instructions": "Pat very dry. Fry in 2 tbsp oil over medium-high 4–5 min per side until golden. Add to the stir-fry." }
+    ]
+  },
+  {
+    "id": "miso-salmon-rice-bowl",
+    "name": "Miso Soup & Rice Bowl",
+    "bucket": "as",
+    "bucketLabel": "Asian",
+    "time": 15,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Umami-rich miso broth with silken tofu and wakame over steamed rice. One of the fastest warming meals in the rotation.",
+    "source": "classic Japanese home cooking technique",
+    "ingredients": [
+      { "id": "i1", "name": "white jasmine rice (microwave packet, 8.8oz)", "amount": 2, "unit": "packets", "category": "grains" },
+      { "id": "i2", "name": "white or yellow miso paste", "amount": 4, "unit": "tbsp", "category": "pantry" },
+      { "id": "i3", "name": "low-sodium vegetable broth or dashi broth", "amount": 4, "unit": "cups", "category": "pantry" },
+      { "id": "i4", "name": "silken tofu (14oz block), cubed", "amount": 1, "unit": "block", "category": "dairy" },
+      { "id": "i5", "name": "dried wakame seaweed", "amount": 2, "unit": "tbsp", "category": "pantry" },
+      { "id": "i6", "name": "green onions, thinly sliced", "amount": 4, "unit": null, "category": "produce" },
+      { "id": "i7", "name": "nori sheets, cut into strips (optional)", "amount": 2, "unit": "sheets", "category": "pantry" },
+      { "id": "i8", "name": "low-sodium soy sauce", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i9", "name": "sesame oil", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i10", "name": "sesame seeds", "amount": 1, "unit": "tbsp", "category": "pantry" }
+    ],
+    "steps": [
+      "Soak dried wakame in cold water for 5 minutes. Drain and squeeze out excess water. Set aside.",
+      "Heat broth in a medium saucepan over medium heat until steaming but not boiling. Remove from heat.",
+      "In a small bowl, whisk miso paste with a ladleful of hot broth until completely dissolved. Stir back into the pot. Do not boil after adding miso — it kills the probiotic cultures and changes the flavor.",
+      "Gently add tofu cubes and wakame. Warm 2 minutes over low heat.",
+      "Heat rice packets per package directions. Divide rice into bowls, ladle miso soup alongside or over the rice. Top with green onions, nori strips, sesame seeds, and a drizzle of sesame oil."
+    ],
+    "proteins": [
+      { "name": "Salmon fillet", "amount": "4 fillets (about 6oz each)", "instructions": "Pat dry. Season skin-side with salt. Cook skin-side down in oiled skillet over medium-high 4–5 min until crispy. Flip and cook 2–3 min more. Lay over rice." },
+      { "name": "Teriyaki chicken thighs", "amount": "1 lb boneless", "instructions": "Brush with 2 tbsp teriyaki sauce. Cook in oiled skillet over medium 5–6 min per side until cooked through. Slice and fan over your bowl." },
+      { "name": "Pork tenderloin, thin-sliced", "amount": "1 lb", "instructions": "Slice ½-inch thick. Season with soy sauce, ginger, and a pinch of sugar. Sear in hot skillet 2 min per side." }
+    ]
+  },
+  {
+    "id": "veggie-chili",
+    "name": "Three-Bean Veggie Chili",
+    "bucket": "am",
+    "bucketLabel": "American",
+    "time": 25,
+    "servings": 6,
+    "leftovers": true,
+    "description": "A hearty three-bean chili with chipotle, fire-roasted tomatoes, and smoky spices. Genuinely satisfying without meat.",
+    "source": "classic American technique with chipotle",
+    "ingredients": [
+      { "id": "i1", "name": "black beans (15oz can), drained and rinsed", "amount": 1, "unit": "can", "category": "pantry" },
+      { "id": "i2", "name": "kidney beans (15oz can), drained and rinsed", "amount": 1, "unit": "can", "category": "pantry" },
+      { "id": "i3", "name": "pinto beans (15oz can), drained and rinsed", "amount": 1, "unit": "can", "category": "pantry" },
+      { "id": "i4", "name": "fire-roasted crushed tomatoes (28oz can)", "amount": 1, "unit": "can", "category": "pantry" },
+      { "id": "i5", "name": "chipotle peppers in adobo sauce, minced", "amount": 2, "unit": null, "category": "pantry" },
+      { "id": "i6", "name": "low-sodium vegetable broth", "amount": 1, "unit": "cup", "category": "pantry" },
+      { "id": "i7", "name": "large yellow onion, diced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i8", "name": "garlic cloves, minced", "amount": 4, "unit": null, "category": "produce" },
+      { "id": "i9", "name": "olive oil", "amount": 2, "unit": "tbsp", "category": "pantry" },
+      { "id": "i10", "name": "chili powder", "amount": 2, "unit": "tbsp", "category": "pantry" },
+      { "id": "i11", "name": "ground cumin", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i12", "name": "smoked paprika", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i13", "name": "dried oregano", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i14", "name": "kosher salt", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i15", "name": "shredded cheddar cheese, for topping", "amount": 1, "unit": "cup", "category": "dairy" },
+      { "id": "i16", "name": "sour cream, for topping", "amount": 0.5, "unit": "cup", "category": "dairy" },
+      { "id": "i17", "name": "fresh cilantro and lime, for topping", "amount": 1, "unit": "tbsp", "category": "produce" }
+    ],
+    "steps": [
+      "Heat olive oil in a large heavy pot over medium heat. Add onion and a pinch of salt. Cook 4–5 minutes until softened.",
+      "Add garlic, chipotle peppers, chili powder, cumin, smoked paprika, and oregano. Stir 1–2 minutes until fragrant and darkened.",
+      "Add all three cans of beans, crushed tomatoes, and broth. Stir to combine. Bring to a simmer.",
+      "Cook uncovered over medium-low for 15 minutes, stirring occasionally. Use the back of a spoon to mash a portion of the beans against the pot wall for thicker texture.",
+      "Taste and adjust salt, chipotle, and spices. Serve topped with cheddar, sour cream, and cilantro."
+    ],
+    "proteins": [
+      { "name": "Ground beef 80/20", "amount": "1 lb", "instructions": "Brown in a separate skillet over medium-high, breaking up, 8–10 min. Drain fat. Season with 1 tsp chili powder + salt. Spoon into your bowl on top." },
+      { "name": "Ground turkey", "amount": "1 lb", "instructions": "Cook in separate skillet over medium 8–10 min, breaking up and seasoning with chili powder, cumin, and salt. Drain any liquid." },
+      { "name": "Bison (ground)", "amount": "0.5 lb", "instructions": "Brown in separate skillet 7–8 min with a pinch of chili powder and salt. Leaner than beef — don't overcook." }
+    ]
+  },
+  {
+    "id": "loaded-baked-potato-bar",
+    "name": "Loaded Baked Potato Bar",
+    "bucket": "am",
+    "bucketLabel": "American",
+    "time": 15,
+    "servings": 4,
+    "leftovers": false,
+    "description": "Microwave baked potatoes with a full toppings bar. One of the fastest meals in the rotation with near-zero active cook time.",
+    "source": "classic American",
+    "ingredients": [
+      { "id": "i1", "name": "large russet potatoes", "amount": 4, "unit": null, "category": "produce" },
+      { "id": "i2", "name": "broccoli florets (12oz steam-in-bag)", "amount": 1, "unit": "bag", "category": "produce" },
+      { "id": "i3", "name": "shredded sharp cheddar cheese", "amount": 1.5, "unit": "cups", "category": "dairy" },
+      { "id": "i4", "name": "sour cream", "amount": 0.5, "unit": "cup", "category": "dairy" },
+      { "id": "i5", "name": "unsalted butter", "amount": 4, "unit": "tbsp", "category": "dairy" },
+      { "id": "i6", "name": "green onions, sliced thin", "amount": 4, "unit": null, "category": "produce" },
+      { "id": "i7", "name": "kosher salt and black pepper", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i8", "name": "hot sauce (optional)", "amount": 2, "unit": "tbsp", "category": "pantry" }
+    ],
+    "steps": [
+      "Scrub potatoes and pierce all over with a fork (at least 8 times each). Place on a microwave-safe plate.",
+      "Microwave on high: 1 potato = 5 minutes; 2 potatoes = 8–10 minutes; 4 potatoes = 14–16 minutes. Flip halfway. Test with a knife — it should slide in easily. (Alternatively, bake at 450°F for 45–50 min for crispy skin.)",
+      "While potatoes cook, microwave broccoli steam-bag per package directions (usually 3–4 minutes).",
+      "Carefully cut each potato open lengthwise. Push ends toward center to open. Add butter, season with salt and pepper.",
+      "Set out all toppings: cheese, sour cream, broccoli, green onions, and hot sauce. Everyone builds their own."
+    ],
+    "proteins": [
+      { "name": "Rotisserie chicken (pre-cooked)", "amount": "½ chicken, shredded", "instructions": "Zero cook time. Shred and warm in a bowl in the microwave 90 seconds with a splash of chicken broth. Pile on top." },
+      { "name": "Bacon strips", "amount": "8 strips", "instructions": "Cook in a cold skillet over medium heat 7–8 min, flipping once. Drain on paper towels. Crumble over the potato." },
+      { "name": "Chili topping (leftover veggie chili)", "amount": "2 cups", "instructions": "Reheat leftover chili in a saucepan 4–5 min or microwave 2 min. Ladle over the split potato." }
+    ]
+  },
+  {
+    "id": "mediterranean-flatbread",
+    "name": "Mediterranean Flatbread Pizzas",
+    "bucket": "med",
+    "bucketLabel": "Mediterranean",
+    "time": 20,
+    "servings": 4,
+    "leftovers": false,
+    "description": "Crispy naan topped with hummus, roasted vegetables, and feta. Ready in the time it takes to heat an oven.",
+    "source": "classic Mediterranean flatbread technique",
+    "ingredients": [
+      { "id": "i1", "name": "store-bought naan (large, 4-pack)", "amount": 4, "unit": "pieces", "category": "grains" },
+      { "id": "i2", "name": "hummus (store-bought, 10oz tub)", "amount": 1, "unit": "tub", "category": "pantry" },
+      { "id": "i3", "name": "cherry tomatoes, halved", "amount": 1.5, "unit": "cups", "category": "produce" },
+      { "id": "i4", "name": "roasted red peppers (jarred), sliced", "amount": 0.75, "unit": "cup", "category": "pantry" },
+      { "id": "i5", "name": "baby spinach", "amount": 2, "unit": "cups", "category": "produce" },
+      { "id": "i6", "name": "crumbled feta cheese", "amount": 0.75, "unit": "cup", "category": "dairy" },
+      { "id": "i7", "name": "kalamata olives, sliced", "amount": 0.25, "unit": "cup", "category": "pantry" },
+      { "id": "i8", "name": "extra-virgin olive oil", "amount": 2, "unit": "tbsp", "category": "pantry" },
+      { "id": "i9", "name": "dried oregano", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i10", "name": "red pepper flakes", "amount": 0.25, "unit": "tsp", "category": "pantry" },
+      { "id": "i11", "name": "fresh lemon juice", "amount": 1, "unit": "tbsp", "category": "produce" },
+      { "id": "i12", "name": "fresh basil or flat-leaf parsley", "amount": 0.25, "unit": "cup", "category": "produce" }
+    ],
+    "steps": [
+      "Preheat oven to 425°F. Place naan on a baking sheet.",
+      "Spread hummus evenly over each naan, leaving a small border. Layer with spinach, cherry tomatoes, roasted peppers, and olives.",
+      "Top with crumbled feta. Drizzle with olive oil and sprinkle with oregano and red pepper flakes.",
+      "Bake 10–12 minutes until the edges are golden and crispy and the feta is slightly golden.",
+      "Remove from oven. Finish with a squeeze of fresh lemon juice and torn fresh basil or parsley."
+    ],
+    "proteins": [
+      { "name": "Rotisserie chicken (shredded)", "amount": "1 cup", "instructions": "Scatter shredded chicken over the hummus before adding vegetables. It heats through during the 10-12 min bake." },
+      { "name": "Gyro-style beef or lamb strips", "amount": "0.5 lb", "instructions": "Slice thin. Season with cumin, oregano, garlic powder, salt. Sear in hot skillet 3–4 min. Arrange on your naan after baking." },
+      { "name": "Merguez sausage, sliced", "amount": "8 oz", "instructions": "Brown slices in skillet 4–5 min. Scatter over your flatbread after baking." }
+    ]
+  }
+]
