@@ -207,6 +207,20 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
 .fpill.fav-pill.on{background:var(--accent);color:#fff;border-color:transparent}
 
 .recipe-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+
+/* Cuisine folders */
+.recipe-list{display:flex;flex-direction:column;gap:18px}
+.lib-folder{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.lib-folder-header{width:100%;display:flex;align-items:center;gap:10px;padding:14px 18px;background:var(--cream);border:none;border-bottom:1px solid var(--border);cursor:pointer;text-align:left;transition:background .15s;font-family:var(--font-body)}
+.lib-folder-header:hover{background:var(--cream2)}
+.lib-folder-chevron{font-size:11px;color:var(--ink3);width:12px;display:inline-block;transition:transform .15s;flex-shrink:0;text-align:center}
+.lib-folder.collapsed .lib-folder-chevron{transform:rotate(-90deg)}
+.lib-folder-name{font-family:var(--font-display);font-size:18px;letter-spacing:-.01em;color:var(--ink);flex:1}
+.lib-folder-count{font-size:12px;color:var(--ink3);font-weight:400}
+.lib-folder.collapsed .lib-folder-header{border-bottom:none}
+.lib-folder-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;padding:16px}
+.lib-folder.collapsed .lib-folder-grid{display:none}
+.lib-folder-empty{padding:20px;text-align:center;color:var(--ink3);font-size:13px;grid-column:1/-1}
 .rcard{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;cursor:pointer;transition:all .15s;position:relative}
 .rcard:hover{border-color:var(--border2);box-shadow:var(--shadow)}
 .rcard.in-week{border-color:var(--green);background:var(--green-light)}
@@ -290,7 +304,7 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
 @media(max-width:640px){
   header{flex-direction:column;align-items:flex-start;gap:12px}
   .page-header{flex-direction:column;align-items:flex-start}
-  .slots-grid,.recipe-grid{grid-template-columns:1fr}
+  .slots-grid,.recipe-grid,.lib-folder-grid{grid-template-columns:1fr}
   .form-2col{grid-template-columns:1fr}
   .ing-input-row{grid-template-columns:1fr 60px 90px auto}
   .modal{margin:0}
@@ -375,7 +389,7 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
         <button class="fpill" data-filter="leftovers">Leftovers only</button>
       </div>
     </div>
-    <div class="recipe-grid" id="recipe-grid"></div>
+    <div class="recipe-list" id="recipe-grid"></div>
   </section>
 
   <!-- FAVORITES -->
@@ -502,8 +516,10 @@ let globalScale = 1;
 let libFilter = 'all';
 let libSearch = '';
 let activeDetail = null;
+let collapsedFolders = new Set();
 
 const BUCKET_LABELS = { mx:'Mexican', med:'Mediterranean', as:'Asian', it:'Italian', am:'American' };
+const FOLDER_ORDER = ['med', 'it', 'as', 'mx', 'am'];
 const DAYS = ['Monday','Wednesday','Friday','Saturday'];
 
 // ═══════════════════════════════════════════════════
@@ -875,35 +891,12 @@ function printWeek() {
 // ═══════════════════════════════════════════════════
 // LIBRARY
 // ═══════════════════════════════════════════════════
-function renderLibrary() {
-  const grid = document.getElementById('recipe-grid');
-  const q = libSearch.toLowerCase();
-  let filtered = allRecipes.filter(r => {
-    if (libFilter === 'favs') return favorites.has(r.id);
-    if (libFilter === 'leftovers') return r.leftovers;
-    if (libFilter !== 'all') return r.bucket === libFilter;
-    return true;
-  }).filter(r => {
-    if (!q) return true;
-    return r.name.toLowerCase().includes(q) || r.description.toLowerCase().includes(q) ||
-           BUCKET_LABELS[r.bucket].toLowerCase().includes(q);
-  });
-
-  document.getElementById('lib-count').textContent = `${filtered.length} recipe${filtered.length!==1?'s':''}`;
-
-  if (!filtered.length) {
-    grid.innerHTML = `<div class="no-results">No recipes match your search or filter.</div>`;
-    return;
-  }
-
-  grid.innerHTML = '';
-  filtered.forEach(recipe => {
-    const inWeek = weekMeals.includes(recipe.id);
-    const isFav = favorites.has(recipe.id);
-    const div = document.createElement('div');
-    div.className = `rcard${inWeek?' in-week':''}`;
-    const protNames = recipe.proteins.map(p=>p.name.split(' ')[0]).join(', ');
-    div.innerHTML = `
+function buildCardHtml(recipe) {
+  const inWeek = weekMeals.includes(recipe.id);
+  const isFav = favorites.has(recipe.id);
+  const protNames = recipe.proteins.map(p=>p.name.split(' ')[0]).join(', ');
+  return `
+    <div class="rcard${inWeek?' in-week':''}" data-recipe-id="${recipe.id}">
       <div class="rcard-top">
         <div class="rcard-name">${recipe.name}</div>
         <button class="fav-btn ${isFav?'on':''}" data-fav="${recipe.id}" title="${isFav?'Remove from':'Add to'} favorites">♥</button>
@@ -917,9 +910,85 @@ function renderLibrary() {
       <div class="rcard-proteins">Meat add-ons: ${protNames}</div>
       <button class="add-week-btn ${inWeek?'added':''}" data-add="${recipe.id}">
         ${inWeek?'✓ In this week':'+ Add to this week'}
-      </button>`;
-    grid.appendChild(div);
-  });
+      </button>
+    </div>`;
+}
+
+function renderLibrary() {
+  const container = document.getElementById('recipe-grid');
+  const q = libSearch.toLowerCase().trim();
+
+  const matchesSearch = r => !q ||
+    r.name.toLowerCase().includes(q) ||
+    r.description.toLowerCase().includes(q) ||
+    BUCKET_LABELS[r.bucket].toLowerCase().includes(q);
+
+  // Apply primary filter (cuisine / favs / leftovers / all), then search.
+  let visible;
+  if (libFilter === 'favs')      visible = allRecipes.filter(r => favorites.has(r.id));
+  else if (libFilter === 'leftovers') visible = allRecipes.filter(r => r.leftovers);
+  else if (libFilter !== 'all')  visible = allRecipes.filter(r => r.bucket === libFilter);
+  else                            visible = allRecipes.slice();
+  visible = visible.filter(matchesSearch);
+
+  document.getElementById('lib-count').textContent =
+    `${visible.length} recipe${visible.length!==1?'s':''}`;
+
+  if (!visible.length) {
+    container.innerHTML = `<div class="no-results">No recipes match your search or filter.</div>`;
+    return;
+  }
+
+  // Flat list when searching, or when filtering by favorites/leftovers
+  // (folders don't make sense in those cases since they cut across cuisines).
+  const flatMode = !!q || libFilter === 'favs' || libFilter === 'leftovers';
+
+  if (flatMode) {
+    container.innerHTML = `<div class="recipe-grid">${visible.map(buildCardHtml).join('')}</div>`;
+    return;
+  }
+
+  // Folder mode: group by cuisine in a defined order, skipping empty folders.
+  const sections = FOLDER_ORDER
+    .filter(bucket => libFilter === 'all' || libFilter === bucket)
+    .map(bucket => {
+      const inBucket = visible.filter(r => r.bucket === bucket);
+      if (!inBucket.length) return '';
+      const collapsed = collapsedFolders.has(bucket);
+      const cards = inBucket.map(buildCardHtml).join('');
+      return `
+        <section class="lib-folder${collapsed?' collapsed':''}" data-bucket="${bucket}">
+          <button class="lib-folder-header" data-folder-toggle="${bucket}" aria-expanded="${!collapsed}">
+            <span class="lib-folder-chevron">▾</span>
+            <span class="lib-folder-name">${BUCKET_LABELS[bucket]}</span>
+            <span class="lib-folder-count">${inBucket.length} recipe${inBucket.length!==1?'s':''}</span>
+          </button>
+          <div class="lib-folder-grid">${cards}</div>
+        </section>`;
+    })
+    .filter(Boolean)
+    .join('');
+
+  container.innerHTML = sections || `<div class="no-results">No recipes match your search or filter.</div>`;
+}
+
+function toggleFolder(bucket) {
+  if (collapsedFolders.has(bucket)) collapsedFolders.delete(bucket);
+  else collapsedFolders.add(bucket);
+  saveFolderState();
+  // Toggle the class directly so the rest of the page state is preserved (no scroll jump).
+  const sec = document.querySelector(`.lib-folder[data-bucket="${bucket}"]`);
+  if (sec) {
+    sec.classList.toggle('collapsed');
+    const btn = sec.querySelector('[data-folder-toggle]');
+    if (btn) btn.setAttribute('aria-expanded', String(!sec.classList.contains('collapsed')));
+  }
+}
+
+function saveFolderState() {
+  try {
+    localStorage.setItem('wp_collapsed_folders', JSON.stringify([...collapsedFolders]));
+  } catch(e) {}
 }
 
 // ═══════════════════════════════════════════════════
@@ -1162,8 +1231,10 @@ function loadLocalPrefs() {
   try {
     const f = localStorage.getItem('wp_favorites');
     const p = localStorage.getItem('wp_proteins');
+    const cf = localStorage.getItem('wp_collapsed_folders');
     if (f) favorites = new Set(JSON.parse(f));
     if (p) chosenProteins = JSON.parse(p);
+    if (cf) collapsedFolders = new Set(JSON.parse(cf));
   } catch(e) {}
 }
 
@@ -1227,13 +1298,17 @@ document.getElementById('slots-grid').addEventListener('click', e => {
 
 // Library events delegation
 document.getElementById('recipe-grid').addEventListener('click', e => {
+  const folderToggle = e.target.closest('[data-folder-toggle]');
   const fav = e.target.closest('[data-fav]');
   const add = e.target.closest('[data-add]');
   const card = e.target.closest('.rcard');
+  if (folderToggle) { toggleFolder(folderToggle.dataset.folderToggle); return; }
   if (fav) { e.stopPropagation(); toggleFav(fav.dataset.fav); return; }
   if (add) { e.stopPropagation(); addToWeek(add.dataset.add); return; }
   if (card) {
-    const id = card.querySelector('[data-add]')?.dataset.add || card.querySelector('[data-fav]')?.dataset.fav;
+    const id = card.dataset.recipeId
+      || card.querySelector('[data-add]')?.dataset.add
+      || card.querySelector('[data-fav]')?.dataset.fav;
     if (id) openDetail(id);
   }
 });

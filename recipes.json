@@ -453,5 +453,351 @@
       { "name": "Gyro-style beef or lamb strips", "amount": "0.5 lb", "instructions": "Slice thin. Season with cumin, oregano, garlic powder, salt. Sear in hot skillet 3–4 min. Arrange on your naan after baking." },
       { "name": "Merguez sausage, sliced", "amount": "8 oz", "instructions": "Brown slices in skillet 4–5 min. Scatter over your flatbread after baking." }
     ]
+  },
+  {
+    "id": "lemon-butter-orzo",
+    "name": "Lemon Butter Orzo with Spinach",
+    "bucket": "med",
+    "bucketLabel": "Mediterranean",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "A bright one-skillet orzo finished with butter, parmesan, lemon, and wilted spinach. Inspired by the highly rated Half Baked Harvest lemon butter orzo.",
+    "source": "halfbakedharvest.com",
+    "ingredients": [
+      { "id": "i1", "name": "orzo pasta", "amount": 1.5, "unit": "cups", "category": "grains" },
+      { "id": "i2", "name": "low-sodium chicken or vegetable broth", "amount": 3.5, "unit": "cups", "category": "pantry" },
+      { "id": "i3", "name": "unsalted butter", "amount": 4, "unit": "tbsp", "category": "dairy" },
+      { "id": "i4", "name": "garlic cloves, minced", "amount": 4, "unit": null, "category": "produce" },
+      { "id": "i5", "name": "baby spinach", "amount": 5, "unit": "oz", "category": "produce" },
+      { "id": "i6", "name": "lemon (zest and juice)", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i7", "name": "grated parmesan", "amount": 0.5, "unit": "cup", "category": "dairy" },
+      { "id": "i8", "name": "olive oil", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i9", "name": "crushed red pepper flakes", "amount": 0.25, "unit": "tsp", "category": "pantry" },
+      { "id": "i10", "name": "kosher salt", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i11", "name": "black pepper", "amount": 0.5, "unit": "tsp", "category": "pantry" },
+      { "id": "i12", "name": "fresh dill or parsley, chopped", "amount": 2, "unit": "tbsp", "category": "produce" },
+      { "id": "i13", "name": "crumbled feta (optional)", "amount": 0.25, "unit": "cup", "category": "dairy" }
+    ],
+    "steps": [
+      "Melt 2 tbsp butter with olive oil in a large skillet over medium heat. Add garlic and red pepper flakes; cook 30 seconds until fragrant.",
+      "Add orzo and toast 1\u20132 minutes, stirring. Pour in broth and lemon zest. Bring to a simmer, cover, and cook 12\u201315 minutes, stirring occasionally, until orzo is tender and most of the liquid is absorbed.",
+      "Stir in spinach a handful at a time; let it wilt 1\u20132 minutes.",
+      "Off heat, stir in the remaining 2 tbsp butter, lemon juice, and parmesan until creamy. Season with salt and pepper.",
+      "Top with feta and fresh herbs. Serve immediately."
+    ],
+    "proteins": [
+      { "name": "Chicken thighs (boneless, skinless)", "amount": "1 lb", "instructions": "Season with salt, pepper, and lemon zest. Sear in oiled skillet 5\u20136 min per side until 165\u00b0F. Slice and serve over orzo." },
+      { "name": "Shrimp (large, peeled)", "amount": "1 lb", "instructions": "Toss with olive oil, minced garlic, and a pinch of salt. Saut\u00e9 in hot skillet 1\u20132 min per side until pink and curled." },
+      { "name": "Tofu (extra-firm, cubed)", "amount": "14 oz", "instructions": "Press, then pat dry. Toss with 1 tbsp olive oil and 1 tsp salt. Pan-fry 8\u201310 min, turning, until golden on all sides." }
+    ]
+  },
+  {
+    "id": "white-bean-tomato-skillet",
+    "name": "White Bean & Tomato Skillet with Feta",
+    "bucket": "med",
+    "bucketLabel": "Mediterranean",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Creamy white beans simmered with blistered cherry tomatoes, olives, spinach, and feta \u2014 served with crusty bread. Based on the popular Mediterranean Dish skillet technique.",
+    "source": "themediterraneandish.com",
+    "ingredients": [
+      { "id": "i1", "name": "cannellini or white beans (15oz can), drained and rinsed", "amount": 2, "unit": "cans", "category": "pantry" },
+      { "id": "i2", "name": "cherry tomatoes", "amount": 2, "unit": "cups", "category": "produce" },
+      { "id": "i3", "name": "yellow onion, diced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i4", "name": "garlic cloves, minced", "amount": 4, "unit": null, "category": "produce" },
+      { "id": "i5", "name": "baby spinach", "amount": 4, "unit": "oz", "category": "produce" },
+      { "id": "i6", "name": "pitted Kalamata olives, halved", "amount": 0.5, "unit": "cup", "category": "pantry" },
+      { "id": "i7", "name": "crumbled feta", "amount": 0.5, "unit": "cup", "category": "dairy" },
+      { "id": "i8", "name": "olive oil", "amount": 3, "unit": "tbsp", "category": "pantry" },
+      { "id": "i9", "name": "dried oregano", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i10", "name": "crushed red pepper flakes", "amount": 0.25, "unit": "tsp", "category": "pantry" },
+      { "id": "i11", "name": "lemon, juiced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i12", "name": "fresh parsley, chopped", "amount": 2, "unit": "tbsp", "category": "produce" },
+      { "id": "i13", "name": "crusty bread or warm pita", "amount": 4, "unit": "pieces", "category": "grains" },
+      { "id": "i14", "name": "kosher salt", "amount": 1, "unit": "tsp", "category": "pantry" }
+    ],
+    "steps": [
+      "Heat olive oil in a large skillet over medium. Add onion with a pinch of salt; cook 5 minutes until soft.",
+      "Add garlic, oregano, and red pepper flakes; cook 30 seconds.",
+      "Stir in cherry tomatoes; cook 4\u20135 minutes, smashing some with the back of a spoon to release their juices.",
+      "Add beans and olives; simmer 5 minutes to thicken slightly.",
+      "Stir in spinach until just wilted, 1\u20132 minutes. Off heat, finish with lemon juice and parsley.",
+      "Top with feta. Serve with warm bread to mop up the sauce."
+    ],
+    "proteins": [
+      { "name": "Chicken thighs (boneless, skinless)", "amount": "1 lb", "instructions": "Season with salt, pepper, oregano. Sear in oiled skillet 5\u20136 min per side until 165\u00b0F. Slice and serve alongside." },
+      { "name": "Shrimp (large, peeled)", "amount": "1 lb", "instructions": "Toss with olive oil, smoked paprika, and salt. Saut\u00e9 in hot skillet 1\u20132 min per side until pink." },
+      { "name": "Italian-style chicken sausage, sliced", "amount": "12 oz", "instructions": "Brown slices in oiled skillet over medium 5\u20136 min until caramelized on both sides." }
+    ]
+  },
+  {
+    "id": "spanakorizo",
+    "name": "Spanakorizo (Greek Spinach Rice)",
+    "bucket": "med",
+    "bucketLabel": "Mediterranean",
+    "time": 30,
+    "servings": 4,
+    "leftovers": true,
+    "description": "A classic Greek one-pot of rice, tomatoes, and a huge amount of spinach finished with dill, lemon, and feta. Based on the widely loved Kitchn version of this traditional dish.",
+    "source": "thekitchn.com",
+    "ingredients": [
+      { "id": "i1", "name": "long-grain white rice", "amount": 1, "unit": "cup", "category": "grains" },
+      { "id": "i2", "name": "baby spinach", "amount": 10, "unit": "oz", "category": "produce" },
+      { "id": "i3", "name": "yellow onion, diced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i4", "name": "garlic cloves, minced", "amount": 3, "unit": null, "category": "produce" },
+      { "id": "i5", "name": "diced tomatoes (14oz can)", "amount": 1, "unit": "can", "category": "pantry" },
+      { "id": "i6", "name": "low-sodium vegetable broth", "amount": 2, "unit": "cups", "category": "pantry" },
+      { "id": "i7", "name": "olive oil", "amount": 4, "unit": "tbsp", "category": "pantry" },
+      { "id": "i8", "name": "lemon, juiced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i9", "name": "fresh dill, chopped", "amount": 0.25, "unit": "cup", "category": "produce" },
+      { "id": "i10", "name": "fresh parsley, chopped", "amount": 0.25, "unit": "cup", "category": "produce" },
+      { "id": "i11", "name": "crumbled feta", "amount": 0.5, "unit": "cup", "category": "dairy" },
+      { "id": "i12", "name": "kosher salt", "amount": 1.5, "unit": "tsp", "category": "pantry" },
+      { "id": "i13", "name": "black pepper", "amount": 0.5, "unit": "tsp", "category": "pantry" }
+    ],
+    "steps": [
+      "Heat 3 tbsp olive oil in a Dutch oven or deep skillet over medium. Add onion and a pinch of salt; cook 6 minutes until soft and translucent.",
+      "Add garlic; cook 30 seconds. Stir in rice and toast 1 minute.",
+      "Pour in diced tomatoes (with juices) and broth. Bring to a simmer, cover, and cook 15 minutes.",
+      "Stir in spinach by handfuls \u2014 it looks like a lot but wilts way down. Cover and cook 3\u20134 more minutes until spinach is tender and rice is fluffy.",
+      "Off heat, stir in lemon juice, fresh herbs, and the remaining 1 tbsp olive oil. Top with feta and serve."
+    ],
+    "proteins": [
+      { "name": "Chicken thighs (boneless, skinless)", "amount": "1 lb", "instructions": "Season with salt, pepper, oregano, and lemon zest. Sear in oiled skillet 5\u20136 min per side until 165\u00b0F. Slice." },
+      { "name": "Shrimp (large, peeled)", "amount": "1 lb", "instructions": "Toss with olive oil, garlic, and salt. Saut\u00e9 in hot skillet 1\u20132 min per side until pink." },
+      { "name": "Chickpeas (15oz can), drained", "amount": "1 can", "instructions": "For a vegetarian boost: warm chickpeas with a drizzle of olive oil, lemon zest, and a pinch of cumin in a skillet 3\u20134 min." }
+    ]
+  },
+  {
+    "id": "pasta-e-ceci",
+    "name": "Pasta e Ceci",
+    "bucket": "it",
+    "bucketLabel": "Italian",
+    "time": 30,
+    "servings": 4,
+    "leftovers": true,
+    "description": "A Roman classic \u2014 pasta cooked right in a brothy chickpea-tomato base with rosemary and parmesan. Smashed chickpeas thicken it into something between a stew and a sauce. Based on Smitten Kitchen's quick version.",
+    "source": "smittenkitchen.com",
+    "ingredients": [
+      { "id": "i1", "name": "ditalini or small shell pasta", "amount": 12, "unit": "oz", "category": "grains" },
+      { "id": "i2", "name": "chickpeas (15oz can), drained and rinsed", "amount": 2, "unit": "cans", "category": "pantry" },
+      { "id": "i3", "name": "tomato paste", "amount": 3, "unit": "tbsp", "category": "pantry" },
+      { "id": "i4", "name": "yellow onion, diced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i5", "name": "garlic cloves, minced", "amount": 4, "unit": null, "category": "produce" },
+      { "id": "i6", "name": "fresh rosemary sprig (or 1 tsp dried)", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i7", "name": "low-sodium broth (veg or chicken)", "amount": 4, "unit": "cups", "category": "pantry" },
+      { "id": "i8", "name": "olive oil, plus more to finish", "amount": 3, "unit": "tbsp", "category": "pantry" },
+      { "id": "i9", "name": "crushed red pepper flakes", "amount": 0.5, "unit": "tsp", "category": "pantry" },
+      { "id": "i10", "name": "grated parmesan, plus more for serving", "amount": 0.5, "unit": "cup", "category": "dairy" },
+      { "id": "i11", "name": "kosher salt", "amount": 1.5, "unit": "tsp", "category": "pantry" },
+      { "id": "i12", "name": "black pepper", "amount": 0.5, "unit": "tsp", "category": "pantry" }
+    ],
+    "steps": [
+      "Heat olive oil in a Dutch oven over medium. Add onion with a pinch of salt; cook 5 minutes until soft.",
+      "Stir in garlic, rosemary, red pepper flakes, and tomato paste. Cook 2 minutes until the paste darkens slightly.",
+      "Add chickpeas and broth. Bring to a boil, then simmer 5 minutes. Use a fork or potato masher to crush about half the chickpeas to thicken the broth.",
+      "Add pasta. Cook 10\u201312 minutes (per package time), stirring often, until pasta is al dente and the mixture has thickened to a porridge-like consistency. Loosen with a splash of broth or water if needed.",
+      "Off heat, remove the rosemary sprig. Stir in parmesan, salt, and pepper. Drizzle with olive oil and serve with extra parm."
+    ],
+    "proteins": [
+      { "name": "Italian pork sausage, casings removed", "amount": "12 oz", "instructions": "Brown in a separate skillet over medium-high 6\u20138 min, breaking up. Drain fat. Stir into the stew at the end." },
+      { "name": "Chicken thighs (boneless, skinless, cubed)", "amount": "1 lb", "instructions": "Season with salt, pepper, and fennel seed. Saut\u00e9 in oiled skillet 7\u20138 min until cooked through. Stir in at the end." },
+      { "name": "Pancetta or bacon, diced", "amount": "6 oz", "instructions": "Render in a cold skillet, slowly bringing to medium heat, 8\u201310 min until crisp. Drain on paper towel and scatter over bowls." }
+    ]
+  },
+  {
+    "id": "tuscan-white-bean-pasta",
+    "name": "Tuscan White Bean Pasta with Kale",
+    "bucket": "it",
+    "bucketLabel": "Italian",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "One-pot pasta with cannellini beans, sun-dried tomatoes, garlic, and lacinato kale, finished with lemon and parmesan. Inspired by the highly rated Bon App\u00e9tit Tuscan-style pasta technique.",
+    "source": "bonappetit.com",
+    "ingredients": [
+      { "id": "i1", "name": "short pasta (rigatoni, penne, or fusilli)", "amount": 12, "unit": "oz", "category": "grains" },
+      { "id": "i2", "name": "cannellini beans (15oz can), drained and rinsed", "amount": 1, "unit": "can", "category": "pantry" },
+      { "id": "i3", "name": "lacinato kale, stems removed, leaves chopped", "amount": 1, "unit": "bunch", "category": "produce" },
+      { "id": "i4", "name": "yellow onion, diced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i5", "name": "garlic cloves, sliced", "amount": 5, "unit": null, "category": "produce" },
+      { "id": "i6", "name": "sun-dried tomatoes in oil, chopped", "amount": 0.33, "unit": "cup", "category": "pantry" },
+      { "id": "i7", "name": "low-sodium broth", "amount": 4, "unit": "cups", "category": "pantry" },
+      { "id": "i8", "name": "olive oil", "amount": 3, "unit": "tbsp", "category": "pantry" },
+      { "id": "i9", "name": "crushed red pepper flakes", "amount": 0.5, "unit": "tsp", "category": "pantry" },
+      { "id": "i10", "name": "grated parmesan", "amount": 0.5, "unit": "cup", "category": "dairy" },
+      { "id": "i11", "name": "lemon, zested and juiced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i12", "name": "fresh basil, torn", "amount": 0.25, "unit": "cup", "category": "produce" },
+      { "id": "i13", "name": "kosher salt", "amount": 1.5, "unit": "tsp", "category": "pantry" }
+    ],
+    "steps": [
+      "Heat olive oil in a Dutch oven over medium. Add onion with a pinch of salt; cook 5 minutes.",
+      "Stir in garlic, red pepper flakes, and sun-dried tomatoes; cook 1 minute.",
+      "Add pasta, beans, and broth. Bring to a boil, then reduce to a strong simmer. Cook uncovered 10\u201312 minutes, stirring frequently, until pasta is al dente and the broth has thickened.",
+      "Stir in kale; cook 3\u20134 minutes until wilted and tender. Add a splash of broth or water if the pan gets dry.",
+      "Off heat, stir in parmesan, lemon zest, and lemon juice. Season to taste. Top with basil and extra parm."
+    ],
+    "proteins": [
+      { "name": "Italian sausage links, sliced", "amount": "12 oz", "instructions": "Brown slices in a separate skillet over medium 6\u20138 min until caramelized. Stir into pasta at the end." },
+      { "name": "Chicken thighs (boneless, skinless)", "amount": "1 lb", "instructions": "Season with salt, pepper, garlic powder. Sear 5 min per side. Rest, then slice and serve over the pasta." },
+      { "name": "White beans (extra 15oz can)", "amount": "1 can", "instructions": "For a heartier vegetarian version, add a second drained can of cannellini with the kale." }
+    ]
+  },
+  {
+    "id": "pasta-arrabbiata",
+    "name": "Pasta all'Arrabbiata",
+    "bucket": "it",
+    "bucketLabel": "Italian",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Spicy Roman tomato pasta with lots of garlic, chili, and olive oil \u2014 five ingredients, no compromise. Based on the classic Bon App\u00e9tit arrabbiata.",
+    "source": "bonappetit.com",
+    "ingredients": [
+      { "id": "i1", "name": "spaghetti or penne", "amount": 1, "unit": "lb", "category": "grains" },
+      { "id": "i2", "name": "whole peeled tomatoes (28oz can), crushed by hand", "amount": 1, "unit": "can", "category": "pantry" },
+      { "id": "i3", "name": "garlic cloves, thinly sliced", "amount": 6, "unit": null, "category": "produce" },
+      { "id": "i4", "name": "Calabrian chili paste (or 1 tsp crushed red pepper flakes)", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i5", "name": "olive oil", "amount": 0.33, "unit": "cup", "category": "pantry" },
+      { "id": "i6", "name": "fresh parsley, chopped", "amount": 0.25, "unit": "cup", "category": "produce" },
+      { "id": "i7", "name": "grated Pecorino Romano (or parmesan)", "amount": 0.5, "unit": "cup", "category": "dairy" },
+      { "id": "i8", "name": "kosher salt", "amount": 2, "unit": "tsp", "category": "pantry" },
+      { "id": "i9", "name": "black pepper", "amount": 0.5, "unit": "tsp", "category": "pantry" }
+    ],
+    "steps": [
+      "Bring a large pot of well-salted water to a boil. Cook pasta 1 minute less than package directions for al dente.",
+      "Meanwhile, heat olive oil in a large skillet over medium-low. Add garlic and chili paste; cook 3\u20134 minutes, stirring, until garlic is fragrant and just golden \u2014 don't let it burn.",
+      "Add crushed tomatoes with their juices and 1 tsp salt. Simmer 8\u201310 minutes until thickened, smashing any large pieces.",
+      "Reserve 1 cup pasta water, then drain pasta. Add pasta to the skillet with \u00bd cup pasta water. Toss vigorously 1\u20132 minutes over medium heat, adding more pasta water as needed, until the sauce coats every strand.",
+      "Off heat, stir in half the parsley and half the cheese. Plate and top with the rest of the parsley, cheese, and a drizzle of olive oil."
+    ],
+    "proteins": [
+      { "name": "Shrimp (large, peeled)", "amount": "1 lb", "instructions": "Saut\u00e9 shrimp in 1 tbsp olive oil with a clove of garlic 1\u20132 min per side until pink. Toss with the finished pasta." },
+      { "name": "Italian sausage, casings removed", "amount": "12 oz", "instructions": "Brown sausage in the sauce skillet 6\u20138 min, breaking up. Add the garlic and chili, then proceed with the sauce." },
+      { "name": "Chickpeas (15oz can), drained", "amount": "1 can", "instructions": "For a vegetarian version: toast chickpeas in 1 tbsp olive oil with a pinch of salt 4\u20135 min until lightly crisp. Toss with pasta." }
+    ]
+  },
+  {
+    "id": "korean-rice-bowls",
+    "name": "Korean Rice Bowls",
+    "bucket": "as",
+    "bucketLabel": "Asian",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Bulgogi-inspired rice bowls with a sweet-savory soy and gochujang glaze, kimchi, quick-saut\u00e9ed veg, and sesame. Based on the highly rated Kitchn Korean beef bowl.",
+    "source": "thekitchn.com",
+    "ingredients": [
+      { "id": "i1", "name": "jasmine or short-grain white rice", "amount": 1.5, "unit": "cups", "category": "grains" },
+      { "id": "i2", "name": "low-sodium soy sauce", "amount": 0.33, "unit": "cup", "category": "pantry" },
+      { "id": "i3", "name": "brown sugar", "amount": 3, "unit": "tbsp", "category": "pantry" },
+      { "id": "i4", "name": "toasted sesame oil", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i5", "name": "garlic cloves, minced", "amount": 4, "unit": null, "category": "produce" },
+      { "id": "i6", "name": "fresh ginger, grated", "amount": 1, "unit": "tbsp", "category": "produce" },
+      { "id": "i7", "name": "gochujang (Korean chili paste)", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i8", "name": "rice vinegar", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i9", "name": "scallions, sliced", "amount": 4, "unit": null, "category": "produce" },
+      { "id": "i10", "name": "shredded carrots", "amount": 1, "unit": "cup", "category": "produce" },
+      { "id": "i11", "name": "baby spinach", "amount": 4, "unit": "oz", "category": "produce" },
+      { "id": "i12", "name": "kimchi", "amount": 1, "unit": "cup", "category": "produce" },
+      { "id": "i13", "name": "toasted sesame seeds", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i14", "name": "neutral oil", "amount": 1, "unit": "tbsp", "category": "pantry" }
+    ],
+    "steps": [
+      "Cook rice per package directions (about 15\u201318 minutes).",
+      "While rice cooks, whisk soy sauce, brown sugar, sesame oil, gochujang, vinegar, garlic, and ginger in a small bowl. Set the sauce aside.",
+      "Cook your protein per the add-on instructions. Pour the sauce over once it's browned and let it bubble 1\u20132 minutes to glaze.",
+      "Briefly saut\u00e9 carrots in neutral oil 2 minutes until crisp-tender; wilt spinach in the residual heat off the flame.",
+      "Build bowls: rice, glazed protein, saut\u00e9ed carrots and spinach, kimchi, scallions, sesame seeds."
+    ],
+    "proteins": [
+      { "name": "Ground beef 85/15", "amount": "1 lb", "instructions": "Brown in a skillet over medium-high 6\u20138 min, breaking up. Drain excess fat. Pour sauce over and simmer 1\u20132 min to glaze." },
+      { "name": "Chicken thighs (boneless, skinless, cubed)", "amount": "1 lb", "instructions": "Saut\u00e9 in 1 tbsp oil 7\u20138 min until cooked through. Add sauce; simmer 1 min until glossy." },
+      { "name": "Tofu (extra-firm, cubed and pressed)", "amount": "14 oz", "instructions": "Pat dry. Pan-fry in 1 tbsp oil 8\u201310 min, turning, until golden on all sides. Toss with sauce off heat." }
+    ]
+  },
+  {
+    "id": "veggie-teriyaki-stir-fry",
+    "name": "Veggie Teriyaki Stir-Fry",
+    "bucket": "as",
+    "bucketLabel": "Asian",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Crisp-tender broccoli, peppers, snap peas, and carrots tossed in a glossy homemade teriyaki glaze. Based on Cookie + Kate's vegetable teriyaki technique with a fresh ginger-garlic base.",
+    "source": "cookieandkate.com",
+    "ingredients": [
+      { "id": "i1", "name": "jasmine rice", "amount": 1.5, "unit": "cups", "category": "grains" },
+      { "id": "i2", "name": "broccoli florets", "amount": 4, "unit": "cups", "category": "produce" },
+      { "id": "i3", "name": "red bell pepper, sliced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i4", "name": "snap peas or green beans", "amount": 1.5, "unit": "cups", "category": "produce" },
+      { "id": "i5", "name": "shredded carrots", "amount": 1, "unit": "cup", "category": "produce" },
+      { "id": "i6", "name": "garlic cloves, minced", "amount": 3, "unit": null, "category": "produce" },
+      { "id": "i7", "name": "fresh ginger, grated", "amount": 1, "unit": "tbsp", "category": "produce" },
+      { "id": "i8", "name": "low-sodium soy sauce", "amount": 0.33, "unit": "cup", "category": "pantry" },
+      { "id": "i9", "name": "maple syrup or honey", "amount": 3, "unit": "tbsp", "category": "pantry" },
+      { "id": "i10", "name": "rice vinegar", "amount": 2, "unit": "tbsp", "category": "pantry" },
+      { "id": "i11", "name": "toasted sesame oil", "amount": 2, "unit": "tsp", "category": "pantry" },
+      { "id": "i12", "name": "cornstarch", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i13", "name": "water", "amount": 0.25, "unit": "cup", "category": "pantry" },
+      { "id": "i14", "name": "neutral oil", "amount": 2, "unit": "tbsp", "category": "pantry" },
+      { "id": "i15", "name": "toasted sesame seeds", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i16", "name": "scallions, sliced", "amount": 3, "unit": null, "category": "produce" }
+    ],
+    "steps": [
+      "Cook rice per package directions.",
+      "Whisk soy sauce, maple syrup, vinegar, sesame oil, cornstarch, and water in a small bowl. Set the sauce aside.",
+      "Heat neutral oil in a large wok or skillet over medium-high. Add broccoli; stir-fry 2 minutes. Add bell pepper, carrots, and snap peas; stir-fry 3\u20134 minutes until crisp-tender.",
+      "Add garlic and ginger; cook 30 seconds. Pour in the sauce and toss to coat. Simmer 1 minute until glossy and thickened.",
+      "Serve over rice. Finish with sesame seeds and scallions."
+    ],
+    "proteins": [
+      { "name": "Chicken thighs (boneless, skinless, cubed)", "amount": "1 lb", "instructions": "Toss with 1 tbsp cornstarch and a pinch of salt. Pan-fry in oiled skillet 6\u20137 min until golden. Add to stir-fry with the sauce." },
+      { "name": "Shrimp (large, peeled)", "amount": "1 lb", "instructions": "Quick-saut\u00e9 in 1 tbsp oil 1\u20132 min per side until pink. Add to the stir-fry at the very end." },
+      { "name": "Tofu (extra-firm, cubed)", "amount": "14 oz", "instructions": "Toss with 1 tbsp cornstarch and a pinch of salt. Pan-fry 8\u201310 min until crispy on all sides. Toss with the sauce." }
+    ]
+  },
+  {
+    "id": "thai-red-curry",
+    "name": "Thai Red Curry with Vegetables",
+    "bucket": "as",
+    "bucketLabel": "Asian",
+    "time": 30,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Coconut-rich red curry loaded with broccoli, bell pepper, and spinach, finished with lime and Thai basil over jasmine rice. Based on Cookie + Kate's highly rated vegetable Thai red curry.",
+    "source": "cookieandkate.com",
+    "ingredients": [
+      { "id": "i1", "name": "jasmine rice", "amount": 1.5, "unit": "cups", "category": "grains" },
+      { "id": "i2", "name": "full-fat coconut milk (13.5oz can)", "amount": 1, "unit": "can", "category": "pantry" },
+      { "id": "i3", "name": "Thai red curry paste", "amount": 3, "unit": "tbsp", "category": "pantry" },
+      { "id": "i4", "name": "low-sodium soy sauce or tamari", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i5", "name": "brown sugar", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i6", "name": "lime, juiced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i7", "name": "garlic cloves, minced", "amount": 3, "unit": null, "category": "produce" },
+      { "id": "i8", "name": "fresh ginger, grated", "amount": 1, "unit": "tbsp", "category": "produce" },
+      { "id": "i9", "name": "yellow onion, sliced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i10", "name": "red bell pepper, sliced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i11", "name": "broccoli florets", "amount": 3, "unit": "cups", "category": "produce" },
+      { "id": "i12", "name": "shredded carrots", "amount": 1, "unit": "cup", "category": "produce" },
+      { "id": "i13", "name": "baby spinach", "amount": 4, "unit": "oz", "category": "produce" },
+      { "id": "i14", "name": "fresh Thai basil or cilantro", "amount": 0.25, "unit": "cup", "category": "produce" },
+      { "id": "i15", "name": "neutral oil", "amount": 1, "unit": "tbsp", "category": "pantry" }
+    ],
+    "steps": [
+      "Cook rice per package directions.",
+      "Heat oil in a Dutch oven or deep skillet over medium. Add onion and a pinch of salt; cook 4 minutes. Add garlic and ginger; cook 30 seconds.",
+      "Stir in curry paste and toast 1 minute until fragrant. Pour in coconut milk, soy sauce, and brown sugar. Bring to a simmer.",
+      "Add carrots, broccoli, and bell pepper. Simmer 6\u20138 minutes until vegetables are crisp-tender.",
+      "Stir in spinach and lime juice; cook 1 minute until wilted. Taste and adjust salt, sugar, or lime.",
+      "Serve over rice, topped with fresh herbs."
+    ],
+    "proteins": [
+      { "name": "Chicken thighs (boneless, skinless, cubed)", "amount": "1 lb", "instructions": "Sear in 1 tbsp oil 6\u20137 min until cooked through. Add to the curry with the bell pepper to finish simmering." },
+      { "name": "Shrimp (large, peeled)", "amount": "1 lb", "instructions": "Drop raw shrimp into the simmering curry for the last 2\u20133 min until pink and curled." },
+      { "name": "Tofu (extra-firm, cubed)", "amount": "14 oz", "instructions": "Pat dry. Pan-fry in 1 tbsp oil 8\u201310 min until golden. Add to curry at the very end so it stays crisp." }
+    ]
   }
 ]
