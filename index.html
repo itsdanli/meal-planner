@@ -172,13 +172,23 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
   .print-head{padding:0 0 10px;border-bottom:1px solid #888;margin-bottom:16px}
   .print-head .btn-row{display:none !important}
   .print-body{padding:0}
-  /* each recipe on its own page, no broken cards */
+  /* Two recipes per page: each recipe stays intact, with a thin separator between paired recipes,
+     and an explicit page break before every other recipe (tagged with .page-break in JS). */
   .print-recipe{padding:0;border-bottom:none;page-break-inside:avoid;break-inside:avoid;margin-bottom:0}
-  .print-recipe + .print-recipe{page-break-before:always;break-before:page;padding-top:0}
+  .print-recipe + .print-recipe{margin-top:18px;padding-top:18px;border-top:1px solid #bbb}
+  .print-recipe.page-break{page-break-before:always;break-before:page;margin-top:0;padding-top:0;border-top:none}
+  /* Tighter typography so two recipes fit on one sheet */
+  .print-recipe-title{font-size:20px;margin-bottom:6px}
+  .print-recipe-meta{margin-bottom:10px}
+  .print-section{margin-bottom:10px}
+  .print-section h4{margin-bottom:6px}
   .print-ing-row:nth-child(odd){background:transparent}
-  .print-ing-row{padding:2px 0}
-  .print-step{padding:3px 0;border-bottom:none}
-  .print-protein{background:#f3f0ea;border:1px solid #ccc}
+  .print-ing-row{padding:1px 0}
+  .print-ing-qty,.print-ing-name{font-size:12px}
+  .print-step{padding:2px 0;border-bottom:none}
+  .print-step-text{font-size:12px;line-height:1.5}
+  .print-step-num{font-size:15px}
+  .print-protein{background:#f3f0ea;border:1px solid #ccc;padding:8px 10px;font-size:12px}
   /* keep badge colors readable in print */
   .badge{border:1px solid #999;color:#000 !important}
   a{color:#000;text-decoration:none}
@@ -795,8 +805,11 @@ function renderPrintPanel() {
         <span class="print-step-text">${s}</span>
       </li>`).join('');
 
+    // Start a new printed page before every other recipe (3rd, 5th, ...) so two share a page.
+    const breakClass = (i > 0 && i % 2 === 0) ? ' page-break' : '';
+
     return `
-      <div class="print-recipe">
+      <div class="print-recipe${breakClass}">
         <div class="print-recipe-day">${DAYS[i] || 'Extra'}</div>
         <div class="print-recipe-title">${recipe.name}</div>
         <div class="print-recipe-meta">
