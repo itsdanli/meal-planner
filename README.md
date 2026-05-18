@@ -7,6 +7,7 @@ A personal meal planning app hosted on GitHub Pages. Browse a library of real, t
 ## Features
 
 - **This Week** — pick 3–4 meals, set a recipe scale (×1/×2/×3), and export a grocery list as text or download
+- **Print Week** — view all of this week's recipes on one page (ingredients scaled to the current weekly scale + steps + your meat add-ons) and send to your printer with one click
 - **Recipe Library** — browse all recipes with cuisine/filter search; click any card to see the full recipe with scaled ingredient amounts
 - **Favorites** — starred recipes appear first when shuffling your weekly rotation
 - **Add Recipe** — fill out a form to generate a correctly-formatted JSON snippet, then paste it into `recipes.json` via GitHub

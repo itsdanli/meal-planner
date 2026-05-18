@@ -127,6 +127,63 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
 .g-protein-list{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
 .g-protein-chip{font-size:12px;padding:4px 12px;background:#fff;border:1px solid var(--border2);border-radius:20px;color:var(--ink2)}
 
+/* ── PRINT WEEK PANEL ──────────────────────────────── */
+.print-wrap{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-top:12px}
+.print-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border);gap:8px;flex-wrap:wrap}
+.print-head-title{font-family:var(--font-display);font-size:18px}
+.print-head-title .scale-note{font-size:14px;color:var(--ink3);font-family:var(--font-body);font-weight:400;margin-left:6px}
+.print-body{padding:24px}
+.print-recipe{padding:20px 0;border-bottom:1px solid var(--border)}
+.print-recipe:first-child{padding-top:0}
+.print-recipe:last-child{border-bottom:none;padding-bottom:0}
+.print-recipe-day{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);margin-bottom:4px}
+.print-recipe-title{font-family:var(--font-display);font-size:24px;line-height:1.2;color:var(--ink);margin-bottom:8px;letter-spacing:-.01em}
+.print-recipe-meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+.print-recipe-meta .meta-text{font-size:12px;color:var(--ink3)}
+.print-section{margin-bottom:14px}
+.print-section:last-child{margin-bottom:0}
+.print-section h4{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);margin-bottom:10px}
+.print-ingredients{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:2px}
+@media(max-width:520px){.print-ingredients{grid-template-columns:1fr}}
+.print-ing-row{display:flex;align-items:baseline;gap:6px;padding:5px 8px;border-radius:6px}
+.print-ing-row:nth-child(odd){background:var(--cream)}
+.print-ing-qty{font-size:13px;font-weight:500;color:var(--ink);white-space:nowrap;min-width:60px}
+.print-ing-name{font-size:13px;color:var(--ink2)}
+.print-steps{list-style:none;counter-reset:steps}
+.print-step{display:flex;gap:12px;padding:6px 0;border-bottom:1px solid var(--border)}
+.print-step:last-child{border-bottom:none}
+.print-step-num{font-family:var(--font-display);font-size:16px;color:var(--accent);min-width:24px;line-height:1.4}
+.print-step-text{font-size:13px;color:var(--ink2);line-height:1.6}
+.print-protein{background:var(--cream);border-radius:var(--radius);padding:12px 14px;font-size:13px;color:var(--ink2);line-height:1.5}
+.print-protein strong{color:var(--ink);font-weight:500}
+.print-protein .pp-instr{display:block;color:var(--ink3);margin-top:3px;font-size:12px}
+
+@media print {
+  body{background:#fff !important;color:#000}
+  .app-shell{max-width:none;padding:0;margin:0}
+  /* hide every page-level element by default */
+  body *{visibility:hidden}
+  /* show only the print panel and its descendants */
+  #print-panel,#print-panel *{visibility:visible}
+  /* position print panel as the only visible page content */
+  #print-panel{position:absolute;left:0;top:0;width:100%;padding:0 12mm}
+  /* strip on-screen panel chrome for print */
+  .print-wrap{border:none;border-radius:0;box-shadow:none;background:#fff}
+  .print-head{padding:0 0 10px;border-bottom:1px solid #888;margin-bottom:16px}
+  .print-head .btn-row{display:none !important}
+  .print-body{padding:0}
+  /* each recipe on its own page, no broken cards */
+  .print-recipe{padding:0;border-bottom:none;page-break-inside:avoid;break-inside:avoid;margin-bottom:0}
+  .print-recipe + .print-recipe{page-break-before:always;break-before:page;padding-top:0}
+  .print-ing-row:nth-child(odd){background:transparent}
+  .print-ing-row{padding:2px 0}
+  .print-step{padding:3px 0;border-bottom:none}
+  .print-protein{background:#f3f0ea;border:1px solid #ccc}
+  /* keep badge colors readable in print */
+  .badge{border:1px solid #999;color:#000 !important}
+  a{color:#000;text-decoration:none}
+}
+
 /* ── LIBRARY VIEW ──────────────────────────────── */
 .lib-toolbar{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;align-items:center}
 .search-wrap{position:relative;flex:1;min-width:180px}
@@ -261,6 +318,7 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
       </div>
       <div class="btn-row">
         <button class="btn" id="shuffle-btn">↺ Reshuffle</button>
+        <button class="btn" id="print-week-btn">⎙ Print Week</button>
         <button class="btn btn-primary" id="grocery-toggle">Show Grocery List</button>
       </div>
     </div>
@@ -278,6 +336,8 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
     <div class="slots-grid" id="slots-grid"></div>
 
     <div id="grocery-panel" style="display:none"></div>
+
+    <div id="print-panel" style="display:none"></div>
   </section>
 
   <!-- LIBRARY -->
@@ -517,6 +577,8 @@ function renderAll() {
   renderLibrary();
   renderFavs();
   updateWeekSubtitle();
+  const pPanel = document.getElementById('print-panel');
+  if (pPanel && pPanel.style.display !== 'none') renderPrintPanel();
 }
 
 // ═══════════════════════════════════════════════════
@@ -685,6 +747,116 @@ function downloadGrocery() {
   a.href = URL.createObjectURL(blob);
   a.download = 'grocery-list.txt';
   a.click();
+}
+
+// ═══════════════════════════════════════════════════
+// PRINT WEEK
+// ═══════════════════════════════════════════════════
+function renderPrintPanel() {
+  const panel = document.getElementById('print-panel');
+  const recipes = getWeekRecipes();
+
+  if (!recipes.length) {
+    panel.innerHTML = `
+      <div class="print-wrap">
+        <div class="print-head">
+          <div class="print-head-title">Print View</div>
+          <div class="btn-row">
+            <button class="btn btn-sm btn-ghost" id="close-print-btn">Close</button>
+          </div>
+        </div>
+        <div class="print-body" style="text-align:center;color:var(--ink3);font-size:14px">
+          No meals planned for this week yet. Add some recipes first, then come back here.
+        </div>
+      </div>`;
+    document.getElementById('close-print-btn').onclick = closePrintPanel;
+    return;
+  }
+
+  const weekOfLabel = document.getElementById('week-of-label').textContent || '';
+  const scaleNote = globalScale > 1 ? `<span class="scale-note">scaled ×${globalScale}</span>` : '';
+
+  const recipesHtml = recipes.map((recipe, i) => {
+    const protIdx = chosenProteins[recipe.id] ?? 0;
+    const prot = recipe.proteins[protIdx];
+
+    const ingHtml = recipe.ingredients.map(ing => {
+      const scaledAmt = ing.amount * globalScale;
+      const rounded = scaledAmt % 1 === 0 ? scaledAmt : parseFloat(scaledAmt.toFixed(2));
+      return `<li class="print-ing-row">
+        <span class="print-ing-qty">${rounded}${ing.unit ? ' '+ing.unit : ''}</span>
+        <span class="print-ing-name">${ing.name}</span>
+      </li>`;
+    }).join('');
+
+    const stepsHtml = recipe.steps.map((s, idx) => `
+      <li class="print-step">
+        <span class="print-step-num">${idx+1}</span>
+        <span class="print-step-text">${s}</span>
+      </li>`).join('');
+
+    return `
+      <div class="print-recipe">
+        <div class="print-recipe-day">${DAYS[i] || 'Extra'}</div>
+        <div class="print-recipe-title">${recipe.name}</div>
+        <div class="print-recipe-meta">
+          <span class="badge badge-${recipe.bucket}">${BUCKET_LABELS[recipe.bucket]}</span>
+          <span class="badge badge-time">${recipe.time} min</span>
+          ${recipe.leftovers ? '<span class="badge badge-left">Leftovers ✓</span>' : ''}
+          <span class="meta-text">Serves ${recipe.servings}${globalScale>1 ? ` (×${globalScale} = ${recipe.servings*globalScale})` : ''}</span>
+        </div>
+        <div class="print-section">
+          <h4>Ingredients</h4>
+          <ul class="print-ingredients">${ingHtml}</ul>
+        </div>
+        <div class="print-section">
+          <h4>Steps</h4>
+          <ol class="print-steps">${stepsHtml}</ol>
+        </div>
+        ${prot ? `<div class="print-section">
+          <h4>Meat add-on (cook separately)</h4>
+          <div class="print-protein">
+            <strong>${prot.name}</strong> — ${prot.amount}
+            <span class="pp-instr">${prot.instructions || ''}</span>
+          </div>
+        </div>` : ''}
+      </div>`;
+  }).join('');
+
+  panel.innerHTML = `
+    <div class="print-wrap">
+      <div class="print-head">
+        <div class="print-head-title">Recipes for the Week${scaleNote}</div>
+        <div class="btn-row">
+          <button class="btn btn-sm" id="print-now-btn">⎙ Print</button>
+          <button class="btn btn-sm btn-ghost" id="close-print-btn">Close</button>
+        </div>
+      </div>
+      <div class="print-body">
+        ${weekOfLabel ? `<div style="font-size:12px;color:var(--ink3);margin-bottom:16px">${weekOfLabel}</div>` : ''}
+        ${recipesHtml}
+      </div>
+    </div>`;
+
+  document.getElementById('print-now-btn').onclick = () => window.print();
+  document.getElementById('close-print-btn').onclick = closePrintPanel;
+}
+
+function openPrintPanel() {
+  // Make sure we're on the week view so the panel is visible
+  switchView('week');
+  renderPrintPanel();
+  document.getElementById('print-panel').style.display = 'block';
+}
+
+function closePrintPanel() {
+  document.getElementById('print-panel').style.display = 'none';
+}
+
+function printWeek() {
+  openPrintPanel();
+  // Give the browser a moment to lay out the panel before opening the print dialog
+  setTimeout(() => window.print(), 150);
 }
 
 // ═══════════════════════════════════════════════════
@@ -1016,12 +1188,16 @@ document.getElementById('grocery-toggle').onclick = () => {
   }
 };
 
+document.getElementById('print-week-btn').onclick = printWeek;
+
 document.querySelectorAll('.scale-btn').forEach(btn => {
   btn.onclick = () => {
     globalScale = parseInt(btn.dataset.scale);
     document.querySelectorAll('.scale-btn').forEach(b=>b.classList.toggle('on', parseInt(b.dataset.scale)===globalScale));
     const panel = document.getElementById('grocery-panel');
     if (panel.style.display !== 'none') renderGroceryPanel();
+    const pPanel = document.getElementById('print-panel');
+    if (pPanel.style.display !== 'none') renderPrintPanel();
     if (activeDetail) openDetail(activeDetail);
   };
 });
