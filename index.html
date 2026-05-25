@@ -273,27 +273,6 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
 .protein-opt-instructions{font-size:12px;color:var(--ink2);line-height:1.5;margin-top:4px}
 .modal-footer{padding:16px 24px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end}
 
-/* ── ADD RECIPE MODAL ──────────────────────────────── */
-.form-group{margin-bottom:16px}
-.form-label{display:block;font-size:12px;font-weight:500;color:var(--ink2);margin-bottom:5px}
-.form-input{width:100%;padding:8px 12px;font-size:13px;border:1px solid var(--border2);border-radius:var(--radius);background:#fff;color:var(--ink)}
-.form-input:focus{outline:none;border-color:var(--accent)}
-.form-2col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.form-select{width:100%;padding:8px 12px;font-size:13px;border:1px solid var(--border2);border-radius:var(--radius);background:#fff;color:var(--ink);cursor:pointer}
-.form-textarea{width:100%;padding:8px 12px;font-size:13px;border:1px solid var(--border2);border-radius:var(--radius);background:#fff;color:var(--ink);resize:vertical;min-height:70px}
-.form-hint{font-size:11px;color:var(--ink3);margin-top:4px}
-.ingredient-rows{display:flex;flex-direction:column;gap:6px;margin-bottom:8px}
-.ing-input-row{display:grid;grid-template-columns:1fr 70px 100px 80px auto;gap:6px;align-items:center}
-.ing-input-row input,.ing-input-row select{font-size:12px;padding:6px 8px;border:1px solid var(--border2);border-radius:6px;background:#fff}
-.ing-input-row input:focus,.ing-input-row select:focus{outline:none;border-color:var(--accent)}
-.remove-ing-btn{background:none;border:none;color:var(--ink3);font-size:16px;cursor:pointer;padding:0 4px;line-height:1}
-.remove-ing-btn:hover{color:var(--accent)}
-.json-output{background:var(--cream);border-radius:var(--radius);padding:14px;font-size:11px;font-family:monospace;color:var(--ink2);overflow-x:auto;white-space:pre;max-height:200px;overflow-y:auto;margin-top:8px;line-height:1.6}
-.github-steps{background:var(--accent-light);border-radius:var(--radius);padding:16px;margin-top:12px}
-.github-steps h4{font-size:12px;font-weight:500;color:var(--accent);margin-bottom:10px}
-.github-steps ol{list-style:decimal;padding-left:16px}
-.github-steps li{font-size:12px;color:var(--ink2);padding:3px 0;line-height:1.5}
-.github-steps code{background:#fff;padding:1px 5px;border-radius:4px;font-size:11px}
 
 /* ── FAVORITES VIEW ──────────────────────────────── */
 .fav-empty-state{text-align:center;padding:64px 20px;color:var(--ink3)}
@@ -371,7 +350,6 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
         <div class="page-title">Recipe Library</div>
         <div class="page-subtitle" id="lib-count"></div>
       </div>
-      <button class="btn btn-primary" id="add-recipe-btn">+ Add Recipe</button>
     </div>
     <div class="lib-toolbar">
       <div class="search-wrap">
@@ -417,92 +395,6 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
   </div>
 </div>
 
-<!-- ADD RECIPE MODAL -->
-<div class="modal-overlay" id="add-modal">
-  <div class="modal" id="add-modal-content">
-    <div class="modal-head">
-      <div class="modal-title">Add a New Recipe</div>
-      <button class="modal-close" id="add-modal-close">×</button>
-    </div>
-    <div class="modal-body">
-      <div class="form-2col">
-        <div class="form-group">
-          <label class="form-label">Recipe name *</label>
-          <input class="form-input" id="f-name" placeholder="e.g. Mushroom Risotto">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Cuisine *</label>
-          <select class="form-select" id="f-bucket">
-            <option value="mx">Mexican</option>
-            <option value="med">Mediterranean</option>
-            <option value="as">Asian</option>
-            <option value="it">Italian</option>
-            <option value="am">American</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-2col">
-        <div class="form-group">
-          <label class="form-label">Cook time (minutes)</label>
-          <input class="form-input" id="f-time" type="number" min="5" max="60" value="25">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Servings</label>
-          <input class="form-input" id="f-servings" type="number" min="2" max="8" value="4">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Description (1–2 sentences)</label>
-        <textarea class="form-textarea" id="f-desc" rows="2" placeholder="Briefly describe the dish…"></textarea>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Leftovers? <span class="form-hint" style="display:inline">(does it reheat well next day?)</span></label>
-        <select class="form-select" id="f-leftovers">
-          <option value="true">Yes — great next day</option>
-          <option value="false">No — best fresh</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Ingredients</label>
-        <div class="form-hint" style="margin-bottom:8px">Format: Name · Amount · Unit · Category (produce/pantry/dairy/grains)</div>
-        <div class="ingredient-rows" id="ing-rows"></div>
-        <button class="btn btn-sm btn-ghost" id="add-ing-btn">+ Add ingredient</button>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Steps (one per line)</label>
-        <textarea class="form-textarea" id="f-steps" rows="5" placeholder="Step 1&#10;Step 2&#10;Step 3"></textarea>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Your meat add-on options (up to 3, one per line: Name | amount | instructions)</label>
-        <textarea class="form-textarea" id="f-proteins" rows="3" placeholder="Chicken thighs | 1 lb | Season and pan-sear 5 min per side&#10;Shrimp | 1 lb | Sear 1-2 min per side in butter"></textarea>
-      </div>
-
-      <div style="margin-top:20px">
-        <button class="btn btn-primary" id="generate-json-btn">Generate JSON snippet</button>
-        <div id="json-output-area" style="display:none">
-          <div class="json-output" id="json-out"></div>
-          <div class="github-steps">
-            <h4>How to add this to your recipe library:</h4>
-            <ol>
-              <li>Click "Copy JSON" above to copy the snippet to your clipboard.</li>
-              <li>Go to your GitHub repo → open <code>recipes.json</code> → click the pencil (✎) icon to edit.</li>
-              <li>Scroll to the end of the file. Before the final <code>]</code>, add a comma after the last recipe, then paste your snippet.</li>
-              <li>Click <strong>Commit changes</strong>. GitHub Pages rebuilds in ~30 seconds.</li>
-              <li>Reload this app — your new recipe will appear in the library.</li>
-            </ol>
-          </div>
-          <div class="btn-row" style="margin-top:12px">
-            <button class="btn" id="copy-json-btn">Copy JSON</button>
-            <button class="btn btn-ghost" id="close-json-btn">Done</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <script>
 // ═══════════════════════════════════════════════════
@@ -1120,67 +1012,6 @@ function closeModal(id) {
   activeDetail = null;
 }
 
-// ═══════════════════════════════════════════════════
-// ADD RECIPE FORM
-// ═══════════════════════════════════════════════════
-function addIngRow(data={}) {
-  const row = document.createElement('div');
-  row.className = 'ing-input-row';
-  row.innerHTML = `
-    <input placeholder="Ingredient name" value="${data.name||''}" class="ing-name-in">
-    <input type="number" placeholder="Qty" step="0.25" min="0" value="${data.amount||''}" class="ing-amt-in">
-    <input placeholder="Unit (oz, tbsp…)" value="${data.unit||''}" class="ing-unit-in">
-    <select class="ing-cat-in">
-      <option value="produce" ${data.category==='produce'?'selected':''}>Produce</option>
-      <option value="pantry" ${data.category==='pantry'?'selected':''}>Pantry</option>
-      <option value="dairy" ${data.category==='dairy'?'selected':''}>Dairy</option>
-      <option value="grains" ${data.category==='grains'?'selected':''}>Grains</option>
-    </select>
-    <button class="remove-ing-btn" type="button">×</button>`;
-  row.querySelector('.remove-ing-btn').onclick = () => row.remove();
-  document.getElementById('ing-rows').appendChild(row);
-}
-
-function generateJson() {
-  const name = document.getElementById('f-name').value.trim();
-  if (!name) { alert('Please enter a recipe name.'); return; }
-  const id = name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-  const bucket = document.getElementById('f-bucket').value;
-  const time = parseInt(document.getElementById('f-time').value) || 25;
-  const servings = parseInt(document.getElementById('f-servings').value) || 4;
-  const desc = document.getElementById('f-desc').value.trim();
-  const leftovers = document.getElementById('f-leftovers').value === 'true';
-  const stepsRaw = document.getElementById('f-steps').value.trim().split('\n').filter(Boolean);
-  const proteinsRaw = document.getElementById('f-proteins').value.trim().split('\n').filter(Boolean);
-
-  const ingredients = [];
-  document.querySelectorAll('.ing-input-row').forEach((row,i) => {
-    const n = row.querySelector('.ing-name-in').value.trim();
-    const a = parseFloat(row.querySelector('.ing-amt-in').value) || 0;
-    const u = row.querySelector('.ing-unit-in').value.trim() || null;
-    const c = row.querySelector('.ing-cat-in').value;
-    if (n) ingredients.push({ id:`i${i+1}`, name:n, amount:a, unit:u, category:c });
-  });
-
-  const proteins = proteinsRaw.map(line => {
-    const parts = line.split('|').map(s=>s.trim());
-    return { name:parts[0]||'', amount:parts[1]||'', instructions:parts[2]||'' };
-  });
-
-  const recipe = { id, name, bucket, bucketLabel: BUCKET_LABELS[bucket], time, servings, leftovers, description:desc, source:'', ingredients, steps:stepsRaw, proteins };
-  const json = JSON.stringify(recipe, null, 2);
-  document.getElementById('json-out').textContent = json;
-  document.getElementById('json-output-area').style.display = 'block';
-
-  document.getElementById('copy-json-btn').onclick = () => {
-    navigator.clipboard.writeText(json).then(()=>{
-      const btn = document.getElementById('copy-json-btn');
-      btn.textContent = 'Copied!';
-      setTimeout(()=>btn.textContent='Copy JSON',2000);
-    });
-  };
-  document.getElementById('close-json-btn').onclick = () => closeModal('add-modal');
-}
 
 // ═══════════════════════════════════════════════════
 // ACTIONS
@@ -1342,31 +1173,15 @@ document.getElementById('lib-search').addEventListener('input', e => {
   renderLibrary();
 });
 
-// Add recipe
-document.getElementById('add-recipe-btn').onclick = () => {
-  document.getElementById('ing-rows').innerHTML = '';
-  addIngRow(); addIngRow(); addIngRow();
-  document.getElementById('json-output-area').style.display = 'none';
-  openModal('add-modal');
-};
-document.getElementById('add-ing-btn').onclick = () => addIngRow();
-document.getElementById('generate-json-btn').onclick = generateJson;
-document.getElementById('add-modal-close').onclick = () => closeModal('add-modal');
-
 // Close modals
 document.getElementById('dm-close').onclick = () => closeModal('detail-modal');
-['detail-modal','add-modal'].forEach(id => {
-  document.getElementById(id).addEventListener('click', e => {
-    if (e.target === document.getElementById(id)) closeModal(id);
-  });
+document.getElementById('detail-modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('detail-modal')) closeModal('detail-modal');
 });
 
 // ESC key
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    closeModal('detail-modal');
-    closeModal('add-modal');
-  }
+  if (e.key === 'Escape') closeModal('detail-modal');
 });
 
 // ═══════════════════════════════════════════════════

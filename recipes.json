@@ -270,44 +270,6 @@
     ]
   },
   {
-    "id": "garlic-noodle-stir-fry",
-    "name": "Garlic Noodle Stir-Fry",
-    "bucket": "as",
-    "bucketLabel": "Asian",
-    "time": 20,
-    "servings": 4,
-    "leftovers": true,
-    "description": "Lo mein noodles with bok choy in a punchy soy-garlic-oyster sauce. High heat, fast cook, big flavor.",
-    "source": "classic Chinese-American technique",
-    "ingredients": [
-      { "id": "i1", "name": "lo mein noodles (fresh or dried), 8oz", "amount": 8, "unit": "oz", "category": "grains" },
-      { "id": "i2", "name": "baby bok choy, halved lengthwise", "amount": 4, "unit": "heads", "category": "produce" },
-      { "id": "i3", "name": "garlic cloves, minced", "amount": 5, "unit": null, "category": "produce" },
-      { "id": "i4", "name": "fresh ginger, grated", "amount": 1, "unit": "tsp", "category": "produce" },
-      { "id": "i5", "name": "low-sodium soy sauce", "amount": 3, "unit": "tbsp", "category": "pantry" },
-      { "id": "i6", "name": "oyster sauce (or vegetarian oyster/hoisin sauce)", "amount": 2, "unit": "tbsp", "category": "pantry" },
-      { "id": "i7", "name": "sesame oil", "amount": 1, "unit": "tbsp", "category": "pantry" },
-      { "id": "i8", "name": "vegetable or avocado oil (for stir-frying)", "amount": 2, "unit": "tbsp", "category": "pantry" },
-      { "id": "i9", "name": "sugar or honey", "amount": 1, "unit": "tsp", "category": "pantry" },
-      { "id": "i10", "name": "red pepper flakes", "amount": 0.25, "unit": "tsp", "category": "pantry" },
-      { "id": "i11", "name": "green onions, cut into 1-inch pieces", "amount": 4, "unit": null, "category": "produce" },
-      { "id": "i12", "name": "sesame seeds", "amount": 1, "unit": "tbsp", "category": "pantry" }
-    ],
-    "steps": [
-      "Cook noodles per package directions, 1 minute less than directed. Drain and toss with ½ tsp sesame oil. Set aside.",
-      "Mix together soy sauce, oyster sauce, sesame oil, sugar, and red pepper flakes in a small bowl. Set the sauce aside.",
-      "Heat a wok or large skillet over high heat until smoking hot. Add vegetable oil. Add garlic and ginger and stir-fry 30 seconds.",
-      "Add bok choy cut-side down and cook undisturbed 2 minutes. Flip and cook another 1 minute. Push to the side.",
-      "Add noodles to the center of the pan. Pour sauce over and toss everything together on high heat for 1–2 minutes. Add green onions, toss once more.",
-      "Plate and top with sesame seeds. Serve immediately."
-    ],
-    "proteins": [
-      { "name": "Flank or skirt steak, thin-sliced against grain", "amount": "1 lb", "instructions": "Marinate 5 min in 1 tbsp soy sauce + 1 tsp sesame oil. Sear in a separate hot skillet 2–3 min per side. Slice thin and lay over your bowl." },
-      { "name": "Chicken thighs (boneless), sliced thin", "amount": "1 lb", "instructions": "Cook in hot oiled skillet over medium-high 6–7 min tossing. Season with soy sauce and a splash of sesame oil." },
-      { "name": "Extra-firm tofu, pressed and cubed", "amount": "14 oz block", "instructions": "Pat very dry. Fry in 2 tbsp oil over medium-high 4–5 min per side until golden. Add to the stir-fry." }
-    ]
-  },
-  {
     "id": "miso-salmon-rice-bowl",
     "name": "Miso Soup & Rice Bowl",
     "bucket": "as",
@@ -760,6 +722,47 @@
     ]
   },
   {
+    "id": "sesame-tahini-noodle-stir-fry",
+    "name": "Sesame Tahini Noodle Stir-Fry",
+    "bucket": "as",
+    "bucketLabel": "Asian",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Ramen noodles and a mountain of spring vegetables tossed in a punchy tahini-orange-soy sauce with edamame and sesame. Inspired by The Kitchn's springy noodle stir-fry — bold, glossy, and loaded.",
+    "source": "thekitchn.com",
+    "ingredients": [
+      { "id": "i1", "name": "ramen or lo mein noodles (10–12 oz)", "amount": 10, "unit": "oz", "category": "grains" },
+      { "id": "i2", "name": "snap peas, trimmed", "amount": 2, "unit": "cups", "category": "produce" },
+      { "id": "i3", "name": "asparagus, trimmed and sliced on diagonal into 1-inch pieces", "amount": 1, "unit": "bunch", "category": "produce" },
+      { "id": "i4", "name": "red bell pepper, thinly sliced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i5", "name": "shredded carrots", "amount": 1, "unit": "cup", "category": "produce" },
+      { "id": "i6", "name": "frozen shelled edamame, thawed", "amount": 1, "unit": "cup", "category": "pantry" },
+      { "id": "i7", "name": "tahini", "amount": 0.5, "unit": "cup", "category": "pantry" },
+      { "id": "i8", "name": "fresh orange juice (from 2 oranges)", "amount": 1, "unit": "cup", "category": "produce" },
+      { "id": "i9", "name": "low-sodium soy sauce", "amount": 0.25, "unit": "cup", "category": "pantry" },
+      { "id": "i10", "name": "fresh ginger, finely grated", "amount": 1, "unit": "tbsp", "category": "produce" },
+      { "id": "i11", "name": "garlic cloves, minced", "amount": 2, "unit": null, "category": "produce" },
+      { "id": "i12", "name": "sriracha", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i13", "name": "neutral oil", "amount": 2, "unit": "tbsp", "category": "pantry" },
+      { "id": "i14", "name": "toasted sesame seeds", "amount": 2, "unit": "tbsp", "category": "pantry" },
+      { "id": "i15", "name": "green onions, sliced", "amount": 4, "unit": null, "category": "produce" },
+      { "id": "i16", "name": "kosher salt", "amount": 0.5, "unit": "tsp", "category": "pantry" }
+    ],
+    "steps": [
+      "Bring a large pot of salted water to a boil. Cook noodles per package directions. Reserve ¼ cup pasta water, then drain.",
+      "Whisk together tahini, orange juice, soy sauce, ginger, garlic, and sriracha in a large bowl until smooth. Season with salt. Add edamame and half the vegetables (snap peas, carrots); toss to coat in the sauce.",
+      "Heat neutral oil in a large wok or skillet over medium-high until shimmering. Add remaining vegetables (asparagus, bell pepper) with a pinch of salt. Stir-fry 3–4 minutes until lightly charred and crisp-tender.",
+      "Add drained noodles and the sauce bowl contents to the wok. Toss everything together over medium-high heat 1–2 minutes, adding a splash of reserved pasta water to loosen the sauce into a glossy coat.",
+      "Pile into bowls. Top with sesame seeds, green onions, and extra sriracha to taste."
+    ],
+    "proteins": [
+      { "name": "Large shrimp (peeled, deveined)", "amount": "1 lb", "instructions": "Toss with a pinch of salt and sesame oil. Sear in a hot oiled skillet 1–2 min per side until pink. Add over noodles at the end." },
+      { "name": "Chicken breast, thinly sliced", "amount": "1 lb", "instructions": "Season with salt and a splash of soy sauce. Stir-fry in oiled wok over medium-high 5–6 min until cooked through. Toss with the noodles." },
+      { "name": "Extra-firm tofu, cubed and pressed", "amount": "14 oz", "instructions": "Pat dry. Pan-fry in 2 tbsp oil over medium-high 8–10 min, turning until golden on all sides. Toss in with noodles at the end." }
+    ]
+  },
+  {
     "id": "thai-red-curry",
     "name": "Thai Red Curry with Vegetables",
     "bucket": "as",
@@ -798,6 +801,168 @@
       { "name": "Chicken thighs (boneless, skinless, cubed)", "amount": "1 lb", "instructions": "Sear in 1 tbsp oil 6\u20137 min until cooked through. Add to the curry with the bell pepper to finish simmering." },
       { "name": "Shrimp (large, peeled)", "amount": "1 lb", "instructions": "Drop raw shrimp into the simmering curry for the last 2\u20133 min until pink and curled." },
       { "name": "Tofu (extra-firm, cubed)", "amount": "14 oz", "instructions": "Pat dry. Pan-fry in 1 tbsp oil 8\u201310 min until golden. Add to curry at the very end so it stays crisp." }
+    ]
+  },
+  {
+    "id": "veggie-black-bean-enchiladas",
+    "name": "Veggie Black Bean Enchiladas",
+    "bucket": "mx",
+    "bucketLabel": "Mexican",
+    "time": 30,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Flour tortillas stuffed with saut\u00e9ed broccoli, bell pepper, spinach, and black beans in a red enchilada sauce, topped with melted Monterey Jack. Cookie & Kate's most popular Mexican recipe.",
+    "source": "cookieandkate.com",
+    "ingredients": [
+      { "id": "i1", "name": "flour tortillas (8-inch)", "amount": 8, "unit": null, "category": "grains" },
+      { "id": "i2", "name": "black beans (15oz can), drained and rinsed", "amount": 1, "unit": "can", "category": "pantry" },
+      { "id": "i3", "name": "broccoli florets, chopped small", "amount": 3, "unit": "cups", "category": "produce" },
+      { "id": "i4", "name": "red bell pepper, diced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i5", "name": "red onion, chopped", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i6", "name": "baby spinach", "amount": 5, "unit": "oz", "category": "produce" },
+      { "id": "i7", "name": "shredded Monterey Jack cheese", "amount": 1.5, "unit": "cups", "category": "dairy" },
+      { "id": "i8", "name": "red enchilada sauce (15oz can or homemade)", "amount": 2, "unit": "cups", "category": "pantry" },
+      { "id": "i9", "name": "olive oil", "amount": 2, "unit": "tbsp", "category": "pantry" },
+      { "id": "i10", "name": "ground cumin", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i11", "name": "ground cinnamon", "amount": 0.25, "unit": "tsp", "category": "pantry" },
+      { "id": "i12", "name": "kosher salt", "amount": 0.5, "unit": "tsp", "category": "pantry" },
+      { "id": "i13", "name": "fresh cilantro, for serving", "amount": 0.25, "unit": "cup", "category": "produce" },
+      { "id": "i14", "name": "sour cream or Greek yogurt, for serving", "amount": 0.5, "unit": "cup", "category": "dairy" }
+    ],
+    "steps": [
+      "Preheat oven to 400\u00b0F. Lightly grease a 9x13 baking dish and spread \u00bd cup enchilada sauce on the bottom.",
+      "Heat olive oil in a large skillet over medium. Add onion with a pinch of salt; cook 5 minutes. Add broccoli and bell pepper, cover, and cook 8\u20139 minutes until broccoli is bright green and just tender.",
+      "Add cumin and cinnamon; stir 30 seconds. Add spinach in handfuls and stir until wilted, 2 minutes. Transfer to a bowl and stir in black beans and \u00bc cup cheese.",
+      "Warm tortillas 30 seconds in the microwave to make them pliable. Spoon \u00bd cup filling down the center of each, roll tightly, and place seam-side down in the baking dish.",
+      "Pour remaining enchilada sauce over the top and sprinkle with remaining cheese. Bake 20 minutes until bubbly and cheese is melted. Let rest 5 minutes, then top with cilantro and serve with sour cream."
+    ],
+    "proteins": [
+      { "name": "Rotisserie chicken, shredded", "amount": "1.5 cups", "instructions": "Stir shredded chicken into the filling before rolling. It heats through during the 20-minute bake." },
+      { "name": "Ground beef or turkey", "amount": "0.5 lb", "instructions": "Brown in a separate skillet over medium-high 7\u20138 min, breaking up. Season with cumin, chili powder, and salt. Mix into the filling." },
+      { "name": "Chorizo (Mexican-style)", "amount": "6 oz", "instructions": "Remove casing. Brown in skillet over medium 6\u20137 min, breaking up. Drain fat. Stir into filling before rolling." }
+    ]
+  },
+  {
+    "id": "spiced-lentil-soup",
+    "name": "Spiced Lentil Soup with Greens",
+    "bucket": "med",
+    "bucketLabel": "Mediterranean",
+    "time": 30,
+    "servings": 6,
+    "leftovers": true,
+    "description": "A deeply savory, cumin-and-curry-spiced lentil soup with diced tomatoes and wilted kale, finished with a squeeze of lemon. Cookie & Kate's most-made soup \u2014 thousands of five-star reviews.",
+    "source": "cookieandkate.com",
+    "ingredients": [
+      { "id": "i1", "name": "brown or green lentils, rinsed", "amount": 1, "unit": "cup", "category": "pantry" },
+      { "id": "i2", "name": "diced tomatoes (28oz can), lightly drained", "amount": 1, "unit": "can", "category": "pantry" },
+      { "id": "i3", "name": "low-sodium vegetable broth", "amount": 4, "unit": "cups", "category": "pantry" },
+      { "id": "i4", "name": "water", "amount": 2, "unit": "cups", "category": "pantry" },
+      { "id": "i5", "name": "yellow onion, diced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i6", "name": "medium carrots, diced", "amount": 2, "unit": null, "category": "produce" },
+      { "id": "i7", "name": "garlic cloves, minced", "amount": 4, "unit": null, "category": "produce" },
+      { "id": "i8", "name": "lacinato kale or collard greens, stems removed and chopped", "amount": 1, "unit": "cup", "category": "produce" },
+      { "id": "i9", "name": "extra-virgin olive oil", "amount": 0.25, "unit": "cup", "category": "pantry" },
+      { "id": "i10", "name": "ground cumin", "amount": 2, "unit": "tsp", "category": "pantry" },
+      { "id": "i11", "name": "curry powder", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i12", "name": "dried thyme", "amount": 0.5, "unit": "tsp", "category": "pantry" },
+      { "id": "i13", "name": "red pepper flakes", "amount": 0.25, "unit": "tsp", "category": "pantry" },
+      { "id": "i14", "name": "fresh lemon juice", "amount": 2, "unit": "tbsp", "category": "produce" },
+      { "id": "i15", "name": "kosher salt", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i16", "name": "black pepper", "amount": 0.5, "unit": "tsp", "category": "pantry" },
+      { "id": "i17", "name": "crusty bread, for serving", "amount": 4, "unit": "pieces", "category": "grains" }
+    ],
+    "steps": [
+      "Heat olive oil in a large Dutch oven over medium. Add onion and carrots; cook 5 minutes until softened. Add garlic, cumin, curry powder, thyme, and red pepper flakes; stir 30 seconds until fragrant.",
+      "Add diced tomatoes and cook 2 minutes, stirring, to deepen the flavor. Add lentils, broth, water, salt, and pepper. Bring to a boil.",
+      "Partially cover, reduce heat, and simmer 25\u201330 minutes until lentils are tender but still hold their shape.",
+      "Transfer 2 cups of soup to a blender (or use an immersion blender briefly). Pur\u00e9e until smooth, then stir back in for a creamy, thick texture.",
+      "Stir in kale and cook 5 minutes until tender. Off heat, add lemon juice. Taste and adjust salt and lemon. Serve with crusty bread."
+    ],
+    "proteins": [
+      { "name": "Merguez or lamb sausage", "amount": "8 oz", "instructions": "Slice into rounds. Brown in a skillet over medium 5\u20136 min. Serve on top of your bowl." },
+      { "name": "Chicken thighs (boneless, cubed)", "amount": "1 lb", "instructions": "Season with cumin, salt, and pepper. Saut\u00e9 in oiled skillet 7\u20138 min until cooked through. Ladle soup over." },
+      { "name": "Halloumi (pan-fried)", "amount": "8 oz", "instructions": "Slice \u00bc-inch thick. Cook in dry nonstick skillet 1\u20132 min per side until golden. Lay slices over your bowl." }
+    ]
+  },
+  {
+    "id": "coconut-vegetable-curry",
+    "name": "Coconut Vegetable Curry",
+    "bucket": "as",
+    "bucketLabel": "Asian",
+    "time": 30,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Cauliflower, sweet potato, and spinach simmered in a creamy coconut milk broth with turmeric, ginger, and curry spices. Love & Lemons' most-loved curry \u2014 warming, flexible, and weeknight-fast.",
+    "source": "loveandlemons.com",
+    "ingredients": [
+      { "id": "i1", "name": "basmati or jasmine rice", "amount": 1.5, "unit": "cups", "category": "grains" },
+      { "id": "i2", "name": "full-fat coconut milk (13.5oz can)", "amount": 1, "unit": "can", "category": "pantry" },
+      { "id": "i3", "name": "cauliflower, cut into small florets", "amount": 3, "unit": "cups", "category": "produce" },
+      { "id": "i4", "name": "sweet potato, peeled and cubed (\u00bd-inch)", "amount": 1, "unit": "large", "category": "produce" },
+      { "id": "i5", "name": "baby spinach", "amount": 4, "unit": "oz", "category": "produce" },
+      { "id": "i6", "name": "frozen peas", "amount": 1, "unit": "cup", "category": "pantry" },
+      { "id": "i7", "name": "yellow onion, diced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i8", "name": "garlic cloves, minced", "amount": 4, "unit": null, "category": "produce" },
+      { "id": "i9", "name": "fresh ginger, grated", "amount": 1, "unit": "tbsp", "category": "produce" },
+      { "id": "i10", "name": "curry powder", "amount": 2, "unit": "tsp", "category": "pantry" },
+      { "id": "i11", "name": "ground turmeric", "amount": 0.5, "unit": "tsp", "category": "pantry" },
+      { "id": "i12", "name": "ground coriander", "amount": 0.5, "unit": "tsp", "category": "pantry" },
+      { "id": "i13", "name": "red Thai chile or pinch of cayenne (optional)", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i14", "name": "coconut oil or neutral oil", "amount": 2, "unit": "tbsp", "category": "pantry" },
+      { "id": "i15", "name": "fresh lime juice", "amount": 2, "unit": "tbsp", "category": "produce" },
+      { "id": "i16", "name": "kosher salt", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i17", "name": "fresh cilantro or basil, for serving", "amount": 0.25, "unit": "cup", "category": "produce" },
+      { "id": "i18", "name": "naan bread, for serving (optional)", "amount": 4, "unit": "pieces", "category": "grains" }
+    ],
+    "steps": [
+      "Cook rice per package directions.",
+      "Heat oil in a large Dutch oven over medium. Add onion and a pinch of salt; cook 5 minutes until soft. Add garlic, ginger, and chile; cook 1 minute. Stir in curry powder, turmeric, and coriander; cook 30 seconds.",
+      "Add sweet potato and stir to coat in the spices. Add coconut milk, \u00bd cup water, and 1 tsp salt. Bring to a simmer, cover, and cook 8 minutes.",
+      "Add cauliflower, cover, and cook 10\u201312 minutes more until both the sweet potato and cauliflower are fork-tender.",
+      "Stir in peas and spinach; cook 2 minutes until spinach wilts and peas are warmed through. Off heat, stir in lime juice. Taste and adjust salt. Serve over rice with fresh herbs and naan."
+    ],
+    "proteins": [
+      { "name": "Chicken thighs (boneless, cubed)", "amount": "1 lb", "instructions": "Season with salt and a pinch of curry powder. Sear in oiled skillet over medium-high 6\u20137 min. Add to the curry with the cauliflower." },
+      { "name": "Large shrimp (peeled)", "amount": "1 lb", "instructions": "Drop into the simmering curry for the last 3 minutes, just until pink and curled." },
+      { "name": "Chickpeas (15oz can), drained", "amount": "1 can", "instructions": "For a heartier vegetarian base: stir in drained chickpeas with the cauliflower. They'll absorb the sauce beautifully." }
+    ]
+  },
+  {
+    "id": "crispy-black-bean-tostadas",
+    "name": "Crispy Black Bean Tostadas",
+    "bucket": "mx",
+    "bucketLabel": "Mexican",
+    "time": 20,
+    "servings": 4,
+    "leftovers": false,
+    "description": "Crunchy baked tostadas piled with smoky refried black beans, a sharp feta-lime cabbage slaw, and ripe avocado. Inspired by Smitten Kitchen's crispy black bean tacos \u2014 done in 20 minutes flat.",
+    "source": "smittenkitchen.com",
+    "ingredients": [
+      { "id": "i1", "name": "tostada shells (store-bought, or corn tortillas baked at 400\u00b0F for 8 min)", "amount": 8, "unit": null, "category": "grains" },
+      { "id": "i2", "name": "black beans (15oz can)", "amount": 2, "unit": "cans", "category": "pantry" },
+      { "id": "i3", "name": "shredded red cabbage", "amount": 3, "unit": "cups", "category": "produce" },
+      { "id": "i4", "name": "crumbled feta cheese", "amount": 0.5, "unit": "cup", "category": "dairy" },
+      { "id": "i5", "name": "avocado, sliced", "amount": 2, "unit": null, "category": "produce" },
+      { "id": "i6", "name": "fresh lime juice (2 limes)", "amount": 3, "unit": "tbsp", "category": "produce" },
+      { "id": "i7", "name": "olive oil", "amount": 2, "unit": "tbsp", "category": "pantry" },
+      { "id": "i8", "name": "garlic cloves, minced", "amount": 2, "unit": null, "category": "produce" },
+      { "id": "i9", "name": "ground cumin", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i10", "name": "smoked paprika", "amount": 0.5, "unit": "tsp", "category": "pantry" },
+      { "id": "i11", "name": "hot sauce (such as Cholula)", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i12", "name": "fresh cilantro", "amount": 0.25, "unit": "cup", "category": "produce" },
+      { "id": "i13", "name": "kosher salt", "amount": 0.5, "unit": "tsp", "category": "pantry" },
+      { "id": "i14", "name": "sour cream, for serving", "amount": 0.33, "unit": "cup", "category": "dairy" }
+    ],
+    "steps": [
+      "Make the slaw: toss shredded cabbage with 2 tbsp lime juice, a pinch of salt, and half the feta. Let sit while you prep the beans \u2014 it softens and gets better by the minute.",
+      "Heat olive oil in a skillet over medium. Add garlic, cumin, and smoked paprika; cook 30 seconds. Add beans with about half their liquid. Cook 5\u20136 minutes, mashing roughly with a fork until thick and spreadable. Season with salt, hot sauce, and remaining lime juice.",
+      "Spread a thick layer of beans on each tostada shell. Top with slaw, avocado slices, remaining feta, and cilantro.",
+      "Drizzle with sour cream or serve on the side. Eat immediately \u2014 the shells stay crunchiest fresh."
+    ],
+    "proteins": [
+      { "name": "Skirt steak, thin-sliced", "amount": "1 lb", "instructions": "Season with salt, cumin, and smoked paprika. Sear in hot cast iron 2\u20133 min per side. Rest 5 min, then slice thin against the grain. Fan over the tostadas." },
+      { "name": "Rotisserie chicken, shredded", "amount": "1.5 cups", "instructions": "Zero cook time. Warm in microwave 60 seconds with a splash of lime juice and a pinch of cumin. Pile on top of the beans before the slaw." },
+      { "name": "Shrimp (large, peeled)", "amount": "1 lb", "instructions": "Toss with olive oil, cumin, smoked paprika, and salt. Cook in hot skillet 1\u20132 min per side until pink. Arrange over beans." }
     ]
   }
 ]
