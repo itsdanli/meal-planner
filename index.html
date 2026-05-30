@@ -279,6 +279,22 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
 .fav-empty-icon{font-size:40px;opacity:.3;margin-bottom:12px}
 .fav-empty-text{font-size:14px;line-height:1.7}
 
+/* ── COCKTAILS VIEW ──────────────────────────────── */
+.badge-summer{background:#FFF3E0;color:#E65100}
+.badge-year-round{background:var(--blue-light);color:var(--blue)}
+.badge-party{background:var(--purple-light);color:var(--purple)}
+.badge-easy{background:var(--green-light);color:var(--green)}
+.badge-medium{background:var(--amber-light);color:var(--amber)}
+.ccard{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;cursor:pointer;transition:all .15s;position:relative}
+.ccard:hover{border-color:var(--border2);box-shadow:var(--shadow)}
+.ccard-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px}
+.ccard-name{font-family:var(--font-display);font-size:17px;line-height:1.2;color:var(--ink);flex:1;padding-right:6px}
+.ccard-desc{font-size:12px;color:var(--ink3);margin-bottom:10px;line-height:1.5}
+.ccard-badges{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.ccard-meta{font-size:11px;color:var(--ink3)}
+.mocktail-note{background:var(--green-light);border-radius:var(--radius);padding:14px 16px;font-size:13px;color:var(--ink2);line-height:1.6}
+.mocktail-note strong{color:var(--green);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:6px}
+
 /* ── Responsive ──────────────────────────────── */
 @media(max-width:640px){
   header{flex-direction:column;align-items:flex-start;gap:12px}
@@ -309,6 +325,7 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
       <button class="nav-btn active" data-view="week">This Week</button>
       <button class="nav-btn" data-view="library">Recipe Library</button>
       <button class="nav-btn" data-view="favs">Favorites</button>
+      <button class="nav-btn" data-view="cocktails">Cocktails</button>
     </nav>
   </header>
 
@@ -380,6 +397,29 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
     </div>
     <div class="recipe-grid" id="fav-grid"></div>
   </section>
+
+  <!-- COCKTAILS -->
+  <section class="view" id="view-cocktails">
+    <div class="page-header">
+      <div>
+        <div class="page-title">Cocktails</div>
+        <div class="page-subtitle" id="cocktail-count"></div>
+      </div>
+    </div>
+    <div class="lib-toolbar">
+      <div class="search-wrap">
+        <span class="search-ico">⌕</span>
+        <input type="text" id="cocktail-search" placeholder="Search cocktails…" autocomplete="off">
+      </div>
+      <div class="filter-pills" id="cocktail-filter-pills">
+        <button class="fpill on" data-cfilter="all">All</button>
+        <button class="fpill" data-cfilter="summer">☀ Summer</button>
+        <button class="fpill" data-cfilter="year-round">Year-Round</button>
+        <button class="fpill" data-cfilter="party">🥂 Party / Batch</button>
+      </div>
+    </div>
+    <div class="recipe-list" id="cocktail-grid"></div>
+  </section>
 </div>
 
 <!-- RECIPE DETAIL MODAL -->
@@ -396,6 +436,18 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
 </div>
 
 
+<!-- COCKTAIL DETAIL MODAL -->
+<div class="modal-overlay" id="cocktail-modal">
+  <div class="modal" id="cocktail-modal-content">
+    <div class="modal-head">
+      <div class="modal-title" id="cm-title"></div>
+      <button class="modal-close" id="cm-close">×</button>
+    </div>
+    <div class="modal-meta" id="cm-meta"></div>
+    <div class="modal-body" id="cm-body"></div>
+  </div>
+</div>
+
 <script>
 // ═══════════════════════════════════════════════════
 // STATE
@@ -410,8 +462,16 @@ let libSearch = '';
 let activeDetail = null;
 let collapsedFolders = new Set();
 
+// Cocktail state
+let allCocktails = [];
+let cocktailFilter = 'all';
+let cocktailSearch = '';
+let collapsedCocktailFolders = new Set();
+
 const BUCKET_LABELS = { mx:'Mexican', med:'Mediterranean', as:'Asian', it:'Italian', am:'American' };
 const FOLDER_ORDER = ['med', 'it', 'as', 'mx', 'am'];
+const COCKTAIL_BUCKET_LABELS = { summer:'Summer', 'year-round':'Year-Round', party:'Party / Batch' };
+const COCKTAIL_FOLDER_ORDER = ['summer', 'year-round', 'party'];
 const DAYS = ['Monday','Wednesday','Friday','Saturday'];
 
 // ═══════════════════════════════════════════════════
@@ -419,12 +479,16 @@ const DAYS = ['Monday','Wednesday','Friday','Saturday'];
 // ═══════════════════════════════════════════════════
 async function init() {
   try {
-    const [recRes, prefRes, weekRes] = await Promise.all([
+    const [recRes, prefRes, weekRes, cocktailRes] = await Promise.all([
       fetch('recipes.json'),
       fetch('prefs.json').catch(()=>null),
-      fetch('current-week.json').catch(()=>null)
+      fetch('current-week.json').catch(()=>null),
+      fetch('cocktails.json').catch(()=>null)
     ]);
     allRecipes = await recRes.json();
+    if (cocktailRes && cocktailRes.ok) {
+      allCocktails = await cocktailRes.json();
+    }
 
     if (prefRes && prefRes.ok) {
       const prefs = await prefRes.json();
@@ -494,6 +558,7 @@ function renderAll() {
   renderWeekView();
   renderLibrary();
   renderFavs();
+  renderCocktails();
   updateWeekSubtitle();
   const pPanel = document.getElementById('print-panel');
   if (pPanel && pPanel.style.display !== 'none') renderPrintPanel();
@@ -1181,7 +1246,145 @@ document.getElementById('detail-modal').addEventListener('click', e => {
 
 // ESC key
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModal('detail-modal');
+  if (e.key === 'Escape') {
+    closeModal('detail-modal');
+    closeModal('cocktail-modal');
+  }
+});
+
+// ═══════════════════════════════════════════════════
+// COCKTAILS
+// ═══════════════════════════════════════════════════
+function renderCocktails() {
+  const grid = document.getElementById('cocktail-grid');
+  const countEl = document.getElementById('cocktail-count');
+  if (!grid) return;
+
+  const q = cocktailSearch.toLowerCase();
+  const filtered = allCocktails.filter(c => {
+    if (cocktailFilter !== 'all' && c.bucket !== cocktailFilter) return false;
+    if (q && !c.name.toLowerCase().includes(q) && !c.description.toLowerCase().includes(q)) return false;
+    return true;
+  });
+
+  countEl.textContent = `${filtered.length} cocktail${filtered.length !== 1 ? 's' : ''}`;
+
+  const buckets = cocktailFilter === 'all' ? COCKTAIL_FOLDER_ORDER : [cocktailFilter];
+  grid.innerHTML = '';
+
+  buckets.forEach(bucket => {
+    const items = filtered.filter(c => c.bucket === bucket);
+    if (!items.length && cocktailFilter === 'all') return;
+
+    const label = COCKTAIL_BUCKET_LABELS[bucket] || bucket;
+    const isCollapsed = collapsedCocktailFolders.has(bucket);
+    const folder = document.createElement('div');
+    folder.className = 'lib-folder' + (isCollapsed ? ' collapsed' : '');
+    folder.innerHTML = `
+      <button class="lib-folder-header" data-cbucket="${bucket}">
+        <span class="lib-folder-chevron">▾</span>
+        <span class="lib-folder-name">${label}</span>
+        <span class="lib-folder-count">${items.length} cocktail${items.length !== 1 ? 's' : ''}</span>
+      </button>
+      <div class="lib-folder-grid"></div>`;
+
+    folder.querySelector('.lib-folder-header').addEventListener('click', () => {
+      if (collapsedCocktailFolders.has(bucket)) collapsedCocktailFolders.delete(bucket);
+      else collapsedCocktailFolders.add(bucket);
+      renderCocktails();
+    });
+
+    const fgrid = folder.querySelector('.lib-folder-grid');
+    if (!items.length) {
+      fgrid.innerHTML = '<div class="lib-folder-empty">No cocktails in this category yet.</div>';
+    } else {
+      items.forEach(c => {
+        const card = document.createElement('div');
+        card.className = 'ccard';
+        card.innerHTML = `
+          <div class="ccard-top">
+            <div class="ccard-name">${c.name}</div>
+          </div>
+          <div class="ccard-desc">${c.description}</div>
+          <div class="ccard-badges">
+            <span class="badge badge-${c.bucket}">${COCKTAIL_BUCKET_LABELS[c.bucket]}</span>
+            <span class="badge badge-${c.difficulty}">${c.difficulty}</span>
+          </div>
+          <div class="ccard-meta">🥃 ${c.glassware} · ${c.servings > 1 ? 'Serves ' + c.servings : '1 drink'}${c.mocktail ? ' · 🍹 Mocktail option' : ''}</div>`;
+        card.addEventListener('click', () => openCocktailDetail(c.id));
+        fgrid.appendChild(card);
+      });
+    }
+    grid.appendChild(folder);
+  });
+
+  if (!filtered.length) {
+    grid.innerHTML = '<div class="no-results">No cocktails found.</div>';
+  }
+}
+
+function openCocktailDetail(id) {
+  const c = allCocktails.find(x => x.id === id);
+  if (!c) return;
+
+  document.getElementById('cm-title').textContent = c.name;
+
+  // Meta row
+  const meta = document.getElementById('cm-meta');
+  meta.innerHTML = `
+    <span class="badge badge-${c.bucket}">${COCKTAIL_BUCKET_LABELS[c.bucket]}</span>
+    <span class="badge badge-${c.difficulty}">${c.difficulty}</span>
+    <span class="badge badge-time">🥃 ${c.glassware}</span>
+    <span class="badge badge-time">${c.servings > 1 ? 'Serves ' + c.servings : '1 drink'}</span>
+    ${c.source ? `<span class="badge badge-time">↗ ${c.source}</span>` : ''}`;
+
+  // Body
+  const body = document.getElementById('cm-body');
+  let html = `<div class="modal-section"><p style="font-size:13px;color:var(--ink2);line-height:1.7;margin-bottom:0">${c.description}</p></div>`;
+
+  // Ingredients
+  html += `<div class="modal-section"><h3>Ingredients</h3><ul class="ingredients-list">`;
+  c.ingredients.forEach(i => {
+    const qty = i.unit ? `${i.amount} ${i.unit}` : (i.amount > 1 ? i.amount : '');
+    html += `<li class="ing-row"><span class="ing-qty">${qty}</span><span class="ing-name">${i.name}</span></li>`;
+  });
+  html += `</ul></div>`;
+
+  // Steps
+  html += `<div class="modal-section"><h3>Method</h3><ol class="steps-list">`;
+  c.steps.forEach((s, i) => {
+    html += `<li class="step-row"><span class="step-num">${i+1}</span><span class="step-text">${s}</span></li>`;
+  });
+  html += `</ol></div>`;
+
+  // Mocktail
+  if (c.mocktail) {
+    html += `<div class="modal-section"><div class="mocktail-note"><strong>🍹 Mocktail Option</strong>${c.mocktail.description}</div></div>`;
+  }
+
+  body.innerHTML = html;
+  openModal('cocktail-modal');
+}
+
+// Cocktail filter pills
+document.getElementById('cocktail-filter-pills').addEventListener('click', e => {
+  const pill = e.target.closest('[data-cfilter]');
+  if (!pill) return;
+  cocktailFilter = pill.dataset.cfilter;
+  document.querySelectorAll('[data-cfilter]').forEach(p => p.classList.toggle('on', p.dataset.cfilter === cocktailFilter));
+  renderCocktails();
+});
+
+// Cocktail search
+document.getElementById('cocktail-search').addEventListener('input', e => {
+  cocktailSearch = e.target.value;
+  renderCocktails();
+});
+
+// Cocktail modal close
+document.getElementById('cm-close').onclick = () => closeModal('cocktail-modal');
+document.getElementById('cocktail-modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('cocktail-modal')) closeModal('cocktail-modal');
 });
 
 // ═══════════════════════════════════════════════════
