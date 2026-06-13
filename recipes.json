@@ -1082,5 +1082,77 @@
       { "name": "Rotisserie chicken, shredded", "amount": "1.5 cups", "instructions": "Zero cook time. Warm in microwave 60 seconds with a splash of lime juice and a pinch of cumin. Pile on top of the beans before the slaw." },
       { "name": "Shrimp (large, peeled)", "amount": "1 lb", "instructions": "Toss with olive oil, cumin, smoked paprika, and salt. Cook in hot skillet 1\u20132 min per side until pink. Arrange over beans." }
     ]
+  },
+  {
+    "id": "smash-burgers",
+    "name": "Smash Burgers",
+    "bucket": "am",
+    "bucketLabel": "American",
+    "time": 20,
+    "servings": 4,
+    "leftovers": false,
+    "description": "Thin, crispy-edged smash burgers with melted American cheese, a quick special sauce, and all the fixings. Better than a drive-through and ready in 20 minutes.",
+    "source": "classic American diner technique",
+    "ingredients": [
+      { "id": "i1", "name": "ground beef 80/20", "amount": 1.5, "unit": "lbs", "category": "protein" },
+      { "id": "i2", "name": "American cheese slices", "amount": 8, "unit": "slices", "category": "dairy" },
+      { "id": "i3", "name": "brioche or potato burger buns", "amount": 4, "unit": "buns", "category": "grains" },
+      { "id": "i4", "name": "mayonnaise", "amount": 3, "unit": "tbsp", "category": "pantry" },
+      { "id": "i5", "name": "ketchup", "amount": 2, "unit": "tbsp", "category": "pantry" },
+      { "id": "i6", "name": "yellow mustard", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i7", "name": "dill pickle relish", "amount": 1, "unit": "tbsp", "category": "pantry" },
+      { "id": "i8", "name": "white vinegar", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i9", "name": "iceberg lettuce, shredded", "amount": 2, "unit": "cups", "category": "produce" },
+      { "id": "i10", "name": "medium white onion, very thinly sliced", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i11", "name": "dill pickle chips", "amount": 0.5, "unit": "cup", "category": "pantry" },
+      { "id": "i12", "name": "kosher salt and black pepper", "amount": 1, "unit": "tsp", "category": "pantry" }
+    ],
+    "steps": [
+      "Mix the special sauce: stir together mayo, ketchup, mustard, relish, and vinegar. Set aside.",
+      "Divide ground beef into 8 equal loose balls (about 3 oz each). Do not pack them. Keep cold until ready.",
+      "Heat a cast iron skillet or griddle over high heat for 2–3 minutes until very hot and just starting to smoke.",
+      "Place 2–3 beef balls in the pan. Immediately smash each firmly with a heavy spatula or burger press, pressing straight down for 10 seconds until about ¼-inch thin. Season generously with salt and pepper.",
+      "Cook undisturbed 1.5–2 minutes until the edges look brown and crispy. Flip once. Immediately lay a slice of American cheese on each patty. Cook 30–60 seconds more.",
+      "Toast buns cut-side down in the same skillet 30–60 seconds.",
+      "Build burgers: sauce on both buns, then onion, two patties per bun, pickles, and lettuce."
+    ],
+    "proteins": [
+      { "name": "Ground bison", "amount": "1.5 lbs", "instructions": "Use in place of beef. Smash and cook the same way — slightly leaner so watch the heat to avoid drying out." },
+      { "name": "Fried egg (add-on)", "amount": "4 eggs", "instructions": "Fry eggs sunny-side up in a separate skillet over medium 3–4 min. Lay over the cheese on one of the patties before stacking." }
+    ]
+  },
+  {
+    "id": "bbq-chicken-sheet-pan",
+    "name": "BBQ Chicken Sheet Pan",
+    "bucket": "am",
+    "bucketLabel": "American",
+    "time": 30,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Juicy BBQ-glazed chicken thighs roasted alongside corn and red onion on one pan. Minimal cleanup, maximum flavor.",
+    "source": "classic American sheet pan technique",
+    "ingredients": [
+      { "id": "i1", "name": "bone-in, skin-on chicken thighs", "amount": 4, "unit": null, "category": "protein" },
+      { "id": "i2", "name": "BBQ sauce (store-bought, thick and smoky)", "amount": 0.75, "unit": "cup", "category": "pantry" },
+      { "id": "i3", "name": "ears of corn, husked and cut into thirds", "amount": 3, "unit": null, "category": "produce" },
+      { "id": "i4", "name": "red onion, cut into wedges", "amount": 1, "unit": null, "category": "produce" },
+      { "id": "i5", "name": "olive oil", "amount": 2, "unit": "tbsp", "category": "pantry" },
+      { "id": "i6", "name": "smoked paprika", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i7", "name": "garlic powder", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i8", "name": "onion powder", "amount": 0.5, "unit": "tsp", "category": "pantry" },
+      { "id": "i9", "name": "kosher salt and black pepper", "amount": 1, "unit": "tsp", "category": "pantry" },
+      { "id": "i10", "name": "fresh flat-leaf parsley, for serving", "amount": 2, "unit": "tbsp", "category": "produce" }
+    ],
+    "steps": [
+      "Preheat oven to 425°F. Line a large rimmed sheet pan with foil.",
+      "Pat chicken thighs dry. Mix smoked paprika, garlic powder, onion powder, salt, and pepper. Rub all over the chicken.",
+      "Toss corn pieces and onion wedges with olive oil and a pinch of salt. Spread on the sheet pan. Nestle chicken thighs skin-side up among the vegetables.",
+      "Roast 20 minutes. Remove pan and brush chicken generously with BBQ sauce. Return to oven 8–10 more minutes until the glaze is caramelized and the chicken reaches 165°F internally.",
+      "Rest 5 minutes before serving. Garnish with fresh parsley."
+    ],
+    "proteins": [
+      { "name": "Boneless skinless chicken thighs", "amount": "1.5 lbs", "instructions": "Use in place of bone-in. Reduce total roast time to 18–20 minutes before glazing, then glaze and roast 5 more minutes." },
+      { "name": "Pork tenderloin", "amount": "1.5 lbs", "instructions": "Season the same way. Roast at 425°F 20 minutes, glaze, then roast 5–8 more minutes until the internal temp hits 145°F. Slice into medallions to serve." }
+    ]
   }
 ]
