@@ -295,6 +295,30 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
 .mocktail-note{background:var(--green-light);border-radius:var(--radius);padding:14px 16px;font-size:13px;color:var(--ink2);line-height:1.6}
 .mocktail-note strong{color:var(--green);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:6px}
 
+/* ── SMOKER VIEW ──────────────────────────────── */
+.badge-beef{background:#FFEDEA;color:#B83228}
+.badge-pork{background:#FFE8F0;color:#B83264}
+.badge-poultry{background:var(--amber-light);color:var(--amber)}
+.badge-seafood{background:var(--blue-light);color:var(--blue)}
+.badge-sides{background:var(--green-light);color:var(--green)}
+.badge-beginner{background:var(--green-light);color:var(--green)}
+.badge-intermediate{background:var(--amber-light);color:var(--amber)}
+.badge-advanced{background:#FFEDEA;color:#B83228}
+.smoke-stats{display:flex;gap:8px;flex-wrap:wrap;padding:12px 24px 16px;border-bottom:1px solid var(--border)}
+.smoke-stat{display:flex;flex-direction:column;align-items:center;background:var(--cream);border-radius:var(--radius);padding:12px 16px;flex:1;min-width:80px}
+.smoke-stat-val{font-family:var(--font-display);font-size:22px;color:var(--ink);line-height:1}
+.smoke-stat-label{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);margin-top:4px}
+.tips-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.tip-row{font-size:13px;color:var(--ink2);line-height:1.6;padding:8px 12px;border-left:3px solid var(--accent);background:var(--accent-light);border-radius:0 var(--radius) var(--radius) 0}
+
+/* ── SMOOTHIES VIEW ──────────────────────────────── */
+.badge-protein{background:var(--purple-light);color:var(--purple)}
+.badge-green{background:var(--green-light);color:var(--green)}
+.badge-fruit{background:#FFF0E5;color:#D4581A}
+.badge-tropical{background:#FFF8E0;color:#B8820A}
+.smoothie-tag{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;background:var(--cream2);color:var(--ink2);border:1px solid var(--border2)}
+.smoothie-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+
 /* ── Responsive ──────────────────────────────── */
 @media(max-width:640px){
   header{flex-direction:column;align-items:flex-start;gap:12px}
@@ -326,6 +350,8 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
       <button class="nav-btn" data-view="library">Recipe Library</button>
       <button class="nav-btn" data-view="favs">Favorites</button>
       <button class="nav-btn" data-view="cocktails">Cocktails</button>
+      <button class="nav-btn" data-view="smoker">Smoker</button>
+      <button class="nav-btn" data-view="smoothies">Smoothies</button>
     </nav>
   </header>
 
@@ -398,6 +424,55 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
     <div class="recipe-grid" id="fav-grid"></div>
   </section>
 
+  <!-- SMOKER -->
+  <section class="view" id="view-smoker">
+    <div class="page-header">
+      <div>
+        <div class="page-title">Smoker & Traeger</div>
+        <div class="page-subtitle" id="smoker-count"></div>
+      </div>
+    </div>
+    <div class="lib-toolbar">
+      <div class="search-wrap">
+        <span class="search-ico">⌕</span>
+        <input type="text" id="smoker-search" placeholder="Search smoker recipes…" autocomplete="off">
+      </div>
+      <div class="filter-pills" id="smoker-filter-pills">
+        <button class="fpill on" data-sfilter="all">All</button>
+        <button class="fpill" data-sfilter="beef">🥩 Beef</button>
+        <button class="fpill" data-sfilter="pork">Pork</button>
+        <button class="fpill" data-sfilter="poultry">Poultry</button>
+        <button class="fpill" data-sfilter="seafood">Seafood</button>
+        <button class="fpill" data-sfilter="sides">Sides</button>
+      </div>
+    </div>
+    <div class="recipe-list" id="smoker-grid"></div>
+  </section>
+
+  <!-- SMOOTHIES -->
+  <section class="view" id="view-smoothies">
+    <div class="page-header">
+      <div>
+        <div class="page-title">Smoothies</div>
+        <div class="page-subtitle" id="smoothie-count"></div>
+      </div>
+    </div>
+    <div class="lib-toolbar">
+      <div class="search-wrap">
+        <span class="search-ico">⌕</span>
+        <input type="text" id="smoothie-search" placeholder="Search smoothies…" autocomplete="off">
+      </div>
+      <div class="filter-pills" id="smoothie-filter-pills">
+        <button class="fpill on" data-shfilter="all">All</button>
+        <button class="fpill" data-shfilter="protein">💪 Protein</button>
+        <button class="fpill" data-shfilter="green">🥬 Green</button>
+        <button class="fpill" data-shfilter="fruit">🍓 Fruit</button>
+        <button class="fpill" data-shfilter="tropical">🥭 Tropical</button>
+      </div>
+    </div>
+    <div class="recipe-list" id="smoothie-grid"></div>
+  </section>
+
   <!-- COCKTAILS -->
   <section class="view" id="view-cocktails">
     <div class="page-header">
@@ -436,6 +511,31 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
 </div>
 
 
+<!-- SMOKER DETAIL MODAL -->
+<div class="modal-overlay" id="smoker-modal">
+  <div class="modal" id="smoker-modal-content">
+    <div class="modal-head">
+      <div class="modal-title" id="sm-title"></div>
+      <button class="modal-close" id="sm-close">×</button>
+    </div>
+    <div id="sm-stats"></div>
+    <div class="modal-meta" id="sm-meta"></div>
+    <div class="modal-body" id="sm-body"></div>
+  </div>
+</div>
+
+<!-- SMOOTHIE DETAIL MODAL -->
+<div class="modal-overlay" id="smoothie-modal">
+  <div class="modal" id="smoothie-modal-content">
+    <div class="modal-head">
+      <div class="modal-title" id="sh-title"></div>
+      <button class="modal-close" id="sh-close">×</button>
+    </div>
+    <div class="modal-meta" id="sh-meta"></div>
+    <div class="modal-body" id="sh-body"></div>
+  </div>
+</div>
+
 <!-- COCKTAIL DETAIL MODAL -->
 <div class="modal-overlay" id="cocktail-modal">
   <div class="modal" id="cocktail-modal-content">
@@ -468,10 +568,26 @@ let cocktailFilter = 'all';
 let cocktailSearch = '';
 let collapsedCocktailFolders = new Set();
 
+// Smoker state
+let allSmokerRecipes = [];
+let smokerFilter = 'all';
+let smokerSearch = '';
+let collapsedSmokerFolders = new Set();
+
+// Smoothie state
+let allSmoothies = [];
+let smoothieFilter = 'all';
+let smoothieSearch = '';
+let collapsedSmoothieFolders = new Set();
+
 const BUCKET_LABELS = { mx:'Mexican', med:'Mediterranean', as:'Asian', it:'Italian', am:'American' };
 const FOLDER_ORDER = ['med', 'it', 'as', 'mx', 'am'];
 const COCKTAIL_BUCKET_LABELS = { summer:'Summer', 'year-round':'Year-Round', party:'Party / Batch' };
 const COCKTAIL_FOLDER_ORDER = ['summer', 'year-round', 'party'];
+const SMOKER_BUCKET_LABELS = { beef:'Beef', pork:'Pork', poultry:'Poultry', seafood:'Seafood', sides:'Sides & Veggies' };
+const SMOKER_FOLDER_ORDER = ['beef', 'pork', 'poultry', 'seafood', 'sides'];
+const SMOOTHIE_BUCKET_LABELS = { protein:'Protein', green:'Green', fruit:'Fruit', tropical:'Tropical' };
+const SMOOTHIE_FOLDER_ORDER = ['protein', 'green', 'fruit', 'tropical'];
 const DAYS = ['Monday','Wednesday','Friday','Saturday'];
 
 // ═══════════════════════════════════════════════════
@@ -479,15 +595,23 @@ const DAYS = ['Monday','Wednesday','Friday','Saturday'];
 // ═══════════════════════════════════════════════════
 async function init() {
   try {
-    const [recRes, prefRes, weekRes, cocktailRes] = await Promise.all([
+    const [recRes, prefRes, weekRes, cocktailRes, smokerRes, smoothieRes] = await Promise.all([
       fetch('recipes.json'),
       fetch('prefs.json').catch(()=>null),
       fetch('current-week.json').catch(()=>null),
-      fetch('cocktails.json').catch(()=>null)
+      fetch('cocktails.json').catch(()=>null),
+      fetch('smoker-recipes.json').catch(()=>null),
+      fetch('smoothies.json').catch(()=>null)
     ]);
     allRecipes = await recRes.json();
     if (cocktailRes && cocktailRes.ok) {
       allCocktails = await cocktailRes.json();
+    }
+    if (smokerRes && smokerRes.ok) {
+      allSmokerRecipes = await smokerRes.json();
+    }
+    if (smoothieRes && smoothieRes.ok) {
+      allSmoothies = await smoothieRes.json();
     }
 
     if (prefRes && prefRes.ok) {
@@ -559,6 +683,8 @@ function renderAll() {
   renderLibrary();
   renderFavs();
   renderCocktails();
+  renderSmoker();
+  renderSmoothies();
   updateWeekSubtitle();
   const pPanel = document.getElementById('print-panel');
   if (pPanel && pPanel.style.display !== 'none') renderPrintPanel();
@@ -1249,6 +1375,8 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     closeModal('detail-modal');
     closeModal('cocktail-modal');
+    closeModal('smoker-modal');
+    closeModal('smoothie-modal');
   }
 });
 
@@ -1385,6 +1513,271 @@ document.getElementById('cocktail-search').addEventListener('input', e => {
 document.getElementById('cm-close').onclick = () => closeModal('cocktail-modal');
 document.getElementById('cocktail-modal').addEventListener('click', e => {
   if (e.target === document.getElementById('cocktail-modal')) closeModal('cocktail-modal');
+});
+
+// ═══════════════════════════════════════════════════
+// SMOKER
+// ═══════════════════════════════════════════════════
+function formatSmokeTime(minutes) {
+  if (minutes < 60) return `${minutes}m`;
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  return m ? `${h}h ${m}m` : `${h}h`;
+}
+
+function renderSmoker() {
+  const grid = document.getElementById('smoker-grid');
+  const countEl = document.getElementById('smoker-count');
+  if (!grid) return;
+
+  const q = smokerSearch.toLowerCase();
+  const filtered = allSmokerRecipes.filter(r => {
+    if (smokerFilter !== 'all' && r.bucket !== smokerFilter) return false;
+    if (q && !r.name.toLowerCase().includes(q) && !r.description.toLowerCase().includes(q)) return false;
+    return true;
+  });
+
+  countEl.textContent = `${filtered.length} recipe${filtered.length !== 1 ? 's' : ''}`;
+
+  const buckets = smokerFilter === 'all' ? SMOKER_FOLDER_ORDER : [smokerFilter];
+  grid.innerHTML = '';
+
+  buckets.forEach(bucket => {
+    const items = filtered.filter(r => r.bucket === bucket);
+    if (!items.length && smokerFilter === 'all') return;
+
+    const label = SMOKER_BUCKET_LABELS[bucket] || bucket;
+    const isCollapsed = collapsedSmokerFolders.has(bucket);
+    const folder = document.createElement('div');
+    folder.className = 'lib-folder' + (isCollapsed ? ' collapsed' : '');
+    folder.innerHTML = `
+      <button class="lib-folder-header" data-sbucket="${bucket}">
+        <span class="lib-folder-chevron">▾</span>
+        <span class="lib-folder-name">${label}</span>
+        <span class="lib-folder-count">${items.length} recipe${items.length !== 1 ? 's' : ''}</span>
+      </button>
+      <div class="lib-folder-grid"></div>`;
+
+    folder.querySelector('.lib-folder-header').addEventListener('click', () => {
+      if (collapsedSmokerFolders.has(bucket)) collapsedSmokerFolders.delete(bucket);
+      else collapsedSmokerFolders.add(bucket);
+      renderSmoker();
+    });
+
+    const fgrid = folder.querySelector('.lib-folder-grid');
+    if (!items.length) {
+      fgrid.innerHTML = '<div class="lib-folder-empty">No recipes in this category yet.</div>';
+    } else {
+      items.forEach(r => {
+        const card = document.createElement('div');
+        card.className = 'ccard';
+        card.innerHTML = `
+          <div class="ccard-top"><div class="ccard-name">${r.name}</div></div>
+          <div class="ccard-desc">${r.description}</div>
+          <div class="ccard-badges">
+            <span class="badge badge-${r.bucket}">${SMOKER_BUCKET_LABELS[r.bucket]}</span>
+            <span class="badge badge-${r.difficulty}">${r.difficulty}</span>
+          </div>
+          <div class="ccard-meta">🔥 ${r.smokeTemp}°F · 🕐 ${r.prepTime} min prep · ${formatSmokeTime(r.smokeTime)} smoke · 🪵 ${r.wood}</div>`;
+        card.addEventListener('click', () => openSmokerDetail(r.id));
+        fgrid.appendChild(card);
+      });
+    }
+    grid.appendChild(folder);
+  });
+
+  if (!filtered.length) {
+    grid.innerHTML = '<div class="no-results">No smoker recipes found.</div>';
+  }
+}
+
+function openSmokerDetail(id) {
+  const r = allSmokerRecipes.find(x => x.id === id);
+  if (!r) return;
+
+  document.getElementById('sm-title').textContent = r.name;
+
+  const stats = document.getElementById('sm-stats');
+  stats.className = 'smoke-stats';
+  stats.innerHTML = [
+    { val: `${r.prepTime}m`, label: 'Prep' },
+    { val: formatSmokeTime(r.smokeTime), label: 'Smoke Time' },
+    { val: `${r.smokeTemp}°F`, label: 'Grill Temp' },
+    { val: r.internalTemp ? `${r.internalTemp}°F` : 'By feel', label: 'Pull Temp' },
+  ].map(s => `<div class="smoke-stat"><span class="smoke-stat-val">${s.val}</span><span class="smoke-stat-label">${s.label}</span></div>`).join('');
+
+  document.getElementById('sm-meta').innerHTML = `
+    <span class="badge badge-${r.bucket}">${SMOKER_BUCKET_LABELS[r.bucket]}</span>
+    <span class="badge badge-${r.difficulty}">${r.difficulty}</span>
+    <span class="badge badge-time">🪵 ${r.wood}</span>
+    <span class="badge badge-time">Serves ${r.servings}</span>
+    ${r.source ? `<span class="badge badge-time">↗ ${r.source}</span>` : ''}`;
+
+  const body = document.getElementById('sm-body');
+  let html = `<div class="modal-section"><p style="font-size:13px;color:var(--ink2);line-height:1.7;margin-bottom:0">${r.description}</p></div>`;
+
+  html += `<div class="modal-section"><h3>Ingredients</h3><ul class="ingredients-list">`;
+  r.ingredients.forEach(i => {
+    const qty = i.unit ? `${i.amount} ${i.unit}` : (i.amount > 1 ? i.amount : '');
+    html += `<li class="ing-row"><span class="ing-qty">${qty}</span><span class="ing-name">${i.name}</span></li>`;
+  });
+  html += `</ul></div>`;
+
+  html += `<div class="modal-section"><h3>Method</h3><ol class="steps-list">`;
+  r.steps.forEach((s, i) => {
+    html += `<li class="step-row"><span class="step-num">${i+1}</span><span class="step-text">${s}</span></li>`;
+  });
+  html += `</ol></div>`;
+
+  if (r.tips && r.tips.length) {
+    html += `<div class="modal-section"><h3>Tips</h3><ul class="tips-list">`;
+    r.tips.forEach(t => { html += `<li class="tip-row">${t}</li>`; });
+    html += `</ul></div>`;
+  }
+
+  body.innerHTML = html;
+  openModal('smoker-modal');
+}
+
+document.getElementById('smoker-filter-pills').addEventListener('click', e => {
+  const pill = e.target.closest('[data-sfilter]');
+  if (!pill) return;
+  smokerFilter = pill.dataset.sfilter;
+  document.querySelectorAll('[data-sfilter]').forEach(p => p.classList.toggle('on', p.dataset.sfilter === smokerFilter));
+  renderSmoker();
+});
+
+document.getElementById('smoker-search').addEventListener('input', e => {
+  smokerSearch = e.target.value;
+  renderSmoker();
+});
+
+document.getElementById('sm-close').onclick = () => closeModal('smoker-modal');
+document.getElementById('smoker-modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('smoker-modal')) closeModal('smoker-modal');
+});
+
+// ═══════════════════════════════════════════════════
+// SMOOTHIES
+// ═══════════════════════════════════════════════════
+function renderSmoothies() {
+  const grid = document.getElementById('smoothie-grid');
+  const countEl = document.getElementById('smoothie-count');
+  if (!grid) return;
+
+  const q = smoothieSearch.toLowerCase();
+  const filtered = allSmoothies.filter(s => {
+    if (smoothieFilter !== 'all' && s.bucket !== smoothieFilter) return false;
+    if (q && !s.name.toLowerCase().includes(q) && !s.description.toLowerCase().includes(q)) return false;
+    return true;
+  });
+
+  countEl.textContent = `${filtered.length} smoothie${filtered.length !== 1 ? 's' : ''}`;
+
+  const buckets = smoothieFilter === 'all' ? SMOOTHIE_FOLDER_ORDER : [smoothieFilter];
+  grid.innerHTML = '';
+
+  buckets.forEach(bucket => {
+    const items = filtered.filter(s => s.bucket === bucket);
+    if (!items.length && smoothieFilter === 'all') return;
+
+    const label = SMOOTHIE_BUCKET_LABELS[bucket] || bucket;
+    const isCollapsed = collapsedSmoothieFolders.has(bucket);
+    const folder = document.createElement('div');
+    folder.className = 'lib-folder' + (isCollapsed ? ' collapsed' : '');
+    folder.innerHTML = `
+      <button class="lib-folder-header" data-shbucket="${bucket}">
+        <span class="lib-folder-chevron">▾</span>
+        <span class="lib-folder-name">${label}</span>
+        <span class="lib-folder-count">${items.length} smoothie${items.length !== 1 ? 's' : ''}</span>
+      </button>
+      <div class="lib-folder-grid"></div>`;
+
+    folder.querySelector('.lib-folder-header').addEventListener('click', () => {
+      if (collapsedSmoothieFolders.has(bucket)) collapsedSmoothieFolders.delete(bucket);
+      else collapsedSmoothieFolders.add(bucket);
+      renderSmoothies();
+    });
+
+    const fgrid = folder.querySelector('.lib-folder-grid');
+    if (!items.length) {
+      fgrid.innerHTML = '<div class="lib-folder-empty">No smoothies in this category yet.</div>';
+    } else {
+      items.forEach(s => {
+        const card = document.createElement('div');
+        card.className = 'ccard';
+        const tagHtml = s.tags ? s.tags.map(t => `<span class="smoothie-tag">${t}</span>`).join('') : '';
+        card.innerHTML = `
+          <div class="ccard-top"><div class="ccard-name">${s.name}</div></div>
+          <div class="ccard-desc">${s.description}</div>
+          <div class="ccard-badges">
+            <span class="badge badge-${s.bucket}">${SMOOTHIE_BUCKET_LABELS[s.bucket]}</span>
+            <span class="badge badge-time">${s.time} min</span>
+          </div>
+          <div class="ccard-meta">${s.servings > 1 ? 'Serves ' + s.servings : '1 serving'}</div>
+          ${tagHtml ? `<div class="smoothie-tags">${tagHtml}</div>` : ''}`;
+        card.addEventListener('click', () => openSmoothieDetail(s.id));
+        fgrid.appendChild(card);
+      });
+    }
+    grid.appendChild(folder);
+  });
+
+  if (!filtered.length) {
+    grid.innerHTML = '<div class="no-results">No smoothies found.</div>';
+  }
+}
+
+function openSmoothieDetail(id) {
+  const s = allSmoothies.find(x => x.id === id);
+  if (!s) return;
+
+  document.getElementById('sh-title').textContent = s.name;
+
+  const tagHtml = s.tags ? s.tags.map(t => `<span class="smoothie-tag">${t}</span>`).join('') : '';
+  document.getElementById('sh-meta').innerHTML = `
+    <span class="badge badge-${s.bucket}">${SMOOTHIE_BUCKET_LABELS[s.bucket]}</span>
+    <span class="badge badge-time">${s.time} min</span>
+    <span class="badge badge-time">${s.servings > 1 ? 'Serves ' + s.servings : '1 serving'}</span>
+    ${s.source ? `<span class="badge badge-time">↗ ${s.source}</span>` : ''}
+    ${tagHtml}`;
+
+  const body = document.getElementById('sh-body');
+  let html = `<div class="modal-section"><p style="font-size:13px;color:var(--ink2);line-height:1.7;margin-bottom:0">${s.description}</p></div>`;
+
+  html += `<div class="modal-section"><h3>Ingredients</h3><ul class="ingredients-list">`;
+  s.ingredients.forEach(i => {
+    const qty = i.unit ? `${i.amount} ${i.unit}` : (i.amount > 1 ? i.amount : '');
+    html += `<li class="ing-row"><span class="ing-qty">${qty}</span><span class="ing-name">${i.name}</span></li>`;
+  });
+  html += `</ul></div>`;
+
+  html += `<div class="modal-section"><h3>Method</h3><ol class="steps-list">`;
+  s.steps.forEach((step, i) => {
+    html += `<li class="step-row"><span class="step-num">${i+1}</span><span class="step-text">${step}</span></li>`;
+  });
+  html += `</ol></div>`;
+
+  body.innerHTML = html;
+  openModal('smoothie-modal');
+}
+
+document.getElementById('smoothie-filter-pills').addEventListener('click', e => {
+  const pill = e.target.closest('[data-shfilter]');
+  if (!pill) return;
+  smoothieFilter = pill.dataset.shfilter;
+  document.querySelectorAll('[data-shfilter]').forEach(p => p.classList.toggle('on', p.dataset.shfilter === smoothieFilter));
+  renderSmoothies();
+});
+
+document.getElementById('smoothie-search').addEventListener('input', e => {
+  smoothieSearch = e.target.value;
+  renderSmoothies();
+});
+
+document.getElementById('sh-close').onclick = () => closeModal('smoothie-modal');
+document.getElementById('smoothie-modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('smoothie-modal')) closeModal('smoothie-modal');
 });
 
 // ═══════════════════════════════════════════════════

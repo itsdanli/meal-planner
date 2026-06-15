@@ -1,0 +1,98 @@
+[
+  {
+    "id": "green-power-smoothie",
+    "name": "Green Power Smoothie",
+    "bucket": "green",
+    "bucketLabel": "Green",
+    "time": 5,
+    "servings": 1,
+    "description": "Spinach disappears into a creamy banana-mango base — you taste tropical fruit, not vegetables. One of the best gateway green smoothies for skeptics.",
+    "source": "minimalistbaker.com",
+    "tags": ["vegan", "dairy-free"],
+    "ingredients": [
+      { "id": "i1", "name": "frozen banana", "amount": 1, "unit": null },
+      { "id": "i2", "name": "fresh spinach", "amount": 2, "unit": "cups" },
+      { "id": "i3", "name": "unsweetened almond milk", "amount": 1, "unit": "cup" },
+      { "id": "i4", "name": "frozen mango chunks", "amount": 0.5, "unit": "cup" },
+      { "id": "i5", "name": "fresh ginger, grated", "amount": 0.5, "unit": "tsp" },
+      { "id": "i6", "name": "hemp seeds (optional)", "amount": 1, "unit": "tbsp" }
+    ],
+    "steps": [
+      "Add almond milk and spinach to the blender first — liquid and greens at the bottom helps everything blend smooth.",
+      "Add frozen banana, mango, and ginger. Blend on high for 60 seconds until completely smooth.",
+      "Taste and add a small drizzle of honey if more sweetness is needed. Blend briefly and serve immediately."
+    ]
+  },
+  {
+    "id": "strawberry-protein-smoothie",
+    "name": "Strawberry Banana Protein Smoothie",
+    "bucket": "protein",
+    "bucketLabel": "Protein",
+    "time": 5,
+    "servings": 1,
+    "description": "A thick, creamy post-workout smoothie built around Greek yogurt and vanilla protein powder. Tastes like a strawberry milkshake but actually keeps you full.",
+    "source": "wellplated.com",
+    "tags": ["high-protein", "gluten-free"],
+    "ingredients": [
+      { "id": "i1", "name": "frozen strawberries", "amount": 1, "unit": "cup" },
+      { "id": "i2", "name": "frozen banana", "amount": 0.5, "unit": null },
+      { "id": "i3", "name": "plain Greek yogurt", "amount": 0.5, "unit": "cup" },
+      { "id": "i4", "name": "vanilla protein powder", "amount": 1, "unit": "scoop" },
+      { "id": "i5", "name": "milk (dairy or oat)", "amount": 0.75, "unit": "cup" },
+      { "id": "i6", "name": "honey", "amount": 1, "unit": "tsp" }
+    ],
+    "steps": [
+      "Add all ingredients to the blender. Start on low, then increase to high.",
+      "Blend for 45–60 seconds until smooth and thick. If too thick to blend, add milk 1 tbsp at a time.",
+      "Pour into a glass and serve immediately."
+    ]
+  },
+  {
+    "id": "tropical-mango-smoothie",
+    "name": "Tropical Mango Smoothie",
+    "bucket": "tropical",
+    "bucketLabel": "Tropical",
+    "time": 5,
+    "servings": 2,
+    "description": "Mango, pineapple, and coconut milk make this taste like a beach vacation in under 5 minutes. Bright, naturally sweet, and completely dairy-free.",
+    "source": "cookieandkate.com",
+    "tags": ["vegan", "dairy-free"],
+    "ingredients": [
+      { "id": "i1", "name": "frozen mango chunks", "amount": 2, "unit": "cups" },
+      { "id": "i2", "name": "frozen pineapple chunks", "amount": 1, "unit": "cup" },
+      { "id": "i3", "name": "lite coconut milk", "amount": 0.75, "unit": "cup" },
+      { "id": "i4", "name": "fresh lime juice", "amount": 1, "unit": "tbsp" },
+      { "id": "i5", "name": "fresh ginger, grated", "amount": 0.5, "unit": "tsp" },
+      { "id": "i6", "name": "water or orange juice", "amount": 0.5, "unit": "cup" }
+    ],
+    "steps": [
+      "Combine all ingredients in a blender.",
+      "Blend on high for 60 seconds until completely smooth. Add more water or juice if too thick.",
+      "Divide between two glasses. Serve immediately with a lime wedge if desired."
+    ]
+  },
+  {
+    "id": "blueberry-acai-smoothie",
+    "name": "Blueberry Açaí Smoothie",
+    "bucket": "fruit",
+    "bucketLabel": "Fruit",
+    "time": 5,
+    "servings": 1,
+    "description": "Deep purple, antioxidant-rich, and naturally sweet. Frozen açaí packs serious flavor and a smooth, sorbet-like texture without needing much else.",
+    "source": "minimalistbaker.com",
+    "tags": ["vegan", "dairy-free", "antioxidant-rich"],
+    "ingredients": [
+      { "id": "i1", "name": "frozen açaí packet (unsweetened)", "amount": 1, "unit": null },
+      { "id": "i2", "name": "frozen blueberries", "amount": 0.75, "unit": "cup" },
+      { "id": "i3", "name": "frozen banana", "amount": 0.5, "unit": null },
+      { "id": "i4", "name": "almond milk or coconut water", "amount": 0.5, "unit": "cup" },
+      { "id": "i5", "name": "almond butter", "amount": 1, "unit": "tbsp" },
+      { "id": "i6", "name": "honey or maple syrup (to taste)", "amount": 1, "unit": "tsp" }
+    ],
+    "steps": [
+      "Break the frozen açaí packet into chunks and add to the blender with all other ingredients.",
+      "Blend on high, starting slow and working up — açaí is thick. Stop and scrape the sides if needed.",
+      "Blend until smooth and pour into a glass. Drink right away for the best texture."
+    ]
+  }
+]

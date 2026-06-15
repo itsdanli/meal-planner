@@ -1,0 +1,112 @@
+[
+  {
+    "id": "spatchcock-chicken",
+    "name": "Smoked Spatchcock Chicken",
+    "bucket": "poultry",
+    "bucketLabel": "Poultry",
+    "prepTime": 15,
+    "smokeTime": 90,
+    "smokeTemp": 375,
+    "internalTemp": 165,
+    "wood": "Apple or Cherry",
+    "servings": 4,
+    "leftovers": true,
+    "difficulty": "beginner",
+    "description": "The fastest route to a full smoked chicken — splitting and flattening the bird cuts smoke time in half and delivers crispy skin and juicy meat throughout. A Traeger staple.",
+    "source": "traeger.com",
+    "ingredients": [
+      { "id": "i1", "name": "whole chicken (3.5–4 lbs)", "amount": 1, "unit": null },
+      { "id": "i2", "name": "olive oil", "amount": 2, "unit": "tbsp" },
+      { "id": "i3", "name": "kosher salt", "amount": 2, "unit": "tsp" },
+      { "id": "i4", "name": "black pepper", "amount": 1, "unit": "tsp" },
+      { "id": "i5", "name": "garlic powder", "amount": 1, "unit": "tsp" },
+      { "id": "i6", "name": "smoked paprika", "amount": 1, "unit": "tsp" },
+      { "id": "i7", "name": "onion powder", "amount": 0.5, "unit": "tsp" }
+    ],
+    "steps": [
+      "Preheat your Traeger to 375°F with the lid closed for 15 minutes.",
+      "Use kitchen shears to cut along both sides of the backbone and remove it. Flip the chicken breast-side up and press firmly on the breastbone to flatten.",
+      "Rub the chicken all over with olive oil, then season generously with salt, pepper, garlic powder, smoked paprika, and onion powder.",
+      "Place the chicken directly on the grill grates, breast-side up. Smoke at 375°F for 60–90 minutes until a thermometer inserted into the thickest part of the thigh reads 165°F.",
+      "Rest for 10 minutes before carving and serving."
+    ],
+    "tips": [
+      "Dry-brine overnight: salt the bird uncovered in the fridge the night before for extra-crispy skin.",
+      "Apple or cherry wood gives a mild sweetness; hickory adds a bolder, more traditional smoke flavor."
+    ]
+  },
+  {
+    "id": "baby-back-ribs-321",
+    "name": "3-2-1 Baby Back Ribs",
+    "bucket": "pork",
+    "bucketLabel": "Pork",
+    "prepTime": 20,
+    "smokeTime": 360,
+    "smokeTemp": 225,
+    "internalTemp": null,
+    "wood": "Hickory or Cherry",
+    "servings": 4,
+    "leftovers": true,
+    "difficulty": "intermediate",
+    "description": "The legendary 3-2-1 method — 3 hours unwrapped, 2 hours foil-wrapped with butter and brown sugar, 1 hour sauced — produces ribs so tender they nearly fall off the bone.",
+    "source": "traeger.com",
+    "ingredients": [
+      { "id": "i1", "name": "baby back ribs", "amount": 2, "unit": "racks" },
+      { "id": "i2", "name": "yellow mustard (binder)", "amount": 2, "unit": "tbsp" },
+      { "id": "i3", "name": "BBQ dry rub", "amount": 4, "unit": "tbsp" },
+      { "id": "i4", "name": "unsalted butter", "amount": 4, "unit": "tbsp" },
+      { "id": "i5", "name": "brown sugar", "amount": 4, "unit": "tbsp" },
+      { "id": "i6", "name": "honey", "amount": 2, "unit": "tbsp" },
+      { "id": "i7", "name": "apple juice (for spritzing)", "amount": 0.25, "unit": "cup" },
+      { "id": "i8", "name": "BBQ sauce", "amount": 1, "unit": "cup" }
+    ],
+    "steps": [
+      "Preheat Traeger to 225°F. Remove the silverskin membrane from the back of each rack — grip with a paper towel for traction and pull it off.",
+      "Coat the ribs with a thin layer of mustard as a binder, then season all over with dry rub. Pat it in gently.",
+      "Place ribs bone-side down on the grill. Smoke at 225°F for 3 hours, spritzing with apple juice every 45 minutes after the first hour.",
+      "Remove ribs and place each rack on a double layer of heavy-duty foil. Top each rack with 2 tbsp butter, 2 tbsp brown sugar, and 1 tbsp honey. Wrap tightly and return to the grill.",
+      "Cook wrapped at 225°F for 2 more hours.",
+      "Unwrap the ribs, brush generously with BBQ sauce, and return to the grill unwrapped for 1 final hour to set the sauce. The ribs are done when the meat has pulled back from the bone tips by about ¼ inch.",
+      "Rest for 10 minutes, then slice between the bones and serve."
+    ],
+    "tips": [
+      "The 3-2-1 timing is a guideline — start checking during the last foil hour and pull when tender but not mushy.",
+      "St. Louis-style spare ribs are larger; adjust to 3-2-1 at minimum or 4-2-1 for a meatier rack."
+    ]
+  },
+  {
+    "id": "smoked-salmon",
+    "name": "Traeger Smoked Salmon",
+    "bucket": "seafood",
+    "bucketLabel": "Seafood",
+    "prepTime": 15,
+    "smokeTime": 180,
+    "smokeTemp": 180,
+    "internalTemp": 125,
+    "wood": "Apple, Cherry, or Mesquite",
+    "servings": 8,
+    "leftovers": true,
+    "difficulty": "beginner",
+    "description": "Dry-brined at a 4:1 brown sugar to salt ratio for 12–24 hours, then low-and-slow smoked to a silky, pull-apart finish. Plan ahead — the overnight brine is what makes this the best. Note: prep 15 min active, plus 12–24 hr brine.",
+    "source": "feastingnotfasting.com",
+    "ingredients": [
+      { "id": "i1", "name": "salmon fillet, skin-on, cut into 2–3 inch strips", "amount": 2, "unit": "lbs" },
+      { "id": "i2", "name": "brown sugar", "amount": 1, "unit": "cup" },
+      { "id": "i3", "name": "kosher salt", "amount": 0.5, "unit": "cup" }
+    ],
+    "steps": [
+      "Mix together the brown sugar and kosher salt (this 4:1 ratio is the formula — scale up proportionally for more salmon). Cut the salmon into 2–3 inch wide strips through the center bone — strips brine and smoke more evenly than a whole side.",
+      "Coat the salmon pieces thoroughly on all sides with the brine mixture. Place in a sealed container or bag and refrigerate for at least 12 hours, preferably 24 hours. The fish will release liquid and darken slightly — this is correct.",
+      "Rinse the salmon under cold water to remove all the brine. Pat completely dry with paper towels, then let it rest uncovered at room temperature for 30–60 minutes until the surface feels tacky — this is the pellicle, and it's what makes smoke adhere.",
+      "Add wood chips (apple, cherry, and mesquite all work well) and preheat your Traeger to 180°F.",
+      "Place salmon skin-side down on the grill grates. Insert a probe thermometer into the thickest part and set the target to 125°F.",
+      "Smoke at 180°F for 2–4 hours (typically about 3 hours) until the internal temperature hits 125°F and the flesh is opaque and flakes easily when gently pressed.",
+      "Rest for at least 10 minutes before serving. Cool completely before storing — keeps well sealed in the refrigerator for 3–4 days."
+    ],
+    "tips": [
+      "The 4:1 sugar-to-salt ratio is the whole recipe — 1 cup brown sugar to ½ cup kosher salt per 2 lbs. Don't under-brine; the 24-hour version is noticeably better.",
+      "Don't skip the pellicle step: the 30–60 minute air-dry after rinsing is what smoke clings to. Rushing it means pale, lightly-flavored fish.",
+      "125°F (not the USDA's 145°F) is the target for silky, moist salmon. At 145°F it's fully safe but can get dry — 125°F is how restaurants cook it."
+    ]
+  }
+]
