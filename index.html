@@ -644,6 +644,18 @@ async function init() {
 }
 
 // ═══════════════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════════════
+function sourceHtml(source, sourceUrl) {
+  if (!source && !sourceUrl) return '';
+  const label = source || sourceUrl;
+  if (sourceUrl) {
+    return `<a href="${sourceUrl}" target="_blank" rel="noopener" class="badge badge-time" style="color:var(--accent);text-decoration:none">↗ ${label}</a>`;
+  }
+  return `<span class="badge badge-time">↗ ${label}</span>`;
+}
+
+// ═══════════════════════════════════════════════════
 // WEEK LOGIC
 // ═══════════════════════════════════════════════════
 function pickWeek(count=3) {
@@ -1127,7 +1139,7 @@ function openDetail(recipeId) {
     <span class="badge badge-time">${recipe.time} min</span>
     ${recipe.leftovers?'<span class="badge badge-left">Leftovers ✓</span>':''}
     <span style="font-size:12px;color:var(--ink3)">Serves ${recipe.servings}</span>
-    ${recipe.source ? `<span style="font-size:12px;color:var(--ink3)">Source: ${recipe.source}</span>` : ''}`;
+    ${sourceHtml(recipe.source, recipe.sourceUrl)}`;
 
   const ingHtml = recipe.ingredients.map(ing => {
     const scaledAmt = ing.amount * globalScale;
@@ -1464,7 +1476,7 @@ function openCocktailDetail(id) {
     <span class="badge badge-${c.difficulty}">${c.difficulty}</span>
     <span class="badge badge-time">🥃 ${c.glassware}</span>
     <span class="badge badge-time">${c.servings > 1 ? 'Serves ' + c.servings : '1 drink'}</span>
-    ${c.source ? `<span class="badge badge-time">↗ ${c.source}</span>` : ''}`;
+    ${sourceHtml(c.source, c.sourceUrl)}`;
 
   // Body
   const body = document.getElementById('cm-body');
@@ -1611,7 +1623,7 @@ function openSmokerDetail(id) {
     <span class="badge badge-${r.difficulty}">${r.difficulty}</span>
     <span class="badge badge-time">🪵 ${r.wood}</span>
     <span class="badge badge-time">Serves ${r.servings}</span>
-    ${r.source ? `<span class="badge badge-time">↗ ${r.source}</span>` : ''}`;
+    ${sourceHtml(r.source, r.sourceUrl)}`;
 
   const body = document.getElementById('sm-body');
   let html = `<div class="modal-section"><p style="font-size:13px;color:var(--ink2);line-height:1.7;margin-bottom:0">${r.description}</p></div>`;
@@ -1739,7 +1751,7 @@ function openSmoothieDetail(id) {
     <span class="badge badge-${s.bucket}">${SMOOTHIE_BUCKET_LABELS[s.bucket]}</span>
     <span class="badge badge-time">${s.time} min</span>
     <span class="badge badge-time">${s.servings > 1 ? 'Serves ' + s.servings : '1 serving'}</span>
-    ${s.source ? `<span class="badge badge-time">↗ ${s.source}</span>` : ''}
+    ${sourceHtml(s.source, s.sourceUrl)}
     ${tagHtml}`;
 
   const body = document.getElementById('sh-body');

@@ -87,15 +87,20 @@
     "servings": 8,
     "leftovers": true,
     "difficulty": "beginner",
-    "description": "Dry-brined at a 4:1 brown sugar to salt ratio for 12–24 hours, then low-and-slow smoked to a silky, pull-apart finish. Plan ahead — the overnight brine is what makes this the best. Note: prep 15 min active, plus 12–24 hr brine.",
+    "description": "Dry-brined with brown sugar, salt, and warm spices for 12–24 hours, then low-and-slow smoked to a silky, pull-apart finish. Plan ahead — the overnight brine is what makes this the best. Note: 15 min active prep plus 12–24 hr brine.",
     "source": "feastingnotfasting.com",
+    "sourceUrl": "https://feastingnotfasting.com/traeger-smoked-salmon-the-best/",
     "ingredients": [
       { "id": "i1", "name": "salmon fillet, skin-on, cut into 2–3 inch strips", "amount": 2, "unit": "lbs" },
       { "id": "i2", "name": "brown sugar", "amount": 1, "unit": "cup" },
-      { "id": "i3", "name": "kosher salt", "amount": 0.5, "unit": "cup" }
+      { "id": "i3", "name": "kosher salt", "amount": 0.5, "unit": "cup" },
+      { "id": "i4", "name": "smoked paprika", "amount": 1, "unit": "tsp" },
+      { "id": "i5", "name": "garlic powder", "amount": 1, "unit": "tsp" },
+      { "id": "i6", "name": "onion powder", "amount": 1, "unit": "tsp" },
+      { "id": "i7", "name": "cayenne pepper (optional)", "amount": 0.25, "unit": "tsp" }
     ],
     "steps": [
-      "Mix together the brown sugar and kosher salt (this 4:1 ratio is the formula — scale up proportionally for more salmon). Cut the salmon into 2–3 inch wide strips through the center bone — strips brine and smoke more evenly than a whole side.",
+      "Mix together the brown sugar, kosher salt, smoked paprika, garlic powder, onion powder, and cayenne if using (the 4:1 sugar-to-salt ratio is the backbone — scale all ingredients proportionally for more salmon). Cut the salmon into 2–3 inch wide strips through the center bone — strips brine and smoke more evenly than a whole side.",
       "Coat the salmon pieces thoroughly on all sides with the brine mixture. Place in a sealed container or bag and refrigerate for at least 12 hours, preferably 24 hours. The fish will release liquid and darken slightly — this is correct.",
       "Rinse the salmon under cold water to remove all the brine. Pat completely dry with paper towels, then let it rest uncovered at room temperature for 30–60 minutes until the surface feels tacky — this is the pellicle, and it's what makes smoke adhere.",
       "Add wood chips (apple, cherry, and mesquite all work well) and preheat your Traeger to 180°F.",
