@@ -6,19 +6,19 @@
 <title>Weeknight Planner</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
 /* ── Reset & Base ──────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --cream:#FAF8F4;
-  --cream2:#F3F0EA;
-  --cream3:#E9E4DA;
-  --ink:#1C1916;
-  --ink2:#4A453E;
-  --ink3:#8A8279;
-  --accent:#C15B2E;
-  --accent-light:#F5E8E0;
+  --cream:#FFFFFF;
+  --cream2:#F6F5F1;
+  --cream3:#ECEAE3;
+  --ink:#1A1A18;
+  --ink2:#57564F;
+  --ink3:#8C8A81;
+  --accent:#A33B2E;
+  --accent-light:#F6E9E6;
   --green:#2D6A4F;
   --green-light:#E8F4EE;
   --blue:#1D4E89;
@@ -27,17 +27,17 @@
   --purple-light:#EEE8F6;
   --amber:#8C5E1A;
   --amber-light:#F7EDDA;
-  --border:rgba(28,25,22,.1);
-  --border2:rgba(28,25,22,.18);
-  --shadow:0 1px 4px rgba(28,25,22,.08);
-  --shadow2:0 4px 20px rgba(28,25,22,.1);
-  --radius:10px;
-  --radius-lg:14px;
-  --font-display:'DM Serif Display',Georgia,serif;
+  --border:rgba(26,26,24,.09);
+  --border2:rgba(26,26,24,.16);
+  --shadow:0 1px 3px rgba(26,26,24,.05);
+  --shadow2:0 4px 16px rgba(26,26,24,.07);
+  --radius:6px;
+  --radius-lg:8px;
+  --font-display:'Source Serif 4',Georgia,serif;
   --font-body:'DM Sans',-apple-system,sans-serif;
 }
 html{font-size:16px;-webkit-font-smoothing:antialiased}
-body{font-family:var(--font-body);background:var(--cream);color:var(--ink);min-height:100vh;line-height:1.6}
+body{font-family:var(--font-body);background:var(--cream);color:var(--ink);min-height:100vh;line-height:1.65}
 button{font-family:var(--font-body);cursor:pointer}
 input,select,textarea{font-family:var(--font-body)}
 a{color:var(--accent);text-decoration:none}
@@ -46,15 +46,15 @@ a{color:var(--accent);text-decoration:none}
 .app-shell{max-width:1080px;margin:0 auto;padding:0 20px 80px}
 
 /* ── Header ──────────────────────────────── */
-header{display:flex;align-items:center;justify-content:space-between;padding:28px 0 20px;border-bottom:1px solid var(--border)}
-.logo{display:flex;align-items:center;gap:10px}
-.logo-mark{width:34px;height:34px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.logo-mark svg{width:18px;height:18px;fill:#fff}
-.logo-name{font-family:var(--font-display);font-size:20px;color:var(--ink);letter-spacing:-.01em}
-nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);padding:3px}
-.nav-btn{font-size:13px;padding:6px 14px;border:none;background:none;color:var(--ink2);border-radius:7px;transition:all .15s;font-weight:400;white-space:nowrap}
+header{display:flex;align-items:center;justify-content:space-between;padding:26px 0 0;border-bottom:1px solid var(--ink);margin-bottom:2px}
+.logo{display:flex;align-items:center;gap:9px;padding-bottom:18px}
+.logo-mark{width:28px;height:28px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-mark svg{width:16px;height:16px;fill:#fff}
+.logo-name{font-family:var(--font-display);font-size:19px;color:var(--ink);letter-spacing:-.01em}
+nav{display:flex;align-items:flex-end;gap:22px;align-self:stretch}
+.nav-btn{font-size:13px;padding:0 0 16px;border:none;background:none;color:var(--ink3);border-bottom:2px solid transparent;transition:all .15s;font-weight:400;white-space:nowrap;margin-bottom:-1px}
 .nav-btn:hover{color:var(--ink)}
-.nav-btn.active{background:#fff;color:var(--ink);font-weight:500;box-shadow:var(--shadow)}
+.nav-btn.active{color:var(--ink);font-weight:500;border-bottom-color:var(--accent)}
 
 /* ── Views ──────────────────────────────── */
 .view{display:none;padding-top:28px}
@@ -62,8 +62,8 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
 
 /* ── Page titles ──────────────────────────────── */
 .page-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
-.page-title{font-family:var(--font-display);font-size:28px;letter-spacing:-.02em;color:var(--ink)}
-.page-subtitle{font-size:13px;color:var(--ink3);margin-top:2px}
+.page-title{font-family:var(--font-display);font-size:30px;letter-spacing:-.01em;color:var(--ink)}
+.page-subtitle{font-size:13px;color:var(--ink3);margin-top:3px}
 
 /* ── Buttons ──────────────────────────────── */
 .btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;padding:8px 14px;border-radius:var(--radius);border:1px solid var(--border2);background:#fff;color:var(--ink);font-weight:400;transition:all .15s;white-space:nowrap}
@@ -76,14 +76,11 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
 .btn-row{display:flex;gap:8px;flex-wrap:wrap}
 
 /* ── Badges ──────────────────────────────── */
-.badge{display:inline-block;font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px}
-.badge-mx{background:var(--amber-light);color:var(--amber)}
-.badge-med{background:var(--green-light);color:var(--green)}
-.badge-as{background:var(--purple-light);color:var(--purple)}
-.badge-it{background:var(--accent-light);color:var(--accent)}
-.badge-am{background:var(--blue-light);color:var(--blue)}
-.badge-time{background:var(--cream2);color:var(--ink2)}
-.badge-left{background:#EAF3DE;color:#2D6A4F}
+.badge{display:inline-block;font-size:11px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3)}
+.badge:not(:first-child){margin-left:2px;padding-left:9px;border-left:1px solid var(--border2)}
+.badge-mx,.badge-med,.badge-as,.badge-it,.badge-am{color:var(--accent)}
+.badge-time{color:var(--ink3)}
+.badge-left{color:var(--green)}
 
 /* ── THIS WEEK VIEW ──────────────────────────────── */
 .week-meta-row{display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap}
@@ -107,9 +104,10 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
 .slot-action-btn:hover{background:var(--cream2)}
 .slot-remove{position:absolute;top:10px;right:10px;background:none;border:none;color:var(--ink3);font-size:16px;line-height:1;padding:2px 4px;cursor:pointer;border-radius:4px}
 .slot-remove:hover{color:var(--ink);background:var(--cream2)}
-.slot-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:100px;border:1.5px dashed var(--border2);border-radius:var(--radius);cursor:pointer;color:var(--ink3);font-size:12px;transition:all .15s}
-.slot-empty:hover{background:var(--cream2);border-color:var(--border2);color:var(--ink2)}
-.slot-empty-icon{font-size:22px;opacity:.4}
+.slot-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:110px;border:1.5px dashed var(--border2);border-radius:var(--radius);cursor:pointer;color:var(--ink3);font-size:13px;font-weight:500;transition:all .15s}
+.slot-empty:hover{background:var(--accent-light);border-color:var(--accent);color:var(--accent)}
+.slot-empty-icon{font-size:24px;opacity:.45}
+.slot-empty:hover .slot-empty-icon{opacity:1}
 
 /* Grocery panel */
 .grocery-wrap{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
@@ -280,11 +278,9 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
 .fav-empty-text{font-size:14px;line-height:1.7}
 
 /* ── COCKTAILS VIEW ──────────────────────────────── */
-.badge-summer{background:#FFF3E0;color:#E65100}
-.badge-year-round{background:var(--blue-light);color:var(--blue)}
-.badge-party{background:var(--purple-light);color:var(--purple)}
-.badge-easy{background:var(--green-light);color:var(--green)}
-.badge-medium{background:var(--amber-light);color:var(--amber)}
+.badge-summer,.badge-year-round,.badge-party{color:var(--accent)}
+.badge-easy{color:var(--green)}
+.badge-medium{color:var(--amber)}
 .ccard{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;cursor:pointer;transition:all .15s;position:relative}
 .ccard:hover{border-color:var(--border2);box-shadow:var(--shadow)}
 .ccard-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px}
@@ -292,30 +288,23 @@ nav{display:flex;gap:2px;background:var(--cream2);border-radius:var(--radius);pa
 .ccard-desc{font-size:12px;color:var(--ink3);margin-bottom:10px;line-height:1.5}
 .ccard-badges{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
 .ccard-meta{font-size:11px;color:var(--ink3)}
-.mocktail-note{background:var(--green-light);border-radius:var(--radius);padding:14px 16px;font-size:13px;color:var(--ink2);line-height:1.6}
-.mocktail-note strong{color:var(--green);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:6px}
+.mocktail-note{background:var(--cream2);border-radius:var(--radius);padding:14px 16px;font-size:13px;color:var(--ink2);line-height:1.6}
+.mocktail-note strong{color:var(--accent);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:6px}
 
 /* ── SMOKER VIEW ──────────────────────────────── */
-.badge-beef{background:#FFEDEA;color:#B83228}
-.badge-pork{background:#FFE8F0;color:#B83264}
-.badge-poultry{background:var(--amber-light);color:var(--amber)}
-.badge-seafood{background:var(--blue-light);color:var(--blue)}
-.badge-sides{background:var(--green-light);color:var(--green)}
-.badge-beginner{background:var(--green-light);color:var(--green)}
-.badge-intermediate{background:var(--amber-light);color:var(--amber)}
-.badge-advanced{background:#FFEDEA;color:#B83228}
+.badge-beef,.badge-pork,.badge-poultry,.badge-seafood,.badge-sides{color:var(--accent)}
+.badge-beginner{color:var(--green)}
+.badge-intermediate{color:var(--amber)}
+.badge-advanced{color:#B83228}
 .smoke-stats{display:flex;gap:8px;flex-wrap:wrap;padding:12px 24px 16px;border-bottom:1px solid var(--border)}
-.smoke-stat{display:flex;flex-direction:column;align-items:center;background:var(--cream);border-radius:var(--radius);padding:12px 16px;flex:1;min-width:80px}
+.smoke-stat{display:flex;flex-direction:column;align-items:center;background:var(--cream2);border-radius:var(--radius);padding:12px 16px;flex:1;min-width:80px}
 .smoke-stat-val{font-family:var(--font-display);font-size:22px;color:var(--ink);line-height:1}
 .smoke-stat-label{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);margin-top:4px}
 .tips-list{list-style:none;display:flex;flex-direction:column;gap:6px}
-.tip-row{font-size:13px;color:var(--ink2);line-height:1.6;padding:8px 12px;border-left:3px solid var(--accent);background:var(--accent-light);border-radius:0 var(--radius) var(--radius) 0}
+.tip-row{font-size:13px;color:var(--ink2);line-height:1.6;padding:8px 12px;border-left:3px solid var(--accent);background:var(--cream2);border-radius:0 var(--radius) var(--radius) 0}
 
 /* ── SMOOTHIES VIEW ──────────────────────────────── */
-.badge-protein{background:var(--purple-light);color:var(--purple)}
-.badge-green{background:var(--green-light);color:var(--green)}
-.badge-fruit{background:#FFF0E5;color:#D4581A}
-.badge-tropical{background:#FFF8E0;color:#B8820A}
+.badge-protein,.badge-green,.badge-fruit,.badge-tropical{color:var(--accent)}
 .smoothie-tag{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;background:var(--cream2);color:var(--ink2);border:1px solid var(--border2)}
 .smoothie-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
 
@@ -761,6 +750,10 @@ function renderWeekView() {
 function updateWeekSubtitle() {
   const n = weekMeals.length;
   const favCount = weekMeals.filter(id=>favorites.has(id)).length;
+  if (n === 0) {
+    document.getElementById('week-subtitle').textContent = 'Pick 3–4 meals below to build your week, then export a grocery list.';
+    return;
+  }
   const sub = [`${n} meal${n!==1?'s':''} planned`];
   if (favCount > 0) sub.push(`${favCount} favorite${favCount!==1?'s':''}`);
   document.getElementById('week-subtitle').textContent = sub.join(' · ');
