@@ -116,9 +116,13 @@ nav{display:flex;align-items:flex-end;gap:22px;align-self:stretch}
 .grocery-body{padding:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:20px}
 .g-group h4{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);margin-bottom:8px}
 .g-group ul{list-style:none}
-.g-group li{font-size:13px;color:var(--ink);padding:4px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;gap:8px}
+.g-group li{font-size:13px;color:var(--ink);padding:4px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:8px;transition:opacity .15s}
 .g-group li:last-child{border:none}
+.g-group li.g-unchecked{opacity:.4}
+.g-item-label{display:flex;align-items:center;gap:8px;cursor:pointer;min-width:0}
+.g-check{accent-color:var(--accent);width:14px;height:14px;flex-shrink:0;cursor:pointer}
 .g-item-name{color:var(--ink2)}
+.g-group li.g-unchecked .g-item-name{text-decoration:line-through}
 .g-item-qty{font-weight:500;color:var(--ink);white-space:nowrap}
 .g-protein-section{background:var(--cream);border-radius:var(--radius);padding:14px 20px;margin:0 20px 20px}
 .g-protein-title{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);margin-bottom:8px}
@@ -546,6 +550,7 @@ let weekMeals = [];   // array of recipe ids (3–4)
 let chosenProteins = {}; // { recipeId: proteinIndex }
 let favorites = new Set();
 let globalScale = 1;
+let groceryUnchecked = new Set(); // keys ("cat::name") the user has unchecked for shopping export
 let libFilter = 'all';
 let libSearch = '';
 let activeDetail = null;
@@ -620,14 +625,16 @@ async function init() {
       // use the first scale found, default 1
       globalScale = Object.values(scales)[0] || 1;
     } else {
-      weekMeals = pickWeek();
+      // Start empty — the user adds meals from the library rather than
+      // getting an auto-picked week on first load.
+      weekMeals = [];
     }
 
     renderAll();
   } catch(e) {
     console.error('Init error:', e);
-    // Fallback: use embedded data if fetch fails (e.g. opened as local file)
-    weekMeals = pickWeek();
+    // Fallback: start empty if fetch fails (e.g. opened as local file)
+    weekMeals = [];
     renderAll();
   }
 }
@@ -721,18 +728,22 @@ function renderWeekView() {
     grid.appendChild(div);
   });
 
-  // Empty slot if < 4
-  if (recipes.length < 4) {
+  // Empty slots for the rest of the week (up to 4 total) — lets a fresh,
+  // meal-free week show a full row of clear "add from library" invitations
+  // instead of auto-filling meals for the user.
+  for (let i = recipes.length; i < 4; i++) {
     const empty = document.createElement('div');
     empty.className = 'slot';
-    empty.innerHTML = `<div class="slot-day">${DAYS[recipes.length] || 'Optional'}</div>
-      <div class="slot-empty" id="add-slot-btn">
+    empty.innerHTML = `<div class="slot-day">${DAYS[i] || 'Optional'}</div>
+      <div class="slot-empty" data-add-slot>
         <div class="slot-empty-icon">＋</div>
         <span>Add from library</span>
       </div>`;
     grid.appendChild(empty);
-    document.getElementById('add-slot-btn').onclick = () => switchView('library');
   }
+  document.querySelectorAll('[data-add-slot]').forEach(btn => {
+    btn.onclick = () => switchView('library');
+  });
 
   // Update scale buttons
   document.querySelectorAll('.scale-btn').forEach(btn => {
@@ -776,7 +787,7 @@ function buildGroceryList() {
       if (existing && ing.unit && existing.unit === ing.unit) {
         existing.amount += scaled_amount;
       } else {
-        cats[cat].push({ key, name:ing.name, amount:scaled_amount, unit:ing.unit });
+        cats[cat].push({ key, fullKey:`${cat}::${key}`, name:ing.name, amount:scaled_amount, unit:ing.unit, category:cat });
       }
     });
     const protIdx = chosenProteins[recipe.id] ?? 0;
@@ -792,6 +803,18 @@ function formatAmount(amount, unit) {
   return unit ? `${rounded} ${unit}` : `${rounded}`;
 }
 
+// Items the user has left checked (i.e. everything not explicitly unchecked)
+function checkedGroceryItems() {
+  const { cats } = buildGroceryList();
+  const items = [];
+  for (const list of Object.values(cats)) {
+    for (const i of list) {
+      if (!groceryUnchecked.has(i.fullKey)) items.push(i);
+    }
+  }
+  return items;
+}
+
 function renderGroceryPanel() {
   const { cats, proteins } = buildGroceryList();
   const panel = document.getElementById('grocery-panel');
@@ -802,7 +825,16 @@ function renderGroceryPanel() {
     if (!items.length) continue;
     catHtml += `<div class="g-group">
       <h4>${catLabels[cat]}</h4>
-      <ul>${items.map(i=>`<li><span class="g-item-name">${i.name}</span><span class="g-item-qty">${formatAmount(i.amount, i.unit)}</span></li>`).join('')}</ul>
+      <ul>${items.map(i=>{
+        const checked = !groceryUnchecked.has(i.fullKey);
+        return `<li class="${checked?'':'g-unchecked'}">
+          <label class="g-item-label">
+            <input type="checkbox" class="g-check" data-key="${i.fullKey}" ${checked?'checked':''}>
+            <span class="g-item-name">${i.name}</span>
+          </label>
+          <span class="g-item-qty">${formatAmount(i.amount, i.unit)}</span>
+        </li>`;
+      }).join('')}</ul>
     </div>`;
   }
 
@@ -815,8 +847,11 @@ function renderGroceryPanel() {
       <div class="grocery-head">
         <div class="grocery-head-title">Grocery List${globalScale > 1 ? ` <span style="font-size:14px;color:var(--ink3);font-family:var(--font-body)">scaled ×${globalScale}</span>` : ''}</div>
         <div class="btn-row">
+          <button class="btn btn-sm btn-ghost" id="check-all-btn">Select all</button>
+          <button class="btn btn-sm btn-ghost" id="check-none-btn">Select none</button>
           <button class="btn btn-sm" id="copy-grocery-btn">Copy</button>
           <button class="btn btn-sm" id="dl-grocery-btn">↓ Download .txt</button>
+          <button class="btn btn-sm btn-primary" id="dl-shopping-json-btn">↓ Export for shopping</button>
         </div>
       </div>
       <div class="grocery-body">${catHtml}</div>
@@ -828,20 +863,40 @@ function renderGroceryPanel() {
 
   document.getElementById('copy-grocery-btn').onclick = copyGrocery;
   document.getElementById('dl-grocery-btn').onclick = downloadGrocery;
+  document.getElementById('dl-shopping-json-btn').onclick = downloadShoppingListJson;
+  document.getElementById('check-all-btn').onclick = () => {
+    groceryUnchecked.clear();
+    renderGroceryPanel();
+  };
+  document.getElementById('check-none-btn').onclick = () => {
+    const { cats } = buildGroceryList();
+    for (const list of Object.values(cats)) list.forEach(i => groceryUnchecked.add(i.fullKey));
+    renderGroceryPanel();
+  };
+  panel.querySelectorAll('.g-check').forEach(box => {
+    box.onchange = () => {
+      const key = box.dataset.key;
+      if (box.checked) groceryUnchecked.delete(key);
+      else groceryUnchecked.add(key);
+      box.closest('li').classList.toggle('g-unchecked', !box.checked);
+    };
+  });
 }
 
 function groceryAsText() {
-  const { cats, proteins } = buildGroceryList();
+  const items = checkedGroceryItems();
   const catLabels = { produce:'PRODUCE', pantry:'PANTRY', dairy:'DAIRY & EGGS', grains:'GRAINS & CARBS' };
   const recipes = getWeekRecipes();
   let lines = [`WEEKNIGHT PLANNER — Grocery List (scale ×${globalScale})`, `Week of ${document.getElementById('week-of-label').textContent.replace('Week of ','')}`, ''];
   lines.push(`Meals: ${recipes.map(r=>r.name).join(', ')}`, '');
-  for (const [cat, items] of Object.entries(cats)) {
-    if (!items.length) continue;
+  for (const cat of ['produce','pantry','dairy','grains']) {
+    const catItems = items.filter(i=>i.category===cat);
+    if (!catItems.length) continue;
     lines.push(catLabels[cat]);
-    items.forEach(i => lines.push(`  - ${i.name}: ${formatAmount(i.amount, i.unit)}`));
+    catItems.forEach(i => lines.push(`  - ${i.name}: ${formatAmount(i.amount, i.unit)}`));
     lines.push('');
   }
+  const { proteins } = buildGroceryList();
   lines.push('YOUR PROTEIN ADD-ONS');
   proteins.forEach(p => lines.push(`  - ${p.name} — ${p.amount} (for ${p.recipe})`));
   return lines.join('\n');
@@ -860,6 +915,28 @@ function downloadGrocery() {
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = 'grocery-list.txt';
+  a.click();
+}
+
+// Structured export for the separate Amazon shopping agent. Only includes
+// items the user left checked. Proteins are intentionally excluded — those
+// are meant to be bought separately, not matched to Amazon listings.
+function buildShoppingListJson() {
+  const items = checkedGroceryItems();
+  const recipes = getWeekRecipes();
+  return {
+    weekOf: document.getElementById('week-of-label').textContent.replace('Week of ',''),
+    scale: globalScale,
+    meals: recipes.map(r=>r.name),
+    items: items.map(i => ({ name:i.name, amount:i.amount, unit:i.unit, category:i.category }))
+  };
+}
+
+function downloadShoppingListJson() {
+  const blob = new Blob([JSON.stringify(buildShoppingListJson(), null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'shopping-list.json';
   a.click();
 }
 

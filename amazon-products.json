@@ -1,0 +1,9 @@
+{
+  "_readme": "Persistent memory for the amazon-grocery-shopper skill. Keys are lowercase ingredient names (as they appear in shopping-list.json exports from the meal planner). Each confirmed product is remembered so future runs reuse the same brand/size instead of re-searching. Never edited by the website itself — only by the shopping agent.",
+  "preferences": {
+    "priceStrategy": "cheapest reasonable option, prefer store brand (e.g. Amazon Basics/365/Happy Belly) when available",
+    "avoidBulk": true,
+    "notes": "Avoid warehouse-club / multi-pack sizes unless that is the only option available for an item."
+  },
+  "products": {}
+}
