@@ -4,43 +4,46 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Weeknight Planner</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
 /* ── Reset & Base ──────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --cream:#FFFFFF;
-  --cream2:#F6F5F1;
-  --cream3:#ECEAE3;
-  --ink:#1A1A18;
-  --ink2:#57564F;
-  --ink3:#8C8A81;
-  --accent:#A33B2E;
-  --accent-light:#F6E9E6;
-  --green:#2D6A4F;
-  --green-light:#E8F4EE;
+  --cream2:#F4F4F5;
+  --cream3:#E7E8EA;
+  --ink:#171717;
+  --ink2:#5C5C5C;
+  --ink3:#8F8F8F;
+  --accent:#3B76F0;
+  --accent-light:#EAF1FE;
+  --green:#1E8E5A;
+  --green-light:#E6F4ED;
   --blue:#1D4E89;
   --blue-light:#E8EFF8;
   --purple:#5B3F8C;
   --purple-light:#EEE8F6;
-  --amber:#8C5E1A;
-  --amber-light:#F7EDDA;
-  --border:rgba(26,26,24,.09);
-  --border2:rgba(26,26,24,.16);
-  --shadow:0 1px 3px rgba(26,26,24,.05);
-  --shadow2:0 4px 16px rgba(26,26,24,.07);
+  --amber:#C98A18;
+  --amber-light:#FBF1DF;
+  --border:rgba(23,23,23,.10);
+  --border2:rgba(23,23,23,.17);
+  --shadow:0 1px 3px rgba(23,23,23,.05);
+  --shadow2:0 4px 16px rgba(23,23,23,.08);
   --radius:6px;
-  --radius-lg:8px;
-  --font-display:'Source Serif 4',Georgia,serif;
-  --font-body:'DM Sans',-apple-system,sans-serif;
+  --radius-lg:9px;
+  --font-display:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --font-body:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
 }
 html{font-size:16px;-webkit-font-smoothing:antialiased}
 body{font-family:var(--font-body);background:var(--cream);color:var(--ink);min-height:100vh;line-height:1.65}
 button{font-family:var(--font-body);cursor:pointer}
 input,select,textarea{font-family:var(--font-body)}
 a{color:var(--accent);text-decoration:none}
+/* Headings share the same sans stack as body copy now (was a separate serif display face);
+   bump weight here so titles keep visual hierarchy without the serif contrast. */
+.logo-name,.page-title,.slot-name,.grocery-head-title,.print-head-title,.print-recipe-title,
+.print-step-num,.lib-folder-name,.rcard-name,.modal-title,.step-num,.ccard-name,.smoke-stat-val{
+  font-weight:600;
+}
 
 /* ── Layout ──────────────────────────────── */
 .app-shell{max-width:1080px;margin:0 auto;padding:0 20px 80px}

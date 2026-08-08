@@ -5,5 +5,32 @@
     "avoidBulk": true,
     "notes": "Avoid warehouse-club / multi-pack sizes unless that is the only option available for an item."
   },
-  "products": {}
+  "products": {
+    "fresh basil, torn": {
+      "asin": null,
+      "title": "Amazon Grocery, Basil Leaves, 0.95 Oz",
+      "price": 2.08,
+      "confirmedAt": "2026-07-07"
+    },
+    "fresh lime juice (2 limes)": {
+      "asin": null,
+      "title": "Lime (single fruit)",
+      "price": 0.25,
+      "quantity": 2,
+      "confirmedAt": "2026-07-07"
+    },
+    "english cucumber, julienned or thinly sliced": {
+      "asin": null,
+      "title": "English Cucumber",
+      "price": 0.98,
+      "confirmedAt": "2026-07-07"
+    },
+    "balsamic vinegar": {
+      "asin": null,
+      "title": "365 by Whole Foods Market, Balsamic Vinegar Of Modena, 16.9 Fl Oz",
+      "price": 4.49,
+      "confirmedAt": "2026-07-07",
+      "note": "Ships via separate Whole Foods Market delivery, not main Amazon cart."
+    }
+  }
 }
