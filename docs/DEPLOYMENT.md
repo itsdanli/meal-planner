@@ -2,9 +2,9 @@
 
 Host: GitHub Pages at https://itsdanli.github.io/meal-planner/
 
-The workflow `.github/workflows/deploy.yml` tests and builds `app/` on each push to main, then publishes only the generated static artifact. The existing root HTML/JSON application is included at `/meal-planner/legacy/`. Source, local environment files, and database migrations are not included in the published artifact.
+Source lives on `main`; published static assets live on `gh-pages`. From `app/`, run `npm run deploy` to test, build, and push the generated artifact. GitHub Pages is configured to publish the root of `gh-pages`. A source push alone does not redeploy. The saved Git credential lacks workflow-write scope, so automatic source-triggered deployment is deferred; an optional workflow example is in `docs/examples/github-pages-workflow.yml`. The existing root HTML/JSON application is included at `/meal-planner/legacy/`. Source, local environment files, and database migrations are not included in the published artifact.
 
-The build uses the Supabase project URL and publishable key as public browser configuration. Never add a service-role key, secret API key, or database password to the workflow or a `VITE_` variable. This deployment continues using the development project's existing accounts and data; a separate staging project is a future improvement.
+The local production build reads `app/.env.local` for the Supabase project URL and publishable key as public browser configuration. Configure these from `.env.example` before deploying from another machine. Never add a service-role key, secret API key, or database password to the workflow or a `VITE_` variable. This deployment continues using the development project's existing accounts and data; a separate staging project is a future improvement.
 
 ## Supabase Auth URL configuration
 
@@ -22,4 +22,4 @@ Check the GitHub Actions run, public HTTPS page, loaded JavaScript/CSS, sign-in 
 
 ## Rollback
 
-The original app remains directly available at `/legacy/`. For an app regression, revert the specific offending commit and push the revert to main; the same tested deployment workflow publishes the corrected build. Do not roll back database tables or delete account data as part of a frontend rollback. Failed builds do not replace the current Pages deployment.
+The original app remains directly available at `/legacy/`. For an app regression, revert the specific offending source commit, push the revert to main, then run `npm run deploy` from `app/` to publish the corrected build. Do not roll back database tables or delete account data as part of a frontend rollback. Failed tests or builds do not update the deployment branch. The deploy script uses ordinary pushes, preserving deployment history and refusing concurrent branch overwrites.

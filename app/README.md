@@ -16,6 +16,6 @@ npm run build
 npm run preview
 ```
 
-The production output is `app/dist`. The relative asset base supports static hosting under a subdirectory. Deployment is not changed by this initial implementation.
+The production output is `app/dist`. The relative asset base supports static hosting under a subdirectory. Run `npm run deploy` to test and publish the production build to the `gh-pages` branch. See `docs/DEPLOYMENT.md` for hosting and auth redirects.
 
 See `docs/PRD.md` and `docs/ARCHITECTURE.md` in the repository root for scope, acceptance criteria, and the next authenticated persistence milestone. Backend setup is documented separately in `docs/BACKEND.md`.
