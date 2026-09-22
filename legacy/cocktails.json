@@ -1,0 +1,273 @@
+[
+  {
+    "id": "aperol-spritz",
+    "name": "Aperol Spritz",
+    "bucket": "summer",
+    "bucketLabel": "Summer",
+    "description": "Italy's most iconic aperitivo — bittersweet Aperol, crisp Prosecco, and a splash of soda over ice. Light, low-ABV, and endlessly refreshing.",
+    "source": "classic Italian aperitivo",
+    "servings": 1,
+    "glassware": "Wine glass or large rocks glass",
+    "difficulty": "easy",
+    "ingredients": [
+      { "id": "i1", "name": "Prosecco (dry)", "amount": 3, "unit": "oz" },
+      { "id": "i2", "name": "Aperol", "amount": 2, "unit": "oz" },
+      { "id": "i3", "name": "club soda", "amount": 1, "unit": "oz" },
+      { "id": "i4", "name": "orange slice, for garnish", "amount": 1, "unit": null },
+      { "id": "i5", "name": "ice", "amount": 1, "unit": "handful" }
+    ],
+    "steps": [
+      "Fill a large wine glass with ice.",
+      "Add Prosecco first, then Aperol, then a splash of club soda.",
+      "Stir very gently once — just enough to combine without losing bubbles.",
+      "Garnish with a half-wheel of orange. Serve immediately."
+    ],
+    "mocktail": {
+      "description": "Swap Aperol for blood orange juice + a small splash of tonic (for bitterness), and Prosecco for sparkling water. Stir gently and garnish the same way."
+    }
+  },
+  {
+    "id": "paloma",
+    "name": "Paloma",
+    "bucket": "summer",
+    "bucketLabel": "Summer",
+    "description": "Mexico's most popular cocktail — tequila with grapefruit juice and a salted rim. Tart, slightly bitter, and more refreshing than a margarita.",
+    "source": "classic Mexican cocktail",
+    "servings": 1,
+    "glassware": "Highball or rocks glass",
+    "difficulty": "easy",
+    "ingredients": [
+      { "id": "i1", "name": "blanco tequila", "amount": 2, "unit": "oz" },
+      { "id": "i2", "name": "fresh grapefruit juice", "amount": 2, "unit": "oz" },
+      { "id": "i3", "name": "fresh lime juice", "amount": 0.5, "unit": "oz" },
+      { "id": "i4", "name": "agave syrup (or simple syrup)", "amount": 0.5, "unit": "oz" },
+      { "id": "i5", "name": "club soda", "amount": 2, "unit": "oz" },
+      { "id": "i6", "name": "kosher salt, for rim", "amount": 1, "unit": "pinch" },
+      { "id": "i7", "name": "grapefruit wedge, for garnish", "amount": 1, "unit": null },
+      { "id": "i8", "name": "ice", "amount": 1, "unit": "handful" }
+    ],
+    "steps": [
+      "Run a grapefruit wedge around the rim of the glass and dip in salt.",
+      "Fill the glass with ice. Add tequila, grapefruit juice, lime juice, and agave syrup.",
+      "Top with club soda and stir gently once.",
+      "Garnish with a grapefruit wedge."
+    ],
+    "mocktail": {
+      "description": "Skip the tequila and increase grapefruit juice to 4 oz. Add a small splash of lemon juice for complexity. Everything else stays the same."
+    }
+  },
+  {
+    "id": "hugo-spritz",
+    "name": "Hugo Spritz",
+    "bucket": "summer",
+    "bucketLabel": "Summer",
+    "description": "A delicate Northern Italian spritz with elderflower liqueur, fresh mint, and Prosecco. Lighter and more floral than an Aperol Spritz — perfect for a hot afternoon.",
+    "source": "classic Alpine aperitivo, originated in South Tyrol",
+    "servings": 1,
+    "glassware": "Wine glass",
+    "difficulty": "easy",
+    "ingredients": [
+      { "id": "i1", "name": "Prosecco (dry)", "amount": 3, "unit": "oz" },
+      { "id": "i2", "name": "St-Germain elderflower liqueur", "amount": 1.5, "unit": "oz" },
+      { "id": "i3", "name": "club soda", "amount": 1, "unit": "oz" },
+      { "id": "i4", "name": "fresh mint sprigs", "amount": 3, "unit": null },
+      { "id": "i5", "name": "fresh lime slice", "amount": 1, "unit": null },
+      { "id": "i6", "name": "ice", "amount": 1, "unit": "handful" }
+    ],
+    "steps": [
+      "Fill a wine glass with ice.",
+      "Lightly slap the mint sprigs between your palms to release the oils, then add to the glass.",
+      "Add elderflower liqueur, then Prosecco, then a splash of soda.",
+      "Stir very gently once. Garnish with a lime slice and extra mint."
+    ]
+  },
+  {
+    "id": "classic-margarita",
+    "name": "Classic Margarita",
+    "bucket": "year-round",
+    "bucketLabel": "Year-Round",
+    "description": "The gold standard — fresh lime juice, quality tequila, and Cointreau in perfect proportion. Shaken, not sour-mix, not frozen. The one to know by heart.",
+    "source": "classic cocktail, proportions per Death & Co",
+    "servings": 1,
+    "glassware": "Rocks glass or coupe",
+    "difficulty": "easy",
+    "ingredients": [
+      { "id": "i1", "name": "blanco tequila (e.g. Espolòn, Olmeca Altos)", "amount": 2, "unit": "oz" },
+      { "id": "i2", "name": "Cointreau or triple sec", "amount": 0.75, "unit": "oz" },
+      { "id": "i3", "name": "fresh lime juice", "amount": 0.75, "unit": "oz" },
+      { "id": "i4", "name": "kosher salt, for rim (optional)", "amount": 1, "unit": "pinch" },
+      { "id": "i5", "name": "lime wheel, for garnish", "amount": 1, "unit": null },
+      { "id": "i6", "name": "ice", "amount": 1, "unit": "handful" }
+    ],
+    "steps": [
+      "Optional: run a lime wedge around half the glass rim and dip in salt.",
+      "Combine tequila, Cointreau, and lime juice in a cocktail shaker with ice.",
+      "Shake hard for 10–12 seconds until the shaker is frosty cold.",
+      "Strain into a rocks glass over fresh ice (or into a chilled coupe without ice).",
+      "Garnish with a lime wheel."
+    ]
+  },
+  {
+    "id": "old-fashioned",
+    "name": "Old Fashioned",
+    "bucket": "year-round",
+    "bucketLabel": "Year-Round",
+    "description": "The ur-cocktail — bourbon or rye, a sugar cube, bitters, and a twist. Three ingredients, zero shortcuts, maximum flavor. Based on the Serious Eats definitive recipe.",
+    "source": "seriouseats.com",
+    "servings": 1,
+    "glassware": "Rocks glass",
+    "difficulty": "easy",
+    "ingredients": [
+      { "id": "i1", "name": "bourbon or rye whiskey", "amount": 2, "unit": "oz" },
+      { "id": "i2", "name": "Angostura bitters", "amount": 2, "unit": "dashes" },
+      { "id": "i3", "name": "demerara or simple syrup (or 1 sugar cube)", "amount": 0.25, "unit": "oz" },
+      { "id": "i4", "name": "orange peel, for garnish", "amount": 1, "unit": null },
+      { "id": "i5", "name": "ice (one large cube preferred)", "amount": 1, "unit": "cube" }
+    ],
+    "steps": [
+      "Add syrup and bitters to a rocks glass. If using a sugar cube, muddle it with the bitters and a few drops of water until dissolved.",
+      "Add the whiskey and stir briefly.",
+      "Add one large ice cube (or several smaller ones). Stir for 20–30 seconds until well-chilled and slightly diluted.",
+      "Express the orange peel over the glass: hold it skin-side down over the drink and give it a firm twist to release the oils. Run the peel around the rim, then drop it in."
+    ]
+  },
+  {
+    "id": "negroni",
+    "name": "Negroni",
+    "bucket": "year-round",
+    "bucketLabel": "Year-Round",
+    "description": "Equal parts gin, Campari, and sweet vermouth — stirred, not shaken. Bitter, herbal, and unmistakably Italian. One of the great cocktails and one of the easiest to make.",
+    "source": "classic Italian cocktail, proportions per Difford's Guide",
+    "servings": 1,
+    "glassware": "Rocks glass",
+    "difficulty": "easy",
+    "ingredients": [
+      { "id": "i1", "name": "gin (e.g. Tanqueray, Hendrick's)", "amount": 1, "unit": "oz" },
+      { "id": "i2", "name": "Campari", "amount": 1, "unit": "oz" },
+      { "id": "i3", "name": "sweet vermouth (e.g. Carpano Antica, Cocchi)", "amount": 1, "unit": "oz" },
+      { "id": "i4", "name": "orange peel, for garnish", "amount": 1, "unit": null },
+      { "id": "i5", "name": "ice", "amount": 1, "unit": "handful" }
+    ],
+    "steps": [
+      "Combine gin, Campari, and sweet vermouth in a mixing glass filled with ice.",
+      "Stir for 30 seconds until well-chilled and diluted.",
+      "Strain into a rocks glass over a large ice cube.",
+      "Express the orange peel over the drink and drop it in as garnish."
+    ]
+  },
+  {
+    "id": "classic-mojito",
+    "name": "Classic Mojito",
+    "bucket": "summer",
+    "bucketLabel": "Summer",
+    "description": "Fresh mint, lime, rum, and soda — the definitive summer highball. Light, herbaceous, and genuinely refreshing. Based on the widely praised Difford's Guide recipe.",
+    "source": "diffordsguide.com",
+    "servings": 1,
+    "glassware": "Highball glass",
+    "difficulty": "easy",
+    "ingredients": [
+      { "id": "i1", "name": "white rum (e.g. Bacardi, Havana Club 3yr)", "amount": 2, "unit": "oz" },
+      { "id": "i2", "name": "fresh lime juice (1 lime)", "amount": 0.75, "unit": "oz" },
+      { "id": "i3", "name": "simple syrup", "amount": 0.75, "unit": "oz" },
+      { "id": "i4", "name": "fresh mint leaves", "amount": 10, "unit": null },
+      { "id": "i5", "name": "club soda", "amount": 2, "unit": "oz" },
+      { "id": "i6", "name": "ice (crushed or cubed)", "amount": 1, "unit": "handful" },
+      { "id": "i7", "name": "mint sprig and lime wheel, for garnish", "amount": 1, "unit": null }
+    ],
+    "steps": [
+      "Add mint leaves and simple syrup to a highball glass. Lightly press the mint with a muddler or bar spoon — just enough to bruise it and release the oils. Don't shred it.",
+      "Add lime juice and rum. Fill the glass with ice.",
+      "Top with club soda and stir gently once from bottom to top.",
+      "Garnish with a mint sprig (slap it once in your palm first) and a lime wheel."
+    ],
+    "mocktail": {
+      "description": "Skip the rum entirely and increase soda to 4 oz. Add an extra squeeze of lime and a few drops of coconut water for body. The mint-lime-soda combo is genuinely delicious on its own."
+    }
+  },
+  {
+    "id": "batch-sangria",
+    "name": "Red Wine Sangria",
+    "bucket": "party",
+    "bucketLabel": "Party / Batch",
+    "description": "A Spanish classic made for a crowd — red wine with brandy, orange juice, and muddled fruit, steeped overnight for deep flavor. Makes a full pitcher. Based on the highly rated NYT Cooking recipe.",
+    "source": "cooking.nytimes.com",
+    "servings": 8,
+    "glassware": "Wine glass or rocks glass over ice",
+    "difficulty": "easy",
+    "ingredients": [
+      { "id": "i1", "name": "dry red wine (Rioja, Garnacha, or Merlot, 750ml bottle)", "amount": 1, "unit": "bottle" },
+      { "id": "i2", "name": "brandy or Cointreau", "amount": 4, "unit": "oz" },
+      { "id": "i3", "name": "fresh orange juice", "amount": 4, "unit": "oz" },
+      { "id": "i4", "name": "simple syrup (adjust to taste)", "amount": 2, "unit": "oz" },
+      { "id": "i5", "name": "orange, thinly sliced into rounds", "amount": 1, "unit": null },
+      { "id": "i6", "name": "lemon, thinly sliced into rounds", "amount": 1, "unit": null },
+      { "id": "i7", "name": "apple, cored and sliced thin", "amount": 1, "unit": null },
+      { "id": "i8", "name": "club soda (to top off when serving)", "amount": 4, "unit": "oz" }
+    ],
+    "steps": [
+      "Combine wine, brandy, orange juice, simple syrup, and all sliced fruit in a large pitcher. Stir well.",
+      "Cover and refrigerate at least 2 hours, ideally overnight — the longer it sits, the better the fruit infuses.",
+      "When ready to serve, taste and adjust sweetness with more syrup if needed.",
+      "Pour over ice-filled glasses and top each glass with a splash of club soda. Spoon in some fruit from the pitcher."
+    ],
+    "mocktail": {
+      "description": "Use dealcoholized red wine (e.g. Ariel Cabernet) or substitute with equal parts grape juice and cranberry juice. Skip the brandy and increase OJ to 6 oz. Everything else stays the same."
+    }
+  },
+  {
+    "id": "watermelon-margarita",
+    "name": "Watermelon Margarita",
+    "bucket": "summer",
+    "bucketLabel": "Summer",
+    "description": "Fresh-blended watermelon juice shaken with tequila and lime — bright, juicy, and barely sweet without a drop of added sugar. Based on the Love & Lemons recipe.",
+    "source": "loveandlemons.com",
+    "servings": 1,
+    "glassware": "Rocks glass",
+    "difficulty": "easy",
+    "ingredients": [
+      { "id": "i1", "name": "blanco tequila", "amount": 2, "unit": "oz" },
+      { "id": "i2", "name": "fresh watermelon juice (blend ~1.5 cups cubed watermelon and strain)", "amount": 3, "unit": "oz" },
+      { "id": "i3", "name": "fresh lime juice", "amount": 0.75, "unit": "oz" },
+      { "id": "i4", "name": "Cointreau or triple sec", "amount": 0.5, "unit": "oz" },
+      { "id": "i5", "name": "kosher salt or Tajín, for rim", "amount": 1, "unit": "pinch" },
+      { "id": "i6", "name": "lime wedge and small watermelon slice, for garnish", "amount": 1, "unit": null },
+      { "id": "i7", "name": "ice", "amount": 1, "unit": "handful" }
+    ],
+    "steps": [
+      "Make the watermelon juice: blend cubed seedless watermelon until smooth, then strain through a fine-mesh sieve. You need about 3 oz per drink. Can be done up to a day ahead — store in the fridge.",
+      "Run a lime wedge around the rim of a rocks glass and dip in salt or Tajín.",
+      "Combine tequila, watermelon juice, lime juice, and Cointreau in a shaker with ice. Shake hard for 10 seconds.",
+      "Fill the glass with fresh ice and strain the margarita over it.",
+      "Garnish with a lime wedge and a small watermelon triangle on the rim."
+    ],
+    "mocktail": {
+      "description": "Skip the tequila and Cointreau. Use 5 oz watermelon juice, 1 oz lime juice, and a splash of orange juice for depth. Shake with ice and strain over a salted rim. Genuinely delicious."
+    }
+  },
+  {
+    "id": "batch-margarita-pitcher",
+    "name": "Pitcher Margarita",
+    "bucket": "party",
+    "bucketLabel": "Party / Batch",
+    "description": "A scaled-up version of the classic margarita built for a group — mix it ahead, keep it cold, and serve over ice. No shaking required. Tested ratio from Serious Eats.",
+    "source": "seriouseats.com",
+    "servings": 8,
+    "glassware": "Rocks glass or margarita glass",
+    "difficulty": "easy",
+    "ingredients": [
+      { "id": "i1", "name": "blanco tequila", "amount": 16, "unit": "oz" },
+      { "id": "i2", "name": "Cointreau or triple sec", "amount": 6, "unit": "oz" },
+      { "id": "i3", "name": "fresh lime juice (about 10–12 limes)", "amount": 6, "unit": "oz" },
+      { "id": "i4", "name": "water (to account for dilution from shaking)", "amount": 4, "unit": "oz" },
+      { "id": "i5", "name": "agave syrup (optional, to taste)", "amount": 1, "unit": "oz" },
+      { "id": "i6", "name": "kosher salt, for rims", "amount": 1, "unit": "small dish" },
+      { "id": "i7", "name": "lime wheels, for garnish", "amount": 8, "unit": null }
+    ],
+    "steps": [
+      "Combine tequila, Cointreau, lime juice, and water in a large pitcher. Stir well. Taste — if it needs sweetness, stir in agave syrup.",
+      "Refrigerate until cold, at least 1 hour. Can be made up to 24 hours ahead.",
+      "When serving, salt the rims of glasses (optional), fill with ice, and pour the margarita mixture over.",
+      "Garnish each glass with a lime wheel. Give the pitcher a stir before each pour."
+    ]
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "favorites": [],
+  "disliked": ["garlic-noodle-stir-fry"],
+  "chosenProteins": {},
+  "ingredientExclusions": [
+    {
+      "ingredient": "bok choy",
+      "substitute": "napa cabbage",
+      "annotation": "(substituted for bok choy)"
+    }
+  ]
+}
