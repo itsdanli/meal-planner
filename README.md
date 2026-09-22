@@ -1,5 +1,7 @@
 # Weeknight Planner
 
+The interactive replacement is being built in [`app/`](app/README.md). Run `cd app`, `npm install`, and `npm run dev` to try the local sample. The original static website remains below. See the [PRD](docs/PRD.md), [architecture decision](docs/ARCHITECTURE.md), and [backend setup](docs/BACKEND.md) for implementation scope and next steps.
+
 A personal meal planning app hosted on GitHub Pages. Browse a library of real, tested recipes, plan your week, and export a precise grocery list — with scaling for leftovers.
 
 ---
