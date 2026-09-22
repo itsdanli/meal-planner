@@ -4,3 +4,6 @@ app/dist/
 .env.*
 !.env.example
 *.tsbuildinfo
+app/.wrangler/
+app/.dev.vars
+app/.dev.vars.*
