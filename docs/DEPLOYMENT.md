@@ -23,3 +23,7 @@ Check the GitHub Actions run, public HTTPS page, loaded JavaScript/CSS, sign-in 
 ## Rollback
 
 The original app remains directly available at `/legacy/`. For an app regression, revert the specific offending source commit, push the revert to main, then run `npm run deploy` from `app/` to publish the corrected build. Do not roll back database tables or delete account data as part of a frontend rollback. Failed tests or builds do not update the deployment branch. The deploy script uses ordinary pushes, preserving deployment history and refusing concurrent branch overwrites.
+
+## First deployment verification
+
+September 21, 2026: published source revision `bfa1fb19` to `gh-pages`. Verified the public HTTPS page renders the new planner, its JavaScript/CSS return HTTP 200, the sign-in form opens, and `/legacy/` returns HTTP 200. All 24 local tests and the production build passed before publishing. The owner reports saving the production Site URL and redirect allowlist in Supabase. Production account sign-in/save and a production confirmation email still require owner verification.
