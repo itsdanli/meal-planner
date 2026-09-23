@@ -75,12 +75,11 @@ export default function AuthPanel({ client, onClose }: AuthPanelProps) {
   return <section className="auth-page" aria-labelledby="auth-title">
     <div className="auth-card">
       <button className="auth-back" type="button" onClick={onClose} disabled={busy}>← Back to planner</button>
-      <span className="auth-mark" aria-hidden="true">w.</span>
-      <p className="auth-eyebrow">YOUR KITCHEN, REMEMBERED</p>
-      <h1 id="auth-title">{mode === 'signin' ? 'Welcome back.' : 'Make room for an easier week.'}</h1>
+      <span className="auth-mark">wmp</span>
+      <h1 id="auth-title">{mode === 'signin' ? 'Sign in' : 'Create an account'}</h1>
       <p className="auth-description">{mode === 'signin'
-        ? 'Sign in to your own saved meal plan and pantry.'
-        : 'Create an account to keep your meal plan and pantry together across devices.'}</p>
+        ? 'Your meal plan and pantry, saved to your account.'
+        : 'Keep your meal plan and pantry in sync across devices.'}</p>
       {confirmation ? <div className="auth-confirmation" ref={statusRef} role="status" tabIndex={-1}>
         <h2>Check your inbox.</h2>
         <p>If this address can be registered, a confirmation link will arrive by email. Follow it to finish setting up your account. Check spam if you don’t see it.</p>
