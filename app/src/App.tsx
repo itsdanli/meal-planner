@@ -7,6 +7,7 @@ import './styles.css';
 import { suggestRecipes, type Suggestion } from './suggest';
 import { rankedCommonItems } from './pantrySeeds';
 import { pickRandomRecipes } from './randomMeals';
+import RecipeSheet, { printRecipeSheet } from './RecipeSheet';
 import RecipeBrowser, { Heart } from './RecipeBrowser';
 import { dinnerEntry, recipeImage, type LibraryEntry } from './library';
 import { buildShoppingList, formatShoppingList } from './shoppingList';
@@ -60,6 +61,8 @@ export default function App(props: PlannerProps) {
   const storeBrand = props.preferStoreBrand ?? localStoreBrand;
   const setStoreBrand = (value: boolean) => { if (props.onPreferStoreBrand) return props.onPreferStoreBrand(value); setLocalStoreBrand(value); try { localStorage.setItem(STORE_BRAND_KEY, String(value)); } catch { /* The preference still applies for this visit. */ } };
   const jsonRef = useRef<HTMLTextAreaElement>(null);
+  const sheetRef = useRef<HTMLDivElement>(null);
+  const [sheetSides, setSheetSides] = useState<1 | 2>(1);
   useEffect(() => { if (cloud) return; try { savePlanner(state); setSaveError(false); } catch { setSaveError(true); } }, [state, cloud]);
   const modalOpen = picker || !!detail || resetConfirm;
   useEffect(() => {
@@ -145,7 +148,7 @@ export default function App(props: PlannerProps) {
             {stats}
             {view === 'groceries'
               ? <><button className="button ghost" onClick={exportList}>Export</button><button className="button accent" onClick={() => window.print()}>Print</button></>
-              : <>{view === 'week' && <button className="button ghost" onClick={randomizeMeals}>Randomize meals</button>}<button className="button accent" onClick={() => setView('groceries')}>Review groceries <Arrow /></button></>}
+              : <>{view === 'week' && <><button className="button ghost" onClick={randomizeMeals}>Randomize meals</button><button className="button ghost" disabled={!selected.length} onClick={() => sheetRef.current && printRecipeSheet(sheetRef.current, setSheetSides, selected.length)}>Print recipes</button></>}<button className="button accent" onClick={() => setView('groceries')}>Review groceries <Arrow /></button></>}
           </div>
         </div>
       </section>
@@ -220,6 +223,7 @@ export default function App(props: PlannerProps) {
       {detail.sections.map(group => <div key={group.title}><h3>{group.title}</h3><ul>{group.lines.map((line, i) => <li key={i}>{line}</li>)}</ul></div>)}
     </section></div>; })()}
     {resetConfirm && <div className="modal-backdrop no-print"><section className="modal small-modal" role="dialog" aria-modal="true" aria-labelledby="reset-title"><h2 id="reset-title">Reset sample data?</h2><p>This replaces the plan and pantry saved in this browser with the sample data.</p><div className="bottom-action"><button autoFocus className="button secondary" onClick={() => setResetConfirm(false)}>Cancel</button><button className="button primary" onClick={() => { setState(createSamplePlanner()); setResetConfirm(false); }}>Reset</button></div></section></div>}
+    <RecipeSheet ref={sheetRef} weekLabel={dateLabel} meals={selected} sides={sheetSides} />
     <div className="print-only"><h1>wmp</h1><p>Week of {dateLabel} · {selected.length} dinners</p><h2>Shopping list</h2>{groceries.filter(i => i.status !== 'covered').map(i => <p key={i.id}>□ {i.name} — {amount(i.shortage)} {i.shortage !== null && i.unit}{i.status === 'review' ? ` · CHECK: ${i.reasons.join(' ')}` : ''}</p>)}{covered.length > 0 && <p>In pantry: {covered.map(i => i.name).join(', ')}</p>}{selected.map(({ meal, recipe }) => <section className="print-recipe" key={meal.id}><h2>{recipe.name}</h2><p>{recipe.time} minutes · {meal.servings} servings</p><ul>{recipe.ingredients.map(i => <li key={i.id}>{amount(i.amount === null ? null : i.amount * meal.servings / recipe.servings)} {i.unit} {i.name}</li>)}</ul>{meal.proteinIndex !== undefined && recipe.proteins?.[meal.proteinIndex] && <p><strong>Protein:</strong> {recipe.proteins[meal.proteinIndex].name} · Base recipe amount: {recipe.proteins[meal.proteinIndex].amount}. Scale by {amount(meal.servings / recipe.servings)}×. {recipe.proteins[meal.proteinIndex].instructions}</p>}<ol>{recipe.steps.map((step, i) => <li key={i}>{step}</li>)}</ol></section>)}</div>
   </>;
 }
