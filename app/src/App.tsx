@@ -1,14 +1,17 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import { recipes as libraryRecipes } from './data';
-import { calculateGroceries } from './grocery';
+import { calculateGroceries, canonicalIngredient } from './grocery';
 import { createSamplePlanner, loadPlanner, savePlanner } from './storage';
-import type { Meal, PantryEntry, PlannerState, Recipe } from './types';
+import type { GroceryItem, Meal, PantryEntry, PlannerState, Recipe } from './types';
 import './styles.css';
 import { suggestRecipes, type Suggestion } from './suggest';
 import { rankedCommonItems } from './pantrySeeds';
+import { pickRandomRecipes } from './randomMeals';
+import RecipeBrowser, { Heart } from './RecipeBrowser';
+import { dinnerEntry, recipeImage, type LibraryEntry } from './library';
 import { buildShoppingList, formatShoppingList } from './shoppingList';
 
-type View = 'week' | 'pantry' | 'groceries';
+type View = 'week' | 'recipes' | 'pantry' | 'groceries';
 const amount = (n: number | null) => n === null ? 'As needed' : Number(n.toFixed(2)).toString();
 const STORE_BRAND_KEY = 'wmp.preferStoreBrand';
 const uid = () => crypto.randomUUID();
@@ -28,6 +31,8 @@ interface PlannerProps {
   onReload?: () => void;
   preferStoreBrand?: boolean;
   onPreferStoreBrand?: (value: boolean) => void;
+  favorites?: string[];
+  onToggleFavorite?: (id: string) => void;
 }
 export default function App(props: PlannerProps) {
   const [state, setState] = useState<PlannerState>(() => props.initialState ?? loadPlanner());
@@ -47,7 +52,7 @@ export default function App(props: PlannerProps) {
   const [quickAdd, setQuickAdd] = useState(() => (props.initialState ?? loadPlanner()).pantry.length < 8);
   const [pickerMode, setPickerMode] = useState<'pantry' | 'all'>('pantry');
   const [newItem, setNewItem] = useState('');
-  const [detail, setDetail] = useState<Recipe | null>(null);
+  const [detail, setDetail] = useState<LibraryEntry | null>(null);
   const [saveError, setSaveError] = useState(false);
   const [resetConfirm, setResetConfirm] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -90,11 +95,20 @@ export default function App(props: PlannerProps) {
   const toggleCommon = (name: string) => pantryNames.has(name) ? setState(s => ({ ...s, pantry: s.pantry.filter(p => p.name.trim().toLowerCase() !== name) })) : addPantry(name);
   const stockedCount = state.pantry.filter(p => p.status !== 'out').length;
   const addRecipe = (r: Recipe) => { setState(s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: [...s.meals, { id: uid(), recipeId: r.id, servings: r.servings, recipeSnapshot: structuredClone(r) }] })); setPicker(false); setSearch(''); };
+  const randomizeMeals = () => setState(s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: pickRandomRecipes(recipes, 3, s.meals.map(m => m.recipeId)).map(r => ({ id: uid(), recipeId: r.id, servings: r.servings, recipeSnapshot: structuredClone(r) })) }));
+  const planFromFavorites = (list: Recipe[]) => { setState(s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: pickRandomRecipes(list, 3, s.meals.map(m => m.recipeId)).map(r => ({ id: uid(), recipeId: r.id, servings: r.servings, recipeSnapshot: structuredClone(r) })) })); setView('week'); };
   const openPicker = (mode: 'pantry' | 'all') => { setPickerMode(suggestions.length ? mode : 'all'); setPicker(true); };
   const clearConfirmation = (pantry: PantryEntry[]) => pantry.map(p => ({ ...p, confirmedEnough: false }));
   const updateMeal = (id: string, changes: Partial<Meal>) => setState(s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: s.meals.map(m => m.id === id ? { ...m, ...changes } : m) }));
   const updatePantry = (id: string, changes: Partial<PantryEntry>) => setState(s => ({ ...s, pantry: s.pantry.map(p => p.id === id ? { ...p, ...changes, updatedAt: new Date().toISOString() } : p) }));
   const addPantry = (name: string) => { if (!name.trim()) return; setState(s => s.pantry.some(p => p.name.toLowerCase() === name.trim().toLowerCase()) ? s : ({ ...s, pantry: [...s.pantry, { id: uid(), name: name.trim(), status: 'have', updatedAt: new Date().toISOString() }] })); setNewItem(''); };
+  // Ticking marks the pantry as having enough for this plan; unticking marks it out so the item returns to the list.
+  const setHave = (item: GroceryItem, have: boolean) => setState(s => {
+    const updatedAt = new Date().toISOString();
+    const matches = (p: PantryEntry) => canonicalIngredient(p.name) === item.name;
+    if (have && !s.pantry.some(matches)) return { ...s, pantry: [...s.pantry, { id: uid(), name: item.name, status: 'have', confirmedEnough: true, updatedAt }] };
+    return { ...s, pantry: s.pantry.map(p => matches(p) ? { ...p, status: have ? 'have' : 'out', quantity: undefined, unit: undefined, confirmedEnough: have, updatedAt } : p) };
+  });
   const dateLabel = new Date(`${state.weekOf}T12:00:00`).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
   const exportList = () => { const text = [`WMP — Week of ${dateLabel}`, '', ...selected.map(({ meal, recipe }) => `${recipe.name} · ${meal.servings} servings`), '', 'GROCERIES', ...groceries.map(i => `${i.status === 'covered' ? '[covered]' : '[ ]'} ${i.name}: ${amount(i.shortage)} ${i.unit} ${i.status === 'review' ? '(review needed)' : ''}`)].join('\n'); const url = URL.createObjectURL(new Blob([text], { type: 'text/plain' })); const a = document.createElement('a'); a.href = url; a.download = `wmp-${state.weekOf}.txt`; a.click(); URL.revokeObjectURL(url); };
   const shoppingJson = useMemo(() => formatShoppingList(buildShoppingList(groceries, { preferStoreBrand: storeBrand })), [state, storeBrand]);
@@ -110,7 +124,7 @@ export default function App(props: PlannerProps) {
       <section className="hero">
         <header className="topbar">
           <a className="brand" href="#" onClick={e => { e.preventDefault(); setView('week'); }}>wmp</a>
-          <nav className="tabs" aria-label="Main navigation">{([['week', 'This week'], ['pantry', 'Pantry'], ['groceries', 'Groceries']] as const).map(([key, label]) => <button key={key} className={view === key ? 'active' : ''} onClick={() => setView(key)} aria-current={view === key ? 'page' : undefined}>{label}{key === 'groceries' && needed.length + review.length > 0 && <small>{needed.length + review.length}</small>}</button>)}</nav>
+          <nav className="tabs" aria-label="Main navigation">{([['week', 'This week'], ['recipes', 'Recipes'], ['pantry', 'Pantry'], ['groceries', 'Groceries']] as const).map(([key, label]) => <button key={key} className={view === key ? 'active' : ''} onClick={() => setView(key)} aria-current={view === key ? 'page' : undefined}>{label}{key === 'groceries' && needed.length + review.length > 0 && <small>{needed.length + review.length}</small>}</button>)}</nav>
           <div className="topbar-right">
             <span className="status-pill" role="status"><span />{cloud ? (props.cloudMessage && !props.cloudError ? props.cloudMessage : dirty ? 'Unsaved changes' : props.account) : saveError ? 'Not saved' : 'Saved in this browser'}</span>
             {cloud ? <>
@@ -125,13 +139,13 @@ export default function App(props: PlannerProps) {
         <div className="hero-body">
           <div>
             <label className="week-date">Week of <input aria-label="Plan week date" type="date" value={state.weekOf} disabled={props.saving} onChange={e => { if (!e.target.value) return; if (cloud) { if (leaveEdits()) props.onWeekChange?.(e.target.value); } else setState(s => ({ ...s, weekOf: e.target.value, pantry: clearConfirmation(s.pantry) })); }} /></label>
-            <h1>{view === 'week' ? `${selected.length} ${selected.length === 1 ? 'dinner' : 'dinners'}` : view === 'pantry' ? 'Pantry' : 'Groceries'}</h1>
+            <h1>{view === 'week' ? `${selected.length} ${selected.length === 1 ? 'dinner' : 'dinners'}` : view === 'recipes' ? 'Recipes' : view === 'pantry' ? 'Pantry' : 'Groceries'}</h1>
           </div>
           <div className="hero-actions">
             {stats}
             {view === 'groceries'
               ? <><button className="button ghost" onClick={exportList}>Export</button><button className="button accent" onClick={() => window.print()}>Print</button></>
-              : <button className="button accent" onClick={() => setView('groceries')}>Review groceries <Arrow /></button>}
+              : <>{view === 'week' && <button className="button ghost" onClick={randomizeMeals}>Randomize meals</button>}<button className="button accent" onClick={() => setView('groceries')}>Review groceries <Arrow /></button></>}
           </div>
         </div>
       </section>
@@ -141,11 +155,11 @@ export default function App(props: PlannerProps) {
         <fieldset className="planner-editing" disabled={props.saving}>
         {view === 'week' && <>
           <div className="meal-grid">
-            {selected.map(({ meal, recipe }, index) => <article className="meal-card" key={meal.id}>
-              <div className={`meal-art tint-${index % 4}`}>
-                <span className="plate" aria-hidden="true"><PlateIcon kind={index % 4} /></span>
+            {selected.map(({ meal, recipe }, index) => { const image = recipeImage(recipe.id); return <article className="meal-card" key={meal.id}>
+              <div className={`meal-art ${image ? 'has-photo' : `tint-${index % 4}`}`}>
+                {image ? <img src={image.url} alt="" loading="lazy" /> : <span className="plate" aria-hidden="true"><PlateIcon kind={index % 4} /></span>}
                 <span className="meal-meta">{recipe.bucketLabel} · {recipe.time} min</span>
-                <button className="recipe-title" onClick={() => setDetail(recipe)}>{recipe.name}</button>
+                <button className="recipe-title" onClick={() => setDetail(dinnerEntry(recipe))}>{recipe.name}</button>
               </div>
               <div className="meal-controls">
                 <div className="meal-row">
@@ -158,7 +172,7 @@ export default function App(props: PlannerProps) {
                 </div>
                 {!!recipe.proteins?.length && <label className="protein-select">Protein<select value={meal.proteinIndex ?? ''} onChange={e => updateMeal(meal.id, { proteinIndex: e.target.value === '' ? undefined : Number(e.target.value) })}><option value="">None</option>{recipe.proteins.map((p, i) => <option value={i} key={p.name}>{p.name}</option>)}</select></label>}
               </div>
-            </article>)}
+            </article>; })}
             <button className="add-meal-card" onClick={() => openPicker('all')}><Plus />Add a meal</button>
           </div>
           <section className="suggestions" aria-labelledby="suggest-title">
@@ -168,13 +182,14 @@ export default function App(props: PlannerProps) {
               : <div className="suggest-list">{suggestions.slice(0, 3).map(sg => <article className="suggest-card" key={sg.recipe.id}>
                 <div className="suggest-head">
                   <span className="ring" style={{ '--p': `${Math.round(sg.coverage * 100)}%` } as CSSProperties} aria-label={matchLabel(sg)}><span>{ratio(sg)}</span></span>
-                  <div><small>{sg.recipe.bucketLabel} · {sg.recipe.time} min</small><button className="recipe-title" onClick={() => setDetail(sg.recipe)}>{sg.recipe.name}</button></div>
+                  <div><small>{sg.recipe.bucketLabel} · {sg.recipe.time} min</small><button className="recipe-title" onClick={() => setDetail(dinnerEntry(sg.recipe))}>{sg.recipe.name}</button></div>
                 </div>
                 <p>{missingLabel(sg)}{sg.low.length > 0 && ` · ${sg.low.length} running low`}</p>
                 <button className="button secondary compact" onClick={() => addRecipe(sg.recipe)}>+ Add to week</button>
               </article>)}</div>}
           </section>
         </>}
+        {view === 'recipes' && <RecipeBrowser recipes={recipes} plannedIds={state.meals.map(m => m.recipeId)} favorites={props.favorites} onToggleFavorite={props.onToggleFavorite} onOpen={setDetail} onAdd={addRecipe} onPlanFavorites={planFromFavorites} />}
         {view === 'pantry' && <section>
           <form className="pantry-add" onSubmit={e => { e.preventDefault(); addPantry(newItem); }}><label className="sr-only" htmlFor="pantry-name">Pantry item</label><input id="pantry-name" value={newItem} onChange={e => setNewItem(e.target.value)} placeholder="Add an item, e.g. olive oil" required /><button className="button primary" type="submit">Add</button></form>
           <section className="quick-add">
@@ -188,14 +203,22 @@ export default function App(props: PlannerProps) {
         </section>}
         {view === 'groceries' && <section>
           {!groceries.length && <div className="empty-state">No meals planned yet.<br /><button className="button primary" onClick={() => { setView('week'); openPicker('pantry'); }}>Add a meal</button></div>}
-          {([{ title: 'To check', items: review, kind: 'review', description: 'Confirm pantry amounts or quantities that aren’t specified.' }, { title: 'To buy', items: needed, kind: 'needed', description: 'Amounts still needed after your pantry.' }, { title: 'In your pantry', items: covered, kind: 'covered', description: 'Already on hand for this plan.' }]).filter(g => g.items.length).map(group => <section className={`grocery-group ${group.kind}`} key={group.kind}><div className="section-heading"><h2>{group.title} <span>{group.items.length}</span></h2></div><p className="section-note">{group.description}</p><div className="grocery-list">{group.items.map(item => <article className="grocery-item" key={item.id}><span className="grocery-indicator" aria-hidden="true">{item.status === 'covered' ? '✓' : item.status === 'review' ? '?' : ''}</span><div className="grocery-name"><h3>{item.name}</h3><p>{item.meals.join(' · ')}</p>{item.status === 'review' && <small>{item.reasons.join(' ')}</small>}</div><div className="grocery-quantity">{amount(item.shortage)} {item.shortage !== null && item.unit}<small>{item.covered > 0 ? `${amount(item.covered)} ${item.unit} from pantry` : item.category}</small></div>{item.status !== 'covered' && <button className="text-button" onClick={() => { addPantry(item.name); setView('pantry'); }}>In pantry?</button>}</article>)}</div></section>)}
+          {([{ title: 'To check', items: review, kind: 'review', description: 'Tick “Have it” for anything you already have enough of. Unticked items stay on the shopping list.' }, { title: 'To buy', items: needed, kind: 'needed', description: 'Amounts still needed after your pantry. Tick “Have it” to take an item off the list.' }, { title: 'In your pantry', items: covered, kind: 'covered', description: 'Already on hand for this plan. Untick to put an item back on the list.' }]).filter(g => g.items.length).map(group => <section className={`grocery-group ${group.kind}`} key={group.kind}><div className="section-heading"><h2>{group.title} <span>{group.items.length}</span></h2></div><p className="section-note">{group.description}</p><div className="grocery-list">{group.items.map(item => <article className="grocery-item" key={item.id}><span className="grocery-indicator" aria-hidden="true">{item.status === 'covered' ? '✓' : item.status === 'review' ? '?' : ''}</span><div className="grocery-name"><h3>{item.name}</h3><p>{item.meals.join(' · ')}</p>{item.status === 'review' && <small>{item.reasons.join(' ')}</small>}</div><div className="grocery-quantity">{amount(item.shortage)} {item.shortage !== null && item.unit}<small>{item.covered > 0 ? `${amount(item.covered)} ${item.unit} from pantry` : item.category}</small></div><label className="have-check"><input type="checkbox" checked={item.status === 'covered'} onChange={e => setHave(item, e.target.checked)} /> Have it</label></article>)}</div></section>)}
           {needed.length + review.length > 0 && <section className="grocery-group shopping-json no-print"><div className="section-heading"><h2>Shopping list JSON</h2><div className="json-actions"><button className="button secondary compact" onClick={copyJson}>{copied ? 'Copied' : 'Copy'}</button><button className="button secondary compact" onClick={downloadJson}>Download</button></div></div><p className="section-note">Items to buy and to check, without what your pantry covers. Paste into a shopping assistant.</p><label className="json-option"><input type="checkbox" checked={storeBrand} onChange={e => setStoreBrand(e.target.checked)} /> Prefer store brand</label><textarea ref={jsonRef} readOnly aria-label="Shopping list JSON" value={shoppingJson} rows={12} onFocus={e => e.currentTarget.select()} /></section>}
         </section>}
         </fieldset>
       </main>
     </div>
     {picker && <div className="modal-backdrop no-print" onMouseDown={e => { if (e.target === e.currentTarget) setPicker(false); }}><section className="modal" role="dialog" aria-modal="true" aria-labelledby="picker-title" onClick={e => e.stopPropagation()} onKeyDown={e => { if (e.key === 'Escape') setPicker(false); }}><div className="section-heading"><h2 id="picker-title">Add a meal</h2><button className="close-button" aria-label="Close recipe picker" onClick={() => setPicker(false)}>×</button></div><input className="search-input" autoFocus placeholder="Search recipes or ingredients" aria-label="Search recipes" value={search} onChange={e => setSearch(e.target.value)} /><div className="picker-modes" role="group" aria-label="Sort recipes">{([['pantry', `From your pantry${suggestions.length ? ` · ${suggestions.length}` : ''}`], ['all', 'All recipes']] as const).map(([mode, label]) => <button key={mode} aria-pressed={pickerMode === mode} disabled={mode === 'pantry' && !suggestions.length} onClick={() => setPickerMode(mode)}>{label}</button>)}</div>{pickerMode === 'pantry' && <p className="picker-hint">Sorted by how much you already have. Missing items go on your grocery list.</p>}<div className="recipe-results">{((pickerMode === 'pantry' ? suggestions : recipes.map(recipe => ({ recipe }))) as ({ recipe: Recipe } | Suggestion)[]).filter(({ recipe: r }) => `${r.name} ${r.ingredients.map(i => i.name).join(' ')}`.toLowerCase().includes(search.toLowerCase())).map(item => { const r = item.recipe; const sg = 'coverage' in item ? item : undefined; return <article key={r.id}><div><small>{r.bucketLabel} · {r.time} min{sg && <> · <span className="match-have">{matchLabel(sg)}</span></>}</small><h3>{r.name}</h3><p>{sg ? missingLabel(sg) : r.description}</p></div><button className="button secondary compact" onClick={() => addRecipe(r)}>+ Add</button></article>; })}</div></section></div>}
-    {detail && <div className="modal-backdrop no-print" onMouseDown={e => { if (e.target === e.currentTarget) setDetail(null); }}><section className="modal recipe-detail" role="dialog" aria-modal="true" aria-labelledby="detail-title" onClick={e => e.stopPropagation()} onKeyDown={e => { if (e.key === 'Escape') setDetail(null); }}><div className="section-heading"><h2 id="detail-title">{detail.name}</h2><button autoFocus className="close-button" aria-label="Close recipe" onClick={() => setDetail(null)}>×</button></div><p>{detail.time} minutes · Serves {detail.servings}</p><h3>Ingredients</h3><ul>{detail.ingredients.map(i => <li key={i.id}>{amount(i.amount)} {i.unit} {i.name}</li>)}</ul><h3>Method</h3><ol>{detail.steps.map((step, i) => <li key={i}>{step}</li>)}</ol></section></div>}
+    {detail && (() => { const image = recipeImage(detail.id); const favorite = !!props.favorites?.includes(detail.id); return <div className="modal-backdrop no-print" onMouseDown={e => { if (e.target === e.currentTarget) setDetail(null); }}><section className="modal recipe-detail" role="dialog" aria-modal="true" aria-labelledby="detail-title" onClick={e => e.stopPropagation()} onKeyDown={e => { if (e.key === 'Escape') setDetail(null); }}>
+      <div className="section-heading"><h2 id="detail-title">{detail.name}</h2><div className="detail-actions">{detail.kind === 'dinner' && props.onToggleFavorite && <button className="favorite-button" aria-pressed={favorite} aria-label={favorite ? 'Remove from favorites' : 'Add to favorites'} onClick={() => props.onToggleFavorite?.(detail.id)}><Heart filled={favorite} /></button>}<button autoFocus className="close-button" aria-label="Close recipe" onClick={() => setDetail(null)}>×</button></div></div>
+      {image && <figure className="detail-photo"><img src={image.url} alt="" /><figcaption>Photo of a similar dish: <a href={image.sourceUrl} target="_blank" rel="noreferrer">{image.author}, {image.license}, Wikimedia Commons</a></figcaption></figure>}
+      <p>{detail.facts.join(' · ')}</p>
+      {detail.description && <p>{detail.description}</p>}
+      <h3>Ingredients</h3><ul>{detail.ingredients.map(i => <li key={i.id}>{amount(i.amount)} {i.unit} {i.name}</li>)}</ul>
+      <h3>Method</h3><ol>{detail.steps.map((step, i) => <li key={i}>{step}</li>)}</ol>
+      {detail.sections.map(group => <div key={group.title}><h3>{group.title}</h3><ul>{group.lines.map((line, i) => <li key={i}>{line}</li>)}</ul></div>)}
+    </section></div>; })()}
     {resetConfirm && <div className="modal-backdrop no-print"><section className="modal small-modal" role="dialog" aria-modal="true" aria-labelledby="reset-title"><h2 id="reset-title">Reset sample data?</h2><p>This replaces the plan and pantry saved in this browser with the sample data.</p><div className="bottom-action"><button autoFocus className="button secondary" onClick={() => setResetConfirm(false)}>Cancel</button><button className="button primary" onClick={() => { setState(createSamplePlanner()); setResetConfirm(false); }}>Reset</button></div></section></div>}
     <div className="print-only"><h1>wmp</h1><p>Week of {dateLabel} · {selected.length} dinners</p><h2>Shopping list</h2>{groceries.filter(i => i.status !== 'covered').map(i => <p key={i.id}>□ {i.name} — {amount(i.shortage)} {i.shortage !== null && i.unit}{i.status === 'review' ? ` · CHECK: ${i.reasons.join(' ')}` : ''}</p>)}{covered.length > 0 && <p>In pantry: {covered.map(i => i.name).join(', ')}</p>}{selected.map(({ meal, recipe }) => <section className="print-recipe" key={meal.id}><h2>{recipe.name}</h2><p>{recipe.time} minutes · {meal.servings} servings</p><ul>{recipe.ingredients.map(i => <li key={i.id}>{amount(i.amount === null ? null : i.amount * meal.servings / recipe.servings)} {i.unit} {i.name}</li>)}</ul>{meal.proteinIndex !== undefined && recipe.proteins?.[meal.proteinIndex] && <p><strong>Protein:</strong> {recipe.proteins[meal.proteinIndex].name} · Base recipe amount: {recipe.proteins[meal.proteinIndex].amount}. Scale by {amount(meal.servings / recipe.servings)}×. {recipe.proteins[meal.proteinIndex].instructions}</p>}<ol>{recipe.steps.map((step, i) => <li key={i}>{step}</li>)}</ol></section>)}</div>
   </>;

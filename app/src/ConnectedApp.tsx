@@ -62,6 +62,14 @@ function CloudPlanner({ client, session }: { client: SupabaseClient; session: Se
     const { error } = await client.auth.signOut({ scope: 'local' });
     if (error) { setMessage(`Sign-out failed: ${error.message}`); setFailed(true); }
   }
+  const [favorites, setFavorites] = useState<string[]>(() => { const saved: unknown = session.user.user_metadata?.favorite_recipes; return Array.isArray(saved) ? saved.filter((id): id is string => typeof id === 'string') : []; });
+  async function toggleFavorite(id: string) {
+    const previous = favorites;
+    const next = previous.includes(id) ? previous.filter(x => x !== id) : [...previous, id];
+    setFavorites(next);
+    const { error } = await client.auth.updateUser({ data: { favorite_recipes: next } });
+    if (error) { setFavorites(previous); setMessage(`Favorite not saved: ${error.message}`); }
+  }
   async function saveStoreBrand(value: boolean) {
     setStoreBrand(value);
     const { error } = await client.auth.updateUser({ data: { prefer_store_brand: value } });
@@ -90,5 +98,6 @@ function CloudPlanner({ client, session }: { client: SupabaseClient; session: Se
     onSave={state => void save(state)} onSignOut={() => void signOut()} saving={saving}
     cloudMessage={message} cloudError={failed} onReload={() => setReload(n => n + 1)}
     onWeekChange={date => setWeek(normalizeWeek(date))}
-    preferStoreBrand={storeBrand} onPreferStoreBrand={value => void saveStoreBrand(value)} />;
+    preferStoreBrand={storeBrand} onPreferStoreBrand={value => void saveStoreBrand(value)}
+    favorites={favorites} onToggleFavorite={id => void toggleFavorite(id)} />;
 }

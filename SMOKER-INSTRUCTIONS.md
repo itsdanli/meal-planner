@@ -114,3 +114,9 @@ Every smoker recipe should be worth the time investment. The bar is: genuinely g
 - **Descriptions** should convey what makes the cook special — not just what's in it. Name the method, the result, or the flavor payoff.
 - **Steps** should include temperatures, timing windows, and visual/tactile doneness cues — not just instructions. Smoker recipes live or die by this detail.
 - **Tips** should be genuinely useful, not generic. "Don't open the lid too often" is too vague. "Spritzing with apple juice every 45 minutes after the first hour builds bark and keeps moisture up" is useful.
+
+---
+
+## Photos
+
+Every new entry also gets a photo. Follow the **Recipe Photos** section of `RECIPES-INSTRUCTIONS.md`.

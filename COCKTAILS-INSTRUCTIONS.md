@@ -89,3 +89,9 @@ Every cocktail should be worth making again. The bar is: genuinely delicious, we
 - **Descriptions** should be specific and appetizing — say what makes the drink distinct, not just what's in it.
 - **Steps** should be practical and precise — temperatures, timing, and technique details matter in cocktails more than cooking.
 - **Ingredient names** should specify brand or style where it meaningfully affects the result (e.g. `"blanco tequila (e.g. Espolòn, Olmeca Altos)"`).
+
+---
+
+## Photos
+
+Every new entry also gets a photo. Follow the **Recipe Photos** section of `RECIPES-INSTRUCTIONS.md`.

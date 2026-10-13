@@ -1,0 +1,506 @@
+{
+  "black-bean-tacos": {
+    "query": "black bean tacos",
+    "file": "black-bean-tacos.jpg",
+    "commonsTitle": "File:Vegetables and Black Bean Tacos (7212559656).jpg",
+    "author": "Jennifer from Vancouver, Canada",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vegetables_and_Black_Bean_Tacos_(7212559656).jpg"
+  },
+  "veggie-burrito-bowls": {
+    "query": "burrito bowl",
+    "file": "veggie-burrito-bowls.jpg",
+    "commonsTitle": "File:Los Gallitos - October 31 2022 - Sarah Stierch 04.jpg",
+    "author": "Missvain",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Los_Gallitos_-_October_31_2022_-_Sarah_Stierch_04.jpg"
+  },
+  "shakshuka": {
+    "query": "shakshuka",
+    "file": "shakshuka.jpg",
+    "commonsTitle": "File:Shakshuka by Calliopejen1.jpg",
+    "author": "Calliopejen1",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shakshuka_by_Calliopejen1.jpg"
+  },
+  "greek-grain-bowl": {
+    "query": "quinoa salad",
+    "file": "greek-grain-bowl.jpg",
+    "commonsTitle": "File:Quinoa Salad (5045982815).jpg",
+    "author": "Geoff Peters from Vancouver, BC, Canada",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Quinoa_Salad_(5045982815).jpg"
+  },
+  "pasta-e-fagioli": {
+    "query": "pasta e fagioli",
+    "file": "pasta-e-fagioli.jpg",
+    "commonsTitle": "File:Pasta e fagioli cannellini.jpg",
+    "author": "Spinoziano",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pasta_e_fagioli_cannellini.jpg"
+  },
+  "creamy-lemon-zucchini-pasta": {
+    "query": "zucchini pasta",
+    "file": "creamy-lemon-zucchini-pasta.jpg",
+    "commonsTitle": "File:Zucchini oil pasta.jpg",
+    "author": "chomjong",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Zucchini_oil_pasta.jpg"
+  },
+  "thai-peanut-noodles": {
+    "query": "peanut noodles",
+    "file": "thai-peanut-noodles.jpg",
+    "commonsTitle": "File:Vegan Peanut Cold Noodles with Cucumbers (6002018387).jpg",
+    "author": "tomatoes and friends",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vegan_Peanut_Cold_Noodles_with_Cucumbers_(6002018387).jpg"
+  },
+  "miso-salmon-rice-bowl": {
+    "query": "miso soup rice",
+    "file": "miso-salmon-rice-bowl.jpg",
+    "commonsTitle": "File:Miso soup and Rice 20141027.jpg",
+    "author": "Tobosha",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Miso_soup_and_Rice_20141027.jpg"
+  },
+  "veggie-chili": {
+    "query": "vegetarian chili",
+    "file": "veggie-chili.jpg",
+    "commonsTitle": "File:Bowl of chili.jpg",
+    "author": "Carstor",
+    "license": "CC BY-SA 2.5",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bowl_of_chili.jpg"
+  },
+  "loaded-baked-potato-bar": {
+    "query": "baked potato sour cream",
+    "file": "loaded-baked-potato-bar.jpg",
+    "commonsTitle": "File:Microwaved potatoes.JPG",
+    "author": "me (w:User:pfctdayelise)",
+    "license": "CC BY-SA 2.5",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Microwaved_potatoes.JPG"
+  },
+  "mediterranean-flatbread": {
+    "query": "flatbread pizza",
+    "file": "mediterranean-flatbread.jpg",
+    "commonsTitle": "File:Flatbread Pizza.jpg",
+    "author": "Blogger GrootOO7",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flatbread_Pizza.jpg"
+  },
+  "lemon-butter-orzo": {
+    "query": "orzo salad",
+    "file": "lemon-butter-orzo.jpg",
+    "commonsTitle": "File:Lemongrass Orzo Salad 1.jpg",
+    "author": "Vegan Feast Catering",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lemongrass_Orzo_Salad_1.jpg"
+  },
+  "white-bean-tomato-skillet": {
+    "query": "gigantes plaki",
+    "file": "white-bean-tomato-skillet.jpg",
+    "commonsTitle": "File:Gigandes plaki.jpg",
+    "author": "Hevesli",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gigandes_plaki.jpg"
+  },
+  "spanakorizo": {
+    "query": "spanakorizo",
+    "file": "spanakorizo.jpg",
+    "commonsTitle": "File:Σπανακόρυζο Spanakorizo (Las Siete Orillas project) (2).jpg",
+    "author": "El Mono Español",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%CE%A3%CF%80%CE%B1%CE%BD%CE%B1%CE%BA%CF%8C%CF%81%CF%85%CE%B6%CE%BF_Spanakorizo_(Las_Siete_Orillas_project)_(2).jpg"
+  },
+  "pasta-e-ceci": {
+    "query": "pasta e ceci",
+    "file": "pasta-e-ceci.jpg",
+    "commonsTitle": "File:Pasta e ceci (49671162847).jpg",
+    "author": "spurekar",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pasta_e_ceci_(49671162847).jpg"
+  },
+  "tuscan-white-bean-pasta": {
+    "query": "pasta kale",
+    "file": "tuscan-white-bean-pasta.jpg",
+    "commonsTitle": "File:Garganelli with Pancetta, Kale, and Tomato (10347979145).jpg",
+    "author": "Jameson Fink from New York, USA",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Garganelli_with_Pancetta,_Kale,_and_Tomato_(10347979145).jpg"
+  },
+  "pasta-arrabbiata": {
+    "query": "penne arrabbiata",
+    "file": "pasta-arrabbiata.jpg",
+    "commonsTitle": "File:Penne Arrabbiata.jpg",
+    "author": "Petar Milošević",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Penne_Arrabbiata.jpg"
+  },
+  "korean-rice-bowls": {
+    "query": "bibimbap",
+    "file": "korean-rice-bowls.jpg",
+    "commonsTitle": "File:Korean.food-Bibimbap-02.jpg",
+    "author": "abex (a flickr user)",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korean.food-Bibimbap-02.jpg"
+  },
+  "veggie-teriyaki-stir-fry": {
+    "query": "vegetable stir fry",
+    "file": "veggie-teriyaki-stir-fry.jpg",
+    "commonsTitle": "File:Stir Fry Vegetables in Pan.jpg",
+    "author": "Alabama Extension",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stir_Fry_Vegetables_in_Pan.jpg"
+  },
+  "sesame-tahini-noodle-stir-fry": {
+    "query": "sesame noodles",
+    "file": "sesame-tahini-noodle-stir-fry.jpg",
+    "commonsTitle": "File:Sesame Noodles with Chicken, Wou Cha, Paris 003.jpg",
+    "author": "Guilhem Vellut from Paris, France",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sesame_Noodles_with_Chicken,_Wou_Cha,_Paris_003.jpg"
+  },
+  "thai-red-curry": {
+    "query": "thai red curry vegetables",
+    "file": "thai-red-curry.jpg",
+    "commonsTitle": "File:Red Curry with Chicken - Little Thai, Brighton 2024-03-01.jpg",
+    "author": "Andy Li",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Red_Curry_with_Chicken_-_Little_Thai,_Brighton_2024-03-01.jpg"
+  },
+  "veggie-black-bean-enchiladas": {
+    "query": "enchiladas",
+    "file": "veggie-black-bean-enchiladas.jpg",
+    "commonsTitle": "File:Enchiladas con salsa roja.jpg",
+    "author": "Dahyana Yasada R. R.",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Enchiladas_con_salsa_roja.jpg"
+  },
+  "spiced-lentil-soup": {
+    "query": "lentil soup",
+    "file": "spiced-lentil-soup.jpg",
+    "commonsTitle": "File:Bowl of lentil soup with green and red lentils.jpg",
+    "author": "Whoisjohngalt",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bowl_of_lentil_soup_with_green_and_red_lentils.jpg"
+  },
+  "coconut-vegetable-curry": {
+    "query": "vegetable coconut curry",
+    "file": "coconut-vegetable-curry.jpg",
+    "commonsTitle": "File:Thai ginger curry with vegetables and coconut milk, on rotini - Massachusetts.jpg",
+    "author": "Daderot",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Thai_ginger_curry_with_vegetables_and_coconut_milk,_on_rotini_-_Massachusetts.jpg"
+  },
+  "pad-thai": {
+    "query": "pad thai",
+    "file": "pad-thai.jpg",
+    "commonsTitle": "File:Phat Thai kung Chang Khien street stall.jpg",
+    "author": "Takeaway",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Phat_Thai_kung_Chang_Khien_street_stall.jpg"
+  },
+  "egg-fried-rice": {
+    "query": "egg fried rice",
+    "file": "egg-fried-rice.jpg",
+    "commonsTitle": "File:Eggs and Green peppers fried rice (9123923411).jpg",
+    "author": "Kakei.R",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eggs_and_Green_peppers_fried_rice_(9123923411).jpg"
+  },
+  "vietnamese-lemongrass-bowls": {
+    "query": "bún thịt nướng",
+    "file": "vietnamese-lemongrass-bowls.jpg",
+    "commonsTitle": "File:Bun thit nuong.jpg",
+    "author": "Lưu Ly",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bun_thit_nuong.jpg"
+  },
+  "crispy-black-bean-tostadas": {
+    "query": "tostadas",
+    "file": "crispy-black-bean-tostadas.jpg",
+    "commonsTitle": "File:Spicy salmon avocado tostadas 01.jpg",
+    "author": "T.Tseng",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spicy_salmon_avocado_tostadas_01.jpg"
+  },
+  "pasta-alla-norma": {
+    "query": "pasta alla norma",
+    "file": "pasta-alla-norma.jpg",
+    "commonsTitle": "File:Pasta alla Norma (2563876877).jpg",
+    "author": "Paoletta S.",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pasta_alla_Norma_(2563876877).jpg"
+  },
+  "pasta-primavera": {
+    "query": "pasta primavera",
+    "file": "pasta-primavera.jpg",
+    "commonsTitle": "File:Pasta primavera (1) (cropped).jpg",
+    "author": "Stacy Spensley from San Diego",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pasta_primavera_(1)_(cropped).jpg"
+  },
+  "creamy-mushroom-pasta": {
+    "query": "mushroom pasta",
+    "file": "creamy-mushroom-pasta.jpg",
+    "commonsTitle": "File:Pasta of the Day.jpg",
+    "author": "Nikchick",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pasta_of_the_Day.jpg"
+  },
+  "pasta-caprese": {
+    "query": "pasta al pomodoro",
+    "file": "pasta-caprese.jpg",
+    "commonsTitle": "File:Pasta al pomodoro crudo (5184624902).jpg",
+    "author": "Lablascovegmenu from London",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pasta_al_pomodoro_crudo_(5184624902).jpg"
+  },
+  "penne-alla-vodka": {
+    "query": "penne alla vodka",
+    "file": "penne-alla-vodka.jpg",
+    "commonsTitle": "File:PenneAllaVodka.jpg",
+    "author": "Joseph O'Connell - https://www.flickr.com/photos/joconnell/",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:PenneAllaVodka.jpg"
+  },
+  "stovetop-mac-and-cheese-broccoli": {
+    "query": "macaroni and cheese",
+    "file": "stovetop-mac-and-cheese-broccoli.jpg",
+    "commonsTitle": "File:Flickr stuart spivack 173603796--Macaroni and cheese.jpg",
+    "author": "Stuart Spivack from Cleveland, Ohio, USA",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flickr_stuart_spivack_173603796--Macaroni_and_cheese.jpg"
+  },
+  "lentil-sloppy-joes": {
+    "query": "sloppy joe sandwich",
+    "file": "lentil-sloppy-joes.jpg",
+    "commonsTitle": "File:Sloppy Joe \"homemade\".jpg",
+    "author": "Buck Blues",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sloppy_Joe_%22homemade%22.jpg"
+  },
+  "corn-potato-chowder": {
+    "query": "corn chowder",
+    "file": "corn-potato-chowder.jpg",
+    "commonsTitle": "File:Corn chowder close-up.jpg",
+    "author": "Austin Matherne from Minneapolis, United States",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Corn_chowder_close-up.jpg"
+  },
+  "skillet-veggie-fajitas": {
+    "query": "fajitas",
+    "file": "skillet-veggie-fajitas.jpg",
+    "commonsTitle": "File:Fajitas at Taqueria La Hacienda - October 2023 - Sarah Stierch 02.jpg",
+    "author": "Missvain",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fajitas_at_Taqueria_La_Hacienda_-_October_2023_-_Sarah_Stierch_02.jpg"
+  },
+  "black-bean-corn-quesadillas": {
+    "query": "quesadilla",
+    "file": "black-bean-corn-quesadillas.jpg",
+    "commonsTitle": "File:Chicken quesadilla - Massachusetts.jpg",
+    "author": "Daderot",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chicken_quesadilla_-_Massachusetts.jpg"
+  },
+  "vegetarian-tortilla-soup": {
+    "query": "tortilla soup",
+    "file": "vegetarian-tortilla-soup.jpg",
+    "commonsTitle": "File:Tortilla Soup.jpg",
+    "author": "Wikiwrimo",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tortilla_Soup.jpg"
+  },
+  "aperol-spritz": {
+    "query": "aperol spritz",
+    "file": "aperol-spritz.jpg",
+    "commonsTitle": "File:Aperol Spritz - Santa Ynez Kitchen - Sarah Stierch.jpg",
+    "author": "Missvain",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aperol_Spritz_-_Santa_Ynez_Kitchen_-_Sarah_Stierch.jpg"
+  },
+  "paloma": {
+    "query": "paloma cocktail",
+    "file": "paloma.jpg",
+    "commonsTitle": "File:La Casa Restaurant - Stierch - April 2019 02.jpg",
+    "author": "Missvain",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:La_Casa_Restaurant_-_Stierch_-_April_2019_02.jpg"
+  },
+  "hugo-spritz": {
+    "query": "hugo cocktail",
+    "file": "hugo-spritz.jpg",
+    "commonsTitle": "File:Glitzernde Cocktailgläser Weihnachtsmarkt 01.jpg",
+    "author": "Maimaid",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Glitzernde_Cocktailgl%C3%A4ser_Weihnachtsmarkt_01.jpg"
+  },
+  "classic-margarita": {
+    "query": "margarita cocktail",
+    "file": "classic-margarita.jpg",
+    "commonsTitle": "File:Margarita de limón, Mazatlán, 23 de noviembre de 2022 12.jpg",
+    "author": "El Nuevo Doge",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Margarita_de_lim%C3%B3n,_Mazatl%C3%A1n,_23_de_noviembre_de_2022_12.jpg"
+  },
+  "old-fashioned": {
+    "query": "old fashioned cocktail",
+    "file": "old-fashioned.jpg",
+    "commonsTitle": "File:Old fashioned orange slice cocktail ice cubes straw on table (18063379523).jpg",
+    "author": "Personal Creations",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Old_fashioned_orange_slice_cocktail_ice_cubes_straw_on_table_(18063379523).jpg"
+  },
+  "negroni": {
+    "query": "negroni cocktail",
+    "file": "negroni.jpg",
+    "commonsTitle": "File:Negroni served in Vancouver BC.jpg",
+    "author": "Geoff Peters from Vancouver, BC, Canada",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Negroni_served_in_Vancouver_BC.jpg"
+  },
+  "classic-mojito": {
+    "query": "mojito",
+    "file": "classic-mojito.jpg",
+    "commonsTitle": "File:Mojito, Mazatlán, 30 de noviembre de 2022.jpg",
+    "author": "El Nuevo Doge",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mojito,_Mazatl%C3%A1n,_30_de_noviembre_de_2022.jpg"
+  },
+  "batch-sangria": {
+    "query": "sangria",
+    "file": "batch-sangria.jpg",
+    "commonsTitle": "File:Sangria 001.jpg",
+    "author": "Arnaud 25",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sangria_001.jpg"
+  },
+  "watermelon-margarita": {
+    "query": "watermelon margarita",
+    "file": "watermelon-margarita.jpg",
+    "commonsTitle": "File:Watermelon Margarita or Mojito (14888830500).jpg",
+    "author": "Personal Creations",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Watermelon_Margarita_or_Mojito_(14888830500).jpg"
+  },
+  "batch-margarita-pitcher": {
+    "query": "margarita pitcher",
+    "file": "batch-margarita-pitcher.jpg",
+    "commonsTitle": "File:Cherry beer margarita in a glass with lime and straw and maraschino with pitcher and flowers (18492281928).jpg",
+    "author": "Personal Creations",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cherry_beer_margarita_in_a_glass_with_lime_and_straw_and_maraschino_with_pitcher_and_flowers_(18492281928).jpg"
+  },
+  "spatchcock-chicken": {
+    "query": "spatchcock chicken grilled",
+    "file": "spatchcock-chicken.jpg",
+    "commonsTitle": "File:Spatchcocking.jpg",
+    "author": "Foodista",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spatchcocking.jpg"
+  },
+  "baby-back-ribs-321": {
+    "query": "smoked baby back ribs",
+    "file": "baby-back-ribs-321.jpg",
+    "commonsTitle": "File:Baby back ribs - hickory smoked.jpg",
+    "author": "Foodista",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Baby_back_ribs_-_hickory_smoked.jpg"
+  },
+  "smoked-salmon": {
+    "query": "hot smoked salmon",
+    "file": "smoked-salmon.jpg",
+    "commonsTitle": "File:MC 澳門 Macau 路氹 Cotai 萬豪酒店 JW Marriott Hotel Macao 名廚都匯 Urban Kitchen Restaurant 自助午餐 lunch buffet hot food smoked salmon fish March 2026 N13P 02.jpg",
+    "author": "MCMAZ Lunggma",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:MC_%E6%BE%B3%E9%96%80_Macau_%E8%B7%AF%E6%B0%B9_Cotai_%E8%90%AC%E8%B1%AA%E9%85%92%E5%BA%97_JW_Marriott_Hotel_Macao_%E5%90%8D%E5%BB%9A%E9%83%BD%E5%8C%AF_Urban_Kitchen_Restaurant_%E8%87%AA%E5%8A%A9%E5%8D%88%E9%A4%90_lunch_buffet_hot_food_smoked_salmon_fish_March_2026_N13P_02.jpg"
+  },
+  "green-power-smoothie": {
+    "query": "green smoothie",
+    "file": "green-power-smoothie.jpg",
+    "commonsTitle": "File:Kiwi Smoothie.jpg",
+    "author": "rawpixel.com",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kiwi_Smoothie.jpg"
+  },
+  "strawberry-protein-smoothie": {
+    "query": "strawberry banana smoothie",
+    "file": "strawberry-protein-smoothie.jpg",
+    "commonsTitle": "File:Kid friendly green smoothie in a personalized glass with spinach, Greek yogurt, frozen blueberries, blackberries and strawberries and berries, banana in a glass bowl on a wood table (16225943125).jpg",
+    "author": "Personal Creations",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kid_friendly_green_smoothie_in_a_personalized_glass_with_spinach,_Greek_yogurt,_frozen_blueberries,_blackberries_and_strawberries_and_berries,_banana_in_a_glass_bowl_on_a_wood_table_(16225943125).jpg"
+  },
+  "tropical-mango-smoothie": {
+    "query": "mango smoothie",
+    "file": "tropical-mango-smoothie.jpg",
+    "commonsTitle": "File:Fresh-mango-smoothie 01.jpg",
+    "author": "Vivekpat30",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fresh-mango-smoothie_01.jpg"
+  },
+  "blueberry-acai-smoothie": {
+    "query": "blueberry smoothie",
+    "file": "blueberry-acai-smoothie.jpg",
+    "commonsTitle": "File:Blueberry Cacao Coconut Smoothie (12912829224).jpg",
+    "author": "Ryan Snyder",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Blueberry_Cacao_Coconut_Smoothie_(12912829224).jpg"
+  }
+}
