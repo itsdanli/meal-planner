@@ -124,6 +124,13 @@ export function calculateGroceries(recipes: Recipe[], meals: Meal[], pantry: Pan
     item.shortage = item.needed === null ? null : rounded(Math.max(0, item.needed - item.covered));
     item.reasons = [...new Set(item.reasons)];
     item.status = item.reasons.length || item.shortage === null ? 'review' : item.shortage === 0 ? 'covered' : 'needed';
+    // An explicit "have enough" confirmation settles the item, whatever else was open for review.
+    if (pantry.some(entry => canonicalIngredient(entry.name) === canonical && entry.status === 'have' && entry.confirmedEnough && !validAmount(entry.quantity))) {
+      item.covered = item.needed ?? 0;
+      item.shortage = 0;
+      item.reasons = [];
+      item.status = 'covered';
+    }
   }
   return [...groups.values()].map(group => group.item).sort((a, b) => a.name.localeCompare(b.name) || a.unit.localeCompare(b.unit));
 }

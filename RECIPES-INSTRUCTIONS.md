@@ -111,6 +111,21 @@ Each recipe must strictly follow this structure:
 
 ---
 
+## Recipe Photos
+
+Every new recipe gets a photo of a similar dish. This applies to all four data files (`recipes.json`, `cocktails.json`, `smoker-recipes.json`, `smoothies.json`).
+
+1. After adding the recipe, add its ID to `recipe-images.json` with a short `query` naming the dish in plain words (e.g. `"query": "corn chowder"`), not the full recipe title.
+2. From `app/`, run `node scripts/fetch-recipe-images.mjs`. It searches Wikimedia Commons, downloads the photo to `app/public/recipe-images/<id>.jpg`, and records the author, license and source page in `recipe-images.json`. Recipes that already have a photo are skipped.
+3. Look at the downloaded photo. If it is not a good match, delete the file, then either change the `query` or set `commonsTitle` to the exact `File:...` page of a better photo, and run the script again. `--candidates out.json` lists the top options without downloading.
+
+Rules:
+- Use **only freely licensed photos from Wikimedia Commons** (CC0, public domain, CC BY, CC BY-SA). Never copy photos from recipe blogs or publications: those are copyrighted.
+- Keep the credit fields in `recipe-images.json`; the app shows them under the photo.
+- The photo should show the same kind of dish. A close match is acceptable; a different dish is not. If nothing fits, leave the recipe without a photo.
+
+---
+
 ## Ingredient Exclusion Rules
 
 Before finalizing any recipe, check the exclusion list in `prefs.json` under `ingredientExclusions`.

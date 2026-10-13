@@ -54,10 +54,16 @@ test('reviewed prep aliases merge but fresh/dried and different can sizes remain
 
 test('unknown ingredient amount is retained even alongside a known amount', () => {
   const recipes = [recipe('A', [ingredient('salt', 1, 'tsp'), ingredient('salt', null, 'tsp')])];
-  const [item] = calculateGroceries(recipes, [meal('A')], [pantry('salt', { confirmedEnough: true })]);
+  const [item] = calculateGroceries(recipes, [meal('A')], [pantry('salt', {})]);
   assert.equal(item.needed, null);
   assert.equal(item.shortage, null);
   assert.equal(item.status, 'review');
+});
+
+test('confirming enough settles an item with an unknown amount or an ingredient choice', () => {
+  const recipes = [recipe('A', [ingredient('salt', null, 'tsp'), ingredient('olive oil or avocado oil', 1, 'tbsp')])];
+  const items = calculateGroceries(recipes, [meal('A')], [pantry('salt', { confirmedEnough: true }), pantry('olive oil or avocado oil', { confirmedEnough: true })]);
+  assert.ok(items.every(item => item.status === 'covered' && item.shortage === 0 && item.reasons.length === 0));
 });
 
 test('preparation conjunctions do not require ingredient-choice review', () => {
@@ -97,11 +103,13 @@ test('incompatible pantry units never infer density', () => {
   assert.equal(item.status, 'review');
 });
 
-test('incompatible recipe units remain separate and confirmation cannot cover both', () => {
+test('incompatible recipe units remain separate; a tracked amount cannot cover both but confirmation can', () => {
   const recipes = [recipe('A', [ingredient('flour', 100, 'g'), ingredient('flour', 1, 'cup')])];
-  const items = calculateGroceries(recipes, [meal('A')], [pantry('flour', { confirmedEnough: true })]);
-  assert.equal(items.length, 2);
-  assert.ok(items.every(item => item.status === 'review' && item.covered === 0));
+  const tracked = calculateGroceries(recipes, [meal('A')], [pantry('flour', { quantity: 500, unit: 'g' })]);
+  assert.equal(tracked.length, 2);
+  assert.ok(tracked.every(item => item.status === 'review'));
+  const confirmed = calculateGroceries(recipes, [meal('A')], [pantry('flour', { confirmedEnough: true })]);
+  assert.ok(confirmed.every(item => item.status === 'covered'));
 });
 
 test('selected protein scales with portions; unselected protein is omitted', () => {

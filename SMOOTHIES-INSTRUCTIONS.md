@@ -89,3 +89,9 @@ Every smoothie should taste great and be worth making again. The bar is: genuine
 - **Descriptions** should be appetizing and specific. Name what makes the flavor combination work, not just what's in it.
 - **Steps** should mention blender order (liquid + greens first is standard for green smoothies), blend time, and how to adjust consistency. These small details matter.
 - **Ingredient names** should be specific where it affects the result (e.g., `"frozen banana"` vs `"fresh banana"`, `"unsweetened almond milk"` vs just `"almond milk"`).
+
+---
+
+## Photos
+
+Every new entry also gets a photo. Follow the **Recipe Photos** section of `RECIPES-INSTRUCTIONS.md`.
