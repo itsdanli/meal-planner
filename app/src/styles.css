@@ -151,6 +151,9 @@ main { max-width: 1512px; margin: 0 auto; padding: 34px 56px 64px; }
 
 /* Groceries */
 .grocery-group { margin-bottom: 36px; }
+.json-actions { display: flex; gap: 8px; }
+.json-option { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 14px; }
+.shopping-json textarea { display: block; width: 100%; border: 1px solid var(--border-strong); border-radius: 9px; padding: 14px; background: #fafbf4; color: inherit; font: 12px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; resize: vertical; }
 .grocery-list { border: 1px solid var(--border); border-radius: 14px; background: var(--card); padding: 0 20px; }
 .grocery-item { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-top: 1px solid var(--border); }
 .grocery-item:first-child { border-top: 0; }

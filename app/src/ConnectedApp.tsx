@@ -41,6 +41,7 @@ function CloudPlanner({ client, session }: { client: SupabaseClient; session: Se
   const [reload, setReload] = useState(0);
   const [version, setVersion] = useState(0);
   const saveLock = useRef(false);
+  const [storeBrand, setStoreBrand] = useState(session.user.user_metadata?.prefer_store_brand === true);
   useEffect(() => {
     let active = true;
     setLoading(true);
@@ -60,6 +61,11 @@ function CloudPlanner({ client, session }: { client: SupabaseClient; session: Se
   async function signOut() {
     const { error } = await client.auth.signOut({ scope: 'local' });
     if (error) { setMessage(`Sign-out failed: ${error.message}`); setFailed(true); }
+  }
+  async function saveStoreBrand(value: boolean) {
+    setStoreBrand(value);
+    const { error } = await client.auth.updateUser({ data: { prefer_store_brand: value } });
+    if (error) { setStoreBrand(!value); setMessage(`Preference not saved: ${error.message}`); }
   }
   async function save(state: PlannerState) {
     if (!snapshot || saveLock.current) return;
@@ -83,5 +89,6 @@ function CloudPlanner({ client, session }: { client: SupabaseClient; session: Se
   return <App key={version} initialState={snapshot.state} account={session.user.email || 'Your household'}
     onSave={state => void save(state)} onSignOut={() => void signOut()} saving={saving}
     cloudMessage={message} cloudError={failed} onReload={() => setReload(n => n + 1)}
-    onWeekChange={date => setWeek(normalizeWeek(date))} />;
+    onWeekChange={date => setWeek(normalizeWeek(date))}
+    preferStoreBrand={storeBrand} onPreferStoreBrand={value => void saveStoreBrand(value)} />;
 }

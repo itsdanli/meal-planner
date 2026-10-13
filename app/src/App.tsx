@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type CSSProperties } from 'react';
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import { recipes as libraryRecipes } from './data';
 import { calculateGroceries } from './grocery';
 import { createSamplePlanner, loadPlanner, savePlanner } from './storage';
@@ -6,9 +6,11 @@ import type { Meal, PantryEntry, PlannerState, Recipe } from './types';
 import './styles.css';
 import { suggestRecipes, type Suggestion } from './suggest';
 import { rankedCommonItems } from './pantrySeeds';
+import { buildShoppingList, formatShoppingList } from './shoppingList';
 
 type View = 'week' | 'pantry' | 'groceries';
 const amount = (n: number | null) => n === null ? 'As needed' : Number(n.toFixed(2)).toString();
+const STORE_BRAND_KEY = 'wmp.preferStoreBrand';
 const uid = () => crypto.randomUUID();
 const ratio = (s: Suggestion) => `${s.have.length + s.low.length}/${s.have.length + s.low.length + s.missing.length}`;
 const matchLabel = (s: Suggestion) => `You have ${s.have.length + s.low.length} of ${s.have.length + s.low.length + s.missing.length}`;
@@ -24,6 +26,8 @@ interface PlannerProps {
   cloudMessage?: string;
   cloudError?: boolean;
   onReload?: () => void;
+  preferStoreBrand?: boolean;
+  onPreferStoreBrand?: (value: boolean) => void;
 }
 export default function App(props: PlannerProps) {
   const [state, setState] = useState<PlannerState>(() => props.initialState ?? loadPlanner());
@@ -46,6 +50,11 @@ export default function App(props: PlannerProps) {
   const [detail, setDetail] = useState<Recipe | null>(null);
   const [saveError, setSaveError] = useState(false);
   const [resetConfirm, setResetConfirm] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [localStoreBrand, setLocalStoreBrand] = useState(() => { try { return localStorage.getItem(STORE_BRAND_KEY) === 'true'; } catch { return false; } });
+  const storeBrand = props.preferStoreBrand ?? localStoreBrand;
+  const setStoreBrand = (value: boolean) => { if (props.onPreferStoreBrand) return props.onPreferStoreBrand(value); setLocalStoreBrand(value); try { localStorage.setItem(STORE_BRAND_KEY, String(value)); } catch { /* The preference still applies for this visit. */ } };
+  const jsonRef = useRef<HTMLTextAreaElement>(null);
   useEffect(() => { if (cloud) return; try { savePlanner(state); setSaveError(false); } catch { setSaveError(true); } }, [state, cloud]);
   const modalOpen = picker || !!detail || resetConfirm;
   useEffect(() => {
@@ -88,6 +97,9 @@ export default function App(props: PlannerProps) {
   const addPantry = (name: string) => { if (!name.trim()) return; setState(s => s.pantry.some(p => p.name.toLowerCase() === name.trim().toLowerCase()) ? s : ({ ...s, pantry: [...s.pantry, { id: uid(), name: name.trim(), status: 'have', updatedAt: new Date().toISOString() }] })); setNewItem(''); };
   const dateLabel = new Date(`${state.weekOf}T12:00:00`).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
   const exportList = () => { const text = [`WMP — Week of ${dateLabel}`, '', ...selected.map(({ meal, recipe }) => `${recipe.name} · ${meal.servings} servings`), '', 'GROCERIES', ...groceries.map(i => `${i.status === 'covered' ? '[covered]' : '[ ]'} ${i.name}: ${amount(i.shortage)} ${i.unit} ${i.status === 'review' ? '(review needed)' : ''}`)].join('\n'); const url = URL.createObjectURL(new Blob([text], { type: 'text/plain' })); const a = document.createElement('a'); a.href = url; a.download = `wmp-${state.weekOf}.txt`; a.click(); URL.revokeObjectURL(url); };
+  const shoppingJson = useMemo(() => formatShoppingList(buildShoppingList(groceries, { preferStoreBrand: storeBrand })), [state, storeBrand]);
+  const copyJson = async () => { try { await navigator.clipboard.writeText(shoppingJson); setCopied(true); setTimeout(() => setCopied(false), 2000); } catch { jsonRef.current?.select(); } };
+  const downloadJson = () => { const url = URL.createObjectURL(new Blob([shoppingJson], { type: 'application/json' })); const a = document.createElement('a'); a.href = url; a.download = 'shopping-list.json'; a.click(); URL.revokeObjectURL(url); };
   const stats = <div className="hero-stats">
     <div><strong>{needed.length}</strong><span>to buy</span></div>
     <div className="check"><strong>{review.length}</strong><span>to check</span></div>
@@ -177,6 +189,7 @@ export default function App(props: PlannerProps) {
         {view === 'groceries' && <section>
           {!groceries.length && <div className="empty-state">No meals planned yet.<br /><button className="button primary" onClick={() => { setView('week'); openPicker('pantry'); }}>Add a meal</button></div>}
           {([{ title: 'To check', items: review, kind: 'review', description: 'Confirm pantry amounts or quantities that aren’t specified.' }, { title: 'To buy', items: needed, kind: 'needed', description: 'Amounts still needed after your pantry.' }, { title: 'In your pantry', items: covered, kind: 'covered', description: 'Already on hand for this plan.' }]).filter(g => g.items.length).map(group => <section className={`grocery-group ${group.kind}`} key={group.kind}><div className="section-heading"><h2>{group.title} <span>{group.items.length}</span></h2></div><p className="section-note">{group.description}</p><div className="grocery-list">{group.items.map(item => <article className="grocery-item" key={item.id}><span className="grocery-indicator" aria-hidden="true">{item.status === 'covered' ? '✓' : item.status === 'review' ? '?' : ''}</span><div className="grocery-name"><h3>{item.name}</h3><p>{item.meals.join(' · ')}</p>{item.status === 'review' && <small>{item.reasons.join(' ')}</small>}</div><div className="grocery-quantity">{amount(item.shortage)} {item.shortage !== null && item.unit}<small>{item.covered > 0 ? `${amount(item.covered)} ${item.unit} from pantry` : item.category}</small></div>{item.status !== 'covered' && <button className="text-button" onClick={() => { addPantry(item.name); setView('pantry'); }}>In pantry?</button>}</article>)}</div></section>)}
+          {needed.length + review.length > 0 && <section className="grocery-group shopping-json no-print"><div className="section-heading"><h2>Shopping list JSON</h2><div className="json-actions"><button className="button secondary compact" onClick={copyJson}>{copied ? 'Copied' : 'Copy'}</button><button className="button secondary compact" onClick={downloadJson}>Download</button></div></div><p className="section-note">Items to buy and to check, without what your pantry covers. Paste into a shopping assistant.</p><label className="json-option"><input type="checkbox" checked={storeBrand} onChange={e => setStoreBrand(e.target.checked)} /> Prefer store brand</label><textarea ref={jsonRef} readOnly aria-label="Shopping list JSON" value={shoppingJson} rows={12} onFocus={e => e.currentTarget.select()} /></section>}
         </section>}
         </fieldset>
       </main>
