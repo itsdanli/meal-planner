@@ -155,7 +155,7 @@ export default function App(props: PlannerProps) {
       <main id="main-content">
         {cloud && props.cloudMessage && props.cloudError && <div className="cloud-notice" role="alert">{props.cloudMessage}<button className="button secondary compact" onClick={() => { if (leaveEdits()) props.onReload?.(); }}>Reload saved data</button></div>}
         {!cloud && saveError && <div className="cloud-notice" role="alert">Changes could not be saved in this browser. Keep this tab open and export your list.</div>}
-        <fieldset className="planner-editing" disabled={props.saving}>
+        <fieldset key={view} className="planner-editing" disabled={props.saving}>
         {view === 'week' && <>
           <div className="meal-grid">
             {selected.map(({ meal, recipe }, index) => { const image = recipeImage(recipe.id); return <article className="meal-card" key={meal.id}>
