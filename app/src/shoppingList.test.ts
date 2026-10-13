@@ -23,16 +23,16 @@ test('weights, volumes and partial packages become one package with the amount a
   assert.deepEqual(list, [
     { item: 'spinach', quantity: 1, note: 'need about 60 g' },
     { item: 'garlic cloves', quantity: 1, note: 'need about 4 clove' },
-    { item: 'butter', quantity: 1, note: 'need about 0.33 cup' },
+    { item: 'butter', quantity: 1, note: 'need about 0.33 cup; check before buying: confirm the amount needed' },
   ]);
 });
 
-test('items with no known shortage are listed once without an amount note', () => {
+test('uncertain items retain a check note in the shopping export', () => {
   const list = buildShoppingList([
     item('salt', { needed: null, shortage: null, status: 'review' }),
     item('olive oil', { covered: 100, shortage: 0, status: 'review' }),
   ]);
-  assert.deepEqual(list, [{ item: 'salt', quantity: 1 }, { item: 'olive oil', quantity: 1 }]);
+  assert.deepEqual(list, [{ item: 'salt', quantity: 1, note: 'check before buying: confirm the amount needed' }, { item: 'olive oil', quantity: 1, note: 'check before buying: confirm the amount needed' }]);
 });
 
 test('store brand preference is added to every note', () => {

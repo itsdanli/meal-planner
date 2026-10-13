@@ -131,3 +131,36 @@ test('invalid numbers cannot produce NaN and pantry subtraction is clamped', () 
   assert.equal(invalid.status, 'review');
   assert.equal(invalid.needed, null);
 });
+
+test('a tag recognized by suggestions is also recognized in groceries without claiming an amount', () => {
+  const [item] = calculateGroceries([recipe('A', [ingredient('garlic cloves, minced', 3, null)])], [meal('A')], [pantry('garlic', {})]);
+  assert.equal(item.status, 'review');
+  assert.ok(item.reasons.includes('Confirm whether the pantry has enough.'));
+});
+
+test('shared pantry stock is consumed once across recipe aliases and scaled meals', () => {
+  const recipes = [recipe('A', [ingredient('yellow onion, diced', 100)]), recipe('B', [ingredient('large yellow onion, sliced', 100)])];
+  const items = calculateGroceries(recipes, [meal('A', 8), meal('B')], [pantry('onion', { quantity: 250, unit: 'g' })]);
+  assert.equal(items.reduce((sum, item) => sum + item.covered, 0), 250);
+  assert.equal(items.reduce((sum, item) => sum + (item.shortage ?? 0), 0), 50);
+});
+
+test('matching food identity does not convert heads into cloves or assume can sizes', () => {
+  const [garlic] = calculateGroceries([recipe('A', [ingredient('garlic cloves, minced', 3, null)])], [meal('A')], [pantry('garlic', { quantity: 1, unit: 'each' })]);
+  assert.equal(garlic.covered, 0);
+  assert.equal(garlic.status, 'review');
+  const [beans] = calculateGroceries([recipe('A', [ingredient('black beans (15oz can)', 2, 'can')])], [meal('A')], [pantry('canned black beans', { quantity: 2, unit: 'can' })]);
+  assert.equal(beans.covered, 0);
+  assert.equal(beans.status, 'review');
+});
+
+test('optional extras and water are excluded from required groceries in old and enriched snapshots', () => {
+  const r = recipe('A', [ingredient('spinach', 100), ingredient('crumbled feta (optional)', 50), ingredient('water', 1, 'cup'), { ...ingredient('cilantro', 20), optional: true }]);
+  assert.deepEqual(calculateGroceries([r], [meal('A')], []).map(item => item.name), ['spinach']);
+});
+
+test('one component of a combination never covers the combined amount', () => {
+  const [item] = calculateGroceries([recipe('A', [ingredient('kosher salt and black pepper', 10)])], [meal('A')], [pantry('salt', { quantity: 100, unit: 'g' })]);
+  assert.equal(item.covered, 0);
+  assert.equal(item.status, 'review');
+});

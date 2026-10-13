@@ -1,3 +1,4 @@
+import { pantryContributes, sameIngredient, ingredientOptions, isOptionalIngredient } from './ingredients.ts';
 import type { GroceryItem, Ingredient, Meal, PantryEntry, Recipe } from './types.ts';
 
 const normalize = (value: string) => value.trim().toLowerCase().replace(/\s+/g, ' ');
@@ -84,6 +85,7 @@ export function calculateGroceries(recipes: Recipe[], meals: Meal[], pantry: Pan
     const protein = meal.proteinIndex === undefined ? undefined : recipe.proteins?.[meal.proteinIndex];
     if (protein) ingredients.push(proteinIngredient(protein.name, protein.amount));
     for (const ingredient of ingredients) {
+      if ((ingredient.optional ?? isOptionalIngredient(ingredient.name)) || sameIngredient(ingredient.name, 'water') || sameIngredient(ingredient.name, 'ice')) continue;
       const canonical = canonicalIngredient(ingredient.name);
       const unit = unitOf(ingredient.unit);
       const key = `${canonical}|${unit.dimension}`;
@@ -104,18 +106,27 @@ export function calculateGroceries(recipes: Recipe[], meals: Meal[], pantry: Pan
       if (hasIngredientChoice(canonical)) item.reasons.push('Review the ingredient choice or combination.');
     }
   }
+  // A pantry amount is a budget across the whole plan, not a fresh allowance per alias.
+  const remaining = new Map(pantry.map(entry => [entry.id, validAmount(entry.quantity) ? entry.quantity * unitOf(entry.unit).factor : 0]));
   for (const group of groups.values()) {
     const { item, canonical, unit } = group;
     const siblings = [...groups.values()].filter(other => other.canonical === canonical);
     if (siblings.length > 1) item.reasons.push('Different units need review; no density or package size was assumed.');
-    for (const entry of pantry.filter(entry => canonicalIngredient(entry.name) === canonical && entry.status !== 'out')) {
+    for (const entry of pantry.filter(entry => (canonicalIngredient(entry.name) === canonical || pantryContributes(entry.name, canonical)) && entry.status !== 'out')) {
       if (entry.status === 'low') item.reasons.push('Pantry is running low; check what remains.');
       if (validAmount(entry.quantity)) {
         const pantryUnit = unitOf(entry.unit);
-        if (pantryUnit.dimension === unit.dimension && !unit.dimension.startsWith('unknown:')) {
-          item.covered += entry.quantity * pantryUnit.factor / unit.factor;
-        } else item.reasons.push('Pantry quantity has incompatible units; check coverage.');
-      } else if (entry.status === 'have' && entry.confirmedEnough && siblings.length === 1 && item.needed !== null) {
+        const exactAmountForm = canonicalIngredient(entry.name) === canonical;
+        const liquid = ['olive oil', 'neutral oil', 'soy sauce', 'vegetable broth', 'sesame oil', 'milk'].some(name => sameIngredient(name, entry.name));
+        const compatibleForm = exactAmountForm || unit.dimension === 'mass' || (unit.dimension === 'volume' && liquid);
+        // Alternatives require a choice before consuming shared stock.
+        if (pantryUnit.dimension === unit.dimension && !unit.dimension.startsWith('unknown:') && compatibleForm && !hasIngredientChoice(canonical) && ingredientOptions(canonical).length === 1 && item.needed !== null) {
+          const available = remaining.get(entry.id) ?? 0;
+          const used = Math.min(available, Math.max(0, item.needed - item.covered) * unit.factor);
+          item.covered += used / unit.factor;
+          remaining.set(entry.id, available - used);
+        } else item.reasons.push('Check the amount, food form or package size before buying.');
+      } else if (entry.status === 'have' && entry.confirmedEnough && canonicalIngredient(entry.name) === canonical && siblings.length === 1 && item.needed !== null) {
         item.covered = Math.max(item.covered, item.needed);
       } else item.reasons.push('Confirm whether the pantry has enough.');
     }

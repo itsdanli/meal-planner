@@ -22,3 +22,14 @@ test('storage recovers from corrupt data and round-trips a valid plan', () => {
   assert.deepEqual(loadPlanner(), state);
   Reflect.deleteProperty(globalThis, 'localStorage');
 });
+
+test('legacy saved data keeps names, quantities and meals while invalidating old coverage', () => {
+  const old = createSamplePlanner();
+  old.pantry.push({ id: 'custom', name: 'My special spice', status: 'low', quantity: 2, unit: 'tsp', updatedAt: '2026-10-12' });
+  Object.defineProperty(globalThis, 'localStorage', { configurable: true, value: { getItem: () => JSON.stringify(old) } });
+  const loaded = loadPlanner();
+  assert.deepEqual(loaded.meals, old.meals);
+  assert.deepEqual(loaded.pantry[2], { ...old.pantry[2], confirmedEnough: false });
+  assert.ok(loaded.pantry.every(item => !item.confirmedEnough));
+  Reflect.deleteProperty(globalThis, 'localStorage');
+});

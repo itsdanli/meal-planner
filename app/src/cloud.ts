@@ -1,4 +1,5 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
+import { INGREDIENT_RULES_VERSION } from './ingredients';
 import { recipes } from './data';
 import { canonicalIngredient } from './grocery';
 import type { Meal, PantryEntry, PlannerState, Recipe } from './types';
@@ -44,6 +45,8 @@ export function isRecipeSnapshot(value: unknown): value is Recipe {
   return text(value.id) && text(value.name) && typeof value.bucket === 'string' && typeof value.bucketLabel === 'string'
     && finite(value.time) && value.time >= 0 && finite(value.servings) && value.servings > 0 && typeof value.description === 'string'
     && Array.isArray(value.ingredients) && value.ingredients.every(item => object(item) && text(item.id) && text(item.name)
+      && (item.optional === undefined || typeof item.optional === 'boolean')
+      && (item.ingredientId === undefined || text(item.ingredientId))
       && (item.amount === null || (finite(item.amount) && item.amount >= 0)) && (item.unit === null || typeof item.unit === 'string') && typeof item.category === 'string')
     && Array.isArray(value.steps) && value.steps.every(step => typeof step === 'string')
     && (value.proteins === undefined || (Array.isArray(value.proteins) && value.proteins.every(item => object(item)
@@ -116,9 +119,9 @@ export function parsePantryRows(value: unknown, householdId: string): PantryRow[
 export async function coverageFingerprint(householdId: string, weekOf: string, meals: Meal[], ingredientKey: string): Promise<string> {
   const requirements = serializeMeals(meals).map(meal => ({ id: meal.id, recipeId: meal.recipeId, servings: meal.servings,
     proteinIndex: meal.proteinIndex ?? null, baseServings: meal.recipeSnapshot.servings,
-    ingredients: meal.recipeSnapshot.ingredients.map(item => ({ id: item.id, name: item.name, amount: item.amount, unit: item.unit })),
+    ingredients: meal.recipeSnapshot.ingredients.map(item => ({ id: item.id, name: item.name, amount: item.amount, unit: item.unit, optional: item.optional ?? false })),
     protein: meal.proteinIndex === undefined ? null : meal.recipeSnapshot.proteins![meal.proteinIndex] })).sort((a, b) => a.id.localeCompare(b.id));
-  const payload = JSON.stringify({ householdId, weekOf: normalizeWeek(weekOf), ingredientKey, requirements });
+  const payload = JSON.stringify({ ingredientRulesVersion: INGREDIENT_RULES_VERSION, householdId, weekOf: normalizeWeek(weekOf), ingredientKey, requirements });
   const digest = await globalThis.crypto.subtle.digest('SHA-256', new TextEncoder().encode(payload));
   return Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
 }

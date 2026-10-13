@@ -4,7 +4,8 @@ import { calculateGroceries, canonicalIngredient } from './grocery';
 import { createSamplePlanner, loadPlanner, savePlanner } from './storage';
 import type { GroceryItem, Meal, PantryEntry, PlannerState, Recipe } from './types';
 import './styles.css';
-import { suggestRecipes, type Suggestion } from './suggest';
+import { suggestRecipes, suggestionGroupLabel, type Suggestion, type SuggestionGroup } from './suggest';
+import { ingredientIdentity, ingredientLabel, sameIngredient, searchIngredients } from './ingredients';
 import { rankedCommonItems } from './pantrySeeds';
 import { pickRandomRecipes } from './randomMeals';
 import RecipeSheet, { printRecipeSheet } from './RecipeSheet';
@@ -17,8 +18,11 @@ const amount = (n: number | null) => n === null ? 'As needed' : Number(n.toFixed
 const STORE_BRAND_KEY = 'wmp.preferStoreBrand';
 const uid = () => crypto.randomUUID();
 const ratio = (s: Suggestion) => `${s.have.length + s.low.length}/${s.have.length + s.low.length + s.missing.length}`;
-const matchLabel = (s: Suggestion) => `You have ${s.have.length + s.low.length} of ${s.have.length + s.low.length + s.missing.length}`;
-const missingLabel = (s: Suggestion) => s.missing.length ? `Missing ${s.missing.slice(0, 4).map(i => i.name.split(',')[0].replace(/\s*\([^)]*\)/g, '')).join(', ')}${s.missing.length > 4 ? ` +${s.missing.length - 4} more` : ''}` : 'You have everything';
+const matchLabel = (s: Suggestion) => `${s.have.length} on hand${s.low.length ? ` · ${s.low.length} running low` : ''}`;
+const missingLabel = (s: Suggestion) => {
+  const missing = s.missing.length ? `Missing ${s.missing.slice(0, 4).map(i => ingredientLabel(i.name)).join(', ')}${s.missing.length > 4 ? ` +${s.missing.length - 4} more` : ''}.` : 'Required ingredients are tagged.';
+  return `${missing} Check amounts for ${s.recipe.servings} servings.${s.optional.length ? ` ${s.optional.length} optional ${s.optional.length === 1 ? 'extra' : 'extras'} excluded.` : ''}`;
+};
 interface PlannerProps {
   initialState?: PlannerState;
   account?: string;
@@ -52,6 +56,7 @@ export default function App(props: PlannerProps) {
   const [search, setSearch] = useState('');
   const [quickAdd, setQuickAdd] = useState(() => (props.initialState ?? loadPlanner()).pantry.length < 8);
   const [pickerMode, setPickerMode] = useState<'pantry' | 'all'>('pantry');
+  const [suggestionFilter, setSuggestionFilter] = useState<SuggestionGroup | 'all'>('all');
   const [newItem, setNewItem] = useState('');
   const [detail, setDetail] = useState<LibraryEntry | null>(null);
   const [saveError, setSaveError] = useState(false);
@@ -94,17 +99,30 @@ export default function App(props: PlannerProps) {
   const selected = state.meals.map(meal => ({ meal, recipe: meal.recipeSnapshot ?? recipes.find(r => r.id === meal.recipeId) })).filter((x): x is { meal: Meal; recipe: Recipe } => !!x.recipe);
   const suggestions = useMemo(() => suggestRecipes(recipes, state.pantry).filter(s => !state.meals.some(m => m.recipeId === s.recipe.id)), [recipes, state.pantry, state.meals]);
   const commonGroups = useMemo(() => rankedCommonItems(recipes), [recipes]);
-  const pantryNames = new Set(state.pantry.map(p => p.name.trim().toLowerCase()));
-  const toggleCommon = (name: string) => pantryNames.has(name) ? setState(s => ({ ...s, pantry: s.pantry.filter(p => p.name.trim().toLowerCase() !== name) })) : addPantry(name);
-  const stockedCount = state.pantry.filter(p => p.status !== 'out').length;
+  const pantryNames = new Set(state.pantry.filter(p => p.status !== 'out' && p.quantity !== 0).map(p => ingredientIdentity(p.name)));
+  const toggleCommon = (name: string) => pantryNames.has(ingredientIdentity(name))
+    ? setState(s => ({ ...s, pantry: s.pantry.map(p => sameIngredient(p.name, name) ? { ...p, status: 'out', quantity: undefined, unit: undefined, confirmedEnough: false, updatedAt: new Date().toISOString() } : p) }))
+    : addPantry(name);
+  const ingredientSearch = searchIngredients(newItem);
+  const stockedCount = state.pantry.filter(p => p.status !== 'out' && p.quantity !== 0).length;
   const addRecipe = (r: Recipe) => { setState(s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: [...s.meals, { id: uid(), recipeId: r.id, servings: r.servings, recipeSnapshot: structuredClone(r) }] })); setPicker(false); setSearch(''); };
   const randomizeMeals = () => setState(s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: pickRandomRecipes(recipes, 3, s.meals.map(m => m.recipeId)).map(r => ({ id: uid(), recipeId: r.id, servings: r.servings, recipeSnapshot: structuredClone(r) })) }));
   const planFromFavorites = (list: Recipe[]) => { setState(s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: pickRandomRecipes(list, 3, s.meals.map(m => m.recipeId)).map(r => ({ id: uid(), recipeId: r.id, servings: r.servings, recipeSnapshot: structuredClone(r) })) })); setView('week'); };
-  const openPicker = (mode: 'pantry' | 'all') => { setPickerMode(suggestions.length ? mode : 'all'); setPicker(true); };
+  const openPicker = (mode: 'pantry' | 'all') => { setPickerMode(suggestions.length ? mode : 'all'); setSuggestionFilter('all'); setPicker(true); };
   const clearConfirmation = (pantry: PantryEntry[]) => pantry.map(p => ({ ...p, confirmedEnough: false }));
   const updateMeal = (id: string, changes: Partial<Meal>) => setState(s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: s.meals.map(m => m.id === id ? { ...m, ...changes } : m) }));
   const updatePantry = (id: string, changes: Partial<PantryEntry>) => setState(s => ({ ...s, pantry: s.pantry.map(p => p.id === id ? { ...p, ...changes, updatedAt: new Date().toISOString() } : p) }));
-  const addPantry = (name: string) => { if (!name.trim()) return; setState(s => s.pantry.some(p => p.name.toLowerCase() === name.trim().toLowerCase()) ? s : ({ ...s, pantry: [...s.pantry, { id: uid(), name: name.trim(), status: 'have', updatedAt: new Date().toISOString() }] })); setNewItem(''); };
+  const addPantry = (name: string) => {
+    if (!name.trim()) return;
+    setState(s => {
+      const existing = s.pantry.find(p => sameIngredient(p.name, name));
+      const updatedAt = new Date().toISOString();
+      return { ...s, pantry: existing ? s.pantry.map(p => p.id === existing.id ? { ...p, status: 'have', confirmedEnough: false,
+        ...(p.status === 'out' || p.quantity === 0 ? { quantity: undefined, unit: undefined } : {}), updatedAt } : p)
+        : [...s.pantry, { id: uid(), name: ingredientLabel(name), status: 'have', updatedAt }] };
+    });
+    setNewItem('');
+  };
   // Ticking marks the pantry as having enough for this plan; unticking marks it out so the item returns to the list.
   const setHave = (item: GroceryItem, have: boolean) => setState(s => {
     const updatedAt = new Date().toISOString();
@@ -118,8 +136,7 @@ export default function App(props: PlannerProps) {
   const copyJson = async () => { try { await navigator.clipboard.writeText(shoppingJson); setCopied(true); setTimeout(() => setCopied(false), 2000); } catch { jsonRef.current?.select(); } };
   const downloadJson = () => { const url = URL.createObjectURL(new Blob([shoppingJson], { type: 'application/json' })); const a = document.createElement('a'); a.href = url; a.download = 'shopping-list.json'; a.click(); URL.revokeObjectURL(url); };
   const stats = <div className="hero-stats">
-    <div><strong>{needed.length}</strong><span>to buy</span></div>
-    <div className="check"><strong>{review.length}</strong><span>to check</span></div>
+    <div><strong>{needed.length + review.length}</strong><span>on your list</span></div>
     <div><strong>{covered.length}</strong><span>in pantry</span></div>
   </div>;
   return <>
@@ -127,7 +144,10 @@ export default function App(props: PlannerProps) {
       <section className="hero">
         <header className="topbar">
           <a className="brand" href="#" onClick={e => { e.preventDefault(); setView('week'); }}>wmp</a>
-          <nav className="tabs" aria-label="Main navigation">{([['week', 'This week'], ['recipes', 'Recipes'], ['pantry', 'Pantry'], ['groceries', 'Groceries']] as const).map(([key, label]) => <button key={key} className={view === key ? 'active' : ''} onClick={() => setView(key)} aria-current={view === key ? 'page' : undefined}>{label}{key === 'groceries' && needed.length + review.length > 0 && <small>{needed.length + review.length}</small>}</button>)}</nav>
+          <nav className="main-navigation" aria-label="Main navigation">
+            <button className={`week-link ${view === 'week' ? 'active' : ''}`} onClick={() => setView('week')} aria-current={view === 'week' ? 'page' : undefined}>This week</button>
+            <div className="manage-navigation"><span id="manage-label">Manage</span><div className="tabs" role="group" aria-labelledby="manage-label">{([['recipes', 'Recipes'], ['pantry', 'Pantry'], ['groceries', 'Groceries']] as const).map(([key, label]) => <button key={key} className={view === key ? 'active' : ''} onClick={() => setView(key)} aria-current={view === key ? 'page' : undefined}>{label}{key === 'groceries' && needed.length + review.length > 0 && <small>{needed.length + review.length}</small>}</button>)}</div></div>
+          </nav>
           <div className="topbar-right">
             <span className="status-pill" role="status"><span />{cloud ? (props.cloudMessage && !props.cloudError ? props.cloudMessage : dirty ? 'Unsaved changes' : props.account) : saveError ? 'Not saved' : 'Saved in this browser'}</span>
             {cloud ? <>
@@ -179,40 +199,42 @@ export default function App(props: PlannerProps) {
             <button className="add-meal-card" onClick={() => openPicker('all')}><Plus />Add a meal</button>
           </div>
           <section className="suggestions" aria-labelledby="suggest-title">
-            <div className="section-heading"><h2 id="suggest-title">From your pantry {suggestions.length > 0 && stockedCount >= 3 && <span>{suggestions.length}</span>}</h2>{suggestions.length > 3 && stockedCount >= 3 && <button className="text-button" onClick={() => openPicker('pantry')}>See all</button>}</div>
-            {stockedCount < 3 ? <div className="suggest-empty"><p>Add at least 3 pantry items to see recipes you can make with them.</p><button className="button secondary compact" onClick={() => setView('pantry')}>Go to pantry</button></div>
-              : !suggestions.length ? <p className="suggest-empty">No recipes use your pantry items yet.</p>
+            <div className="section-heading"><h2 id="suggest-title">From your pantry {suggestions.length > 0 && stockedCount > 0 && <span>{suggestions.length}</span>}</h2>{suggestions.length > 3 && stockedCount > 0 && <button className="text-button" onClick={() => openPicker('pantry')}>See all</button>}</div>
+            {stockedCount === 0 ? <div className="suggest-empty"><p>Optionally tag what’s in your kitchen to find recipes that use it.</p><button className="button secondary compact" onClick={() => setView('pantry')}>Add kitchen items</button></div>
+              : !suggestions.length ? <p className="suggest-empty">Tag a few more ingredients to find matches beyond salt and pepper.</p>
               : <div className="suggest-list">{suggestions.slice(0, 3).map(sg => <article className="suggest-card" key={sg.recipe.id}>
                 <div className="suggest-head">
                   <span className="ring" style={{ '--p': `${Math.round(sg.coverage * 100)}%` } as CSSProperties} aria-label={matchLabel(sg)}><span>{ratio(sg)}</span></span>
                   <div><small>{sg.recipe.bucketLabel} · {sg.recipe.time} min</small><button className="recipe-title" onClick={() => setDetail(dinnerEntry(sg.recipe))}>{sg.recipe.name}</button></div>
                 </div>
-                <p>{missingLabel(sg)}{sg.low.length > 0 && ` · ${sg.low.length} running low`}</p>
+                <span className={`suggestion-badge ${sg.group}`}>{suggestionGroupLabel[sg.group]}</span><p>{matchLabel(sg)}. {missingLabel(sg)}</p>
                 <button className="button secondary compact" onClick={() => addRecipe(sg.recipe)}>+ Add to week</button>
               </article>)}</div>}
           </section>
         </>}
         {view === 'recipes' && <RecipeBrowser recipes={recipes} plannedIds={state.meals.map(m => m.recipeId)} favorites={props.favorites} onToggleFavorite={props.onToggleFavorite} onOpen={setDetail} onAdd={addRecipe} onPlanFavorites={planFromFavorites} />}
         {view === 'pantry' && <section>
-          <form className="pantry-add" onSubmit={e => { e.preventDefault(); addPantry(newItem); }}><label className="sr-only" htmlFor="pantry-name">Pantry item</label><input id="pantry-name" value={newItem} onChange={e => setNewItem(e.target.value)} placeholder="Add an item, e.g. olive oil" required /><button className="button primary" type="submit">Add</button></form>
+          <div className="section-heading"><h2>What’s in your kitchen?</h2>{suggestions.length > 0 && <button className="button secondary compact" onClick={() => openPicker('pantry')}>Find recipes · {suggestions.length}</button>}</div>
+          <p className="section-note">Optional: tag the ingredients you have. Amounts can wait until you plan your meals.</p>
+          <form className="pantry-add" onSubmit={e => { e.preventDefault(); addPantry(newItem); }}><label className="sr-only" htmlFor="pantry-name">Pantry item</label><input id="pantry-name" list="ingredient-options" value={newItem} onChange={e => setNewItem(e.target.value)} placeholder="Add an item, e.g. olive oil" required /><datalist id="ingredient-options">{ingredientSearch.map(item => <option key={item.id} value={item.name} />)}</datalist><button className="button primary" type="submit">Add</button></form>
           <section className="quick-add">
-            <button className="quick-add-toggle" aria-expanded={quickAdd} onClick={() => setQuickAdd(o => !o)}><span><strong>Common items</strong><small>Tap to add. Items your recipes use most are listed first.</small></span><span aria-hidden="true">{quickAdd ? '−' : '+'}</span></button>
-            {quickAdd && commonGroups.map(({ group, items }) => { const shown = items.filter(i => i.name.includes(newItem.trim().toLowerCase())); return shown.length > 0 && <div className="quick-group" key={group}><h3>{group}</h3><div className="chips">{shown.map(({ name }) => <button key={name} className="chip" aria-pressed={pantryNames.has(name)} onClick={() => toggleCommon(name)}>{pantryNames.has(name) ? '✓' : '+'} {name}</button>)}</div></div>; })}
+            <button className="quick-add-toggle" aria-expanded={quickAdd} onClick={() => setQuickAdd(o => !o)}><span><strong>Common items</strong><small>Tap to mark on hand or out. Include the seasonings you keep stocked.</small></span><span aria-hidden="true">{quickAdd ? '−' : '+'}</span></button>
+            {quickAdd && commonGroups.map(({ group, items }) => { const shown = items.filter(i => i.name.includes(newItem.trim().toLowerCase()) || ingredientSearch.some(match => match.id === ingredientIdentity(i.name))); return shown.length > 0 && <div className="quick-group" key={group}><h3>{group}</h3><div className="chips">{shown.map(({ name }) => <button key={name} className="chip" aria-pressed={pantryNames.has(ingredientIdentity(name))} onClick={() => toggleCommon(name)}>{pantryNames.has(ingredientIdentity(name)) ? '✓' : '+'} {name}</button>)}</div></div>; })}
           </section>
           <div className="section-heading"><h2>Your items <span>{state.pantry.length}</span></h2></div>
-          <p className="section-note">Items without an amount stay on the grocery list until you check “Enough for this plan”.</p>
+          <p className="section-note">Your kitchen carries across weeks. Ingredients stay on your shopping list until an amount or “Enough for this plan” confirms coverage.</p>
           <div className="pantry-list">{state.pantry.map(p => <article className="pantry-card" key={p.id}><div className="pantry-name"><h3>{p.name}</h3><small>Checked {new Date(p.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</small></div><div className="pantry-status" role="group" aria-label={`Status of ${p.name}`}>{([['have', 'Have it'], ['low', 'Running low'], ['out', 'Out']] as const).map(([value, label]) => <button key={value} aria-pressed={p.status === value} className={p.status === value ? `selected ${value}` : ''} onClick={() => updatePantry(p.id, { status: value, quantity: value === 'out' ? undefined : p.quantity, unit: value === 'out' ? undefined : p.unit, confirmedEnough: false })}>{label}</button>)}</div><div className="pantry-details"><label>Amount <input type="number" min="0" step="any" placeholder="Optional" aria-label={`Amount of ${p.name}`} value={p.quantity ?? ''} onChange={e => updatePantry(p.id, { quantity: e.target.value === '' ? undefined : Math.max(0, Number(e.target.value)), confirmedEnough: false })} /></label><label>Unit <input placeholder="e.g. g, cup" aria-label={`Unit for ${p.name}`} value={p.unit ?? ''} onChange={e => updatePantry(p.id, { unit: e.target.value, confirmedEnough: false })} /></label>{p.status === 'have' && p.quantity === undefined && <label className="check-label"><input type="checkbox" checked={!!p.confirmedEnough} onChange={e => updatePantry(p.id, { confirmedEnough: e.target.checked })} />Enough for this plan</label>}<button className="text-button muted" aria-label={`Delete ${p.name} from pantry`} onClick={() => setState(s => ({ ...s, pantry: s.pantry.filter(x => x.id !== p.id) }))}>Remove</button></div></article>)}</div>
           {!state.pantry.length && <p className="empty-state">No pantry items yet.</p>}
         </section>}
         {view === 'groceries' && <section>
           {!groceries.length && <div className="empty-state">No meals planned yet.<br /><button className="button primary" onClick={() => { setView('week'); openPicker('pantry'); }}>Add a meal</button></div>}
-          {([{ title: 'To check', items: review, kind: 'review', description: 'Tick “Have it” for anything you already have enough of. Unticked items stay on the shopping list.' }, { title: 'To buy', items: needed, kind: 'needed', description: 'Amounts still needed after your pantry. Tick “Have it” to take an item off the list.' }, { title: 'In your pantry', items: covered, kind: 'covered', description: 'Already on hand for this plan. Untick to put an item back on the list.' }]).filter(g => g.items.length).map(group => <section className={`grocery-group ${group.kind}`} key={group.kind}><div className="section-heading"><h2>{group.title} <span>{group.items.length}</span></h2></div><p className="section-note">{group.description}</p><div className="grocery-list">{group.items.map(item => <article className="grocery-item" key={item.id}><span className="grocery-indicator" aria-hidden="true">{item.status === 'covered' ? '✓' : item.status === 'review' ? '?' : ''}</span><div className="grocery-name"><h3>{item.name}</h3><p>{item.meals.join(' · ')}</p>{item.status === 'review' && <small>{item.reasons.join(' ')}</small>}</div><div className="grocery-quantity">{amount(item.shortage)} {item.shortage !== null && item.unit}<small>{item.covered > 0 ? `${amount(item.covered)} ${item.unit} from pantry` : item.category}</small></div><label className="have-check"><input type="checkbox" checked={item.status === 'covered'} onChange={e => setHave(item, e.target.checked)} /> Have it</label></article>)}</div></section>)}
-          {needed.length + review.length > 0 && <section className="grocery-group shopping-json no-print"><div className="section-heading"><h2>Shopping list JSON</h2><div className="json-actions"><button className="button secondary compact" onClick={copyJson}>{copied ? 'Copied' : 'Copy'}</button><button className="button secondary compact" onClick={downloadJson}>Download</button></div></div><p className="section-note">Items to buy and to check, without what your pantry covers. Paste into a shopping assistant.</p><label className="json-option"><input type="checkbox" checked={storeBrand} onChange={e => setStoreBrand(e.target.checked)} /> Prefer store brand</label><textarea ref={jsonRef} readOnly aria-label="Shopping list JSON" value={shoppingJson} rows={12} onFocus={e => e.currentTarget.select()} /></section>}
+          {([{ title: 'Shopping list', items: groceries.filter(item => item.status !== 'covered'), kind: 'needed', description: 'Everything still needed for your meals. Check the notes beside uncertain amounts, or mark an item “Have enough” to remove it.' }, { title: 'In your pantry', items: covered, kind: 'covered', description: 'Already on hand for this plan. Untick to put an item back on the list.' }]).filter(g => g.items.length).map(group => <section className={`grocery-group ${group.kind}`} key={group.kind}><div className="section-heading"><h2>{group.title} <span>{group.items.length}</span></h2></div><p className="section-note">{group.description}</p><div className="grocery-list">{group.items.map(item => <article className={`grocery-item ${item.status}`} key={item.id}><span className="grocery-indicator" aria-hidden="true">{item.status === 'covered' ? '✓' : item.status === 'review' ? '?' : ''}</span><div className="grocery-name"><h3>{item.name}</h3><p>{item.meals.join(' · ')}</p>{item.status === 'review' && <small><strong>Check amount:</strong> {item.reasons.join(' ')}</small>}</div><div className="grocery-quantity">{amount(item.shortage)} {item.shortage !== null && item.unit}<small>{item.covered > 0 ? `${amount(item.covered)} ${item.unit} from pantry` : item.category}</small></div><label className="have-check"><input type="checkbox" checked={item.status === 'covered'} onChange={e => setHave(item, e.target.checked)} /> Have enough</label></article>)}</div></section>)}
+          {needed.length + review.length > 0 && <section className="grocery-group shopping-json no-print"><div className="section-heading"><h2>Shopping list JSON</h2><div className="json-actions"><button className="button secondary compact" onClick={copyJson}>{copied ? 'Copied' : 'Copy'}</button><button className="button secondary compact" onClick={downloadJson}>Download</button></div></div><p className="section-note">Your shopping list, including any amounts that still need checking. Paste into a shopping assistant.</p><label className="json-option"><input type="checkbox" checked={storeBrand} onChange={e => setStoreBrand(e.target.checked)} /> Prefer store brand</label><textarea ref={jsonRef} readOnly aria-label="Shopping list JSON" value={shoppingJson} rows={12} onFocus={e => e.currentTarget.select()} /></section>}
         </section>}
         </fieldset>
       </main>
     </div>
-    {picker && <div className="modal-backdrop no-print" onMouseDown={e => { if (e.target === e.currentTarget) setPicker(false); }}><section className="modal" role="dialog" aria-modal="true" aria-labelledby="picker-title" onClick={e => e.stopPropagation()} onKeyDown={e => { if (e.key === 'Escape') setPicker(false); }}><div className="section-heading"><h2 id="picker-title">Add a meal</h2><button className="close-button" aria-label="Close recipe picker" onClick={() => setPicker(false)}>×</button></div><input className="search-input" autoFocus placeholder="Search recipes or ingredients" aria-label="Search recipes" value={search} onChange={e => setSearch(e.target.value)} /><div className="picker-modes" role="group" aria-label="Sort recipes">{([['pantry', `From your pantry${suggestions.length ? ` · ${suggestions.length}` : ''}`], ['all', 'All recipes']] as const).map(([mode, label]) => <button key={mode} aria-pressed={pickerMode === mode} disabled={mode === 'pantry' && !suggestions.length} onClick={() => setPickerMode(mode)}>{label}</button>)}</div>{pickerMode === 'pantry' && <p className="picker-hint">Sorted by how much you already have. Missing items go on your grocery list.</p>}<div className="recipe-results">{((pickerMode === 'pantry' ? suggestions : recipes.map(recipe => ({ recipe }))) as ({ recipe: Recipe } | Suggestion)[]).filter(({ recipe: r }) => `${r.name} ${r.ingredients.map(i => i.name).join(' ')}`.toLowerCase().includes(search.toLowerCase())).map(item => { const r = item.recipe; const sg = 'coverage' in item ? item : undefined; return <article key={r.id}><div><small>{r.bucketLabel} · {r.time} min{sg && <> · <span className="match-have">{matchLabel(sg)}</span></>}</small><h3>{r.name}</h3><p>{sg ? missingLabel(sg) : r.description}</p></div><button className="button secondary compact" onClick={() => addRecipe(r)}>+ Add</button></article>; })}</div></section></div>}
+    {picker && <div className="modal-backdrop no-print" onMouseDown={e => { if (e.target === e.currentTarget) setPicker(false); }}><section className="modal" role="dialog" aria-modal="true" aria-labelledby="picker-title" onClick={e => e.stopPropagation()} onKeyDown={e => { if (e.key === 'Escape') setPicker(false); }}><div className="section-heading"><h2 id="picker-title">Add a meal</h2><button className="close-button" aria-label="Close recipe picker" onClick={() => setPicker(false)}>×</button></div><input className="search-input" autoFocus placeholder="Search recipes or ingredients" aria-label="Search recipes" value={search} onChange={e => setSearch(e.target.value)} /><div className="picker-modes" role="group" aria-label="Sort recipes">{([['pantry', `From your pantry${suggestions.length ? ` · ${suggestions.length}` : ''}`], ['all', 'All recipes']] as const).map(([mode, label]) => <button key={mode} aria-pressed={pickerMode === mode} disabled={mode === 'pantry' && !suggestions.length} onClick={() => setPickerMode(mode)}>{label}</button>)}</div>{pickerMode === 'pantry' && <><p className="picker-hint">Based on your tags. Check quantities and any protein add-ons before cooking; the grocery list checks the whole week.</p><label className="suggestion-filter">Show <select value={suggestionFilter} onChange={e => setSuggestionFilter(e.target.value as SuggestionGroup | 'all')}><option value="all">All matches</option>{(Object.entries(suggestionGroupLabel) as [SuggestionGroup, string][]).map(([key, label]) => <option value={key} key={key}>{label} ({suggestions.filter(s => s.group === key).length})</option>)}</select></label></>}<div className="recipe-results">{pickerMode === 'pantry' && suggestionFilter !== 'all' && !suggestions.some(s => s.group === suggestionFilter) && <p className="empty-state">No recipes in this group yet. Try all matches or add more kitchen items.</p>}{((pickerMode === 'pantry' ? suggestions.filter(s => suggestionFilter === 'all' || s.group === suggestionFilter) : recipes.map(recipe => ({ recipe }))) as ({ recipe: Recipe } | Suggestion)[]).filter(({ recipe: r }) => `${r.name} ${r.ingredients.map(i => i.name).join(' ')}`.toLowerCase().includes(search.toLowerCase())).map(item => { const r = item.recipe; const sg = 'coverage' in item ? item : undefined; return <article key={r.id}><div><small>{r.bucketLabel} · {r.time} min{sg && <> · <span className="match-have">{suggestionGroupLabel[sg.group]} · {matchLabel(sg)}</span></>}</small><h3>{r.name}</h3><p>{sg ? missingLabel(sg) : r.description}</p></div><button className="button secondary compact" onClick={() => addRecipe(r)}>+ Add</button></article>; })}</div></section></div>}
     {detail && (() => { const image = recipeImage(detail.id); const favorite = !!props.favorites?.includes(detail.id); return <div className="modal-backdrop no-print" onMouseDown={e => { if (e.target === e.currentTarget) setDetail(null); }}><section className="modal recipe-detail" role="dialog" aria-modal="true" aria-labelledby="detail-title" onClick={e => e.stopPropagation()} onKeyDown={e => { if (e.key === 'Escape') setDetail(null); }}>
       <div className="section-heading"><h2 id="detail-title">{detail.name}</h2><div className="detail-actions">{detail.kind === 'dinner' && props.onToggleFavorite && <button className="favorite-button" aria-pressed={favorite} aria-label={favorite ? 'Remove from favorites' : 'Add to favorites'} onClick={() => props.onToggleFavorite?.(detail.id)}><Heart filled={favorite} /></button>}<button autoFocus className="close-button" aria-label="Close recipe" onClick={() => setDetail(null)}>×</button></div></div>
       {image && <figure className="detail-photo"><img src={image.url} alt="" /><figcaption>Photo of a similar dish: <a href={image.sourceUrl} target="_blank" rel="noreferrer">{image.author}, {image.license}, Wikimedia Commons</a></figcaption></figure>}

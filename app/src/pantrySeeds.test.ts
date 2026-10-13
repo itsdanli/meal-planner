@@ -14,5 +14,5 @@ test('common items are unique, lowercase names', () => {
 test('orders each group by how many recipes use the item, keeping list order for ties', () => {
   const recipes = [recipe('a', ['lime juice', 'garlic cloves, minced']), recipe('b', ['fresh lime juice (2 limes)'])];
   const produce = rankedCommonItems(recipes).find(g => g.group === 'Produce')!.items;
-  assert.deepEqual(produce.slice(0, 3).map(i => [i.name, i.uses]), [['lime', 2], ['garlic', 1], ['onion', 0]]);
+  assert.deepEqual(produce.slice(0, 3).map(i => [i.name, i.uses]), [['lime juice', 2], ['garlic', 1], ['onion', 0]]);
 });

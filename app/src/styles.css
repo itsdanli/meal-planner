@@ -286,3 +286,37 @@ main { max-width: 1512px; margin: 0 auto; padding: 34px 56px 64px; }
   .print-recipe li { padding-bottom: 5px; }
 }
 .fine-print { font-size: 12px; color: var(--muted); line-height: 1.6; margin-top: 10px; }
+
+/* Planning is a primary destination; household management is a separate group. */
+.main-navigation { display: flex; align-items: center; gap: 24px; }
+.week-link { border: 0; border-bottom: 2px solid transparent; padding: 11px 4px; background: transparent; color: var(--on-green); font-weight: 600; white-space: nowrap; }
+.week-link.active { border-bottom-color: var(--olive); }
+.week-link:hover { color: var(--olive); }
+.manage-navigation { display: flex; align-items: center; gap: 10px; border-left: 1px solid var(--green-line); padding-left: 24px; }
+.manage-navigation > span { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--on-green-muted); }
+.suggestion-badge { align-self: flex-start; font-size: 12px; font-weight: 600; padding: 4px 9px; border-radius: 6px; background: #edf0e5; color: var(--green); }
+.suggestion-badge.check, .suggestion-badge.almost { background: #f4e5c9; color: #6e4d12; }
+.suggestion-filter { display: flex; gap: 10px; align-items: center; margin: 12px 0; font-size: 13px; }
+.suggestion-filter select { padding: 8px; max-width: 100%; }
+@media (max-width: 1200px) {
+  .topbar { flex-wrap: wrap; }
+  .main-navigation { order: 3; width: 100%; }
+  .manage-navigation { flex: 1; }
+  .manage-navigation .tabs { width: auto; flex: 1; }
+  .manage-navigation .tabs button { flex: 1; justify-content: center; }
+}
+@media (max-width: 600px) {
+  .main-navigation { align-items: stretch; gap: 14px; }
+  .week-link { align-self: flex-end; padding-bottom: 12px; }
+  .manage-navigation { flex-direction: column; align-items: stretch; gap: 5px; padding-left: 14px; min-width: 0; }
+  .manage-navigation > span { font-size: 10px; }
+  .manage-navigation .tabs { gap: 0; }
+  .manage-navigation .tabs button { padding: 9px 6px; font-size: 12px; gap: 4px; }
+  .tabs small { padding: 1px 4px; }
+}
+@media (max-width: 600px) {
+  .grocery-item { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; align-items: start; }
+  .grocery-item .have-check { grid-column: 2 / -1; margin-left: 0; justify-content: flex-start; }
+  .grocery-quantity { min-width: 64px; }
+  .grocery-name h3 { overflow-wrap: anywhere; }
+}

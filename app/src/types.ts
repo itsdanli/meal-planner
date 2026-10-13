@@ -1,4 +1,4 @@
-export interface Ingredient { id: string; name: string; amount: number | null; unit: string | null; category: string }
+export interface Ingredient { id: string; ingredientId?: string; optional?: boolean; name: string; amount: number | null; unit: string | null; category: string }
 export interface Protein { name: string; amount: string; instructions?: string }
 export interface Recipe { id: string; name: string; bucket: string; bucketLabel: string; time: number; servings: number; description: string; ingredients: Ingredient[]; steps: string[]; proteins?: Protein[]; source?: string }
 export interface Meal { id: string; recipeId: string; servings: number; proteinIndex?: number; recipeSnapshot?: Recipe }

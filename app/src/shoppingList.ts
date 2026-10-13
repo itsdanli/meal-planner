@@ -16,6 +16,7 @@ export function buildShoppingList(groceries: GroceryItem[], options: ShoppingLis
       if (wholeUnits.has(item.unit)) quantity = Math.ceil(item.shortage);
       else notes.push(`need about ${Number(item.shortage.toFixed(2))} ${item.unit}`);
     }
+    if (item.status === 'review') notes.push(`check before buying: ${item.reasons.join(' ') || 'confirm the amount needed'}`);
     if (options.preferStoreBrand) notes.push('store brand preferred');
     return { item: item.name, quantity, ...(notes.length ? { note: notes.join('; ') } : {}) };
   });

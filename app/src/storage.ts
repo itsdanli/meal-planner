@@ -1,3 +1,4 @@
+import { INGREDIENT_RULES_VERSION } from './ingredients';
 import { recipes } from './data';
 import type { PlannerState } from './types';
 
@@ -34,12 +35,17 @@ export function isPlannerState(value: unknown): value is PlannerState {
 export function loadPlanner(): PlannerState {
   try {
     const saved: unknown = JSON.parse(localStorage.getItem(KEY) || 'null');
-    if (isPlannerState(saved)) return saved;
+    if (isPlannerState(saved)) {
+      const version = (saved as PlannerState & { ingredientRulesVersion?: number }).ingredientRulesVersion;
+      return { weekOf: saved.weekOf, meals: saved.meals, pantry: saved.pantry.map(item => ({ ...item,
+        ...(version === INGREDIENT_RULES_VERSION ? {} : { confirmedEnough: false }),
+      })) };
+    }
   } catch { /* An unavailable or invalid browser store must not prevent the demo from opening. */ }
   return createSamplePlanner();
 }
 
 export function savePlanner(state: PlannerState): void {
   if (!isPlannerState(state)) throw new Error('This plan contains invalid data and could not be saved.');
-  localStorage.setItem(KEY, JSON.stringify(state));
+  localStorage.setItem(KEY, JSON.stringify({ ...state, ingredientRulesVersion: INGREDIENT_RULES_VERSION }));
 }
