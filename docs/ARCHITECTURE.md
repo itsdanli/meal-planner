@@ -66,3 +66,5 @@ Cook tonight now presents two visible sections instead of a readiness filter and
 ### Breakfast, lunch, and dinner
 
 Recipes may specify `mealType` (`breakfast`, `lunch`, or `dinner`); omitted values remain dinner for compatibility with existing recipes and saved snapshots. `daytime-recipes.json` supplies four breakfast and four lunch recipes, enriched with the same ingredient identities as the dinner library. The Recipes browser and weekly plan offer separate meal sections. Adding a recipe opens its corresponding weekly section; randomizing replaces only that section. All sections share pantry stock, grocery calculations, printing, and snapshot persistence. Cook tonight continues to use dinner recipes only. No database migration is required because meal type travels in the existing recipe snapshot JSON.
+
+The expanded catalog also loads `daytime-recipe-expansion.json`, giving 69 dinners, 14 breakfasts, and 14 lunches. The pantry search catalog and common-item pool include the expansion's ingredients. Both daytime files participate in image fetching and recipe ID uniqueness validation.

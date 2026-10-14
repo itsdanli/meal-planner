@@ -8,7 +8,7 @@ import { createSamplePlanner, isPlannerState } from './storage';
 test('breakfast and lunch recipes have valid snapshots and survive plan serialization', () => {
   for (const type of ['breakfast', 'lunch']) {
     const choices = recipes.filter(r => r.mealType === type);
-    assert.equal(choices.length, 4);
+    assert.equal(choices.length, 14);
     assert.ok(choices.every(isRecipeSnapshot));
     const meals = choices.map(r => ({ id: r.id, recipeId: r.id, servings: r.servings }));
     const saved = serializeMeals(meals);
