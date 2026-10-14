@@ -1,0 +1,399 @@
+[
+  {
+    "id": "breakfast-banana-oats",
+    "name": "Banana Peanut Butter Oats",
+    "mealType": "breakfast",
+    "bucket": "breakfast",
+    "bucketLabel": "Breakfast",
+    "time": 10,
+    "servings": 2,
+    "description": "Warm oats with banana and peanut butter.",
+    "ingredients": [
+      {
+        "id": "breakfast-banana-oats-0",
+        "name": "rolled oats",
+        "amount": 1,
+        "unit": "cup",
+        "category": "pantry"
+      },
+      {
+        "id": "breakfast-banana-oats-1",
+        "name": "milk",
+        "amount": 2,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "breakfast-banana-oats-2",
+        "name": "banana",
+        "amount": 2,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "breakfast-banana-oats-3",
+        "name": "peanut butter",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Combine oats and milk in a saucepan. Bring to a gentle simmer and cook for 5\u20137 minutes, stirring, until creamy.",
+      "Divide between bowls. Slice the bananas and add with the peanut butter."
+    ]
+  },
+  {
+    "id": "breakfast-spinach-eggs",
+    "name": "Spinach Eggs on Toast",
+    "mealType": "breakfast",
+    "bucket": "breakfast",
+    "bucketLabel": "Breakfast",
+    "time": 15,
+    "servings": 2,
+    "description": "Soft scrambled eggs, spinach, and crisp toast.",
+    "ingredients": [
+      {
+        "id": "breakfast-spinach-eggs-0",
+        "name": "eggs",
+        "amount": 4,
+        "unit": null,
+        "category": "dairy"
+      },
+      {
+        "id": "breakfast-spinach-eggs-1",
+        "name": "spinach",
+        "amount": 2,
+        "unit": "cup",
+        "category": "produce"
+      },
+      {
+        "id": "breakfast-spinach-eggs-2",
+        "name": "butter",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "dairy"
+      },
+      {
+        "id": "breakfast-spinach-eggs-3",
+        "name": "bread",
+        "amount": 4,
+        "unit": "slice",
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Toast the bread. Melt butter in a skillet over medium heat and wilt the spinach for 2 minutes.",
+      "Beat the eggs and pour into the skillet. Stir gently until fully set, then divide over the toast."
+    ]
+  },
+  {
+    "id": "breakfast-yogurt-bowls",
+    "name": "Berry Yogurt Bowls",
+    "mealType": "breakfast",
+    "bucket": "breakfast",
+    "bucketLabel": "Breakfast",
+    "time": 5,
+    "servings": 2,
+    "description": "A quick breakfast with yogurt, berries, and crunchy granola.",
+    "ingredients": [
+      {
+        "id": "breakfast-yogurt-bowls-0",
+        "name": "greek yogurt",
+        "amount": 2,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "breakfast-yogurt-bowls-1",
+        "name": "berries",
+        "amount": 1,
+        "unit": "cup",
+        "category": "produce"
+      },
+      {
+        "id": "breakfast-yogurt-bowls-2",
+        "name": "granola",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "pantry"
+      },
+      {
+        "id": "breakfast-yogurt-bowls-3",
+        "name": "honey",
+        "amount": 2,
+        "unit": "tsp",
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Divide yogurt between two bowls.",
+      "Top with washed berries, granola, and honey. Serve immediately."
+    ]
+  },
+  {
+    "id": "breakfast-bean-quesadillas",
+    "name": "Egg and Bean Breakfast Quesadillas",
+    "mealType": "breakfast",
+    "bucket": "breakfast",
+    "bucketLabel": "Breakfast",
+    "time": 20,
+    "servings": 2,
+    "description": "Crisp tortillas filled with eggs, beans, and cheddar.",
+    "ingredients": [
+      {
+        "id": "breakfast-bean-quesadillas-0",
+        "name": "eggs",
+        "amount": 3,
+        "unit": null,
+        "category": "dairy"
+      },
+      {
+        "id": "breakfast-bean-quesadillas-1",
+        "name": "canned black beans",
+        "amount": 1,
+        "unit": "cup",
+        "category": "pantry"
+      },
+      {
+        "id": "breakfast-bean-quesadillas-2",
+        "name": "cheddar",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "breakfast-bean-quesadillas-3",
+        "name": "flour tortillas",
+        "amount": 2,
+        "unit": null,
+        "category": "pantry"
+      },
+      {
+        "id": "breakfast-bean-quesadillas-4",
+        "name": "olive oil",
+        "amount": 2,
+        "unit": "tsp",
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Drain and rinse the beans. Beat the eggs. Heat half the oil in a skillet and scramble the eggs until fully set.",
+      "Divide eggs, beans, and grated cheddar over half of each tortilla; fold closed.",
+      "Heat the remaining oil in the skillet. Cook the quesadillas for 2\u20133 minutes per side, until crisp and hot throughout."
+    ]
+  },
+  {
+    "id": "lunch-chickpea-wraps",
+    "name": "Chickpea Crunch Wraps",
+    "mealType": "lunch",
+    "bucket": "lunch",
+    "bucketLabel": "Lunch",
+    "time": 15,
+    "servings": 2,
+    "description": "Lemony chickpeas and crunchy cucumber in an easy wrap.",
+    "ingredients": [
+      {
+        "id": "lunch-chickpea-wraps-0",
+        "name": "canned chickpeas",
+        "amount": 1.5,
+        "unit": "cup",
+        "category": "pantry"
+      },
+      {
+        "id": "lunch-chickpea-wraps-1",
+        "name": "greek yogurt",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "lunch-chickpea-wraps-2",
+        "name": "lemon juice",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "produce"
+      },
+      {
+        "id": "lunch-chickpea-wraps-3",
+        "name": "cucumber",
+        "amount": 0.5,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "lunch-chickpea-wraps-4",
+        "name": "flour tortillas",
+        "amount": 2,
+        "unit": null,
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Drain and rinse the chickpeas. Mash roughly with yogurt and lemon juice.",
+      "Dice the cucumber and fold into the chickpeas. Divide between tortillas, fold in the sides, and roll tightly."
+    ]
+  },
+  {
+    "id": "lunch-black-bean-bowls",
+    "name": "Black Bean Rice Bowls",
+    "mealType": "lunch",
+    "bucket": "lunch",
+    "bucketLabel": "Lunch",
+    "time": 25,
+    "servings": 2,
+    "description": "A simple rice bowl with black beans, corn, and lime.",
+    "ingredients": [
+      {
+        "id": "lunch-black-bean-bowls-0",
+        "name": "jasmine rice",
+        "amount": 0.75,
+        "unit": "cup",
+        "category": "pantry"
+      },
+      {
+        "id": "lunch-black-bean-bowls-1",
+        "name": "canned black beans",
+        "amount": 1.5,
+        "unit": "cup",
+        "category": "pantry"
+      },
+      {
+        "id": "lunch-black-bean-bowls-2",
+        "name": "frozen corn",
+        "amount": 1,
+        "unit": "cup",
+        "category": "frozen"
+      },
+      {
+        "id": "lunch-black-bean-bowls-3",
+        "name": "lime juice",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "produce"
+      },
+      {
+        "id": "lunch-black-bean-bowls-4",
+        "name": "cumin",
+        "amount": 0.5,
+        "unit": "tsp",
+        "category": "spices"
+      }
+    ],
+    "steps": [
+      "Cook rice according to the package instructions.",
+      "Drain and rinse the beans. Warm with corn, cumin, and a splash of water in a saucepan until steaming hot.",
+      "Divide rice between bowls, spoon over the bean mixture, and finish with lime juice."
+    ]
+  },
+  {
+    "id": "lunch-tomato-mozzarella",
+    "name": "Tomato Mozzarella Sandwiches",
+    "mealType": "lunch",
+    "bucket": "lunch",
+    "bucketLabel": "Lunch",
+    "time": 10,
+    "servings": 2,
+    "description": "Fresh tomato, mozzarella, and basil on bread.",
+    "ingredients": [
+      {
+        "id": "lunch-tomato-mozzarella-0",
+        "name": "bread",
+        "amount": 4,
+        "unit": "slice",
+        "category": "pantry"
+      },
+      {
+        "id": "lunch-tomato-mozzarella-1",
+        "name": "fresh mozzarella",
+        "amount": 4,
+        "unit": "oz",
+        "category": "dairy"
+      },
+      {
+        "id": "lunch-tomato-mozzarella-2",
+        "name": "tomato",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "lunch-tomato-mozzarella-3",
+        "name": "basil",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "produce"
+      },
+      {
+        "id": "lunch-tomato-mozzarella-4",
+        "name": "olive oil",
+        "amount": 2,
+        "unit": "tsp",
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Slice the tomato and mozzarella. Wash and dry the basil.",
+      "Drizzle bread with olive oil, layer with tomato, mozzarella, and basil, and close the sandwiches."
+    ]
+  },
+  {
+    "id": "lunch-peanut-noodles",
+    "name": "Peanut Cucumber Noodles",
+    "mealType": "lunch",
+    "bucket": "lunch",
+    "bucketLabel": "Lunch",
+    "time": 20,
+    "servings": 2,
+    "description": "Noodles tossed with a quick peanut sauce and crisp vegetables.",
+    "ingredients": [
+      {
+        "id": "lunch-peanut-noodles-0",
+        "name": "spaghetti",
+        "amount": 6,
+        "unit": "oz",
+        "category": "pantry"
+      },
+      {
+        "id": "lunch-peanut-noodles-1",
+        "name": "peanut butter",
+        "amount": 3,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "lunch-peanut-noodles-2",
+        "name": "soy sauce",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "lunch-peanut-noodles-3",
+        "name": "lime juice",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "produce"
+      },
+      {
+        "id": "lunch-peanut-noodles-4",
+        "name": "cucumber",
+        "amount": 0.5,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "lunch-peanut-noodles-5",
+        "name": "carrots",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      }
+    ],
+    "steps": [
+      "Cook spaghetti according to the package instructions. Reserve a little cooking water before draining.",
+      "Whisk peanut butter, soy sauce, and lime juice with enough warm cooking water to make a pourable sauce.",
+      "Thinly slice the cucumber and grate the carrot. Toss noodles with sauce and vegetables. Serve warm or cool."
+    ]
+  }
+]

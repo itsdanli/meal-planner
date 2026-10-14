@@ -4,7 +4,7 @@ import rawSmoothies from '../../smoothies.json';
 import rawImages from '../../recipe-images.json';
 import type { Recipe } from './types.ts';
 
-export type LibraryKind = 'dinner' | 'cocktail' | 'smoker' | 'smoothie';
+export type LibraryKind = 'breakfast' | 'lunch' | 'dinner' | 'cocktail' | 'smoker' | 'smoothie';
 export interface LibraryEntry {
   kind: LibraryKind; id: string; name: string; label: string; description: string; facts: string[];
   ingredients: { id: string; name: string; amount: number | null; unit: string | null }[];
@@ -17,8 +17,8 @@ type Raw = Record<string, any>;
 const present = (values: (string | false | null | undefined)[]) => values.filter((v): v is string => !!v);
 const base = (kind: LibraryKind, r: Raw) => ({ kind, id: r.id as string, name: r.name as string, label: r.bucketLabel as string, description: (r.description ?? '') as string, ingredients: r.ingredients ?? [], steps: r.steps ?? [] });
 
-export function dinnerEntry(recipe: Recipe): LibraryEntry {
-  return { ...base('dinner', recipe), facts: [`${recipe.time} min`, `Serves ${recipe.servings}`], recipe,
+export function mealEntry(recipe: Recipe): LibraryEntry {
+  return { ...base(recipe.mealType ?? 'dinner', recipe), facts: [`${recipe.time} min`, `Serves ${recipe.servings}`], recipe,
     sections: recipe.proteins?.length ? [{ title: 'Protein add-ons', lines: recipe.proteins.map(p => `${p.name} (${p.amount})${p.instructions ? `: ${p.instructions}` : ''}`) }] : [] };
 }
 export const cocktails: LibraryEntry[] = (rawCocktails as Raw[]).map(r => ({ ...base('cocktail', r),

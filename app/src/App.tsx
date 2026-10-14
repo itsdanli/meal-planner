@@ -1,23 +1,23 @@
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { recipes as libraryRecipes } from './data';
 import { calculateGroceries, canonicalIngredient } from './grocery';
 import { createSamplePlanner, loadPlanner, savePlanner } from './storage';
-import type { GroceryItem, Meal, PantryEntry, PlannerState, Recipe } from './types';
+import type { GroceryItem, Meal, MealType, PantryEntry, PlannerState, Recipe } from './types';
 import './styles.css';
 import { suggestRecipes, suggestionGroupLabel, type Suggestion, type SuggestionGroup } from './suggest';
 import { ingredientIdentity, ingredientLabel, sameIngredient, searchIngredients } from './ingredients';
-import { rankedCommonItems } from './pantrySeeds';
+import { rankedCommonItems, suggestedCommonItems } from './pantrySeeds';
 import { pickRandomRecipes } from './randomMeals';
+import CookTonight from './CookTonight';
 import RecipeSheet, { printRecipeSheet } from './RecipeSheet';
 import RecipeBrowser, { Heart } from './RecipeBrowser';
-import { dinnerEntry, recipeImage, type LibraryEntry } from './library';
+import { mealEntry, recipeImage, type LibraryEntry } from './library';
 import { buildShoppingList, formatShoppingList } from './shoppingList';
 
-type View = 'week' | 'recipes' | 'pantry' | 'groceries';
+type View = 'tonight' | 'week' | 'recipes' | 'pantry' | 'groceries';
 const amount = (n: number | null) => n === null ? 'As needed' : Number(n.toFixed(2)).toString();
 const STORE_BRAND_KEY = 'wmp.preferStoreBrand';
 const uid = () => crypto.randomUUID();
-const ratio = (s: Suggestion) => `${s.have.length + s.low.length}/${s.have.length + s.low.length + s.missing.length}`;
 const matchLabel = (s: Suggestion) => `${s.have.length} on hand${s.low.length ? ` · ${s.low.length} running low` : ''}`;
 const missingLabel = (s: Suggestion) => {
   const missing = s.missing.length ? `Missing ${s.missing.slice(0, 4).map(i => ingredientLabel(i.name)).join(', ')}${s.missing.length > 4 ? ` +${s.missing.length - 4} more` : ''}.` : 'Required ingredients are tagged.';
@@ -52,9 +52,14 @@ export default function App(props: PlannerProps) {
     return () => window.removeEventListener('beforeunload', preventLoss);
   }, [dirty]);
   const [view, setView] = useState<View>('week');
+  const [mealType, setMealType] = useState<MealType>('dinner');
+  const [tonightServings, setTonightServings] = useState(2);
   const [picker, setPicker] = useState(false);
   const [search, setSearch] = useState('');
   const [quickAdd, setQuickAdd] = useState(() => (props.initialState ?? loadPlanner()).pantry.length < 8);
+  const [addingCommon, setAddingCommon] = useState<Set<string>>(() => new Set());
+  const commonTimers = useRef(new Map<string, ReturnType<typeof setTimeout>>());
+  useEffect(() => () => { commonTimers.current.forEach(clearTimeout); }, []);
   const [pickerMode, setPickerMode] = useState<'pantry' | 'all'>('pantry');
   const [suggestionFilter, setSuggestionFilter] = useState<SuggestionGroup | 'all'>('all');
   const [newItem, setNewItem] = useState('');
@@ -97,16 +102,24 @@ export default function App(props: PlannerProps) {
   const review = groceries.filter(i => i.status === 'review');
   const covered = groceries.filter(i => i.status === 'covered');
   const selected = state.meals.map(meal => ({ meal, recipe: meal.recipeSnapshot ?? recipes.find(r => r.id === meal.recipeId) })).filter((x): x is { meal: Meal; recipe: Recipe } => !!x.recipe);
-  const suggestions = useMemo(() => suggestRecipes(recipes, state.pantry).filter(s => !state.meals.some(m => m.recipeId === s.recipe.id)), [recipes, state.pantry, state.meals]);
+  const suggestions = useMemo(() => suggestRecipes(recipes.filter(r => (r.mealType ?? 'dinner') === mealType), state.pantry).filter(s => !state.meals.some(m => m.recipeId === s.recipe.id)), [recipes, state.pantry, state.meals, mealType]);
+  const mealTypes = [['breakfast', 'Breakfast'], ['lunch', 'Lunch'], ['dinner', 'Dinner']] as const;
+  const dinnerRecipes = recipes.filter(r => (r.mealType ?? 'dinner') === 'dinner');
   const commonGroups = useMemo(() => rankedCommonItems(recipes), [recipes]);
-  const pantryNames = new Set(state.pantry.filter(p => p.status !== 'out' && p.quantity !== 0).map(p => ingredientIdentity(p.name)));
-  const toggleCommon = (name: string) => pantryNames.has(ingredientIdentity(name))
-    ? setState(s => ({ ...s, pantry: s.pantry.map(p => sameIngredient(p.name, name) ? { ...p, status: 'out', quantity: undefined, unit: undefined, confirmedEnough: false, updatedAt: new Date().toISOString() } : p) }))
-    : addPantry(name);
+  const commonSuggestions = suggestedCommonItems(commonGroups, state.pantry.filter(item => !addingCommon.has(ingredientIdentity(item.name))), newItem);
   const ingredientSearch = searchIngredients(newItem);
-  const stockedCount = state.pantry.filter(p => p.status !== 'out' && p.quantity !== 0).length;
-  const addRecipe = (r: Recipe) => { setState(s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: [...s.meals, { id: uid(), recipeId: r.id, servings: r.servings, recipeSnapshot: structuredClone(r) }] })); setPicker(false); setSearch(''); };
-  const randomizeMeals = () => setState(s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: pickRandomRecipes(recipes, 3, s.meals.map(m => m.recipeId)).map(r => ({ id: uid(), recipeId: r.id, servings: r.servings, recipeSnapshot: structuredClone(r) })) }));
+  const addCommon = (name: string) => {
+    const identity = ingredientIdentity(name);
+    if (commonTimers.current.has(identity)) return;
+    addPantry(name);
+    setAddingCommon(current => new Set(current).add(identity));
+    commonTimers.current.set(identity, setTimeout(() => {
+      setAddingCommon(current => { const next = new Set(current); next.delete(identity); return next; });
+      commonTimers.current.delete(identity);
+    }, 1240));
+  };
+  const addRecipe = (r: Recipe, servings = r.servings, proteinIndex?: number) => { setState(s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: [...s.meals, { id: uid(), recipeId: r.id, servings, proteinIndex, recipeSnapshot: structuredClone(r) }] })); setPicker(false); setSearch(''); setMealType(r.mealType ?? 'dinner'); setView('week'); };
+  const randomizeMeals = () => setState(s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: [...s.meals.filter(m => ((m.recipeSnapshot ?? recipes.find(r => r.id === m.recipeId))?.mealType ?? 'dinner') !== mealType), ...pickRandomRecipes(recipes.filter(r => (r.mealType ?? 'dinner') === mealType), 3, s.meals.map(m => m.recipeId)).map(r => ({ id: uid(), recipeId: r.id, servings: r.servings, recipeSnapshot: structuredClone(r) }))] }));
   const planFromFavorites = (list: Recipe[]) => { setState(s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: pickRandomRecipes(list, 3, s.meals.map(m => m.recipeId)).map(r => ({ id: uid(), recipeId: r.id, servings: r.servings, recipeSnapshot: structuredClone(r) })) })); setView('week'); };
   const openPicker = (mode: 'pantry' | 'all') => { setPickerMode(suggestions.length ? mode : 'all'); setSuggestionFilter('all'); setPicker(true); };
   const clearConfirmation = (pantry: PantryEntry[]) => pantry.map(p => ({ ...p, confirmedEnough: false }));
@@ -145,7 +158,7 @@ export default function App(props: PlannerProps) {
         <header className="topbar">
           <a className="brand" href="#" onClick={e => { e.preventDefault(); setView('week'); }}>wmp</a>
           <nav className="main-navigation" aria-label="Main navigation">
-            <button className={`week-link ${view === 'week' ? 'active' : ''}`} onClick={() => setView('week')} aria-current={view === 'week' ? 'page' : undefined}>This week</button>
+            <button className={`week-link ${view === 'week' || view === 'tonight' ? 'active' : ''}`} onClick={() => setView('week')} aria-current={view === 'week' ? 'page' : undefined}>This week</button>
             <div className="manage-navigation"><span id="manage-label">Manage</span><div className="tabs" role="group" aria-labelledby="manage-label">{([['recipes', 'Recipes'], ['pantry', 'Pantry'], ['groceries', 'Groceries']] as const).map(([key, label]) => <button key={key} className={view === key ? 'active' : ''} onClick={() => setView(key)} aria-current={view === key ? 'page' : undefined}>{label}{key === 'groceries' && needed.length + review.length > 0 && <small>{needed.length + review.length}</small>}</button>)}</div></div>
           </nav>
           <div className="topbar-right">
@@ -162,13 +175,13 @@ export default function App(props: PlannerProps) {
         <div className="hero-body">
           <div>
             <label className="week-date">Week of <input aria-label="Plan week date" type="date" value={state.weekOf} disabled={props.saving} onChange={e => { if (!e.target.value) return; if (cloud) { if (leaveEdits()) props.onWeekChange?.(e.target.value); } else setState(s => ({ ...s, weekOf: e.target.value, pantry: clearConfirmation(s.pantry) })); }} /></label>
-            <h1>{view === 'week' ? `${selected.length} ${selected.length === 1 ? 'dinner' : 'dinners'}` : view === 'recipes' ? 'Recipes' : view === 'pantry' ? 'Pantry' : 'Groceries'}</h1>
+            <h1>{view === 'week' ? `${selected.length} ${selected.length === 1 ? 'meal' : 'meals'}` : view === 'tonight' ? 'Cook tonight' : view === 'recipes' ? 'Recipes' : view === 'pantry' ? 'Pantry' : 'Groceries'}</h1>
           </div>
           <div className="hero-actions">
             {stats}
             {view === 'groceries'
               ? <><button className="button ghost" onClick={exportList}>Export</button><button className="button accent" onClick={() => window.print()}>Print</button></>
-              : <>{view === 'week' && <><button className="button ghost" onClick={randomizeMeals}>Randomize meals</button><button className="button ghost" disabled={!selected.length} onClick={() => sheetRef.current && printRecipeSheet(sheetRef.current, setSheetSides, selected.length)}>Print recipes</button></>}<button className="button accent" onClick={() => setView('groceries')}>Review groceries <Arrow /></button></>}
+              : <>{view === 'week' && <><button className="button ghost" onClick={randomizeMeals}>Randomize {mealType}</button><button className="button ghost" disabled={!selected.length} onClick={() => sheetRef.current && printRecipeSheet(sheetRef.current, setSheetSides, selected.length)}>Print recipes</button></>}<button className="button accent" onClick={() => setView('groceries')}>Review groceries <Arrow /></button></>}
           </div>
         </div>
       </section>
@@ -177,12 +190,13 @@ export default function App(props: PlannerProps) {
         {!cloud && saveError && <div className="cloud-notice" role="alert">Changes could not be saved in this browser. Keep this tab open and export your list.</div>}
         <fieldset key={view} className="planner-editing" disabled={props.saving}>
         {view === 'week' && <>
+          <div className="picker-modes" role="group" aria-label="Meal time">{mealTypes.map(([type, label]) => <button key={type} aria-pressed={mealType === type} onClick={() => setMealType(type)}>{label} · {selected.filter(({ recipe }) => (recipe.mealType ?? 'dinner') === type).length}</button>)}</div>
           <div className="meal-grid">
-            {selected.map(({ meal, recipe }, index) => { const image = recipeImage(recipe.id); return <article className="meal-card" key={meal.id}>
+            {selected.filter(({ recipe }) => (recipe.mealType ?? 'dinner') === mealType).map(({ meal, recipe }, index) => { const image = recipeImage(recipe.id); return <article className="meal-card" key={meal.id}>
               <div className={`meal-art ${image ? 'has-photo' : `tint-${index % 4}`}`}>
                 {image ? <img src={image.url} alt="" loading="lazy" /> : <span className="plate" aria-hidden="true"><PlateIcon kind={index % 4} /></span>}
                 <span className="meal-meta">{recipe.bucketLabel} · {recipe.time} min</span>
-                <button className="recipe-title" onClick={() => setDetail(dinnerEntry(recipe))}>{recipe.name}</button>
+                <button className="recipe-title" onClick={() => setDetail(mealEntry(recipe))}>{recipe.name}</button>
               </div>
               <div className="meal-controls">
                 <div className="meal-row">
@@ -196,30 +210,25 @@ export default function App(props: PlannerProps) {
                 {!!recipe.proteins?.length && <label className="protein-select">Protein<select value={meal.proteinIndex ?? ''} onChange={e => updateMeal(meal.id, { proteinIndex: e.target.value === '' ? undefined : Number(e.target.value) })}><option value="">None</option>{recipe.proteins.map((p, i) => <option value={i} key={p.name}>{p.name}</option>)}</select></label>}
               </div>
             </article>; })}
-            <button className="add-meal-card" onClick={() => openPicker('all')}><Plus />Add a meal</button>
+            <button className="add-meal-card" onClick={() => openPicker('all')}><Plus />Add {mealType}</button>
           </div>
-          <section className="suggestions" aria-labelledby="suggest-title">
-            <div className="section-heading"><h2 id="suggest-title">From your pantry {suggestions.length > 0 && stockedCount > 0 && <span>{suggestions.length}</span>}</h2>{suggestions.length > 3 && stockedCount > 0 && <button className="text-button" onClick={() => openPicker('pantry')}>See all</button>}</div>
-            {stockedCount === 0 ? <div className="suggest-empty"><p>Optionally tag what’s in your kitchen to find recipes that use it.</p><button className="button secondary compact" onClick={() => setView('pantry')}>Add kitchen items</button></div>
-              : !suggestions.length ? <p className="suggest-empty">Tag a few more ingredients to find matches beyond salt and pepper.</p>
-              : <div className="suggest-list">{suggestions.slice(0, 3).map(sg => <article className="suggest-card" key={sg.recipe.id}>
-                <div className="suggest-head">
-                  <span className="ring" style={{ '--p': `${Math.round(sg.coverage * 100)}%` } as CSSProperties} aria-label={matchLabel(sg)}><span>{ratio(sg)}</span></span>
-                  <div><small>{sg.recipe.bucketLabel} · {sg.recipe.time} min</small><button className="recipe-title" onClick={() => setDetail(dinnerEntry(sg.recipe))}>{sg.recipe.name}</button></div>
-                </div>
-                <span className={`suggestion-badge ${sg.group}`}>{suggestionGroupLabel[sg.group]}</span><p>{matchLabel(sg)}. {missingLabel(sg)}</p>
-                <button className="button secondary compact" onClick={() => addRecipe(sg.recipe)}>+ Add to week</button>
-              </article>)}</div>}
-          </section>
+          <div className="suggestions"><CookTonight recipes={dinnerRecipes} pantry={state.pantry} servings={tonightServings} onServings={setTonightServings} onAdd={addRecipe} onPantry={() => setView('pantry')} compact onSeeAll={() => setView('tonight')} /></div>
         </>}
+        {view === 'tonight' && <CookTonight recipes={dinnerRecipes} pantry={state.pantry} servings={tonightServings} onServings={setTonightServings} onAdd={addRecipe} onPantry={() => setView('pantry')} />}
         {view === 'recipes' && <RecipeBrowser recipes={recipes} plannedIds={state.meals.map(m => m.recipeId)} favorites={props.favorites} onToggleFavorite={props.onToggleFavorite} onOpen={setDetail} onAdd={addRecipe} onPlanFavorites={planFromFavorites} />}
         {view === 'pantry' && <section>
-          <div className="section-heading"><h2>What’s in your kitchen?</h2>{suggestions.length > 0 && <button className="button secondary compact" onClick={() => openPicker('pantry')}>Find recipes · {suggestions.length}</button>}</div>
+          <div className="section-heading"><h2>What’s in your kitchen?</h2><button className="button secondary compact" onClick={() => setView('tonight')}>Cook tonight</button></div>
           <p className="section-note">Optional: tag the ingredients you have. Amounts can wait until you plan your meals.</p>
           <form className="pantry-add" onSubmit={e => { e.preventDefault(); addPantry(newItem); }}><label className="sr-only" htmlFor="pantry-name">Pantry item</label><input id="pantry-name" list="ingredient-options" value={newItem} onChange={e => setNewItem(e.target.value)} placeholder="Add an item, e.g. olive oil" required /><datalist id="ingredient-options">{ingredientSearch.map(item => <option key={item.id} value={item.name} />)}</datalist><button className="button primary" type="submit">Add</button></form>
           <section className="quick-add">
-            <button className="quick-add-toggle" aria-expanded={quickAdd} onClick={() => setQuickAdd(o => !o)}><span><strong>Common items</strong><small>Tap to mark on hand or out. Include the seasonings you keep stocked.</small></span><span aria-hidden="true">{quickAdd ? '−' : '+'}</span></button>
-            {quickAdd && commonGroups.map(({ group, items }) => { const shown = items.filter(i => i.name.includes(newItem.trim().toLowerCase()) || ingredientSearch.some(match => match.id === ingredientIdentity(i.name))); return shown.length > 0 && <div className="quick-group" key={group}><h3>{group}</h3><div className="chips">{shown.map(({ name }) => <button key={name} className="chip" aria-pressed={pantryNames.has(ingredientIdentity(name))} onClick={() => toggleCommon(name)}>{pantryNames.has(ingredientIdentity(name)) ? '✓' : '+'} {name}</button>)}</div></div>; })}
+            <button className="quick-add-toggle" aria-expanded={quickAdd} onClick={() => setQuickAdd(o => !o)}><span><strong>Common items</strong><small>Add what you have. New suggestions appear as you go.</small></span><span aria-hidden="true">{quickAdd ? '−' : '+'}</span></button>
+            {quickAdd && commonSuggestions.map(({ group, items }) => <div className="quick-group" key={group}>
+              <h3>{group}</h3><div className="chips">{items.map(({ name }) => {
+                const added = addingCommon.has(ingredientIdentity(name));
+                return <button key={name} className={`chip${added ? ' chip-added' : ''}`} aria-label={added ? `${name} added to your items` : `Add ${name} to your items`} aria-disabled={added} onClick={() => addCommon(name)}>{added ? '✓' : '+'} {name}</button>;
+              })}</div>
+            </div>)}
+            {quickAdd && commonSuggestions.length === 0 && <p className="section-note">{newItem.trim() ? 'No new common items match. You can still add an item above.' : 'You’ve added all the common items. Add anything else above, or update Your items below.'}</p>}
           </section>
           <div className="section-heading"><h2>Your items <span>{state.pantry.length}</span></h2></div>
           <p className="section-note">Your kitchen carries across weeks. Ingredients stay on your shopping list until an amount or “Enough for this plan” confirms coverage.</p>
@@ -234,9 +243,9 @@ export default function App(props: PlannerProps) {
         </fieldset>
       </main>
     </div>
-    {picker && <div className="modal-backdrop no-print" onMouseDown={e => { if (e.target === e.currentTarget) setPicker(false); }}><section className="modal" role="dialog" aria-modal="true" aria-labelledby="picker-title" onClick={e => e.stopPropagation()} onKeyDown={e => { if (e.key === 'Escape') setPicker(false); }}><div className="section-heading"><h2 id="picker-title">Add a meal</h2><button className="close-button" aria-label="Close recipe picker" onClick={() => setPicker(false)}>×</button></div><input className="search-input" autoFocus placeholder="Search recipes or ingredients" aria-label="Search recipes" value={search} onChange={e => setSearch(e.target.value)} /><div className="picker-modes" role="group" aria-label="Sort recipes">{([['pantry', `From your pantry${suggestions.length ? ` · ${suggestions.length}` : ''}`], ['all', 'All recipes']] as const).map(([mode, label]) => <button key={mode} aria-pressed={pickerMode === mode} disabled={mode === 'pantry' && !suggestions.length} onClick={() => setPickerMode(mode)}>{label}</button>)}</div>{pickerMode === 'pantry' && <><p className="picker-hint">Based on your tags. Check quantities and any protein add-ons before cooking; the grocery list checks the whole week.</p><label className="suggestion-filter">Show <select value={suggestionFilter} onChange={e => setSuggestionFilter(e.target.value as SuggestionGroup | 'all')}><option value="all">All matches</option>{(Object.entries(suggestionGroupLabel) as [SuggestionGroup, string][]).map(([key, label]) => <option value={key} key={key}>{label} ({suggestions.filter(s => s.group === key).length})</option>)}</select></label></>}<div className="recipe-results">{pickerMode === 'pantry' && suggestionFilter !== 'all' && !suggestions.some(s => s.group === suggestionFilter) && <p className="empty-state">No recipes in this group yet. Try all matches or add more kitchen items.</p>}{((pickerMode === 'pantry' ? suggestions.filter(s => suggestionFilter === 'all' || s.group === suggestionFilter) : recipes.map(recipe => ({ recipe }))) as ({ recipe: Recipe } | Suggestion)[]).filter(({ recipe: r }) => `${r.name} ${r.ingredients.map(i => i.name).join(' ')}`.toLowerCase().includes(search.toLowerCase())).map(item => { const r = item.recipe; const sg = 'coverage' in item ? item : undefined; return <article key={r.id}><div><small>{r.bucketLabel} · {r.time} min{sg && <> · <span className="match-have">{suggestionGroupLabel[sg.group]} · {matchLabel(sg)}</span></>}</small><h3>{r.name}</h3><p>{sg ? missingLabel(sg) : r.description}</p></div><button className="button secondary compact" onClick={() => addRecipe(r)}>+ Add</button></article>; })}</div></section></div>}
+    {picker && <div className="modal-backdrop no-print" onMouseDown={e => { if (e.target === e.currentTarget) setPicker(false); }}><section className="modal" role="dialog" aria-modal="true" aria-labelledby="picker-title" onClick={e => e.stopPropagation()} onKeyDown={e => { if (e.key === 'Escape') setPicker(false); }}><div className="section-heading"><h2 id="picker-title">Add {mealType}</h2><button className="close-button" aria-label="Close recipe picker" onClick={() => setPicker(false)}>×</button></div><input className="search-input" autoFocus placeholder="Search recipes or ingredients" aria-label="Search recipes" value={search} onChange={e => setSearch(e.target.value)} /><div className="picker-modes" role="group" aria-label="Sort recipes">{([['pantry', `From your pantry${suggestions.length ? ` · ${suggestions.length}` : ''}`], ['all', 'All recipes']] as const).map(([mode, label]) => <button key={mode} aria-pressed={pickerMode === mode} disabled={mode === 'pantry' && !suggestions.length} onClick={() => setPickerMode(mode)}>{label}</button>)}</div>{pickerMode === 'pantry' && <><p className="picker-hint">Based on your tags. Check quantities and any protein add-ons before cooking; the grocery list checks the whole week.</p><label className="suggestion-filter">Show <select value={suggestionFilter} onChange={e => setSuggestionFilter(e.target.value as SuggestionGroup | 'all')}><option value="all">All matches</option>{(Object.entries(suggestionGroupLabel) as [SuggestionGroup, string][]).map(([key, label]) => <option value={key} key={key}>{label} ({suggestions.filter(s => s.group === key).length})</option>)}</select></label></>}<div className="recipe-results">{pickerMode === 'pantry' && suggestionFilter !== 'all' && !suggestions.some(s => s.group === suggestionFilter) && <p className="empty-state">No recipes in this group yet. Try all matches or add more kitchen items.</p>}{((pickerMode === 'pantry' ? suggestions.filter(s => suggestionFilter === 'all' || s.group === suggestionFilter) : recipes.map(recipe => ({ recipe }))) as ({ recipe: Recipe } | Suggestion)[]).filter(({ recipe: r }) => (r.mealType ?? 'dinner') === mealType).filter(({ recipe: r }) => `${r.name} ${r.ingredients.map(i => i.name).join(' ')}`.toLowerCase().includes(search.toLowerCase())).map(item => { const r = item.recipe; const sg = 'coverage' in item ? item : undefined; return <article key={r.id}><div><small>{r.bucketLabel} · {r.time} min{sg && <> · <span className="match-have">{suggestionGroupLabel[sg.group]} · {matchLabel(sg)}</span></>}</small><h3>{r.name}</h3><p>{sg ? missingLabel(sg) : r.description}</p></div><button className="button secondary compact" onClick={() => addRecipe(r)}>+ Add</button></article>; })}</div></section></div>}
     {detail && (() => { const image = recipeImage(detail.id); const favorite = !!props.favorites?.includes(detail.id); return <div className="modal-backdrop no-print" onMouseDown={e => { if (e.target === e.currentTarget) setDetail(null); }}><section className="modal recipe-detail" role="dialog" aria-modal="true" aria-labelledby="detail-title" onClick={e => e.stopPropagation()} onKeyDown={e => { if (e.key === 'Escape') setDetail(null); }}>
-      <div className="section-heading"><h2 id="detail-title">{detail.name}</h2><div className="detail-actions">{detail.kind === 'dinner' && props.onToggleFavorite && <button className="favorite-button" aria-pressed={favorite} aria-label={favorite ? 'Remove from favorites' : 'Add to favorites'} onClick={() => props.onToggleFavorite?.(detail.id)}><Heart filled={favorite} /></button>}<button autoFocus className="close-button" aria-label="Close recipe" onClick={() => setDetail(null)}>×</button></div></div>
+      <div className="section-heading"><h2 id="detail-title">{detail.name}</h2><div className="detail-actions">{detail.recipe && props.onToggleFavorite && <button className="favorite-button" aria-pressed={favorite} aria-label={favorite ? 'Remove from favorites' : 'Add to favorites'} onClick={() => props.onToggleFavorite?.(detail.id)}><Heart filled={favorite} /></button>}<button autoFocus className="close-button" aria-label="Close recipe" onClick={() => setDetail(null)}>×</button></div></div>
       {image && <figure className="detail-photo"><img src={image.url} alt="" /><figcaption>Photo of a similar dish: <a href={image.sourceUrl} target="_blank" rel="noreferrer">{image.author}, {image.license}, Wikimedia Commons</a></figcaption></figure>}
       <p>{detail.facts.join(' · ')}</p>
       {detail.description && <p>{detail.description}</p>}
@@ -246,7 +255,7 @@ export default function App(props: PlannerProps) {
     </section></div>; })()}
     {resetConfirm && <div className="modal-backdrop no-print"><section className="modal small-modal" role="dialog" aria-modal="true" aria-labelledby="reset-title"><h2 id="reset-title">Reset sample data?</h2><p>This replaces the plan and pantry saved in this browser with the sample data.</p><div className="bottom-action"><button autoFocus className="button secondary" onClick={() => setResetConfirm(false)}>Cancel</button><button className="button primary" onClick={() => { setState(createSamplePlanner()); setResetConfirm(false); }}>Reset</button></div></section></div>}
     <RecipeSheet ref={sheetRef} weekLabel={dateLabel} meals={selected} sides={sheetSides} />
-    <div className="print-only"><h1>wmp</h1><p>Week of {dateLabel} · {selected.length} dinners</p><h2>Shopping list</h2>{groceries.filter(i => i.status !== 'covered').map(i => <p key={i.id}>□ {i.name} — {amount(i.shortage)} {i.shortage !== null && i.unit}{i.status === 'review' ? ` · CHECK: ${i.reasons.join(' ')}` : ''}</p>)}{covered.length > 0 && <p>In pantry: {covered.map(i => i.name).join(', ')}</p>}{selected.map(({ meal, recipe }) => <section className="print-recipe" key={meal.id}><h2>{recipe.name}</h2><p>{recipe.time} minutes · {meal.servings} servings</p><ul>{recipe.ingredients.map(i => <li key={i.id}>{amount(i.amount === null ? null : i.amount * meal.servings / recipe.servings)} {i.unit} {i.name}</li>)}</ul>{meal.proteinIndex !== undefined && recipe.proteins?.[meal.proteinIndex] && <p><strong>Protein:</strong> {recipe.proteins[meal.proteinIndex].name} · Base recipe amount: {recipe.proteins[meal.proteinIndex].amount}. Scale by {amount(meal.servings / recipe.servings)}×. {recipe.proteins[meal.proteinIndex].instructions}</p>}<ol>{recipe.steps.map((step, i) => <li key={i}>{step}</li>)}</ol></section>)}</div>
+    <div className="print-only"><h1>wmp</h1><p>Week of {dateLabel} · {selected.length} meals</p><h2>Shopping list</h2>{groceries.filter(i => i.status !== 'covered').map(i => <p key={i.id}>□ {i.name} — {amount(i.shortage)} {i.shortage !== null && i.unit}{i.status === 'review' ? ` · CHECK: ${i.reasons.join(' ')}` : ''}</p>)}{covered.length > 0 && <p>In pantry: {covered.map(i => i.name).join(', ')}</p>}{selected.map(({ meal, recipe }) => <section className="print-recipe" key={meal.id}><h2>{recipe.name}</h2><p>{recipe.time} minutes · {meal.servings} servings</p><ul>{recipe.ingredients.map(i => <li key={i.id}>{amount(i.amount === null ? null : i.amount * meal.servings / recipe.servings)} {i.unit} {i.name}</li>)}</ul>{meal.proteinIndex !== undefined && recipe.proteins?.[meal.proteinIndex] && <p><strong>Protein:</strong> {recipe.proteins[meal.proteinIndex].name} · Base recipe amount: {recipe.proteins[meal.proteinIndex].amount}. Scale by {amount(meal.servings / recipe.servings)}×. {recipe.proteins[meal.proteinIndex].instructions}</p>}<ol>{recipe.steps.map((step, i) => <li key={i}>{step}</li>)}</ol></section>)}</div>
   </>;
 }
 

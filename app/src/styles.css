@@ -320,3 +320,43 @@ main { max-width: 1512px; margin: 0 auto; padding: 34px 56px 64px; }
   .grocery-quantity { min-width: 64px; }
   .grocery-name h3 { overflow-wrap: anywhere; }
 }
+
+/* Cook tonight */
+.tonight-controls { display: flex; align-items: end; flex-wrap: wrap; gap: 12px; margin: 20px 0; }
+.tonight-controls label, .tonight-protein { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--muted); }
+.tonight-controls select, .tonight-protein select { padding: 10px; max-width: 100%; }
+.tonight-controls .search-input { width: 280px; flex: 1; min-width: 180px; margin: 0; }
+.tonight-count { font-size: 13px; color: var(--muted); margin: 16px 0; }
+.tonight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; align-items: start; }
+.tonight-card { min-width: 0; padding: 20px; border: 1px solid var(--border); background: var(--card); border-radius: 14px; display: flex; flex-direction: column; gap: 14px; }
+.tonight-card-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.tonight-card-heading small, .tonight-card > p { color: var(--muted); font-size: 13px; line-height: 1.6; }
+.tonight-card h3 { font-size: 20px; line-height: 1.3; }
+.suggestion-badge.ready { background: #dfe9d7; color: var(--green); }
+.tonight-details { border-top: 1px solid var(--border); padding-top: 12px; font-size: 13px; line-height: 1.6; }
+.tonight-details summary { color: var(--green); font-weight: 600; cursor: pointer; }
+.tonight-details h4 { margin: 18px 0 8px; font-size: 14px; }
+.tonight-details ul { list-style: none; padding: 0; }
+.tonight-details ul li { padding: 10px 0; border-bottom: 1px solid var(--border); }
+.tonight-details li > div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px; }
+.tonight-details li strong { text-transform: capitalize; }
+.tonight-details li p { color: var(--muted); margin-top: 4px; }
+.tonight-details ol { padding-left: 20px; }
+.tonight-details ol li { padding-bottom: 8px; }
+.tonight-details .fine-print { margin-top: 10px; }
+@media (max-width: 600px) {
+  .tonight-grid { grid-template-columns: minmax(0, 1fr); }
+  .tonight-controls label { flex: 1; min-width: 120px; }
+  .cook-tonight .section-heading { align-items: start; flex-wrap: wrap; }
+}
+.tonight-sections { display: grid; gap: 32px; margin-top: 28px; }
+.tonight-match-section > .section-heading h3 { font-size: 21px; letter-spacing: -.5px; }
+.tonight-section-count { display: inline-block; font-size: 12px; padding: 3px 8px; margin-left: 5px; border-radius: 6px; background: var(--tint); vertical-align: middle; }
+.tonight-empty { padding: 22px; border: 1px dashed var(--border-strong); border-radius: 12px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.tonight-match-summary strong { color: var(--green); }
+.tonight-card > .fine-print { margin-top: -8px; font-size: 12px; }
+
+/* Confirm the add immediately, hold for a second, then make room for another suggestion. */
+.chip.chip-added { background: #e2e9d5; border-color: #b9c7a4; color: var(--green); cursor: default; animation: common-item-added 240ms ease 1s forwards; }
+@keyframes common-item-added { from { opacity: 1; } to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .chip.chip-added { animation: none; } }

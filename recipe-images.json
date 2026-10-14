@@ -502,5 +502,74 @@
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Blueberry_Cacao_Coconut_Smoothie_(12912829224).jpg"
+  },
+  "breakfast-spinach-eggs": {
+    "query": "scrambled eggs spinach",
+    "file": "breakfast-spinach-eggs.jpg",
+    "commonsTitle": "File:Liat Portal for Foodie Disorder - Scrambled eggs with spinach.jpg",
+    "author": "HaJunkiyada",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Scrambled_eggs_with_spinach.jpg"
+  },
+  "breakfast-yogurt-bowls": {
+    "file": "breakfast-yogurt-bowls.jpg",
+    "commonsTitle": "File:Yogurt layers with fruit in tall personalized glasses raspberries blueberries strawberries in bowls on table (16380437271).jpg",
+    "author": "Personal Creations",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Yogurt_layers_with_fruit_in_tall_personalized_glasses_raspberries_blueberries_strawberries_in_bowls_on_table_(16380437271).jpg"
+  },
+  "lunch-black-bean-bowls": {
+    "query": "gallo pinto",
+    "file": "lunch-black-bean-bowls.jpg",
+    "commonsTitle": "File:Gallo pinto-IMG 0672.JPG",
+    "author": "C T Johansson",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gallo_pinto-IMG_0672.JPG"
+  },
+  "lunch-tomato-mozzarella": {
+    "file": "lunch-tomato-mozzarella.jpg",
+    "commonsTitle": "File:Mozzarella tomato & pesto ciabatta - Bloom Cafe, Holy Trinity Brompton 2026-09-03.jpg",
+    "author": "Andy Li",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mozzarella_tomato_%26_pesto_ciabatta_-_Bloom_Cafe,_Holy_Trinity_Brompton_2026-09-03.jpg"
+  },
+  "lunch-peanut-noodles": {
+    "file": "lunch-peanut-noodles.jpg",
+    "commonsTitle": "File:Vegan Peanut Cold Noodles with Cucumbers (6002018387).jpg",
+    "author": "tomatoes and friends",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vegan_Peanut_Cold_Noodles_with_Cucumbers_(6002018387).jpg"
+  },
+  "breakfast-banana-oats": {
+    "query": "banana oatmeal",
+    "file": "breakfast-banana-oats.jpg",
+    "commonsTitle": "File:Banana oatmeal 2.jpg",
+    "author": "Shisma",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Banana_oatmeal_2.jpg"
+  },
+  "breakfast-bean-quesadillas": {
+    "query": "quesadilla",
+    "file": "breakfast-bean-quesadillas.jpg",
+    "commonsTitle": "File:At Long Island 2023 267.jpg",
+    "author": "Photograph by Mike Peel (www.mikepeel.net).",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:At_Long_Island_2023_267.jpg"
+  },
+  "lunch-chickpea-wraps": {
+    "query": "vegetarian wrap",
+    "file": "lunch-chickpea-wraps.jpg",
+    "commonsTitle": "File:Vegetable Wrap (toasted) - The naan hut 2023-12-22.jpg",
+    "author": "Andy Li",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vegetable_Wrap_(toasted)_-_The_naan_hut_2023-12-22.jpg"
   }
 }

@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { cocktails, dinnerEntry, recipeImage, smokerRecipes, smoothies, type LibraryEntry } from './library';
+import { cocktails, mealEntry, recipeImage, smokerRecipes, smoothies, type LibraryEntry } from './library';
 import type { Recipe } from './types';
 
-type Section = 'dinners' | 'favorites' | 'cocktails' | 'smoker' | 'smoothies';
+type Section = 'breakfast' | 'lunch' | 'dinners' | 'favorites' | 'cocktails' | 'smoker' | 'smoothies';
 interface Props {
   recipes: Recipe[];
   plannedIds: string[];
@@ -21,8 +21,10 @@ export default function RecipeBrowser({ recipes, plannedIds, favorites, onToggle
   const canFavorite = !!onToggleFavorite;
   const favoriteRecipes = recipes.filter(r => favorites?.includes(r.id));
   const sections: [Section, string, LibraryEntry[]][] = [
-    ['dinners', 'Dinners', recipes.map(dinnerEntry)],
-    ...(canFavorite ? [['favorites', 'Favorites', favoriteRecipes.map(dinnerEntry)] as [Section, string, LibraryEntry[]]] : []),
+    ['breakfast', 'Breakfast', recipes.filter(r => r.mealType === 'breakfast').map(mealEntry)],
+    ['lunch', 'Lunch', recipes.filter(r => r.mealType === 'lunch').map(mealEntry)],
+    ['dinners', 'Dinner', recipes.filter(r => !r.mealType || r.mealType === 'dinner').map(mealEntry)],
+    ...(canFavorite ? [['favorites', 'Favorites', favoriteRecipes.map(mealEntry)] as [Section, string, LibraryEntry[]]] : []),
     ['cocktails', 'Cocktails', cocktails], ['smoker', 'Smoker', smokerRecipes], ['smoothies', 'Smoothies', smoothies],
   ];
   const entries = sections.find(([key]) => key === section)?.[2] ?? [];
@@ -34,9 +36,9 @@ export default function RecipeBrowser({ recipes, plannedIds, favorites, onToggle
     </div>
     {section === 'favorites' && (favoriteRecipes.length
       ? <div className="favorites-plan"><p className="section-note">Replaces this week’s meals with up to 3 of your favorites, picked at random.</p><button className="button primary compact" onClick={() => onPlanFavorites(favoriteRecipes)}>Plan week from favorites</button></div>
-      : <p className="empty-state">No favorites yet. Use the heart on a dinner to add it here.</p>)}
-    {section !== 'dinners' && section !== 'favorites' && <p className="section-note">For browsing only. These are not added to the week or the grocery list.</p>}
-    {!canFavorite && section === 'dinners' && <p className="section-note">Sign in to save favorites.</p>}
+      : <p className="empty-state">No favorites yet. Use the heart on a recipe to add it here.</p>)}
+    {['cocktails', 'smoker', 'smoothies'].includes(section) && <p className="section-note">For browsing only. These are not added to the week or the grocery list.</p>}
+    {!canFavorite && ['breakfast', 'lunch', 'dinners'].includes(section) && <p className="section-note">Sign in to save favorites.</p>}
     <div className="library-grid">{shown.map(entry => { const image = recipeImage(entry.id); const favorite = !!favorites?.includes(entry.id); const planned = plannedIds.includes(entry.id); return <article className="library-card" key={entry.id}>
       <button className="library-photo" onClick={() => onOpen(entry)} aria-label={`Open ${entry.name}`}>{image && <img src={image.url} alt="" loading="lazy" />}</button>
       <div className="library-body">

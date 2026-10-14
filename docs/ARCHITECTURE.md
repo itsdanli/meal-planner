@@ -50,3 +50,19 @@ Browser saves record the ingredient rules version in the existing local storage 
 ### Deferred work
 
 Expand the reviewed catalog, add quantity-verified Ready to cook results and a recipe-specific substitution model, and consider a shared database catalog only when publishing workflows require it. Generic or unreviewed names currently match exactly. Live authenticated save/reload and cross-account isolation testing remain separate from local unit and browser verification.
+
+## Cook tonight — October 12, 2026
+
+`tonightMatching.ts` evaluates each recipe at the requested servings using `calculateGroceries`, so unit conversion, stock budgets, optional ingredients, and ambiguity handling stay shared with the shopping list. It intentionally clears plan-scoped `confirmedEnough` flags for this calculation. Ready to cook requires every required grocery row to be quantitatively covered; low inventory, unknown amounts, incompatible units, and unresolved choices remain uncertain. Empty requirement lists are never declared ready. Missing or insufficient items determine the one-to-two-item group; larger gaps appear under More ideas.
+
+`CookTonight.tsx` provides a preview within This week and a full searchable view reached through Explore all recipes or the Pantry screen. Servings are shared between the preview and full view. Protein choices recalculate readiness and ranking. Expanded cards show available, uncertain, and missing amounts alongside original instructions and optional extras. Original instruction quantities are labeled as base-serving amounts rather than rewritten automatically.
+
+Adding a candidate preserves its selected servings, protein index, and recipe snapshot, returns to This week, and recalculates groceries for all planned meals. Individual readiness is not a stock reservation: two individually ready recipes may together require a purchase. Inventory is not deducted on add. Cooking completion, deductions, recipe-specific amount confirmations, and substitutions remain deferred.
+
+### Pantry-first discovery refinement — October 13, 2026
+
+Cook tonight now presents two visible sections instead of a readiness filter and mixed list: Ready with your pantry (all required ingredient identities listed) and Just 1–2 ingredients away (including known quantity shortages). Recipes with larger gaps are omitted. Unknown amounts do not disqualify ingredient-complete recipes; cards retain quantity-check notes and reserve the Ready to cook badge for quantitatively covered recipes. `pantryMissing` is separate from arithmetic readiness, checks every component of reviewed combined ingredient lines, accepts reviewed alternatives, and deduplicates missing food identities. Near-match cards name the missing foods directly. Quantity calculations and weekly shopping behavior are unchanged.
+
+### Breakfast, lunch, and dinner
+
+Recipes may specify `mealType` (`breakfast`, `lunch`, or `dinner`); omitted values remain dinner for compatibility with existing recipes and saved snapshots. `daytime-recipes.json` supplies four breakfast and four lunch recipes, enriched with the same ingredient identities as the dinner library. The Recipes browser and weekly plan offer separate meal sections. Adding a recipe opens its corresponding weekly section; randomizing replaces only that section. All sections share pantry stock, grocery calculations, printing, and snapshot persistence. Cook tonight continues to use dinner recipes only. No database migration is required because meal type travels in the existing recipe snapshot JSON.

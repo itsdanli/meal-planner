@@ -10,7 +10,8 @@
     "test": "tsx --test src/*.test.ts",
     "deploy": "node scripts/deploy.mjs",
     "build:cloudflare": "node scripts/validate-cloudflare-env.mjs && npm test && npm run build -- --base=/",
-    "deploy:cloudflare": "npm run build:cloudflare && wrangler deploy"
+    "deploy:cloudflare": "npm run build:cloudflare && wrangler deploy",
+    "images:fetch": "node scripts/fetch-recipe-images.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.116.0",

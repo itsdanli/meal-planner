@@ -2,11 +2,14 @@
  * Preparation aliases do not imply that counts, package sizes or food forms convert.
  * Unrecognized names keep their exact identity; there is deliberately no fuzzy match.
  */
-export const INGREDIENT_RULES_VERSION = 1;
+export const INGREDIENT_RULES_VERSION = 2;
 export const normalizeIngredient = (name: string) => name.trim().toLowerCase().replace(/\s+/g, ' ');
 
 const groups: string[][] = [
-  ['heavy cream'], ['chicken'], ['rice vinegar'], ['jasmine rice'], ['basmati rice'],
+  ['chicken breast', 'chicken breast (sliced)', 'chicken breast, thin-sliced'],
+  ['frozen corn', 'frozen corn kernels'],
+  ['dried thyme'], ['dried rosemary'], ['tahini'], ['kimchi'],
+  ['heavy cream'], ['chicken'], ['rice vinegar'], ['jasmine rice', 'white jasmine rice'], ['basmati rice'],
   ['spaghetti'], ['tomato paste'], ['brown sugar'], ['sugar'], ['honey'],
   ['smoked paprika'], ['chili powder'], ['curry powder'], ['diced tomatoes (14oz can)'],
   ['garlic', 'garlic cloves', 'garlic clove', 'garlic clove, minced', 'garlic cloves, minced', 'garlic cloves, sliced', 'garlic cloves, thinly sliced', 'garlic cloves, coarsely chopped'],

@@ -35,9 +35,10 @@ const usable = c => c.mime === 'image/jpeg' && c.width >= 800 && c.width >= c.he
 const search = words => query({ generator: 'search', gsrsearch: `${words} filetype:bitmap`, gsrnamespace: '6', gsrlimit: '20' }).then(found => found.filter(usable));
 
 const manifest = existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath, 'utf8')) : {};
-const recipes = ['recipes.json', 'cocktails.json', 'smoker-recipes.json', 'smoothies.json'].flatMap(file => JSON.parse(readFileSync(join(root, file), 'utf8')));
+const recipes = ['recipes.json', 'daytime-recipes.json', 'cocktails.json', 'smoker-recipes.json', 'smoothies.json'].flatMap(file => JSON.parse(readFileSync(join(root, file), 'utf8')));
 const candidatesOut = process.argv.includes('--candidates') ? process.argv[process.argv.indexOf('--candidates') + 1] : null;
 const candidates = {};
+const missing = [];
 mkdirSync(imageDir, { recursive: true });
 
 for (const recipe of recipes) {
@@ -48,7 +49,7 @@ for (const recipe of recipes) {
       candidates[recipe.id] = { name: recipe.name, options: (await search(entry.query ?? recipe.name)).slice(0, 6) };
     } else {
       const [pick] = entry.commonsTitle ? await query({ titles: entry.commonsTitle }) : await search(entry.query ?? recipe.name);
-      if (!pick) { console.warn(`No image found for ${recipe.name}`); continue; }
+      if (!pick || !usable(pick)) { console.warn(`No image found for ${recipe.name}`); missing.push(recipe.id); continue; }
       const image = await fetch(pick.thumb, { headers });
       if (!image.ok) throw new Error(`download failed: ${image.status}`);
       writeFileSync(join(imageDir, `${recipe.id}.jpg`), Buffer.from(await image.arrayBuffer()));
@@ -56,8 +57,13 @@ for (const recipe of recipes) {
       manifest[recipe.id] = { ...(entry.query ? { query: entry.query } : {}), file: `${recipe.id}.jpg`, ...credit };
       console.log(`${recipe.name}: ${pick.commonsTitle}`);
     }
-  } catch (error) { console.warn(`${recipe.name}: ${error.message}`); }
+  } catch (error) { console.warn(`${recipe.name}: ${error.message}`); missing.push(recipe.id); }
   await sleep(300);
 }
 if (candidatesOut) writeFileSync(candidatesOut, JSON.stringify(candidates, null, 2));
 else writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+
+if (missing.length) {
+  console.error(`Images still needed for: ${missing.join(', ')}`);
+  process.exitCode = 1;
+}

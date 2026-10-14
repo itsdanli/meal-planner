@@ -42,7 +42,8 @@ export function normalizeWeek(input: string | Date): string {
 
 export function isRecipeSnapshot(value: unknown): value is Recipe {
   if (!object(value)) return false;
-  return text(value.id) && text(value.name) && typeof value.bucket === 'string' && typeof value.bucketLabel === 'string'
+  return (value.mealType === undefined || ['breakfast', 'lunch', 'dinner'].includes(value.mealType as string))
+    && text(value.id) && text(value.name) && typeof value.bucket === 'string' && typeof value.bucketLabel === 'string'
     && finite(value.time) && value.time >= 0 && finite(value.servings) && value.servings > 0 && typeof value.description === 'string'
     && Array.isArray(value.ingredients) && value.ingredients.every(item => object(item) && text(item.id) && text(item.name)
       && (item.optional === undefined || typeof item.optional === 'boolean')
