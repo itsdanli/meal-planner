@@ -1,0 +1,1283 @@
+[
+  {
+    "id": "breakfast-overnight-oats",
+    "name": "Overnight Oats with Chia",
+    "mealType": "breakfast",
+    "bucket": "breakfast",
+    "bucketLabel": "Breakfast",
+    "time": 10,
+    "servings": 2,
+    "description": "Creamy oats and chia are ready when morning arrives.",
+    "source": "classic overnight oats technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "rolled oats",
+        "amount": 1,
+        "unit": "cup",
+        "category": "grains"
+      },
+      {
+        "id": "i2",
+        "name": "milk",
+        "amount": 1,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i3",
+        "name": "greek yogurt",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i4",
+        "name": "chia seeds",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i5",
+        "name": "berries",
+        "amount": 1,
+        "unit": "cup",
+        "category": "produce"
+      },
+      {
+        "id": "i6",
+        "name": "maple syrup",
+        "amount": 2,
+        "unit": "tsp",
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Mix oats, milk, yogurt, chia, and maple syrup in a covered container.",
+      "Refrigerate overnight, then divide into bowls and top with berries."
+    ]
+  },
+  {
+    "id": "breakfast-mushroom-omelets",
+    "name": "Mushroom and Cheddar Omelets",
+    "mealType": "breakfast",
+    "bucket": "breakfast",
+    "bucketLabel": "Breakfast",
+    "time": 20,
+    "servings": 2,
+    "description": "Golden mushrooms and cheddar fill tender eggs.",
+    "source": "classic French omelet technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "eggs",
+        "amount": 6,
+        "unit": null,
+        "category": "dairy"
+      },
+      {
+        "id": "i2",
+        "name": "cremini mushrooms",
+        "amount": 8,
+        "unit": "oz",
+        "category": "produce"
+      },
+      {
+        "id": "i3",
+        "name": "cheddar",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i4",
+        "name": "butter",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "dairy"
+      },
+      {
+        "id": "i5",
+        "name": "green onions",
+        "amount": 2,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i6",
+        "name": "bread",
+        "amount": 4,
+        "unit": "slices",
+        "category": "grains"
+      }
+    ],
+    "steps": [
+      "Brown sliced mushrooms in half the butter and set aside; toast bread.",
+      "Beat eggs, then cook half in the remaining butter over medium-low heat, lifting the edges until nearly set.",
+      "Add half the mushrooms and cheese, fold, and slide onto a plate; repeat for the second omelet and top with scallions."
+    ]
+  },
+  {
+    "id": "breakfast-avocado-egg-toast",
+    "name": "Avocado Egg Toast",
+    "mealType": "breakfast",
+    "bucket": "breakfast",
+    "bucketLabel": "Breakfast",
+    "time": 15,
+    "servings": 2,
+    "description": "Creamy avocado and eggs turn toast into a filling breakfast.",
+    "source": "classic avocado toast technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "bread",
+        "amount": 4,
+        "unit": "slices",
+        "category": "grains"
+      },
+      {
+        "id": "i2",
+        "name": "avocado",
+        "amount": 2,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i3",
+        "name": "eggs",
+        "amount": 4,
+        "unit": null,
+        "category": "dairy"
+      },
+      {
+        "id": "i4",
+        "name": "lemon juice",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "red pepper flakes",
+        "amount": 0.25,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "olive oil",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Toast bread and mash avocado with lemon juice.",
+      "Fry eggs in olive oil until the whites set and yolks reach your preference.",
+      "Spread avocado on toast, top with eggs, and sprinkle with red pepper flakes."
+    ]
+  },
+  {
+    "id": "breakfast-apple-cinnamon-oats",
+    "name": "Apple Cinnamon Oatmeal",
+    "mealType": "breakfast",
+    "bucket": "breakfast",
+    "bucketLabel": "Breakfast",
+    "time": 15,
+    "servings": 2,
+    "description": "Warm apples and cinnamon sweeten a simple bowl of oats.",
+    "source": "classic stovetop oatmeal technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "rolled oats",
+        "amount": 1,
+        "unit": "cup",
+        "category": "grains"
+      },
+      {
+        "id": "i2",
+        "name": "milk",
+        "amount": 2,
+        "unit": "cups",
+        "category": "dairy"
+      },
+      {
+        "id": "i3",
+        "name": "apple",
+        "amount": 2,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "cinnamon",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i5",
+        "name": "walnuts",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "maple syrup",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Simmer oats in milk with cinnamon, stirring until creamy.",
+      "Dice apples and warm in a small pan with a splash of water until just tender.",
+      "Divide oats into bowls and top with apples, walnuts, and maple syrup."
+    ]
+  },
+  {
+    "id": "breakfast-shakshuka-beans",
+    "name": "White Bean Breakfast Skillet",
+    "mealType": "breakfast",
+    "bucket": "breakfast",
+    "bucketLabel": "Breakfast",
+    "time": 25,
+    "servings": 2,
+    "description": "White beans and eggs simmer in a quick tomato-pepper sauce.",
+    "source": "https://www.themediterraneandish.com/white-bean-shakshuka/",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "eggs",
+        "amount": 4,
+        "unit": null,
+        "category": "dairy"
+      },
+      {
+        "id": "i2",
+        "name": "canned cannellini beans",
+        "amount": 1,
+        "unit": "can",
+        "category": "pantry"
+      },
+      {
+        "id": "i3",
+        "name": "crushed tomatoes",
+        "amount": 1,
+        "unit": "can",
+        "category": "pantry"
+      },
+      {
+        "id": "i4",
+        "name": "red bell pepper",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "onion",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i6",
+        "name": "olive oil",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "cumin",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i8",
+        "name": "bread",
+        "amount": 4,
+        "unit": "slices",
+        "category": "grains"
+      }
+    ],
+    "steps": [
+      "Soften diced onion and pepper in olive oil; add cumin, tomatoes, and drained beans.",
+      "Simmer until thick, then make four wells and crack in eggs.",
+      "Cover and cook until egg whites set; serve with toasted bread."
+    ]
+  },
+  {
+    "id": "breakfast-bean-egg-burritos",
+    "name": "Bean and Egg Breakfast Burritos",
+    "mealType": "breakfast",
+    "bucket": "breakfast",
+    "bucketLabel": "Breakfast",
+    "time": 25,
+    "servings": 2,
+    "description": "Eggs, beans, and cheese roll into a warm portable breakfast.",
+    "source": "classic breakfast burrito technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "flour tortillas",
+        "amount": 4,
+        "unit": null,
+        "category": "grains"
+      },
+      {
+        "id": "i2",
+        "name": "eggs",
+        "amount": 6,
+        "unit": null,
+        "category": "dairy"
+      },
+      {
+        "id": "i3",
+        "name": "canned black beans",
+        "amount": 1,
+        "unit": "can",
+        "category": "pantry"
+      },
+      {
+        "id": "i4",
+        "name": "cheddar",
+        "amount": 0.75,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i5",
+        "name": "salsa",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "spinach",
+        "amount": 2,
+        "unit": "cups",
+        "category": "produce"
+      },
+      {
+        "id": "i7",
+        "name": "butter",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "dairy"
+      }
+    ],
+    "steps": [
+      "Warm beans and tortillas; wilt spinach in butter.",
+      "Scramble eggs over medium-low heat until set but soft.",
+      "Divide eggs, beans, spinach, cheddar, and salsa among tortillas; roll tightly and toast seam-side down."
+    ]
+  },
+  {
+    "id": "breakfast-cottage-cheese-bowls",
+    "name": "Cottage Cheese Fruit Bowls",
+    "mealType": "breakfast",
+    "bucket": "breakfast",
+    "bucketLabel": "Breakfast",
+    "time": 5,
+    "servings": 2,
+    "description": "Fruit, nuts, and honey make cottage cheese a quick breakfast.",
+    "source": "classic cottage cheese breakfast bowl",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "cottage cheese",
+        "amount": 2,
+        "unit": "cups",
+        "category": "dairy"
+      },
+      {
+        "id": "i2",
+        "name": "berries",
+        "amount": 1,
+        "unit": "cup",
+        "category": "produce"
+      },
+      {
+        "id": "i3",
+        "name": "banana",
+        "amount": 2,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "walnuts",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "pantry"
+      },
+      {
+        "id": "i5",
+        "name": "honey",
+        "amount": 2,
+        "unit": "tsp",
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Divide cottage cheese between bowls.",
+      "Slice bananas and top with berries, walnuts, and honey."
+    ]
+  },
+  {
+    "id": "breakfast-spinach-feta-frittata",
+    "name": "Spinach Feta Frittata",
+    "mealType": "breakfast",
+    "bucket": "breakfast",
+    "bucketLabel": "Breakfast",
+    "time": 25,
+    "servings": 2,
+    "description": "A skillet of eggs, spinach, and feta cuts into easy breakfast wedges.",
+    "source": "classic Italian frittata technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "eggs",
+        "amount": 8,
+        "unit": null,
+        "category": "dairy"
+      },
+      {
+        "id": "i2",
+        "name": "spinach",
+        "amount": 4,
+        "unit": "cups",
+        "category": "produce"
+      },
+      {
+        "id": "i3",
+        "name": "feta",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i4",
+        "name": "onion",
+        "amount": 0.5,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "milk",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i6",
+        "name": "olive oil",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Heat the oven to 375°F; soften diced onion and spinach in an oven-safe skillet with olive oil.",
+      "Whisk eggs and milk, pour over vegetables, and scatter feta on top.",
+      "Cook on the stove until the edges set, then bake 10–12 minutes until the center is set."
+    ]
+  },
+  {
+    "id": "breakfast-peanut-butter-banana-toast",
+    "name": "Peanut Butter Banana Toast",
+    "mealType": "breakfast",
+    "bucket": "breakfast",
+    "bucketLabel": "Breakfast",
+    "time": 5,
+    "servings": 2,
+    "description": "Peanut butter, banana, and cinnamon are an easy breakfast staple.",
+    "source": "classic peanut butter toast",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "bread",
+        "amount": 4,
+        "unit": "slices",
+        "category": "grains"
+      },
+      {
+        "id": "i2",
+        "name": "peanut butter",
+        "amount": 0.33,
+        "unit": "cup",
+        "category": "pantry"
+      },
+      {
+        "id": "i3",
+        "name": "banana",
+        "amount": 2,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "cinnamon",
+        "amount": 0.25,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i5",
+        "name": "honey",
+        "amount": 2,
+        "unit": "tsp",
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Toast bread and spread evenly with peanut butter.",
+      "Slice bananas onto toast, then dust with cinnamon and drizzle with honey."
+    ]
+  },
+  {
+    "id": "breakfast-savory-oats",
+    "name": "Savory Oats with Egg and Greens",
+    "mealType": "breakfast",
+    "bucket": "breakfast",
+    "bucketLabel": "Breakfast",
+    "time": 20,
+    "servings": 2,
+    "description": "Oats become a cozy savory base for greens and a fried egg.",
+    "source": "classic savory oatmeal technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "rolled oats",
+        "amount": 1,
+        "unit": "cup",
+        "category": "grains"
+      },
+      {
+        "id": "i2",
+        "name": "vegetable broth",
+        "amount": 2,
+        "unit": "cups",
+        "category": "pantry"
+      },
+      {
+        "id": "i3",
+        "name": "eggs",
+        "amount": 4,
+        "unit": null,
+        "category": "dairy"
+      },
+      {
+        "id": "i4",
+        "name": "spinach",
+        "amount": 3,
+        "unit": "cups",
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "parmesan",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i6",
+        "name": "butter",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "dairy"
+      }
+    ],
+    "steps": [
+      "Simmer oats in broth until creamy and stir in parmesan.",
+      "Wilt spinach in butter and fry eggs in the same skillet until whites set.",
+      "Divide oats into bowls and top with spinach and eggs."
+    ]
+  },
+  {
+    "id": "lunch-mediterranean-chickpea-pitas",
+    "name": "Mediterranean Chickpea Pitas",
+    "mealType": "lunch",
+    "bucket": "lunch",
+    "bucketLabel": "Lunch",
+    "time": 20,
+    "servings": 4,
+    "description": "Chickpeas, crisp cucumber, and tangy yogurt fill soft pita.",
+    "source": "classic Mediterranean chickpea pita technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "pita bread",
+        "amount": 4,
+        "unit": null,
+        "category": "grains"
+      },
+      {
+        "id": "i2",
+        "name": "canned chickpeas",
+        "amount": 1,
+        "unit": "can",
+        "category": "pantry"
+      },
+      {
+        "id": "i3",
+        "name": "cucumber",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "cherry tomatoes",
+        "amount": 1,
+        "unit": "cup",
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "greek yogurt",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i6",
+        "name": "lemon juice",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "produce"
+      },
+      {
+        "id": "i7",
+        "name": "parsley",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "produce"
+      },
+      {
+        "id": "i8",
+        "name": "feta",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "dairy"
+      }
+    ],
+    "steps": [
+      "Drain chickpeas and chop cucumber, tomatoes, and parsley.",
+      "Stir yogurt with lemon; toss chickpeas and vegetables with half the sauce.",
+      "Warm pitas, fill with salad, and finish with feta and remaining sauce."
+    ]
+  },
+  {
+    "id": "lunch-caprese-pasta-salad",
+    "name": "Caprese Pasta Salad",
+    "mealType": "lunch",
+    "bucket": "lunch",
+    "bucketLabel": "Lunch",
+    "time": 25,
+    "servings": 4,
+    "description": "Tomatoes, mozzarella, and basil turn pasta into a satisfying cold lunch.",
+    "source": "classic caprese pasta salad technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "penne",
+        "amount": 10,
+        "unit": "oz",
+        "category": "grains"
+      },
+      {
+        "id": "i2",
+        "name": "cherry tomatoes",
+        "amount": 2,
+        "unit": "cups",
+        "category": "produce"
+      },
+      {
+        "id": "i3",
+        "name": "fresh mozzarella",
+        "amount": 8,
+        "unit": "oz",
+        "category": "dairy"
+      },
+      {
+        "id": "i4",
+        "name": "basil",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "olive oil",
+        "amount": 3,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "balsamic vinegar",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Cook penne until al dente, drain, and cool briefly.",
+      "Halve tomatoes and cube mozzarella; whisk oil and balsamic vinegar.",
+      "Toss pasta with tomatoes, mozzarella, basil, and dressing."
+    ]
+  },
+  {
+    "id": "lunch-lentil-soup",
+    "name": "Lentil Vegetable Soup",
+    "mealType": "lunch",
+    "bucket": "lunch",
+    "bucketLabel": "Lunch",
+    "time": 25,
+    "servings": 4,
+    "description": "Lentils and vegetables simmer into a hearty make-ahead lunch.",
+    "source": "classic lentil soup technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "brown lentils",
+        "amount": 1.5,
+        "unit": "cups",
+        "category": "pantry"
+      },
+      {
+        "id": "i2",
+        "name": "carrots",
+        "amount": 2,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i3",
+        "name": "celery",
+        "amount": 2,
+        "unit": "stalks",
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "onion",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "diced tomatoes (14oz can)",
+        "amount": 1,
+        "unit": "can",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "vegetable broth",
+        "amount": 5,
+        "unit": "cups",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "olive oil",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i8",
+        "name": "lemon juice",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "produce"
+      }
+    ],
+    "steps": [
+      "Soften diced onion, carrots, and celery in olive oil.",
+      "Add lentils, tomatoes, and broth; simmer until lentils are tender, about 25 minutes.",
+      "Finish with lemon and divide into bowls."
+    ]
+  },
+  {
+    "id": "lunch-hummus-vegetable-wraps",
+    "name": "Hummus Vegetable Wraps",
+    "mealType": "lunch",
+    "bucket": "lunch",
+    "bucketLabel": "Lunch",
+    "time": 15,
+    "servings": 4,
+    "description": "Hummus anchors a wrap packed with crisp vegetables and feta.",
+    "source": "classic hummus wrap technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "flour tortillas",
+        "amount": 4,
+        "unit": null,
+        "category": "grains"
+      },
+      {
+        "id": "i2",
+        "name": "hummus",
+        "amount": 1,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i3",
+        "name": "cucumber",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "carrots",
+        "amount": 2,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "spinach",
+        "amount": 2,
+        "unit": "cups",
+        "category": "produce"
+      },
+      {
+        "id": "i6",
+        "name": "red bell pepper",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i7",
+        "name": "feta",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "dairy"
+      }
+    ],
+    "steps": [
+      "Spread each tortilla with hummus.",
+      "Cut vegetables into thin strips and divide with spinach and feta among tortillas.",
+      "Roll tightly, slice, and serve."
+    ]
+  },
+  {
+    "id": "lunch-tuna-free-chickpea-melts",
+    "name": "Chickpea Cheddar Melts",
+    "mealType": "lunch",
+    "bucket": "lunch",
+    "bucketLabel": "Lunch",
+    "time": 20,
+    "servings": 4,
+    "description": "Creamy mashed chickpeas and cheddar toast into a warm open-face sandwich.",
+    "source": "classic chickpea melt technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "canned chickpeas",
+        "amount": 1,
+        "unit": "can",
+        "category": "pantry"
+      },
+      {
+        "id": "i2",
+        "name": "bread",
+        "amount": 4,
+        "unit": "slices",
+        "category": "grains"
+      },
+      {
+        "id": "i3",
+        "name": "cheddar",
+        "amount": 4,
+        "unit": "slices",
+        "category": "dairy"
+      },
+      {
+        "id": "i4",
+        "name": "mayonnaise",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "dairy"
+      },
+      {
+        "id": "i5",
+        "name": "dijon mustard",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "celery",
+        "amount": 1,
+        "unit": "stalk",
+        "category": "produce"
+      },
+      {
+        "id": "i7",
+        "name": "lemon juice",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "produce"
+      }
+    ],
+    "steps": [
+      "Mash drained chickpeas with mayonnaise, mustard, diced celery, and lemon.",
+      "Pile onto bread and top each slice with cheddar.",
+      "Broil until cheese bubbles and bread is toasted, watching closely."
+    ]
+  },
+  {
+    "id": "lunch-quinoa-black-bean-salad",
+    "name": "Quinoa Black Bean Salad",
+    "mealType": "lunch",
+    "bucket": "lunch",
+    "bucketLabel": "Lunch",
+    "time": 25,
+    "servings": 4,
+    "description": "Quinoa, black beans, corn, and lime pack well for lunch.",
+    "source": "classic quinoa-and-bean salad technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "quinoa",
+        "amount": 1,
+        "unit": "cup",
+        "category": "grains"
+      },
+      {
+        "id": "i2",
+        "name": "canned black beans",
+        "amount": 1,
+        "unit": "can",
+        "category": "pantry"
+      },
+      {
+        "id": "i3",
+        "name": "frozen corn",
+        "amount": 1,
+        "unit": "cup",
+        "category": "pantry"
+      },
+      {
+        "id": "i4",
+        "name": "red bell pepper",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "lime juice",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "produce"
+      },
+      {
+        "id": "i6",
+        "name": "olive oil",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "cilantro",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "produce"
+      }
+    ],
+    "steps": [
+      "Cook quinoa according to the package directions and cool slightly.",
+      "Thaw corn; dice pepper and chop cilantro.",
+      "Toss quinoa with drained beans, corn, pepper, lime, oil, and cilantro."
+    ]
+  },
+  {
+    "id": "lunch-tomato-white-bean-soup",
+    "name": "Tomato White Bean Soup",
+    "mealType": "lunch",
+    "bucket": "lunch",
+    "bucketLabel": "Lunch",
+    "time": 20,
+    "servings": 4,
+    "description": "White beans make a tomato soup substantial enough for lunch.",
+    "source": "classic tomato-and-white-bean soup technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "crushed tomatoes",
+        "amount": 1,
+        "unit": "can",
+        "category": "pantry"
+      },
+      {
+        "id": "i2",
+        "name": "canned cannellini beans",
+        "amount": 1,
+        "unit": "can",
+        "category": "pantry"
+      },
+      {
+        "id": "i3",
+        "name": "vegetable broth",
+        "amount": 2,
+        "unit": "cups",
+        "category": "pantry"
+      },
+      {
+        "id": "i4",
+        "name": "onion",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "garlic",
+        "amount": 2,
+        "unit": "cloves",
+        "category": "produce"
+      },
+      {
+        "id": "i6",
+        "name": "olive oil",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "bread",
+        "amount": 4,
+        "unit": "slices",
+        "category": "grains"
+      }
+    ],
+    "steps": [
+      "Soften onion and garlic in olive oil.",
+      "Add tomatoes, drained beans, and broth; simmer 15 minutes, blending a portion if you want a creamier soup.",
+      "Serve with toasted bread."
+    ]
+  },
+  {
+    "id": "lunch-egg-salad-sandwiches",
+    "name": "Egg Salad Sandwiches",
+    "mealType": "lunch",
+    "bucket": "lunch",
+    "bucketLabel": "Lunch",
+    "time": 20,
+    "servings": 4,
+    "description": "A simple mustard egg salad makes a reliable lunch.",
+    "source": "classic egg salad technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "eggs",
+        "amount": 6,
+        "unit": null,
+        "category": "dairy"
+      },
+      {
+        "id": "i2",
+        "name": "bread",
+        "amount": 4,
+        "unit": "slices",
+        "category": "grains"
+      },
+      {
+        "id": "i3",
+        "name": "mayonnaise",
+        "amount": 3,
+        "unit": "tbsp",
+        "category": "dairy"
+      },
+      {
+        "id": "i4",
+        "name": "dijon mustard",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i5",
+        "name": "green onions",
+        "amount": 2,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i6",
+        "name": "butter lettuce",
+        "amount": 4,
+        "unit": "leaves",
+        "category": "produce"
+      }
+    ],
+    "steps": [
+      "Hard-boil eggs, cool, peel, and chop.",
+      "Mix eggs with mayonnaise, mustard, and sliced scallions.",
+      "Layer egg salad and lettuce between bread slices."
+    ]
+  },
+  {
+    "id": "lunch-falafel-pitas",
+    "name": "Falafel Salad Pitas",
+    "mealType": "lunch",
+    "bucket": "lunch",
+    "bucketLabel": "Lunch",
+    "time": 20,
+    "servings": 4,
+    "description": "Warm falafel, chopped salad, and yogurt sauce fill pita pockets.",
+    "source": "https://www.themediterraneandish.com/falafel-bowl-recipe/",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "prepared falafel",
+        "amount": 8,
+        "unit": null,
+        "category": "pantry"
+      },
+      {
+        "id": "i2",
+        "name": "pita bread",
+        "amount": 4,
+        "unit": null,
+        "category": "grains"
+      },
+      {
+        "id": "i3",
+        "name": "cucumber",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "cherry tomatoes",
+        "amount": 1,
+        "unit": "cup",
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "red onion",
+        "amount": 0.25,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i6",
+        "name": "greek yogurt",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i7",
+        "name": "lemon juice",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "produce"
+      }
+    ],
+    "steps": [
+      "Warm falafel and pita according to package directions.",
+      "Chop cucumber, tomatoes, and onion; stir yogurt with lemon.",
+      "Fill pitas with falafel and vegetables, then spoon yogurt sauce over them."
+    ]
+  },
+  {
+    "id": "lunch-sesame-tofu-rice-bowls",
+    "name": "Sesame Tofu Rice Bowls",
+    "mealType": "lunch",
+    "bucket": "lunch",
+    "bucketLabel": "Lunch",
+    "time": 25,
+    "servings": 4,
+    "description": "Crisp tofu and broccoli go over rice with a sesame-soy glaze.",
+    "source": "classic sesame tofu bowl technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "firm tofu",
+        "amount": 14,
+        "unit": "oz",
+        "category": "dairy"
+      },
+      {
+        "id": "i2",
+        "name": "jasmine rice",
+        "amount": 1,
+        "unit": "cup",
+        "category": "grains"
+      },
+      {
+        "id": "i3",
+        "name": "broccoli",
+        "amount": 1,
+        "unit": "head",
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "soy sauce",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i5",
+        "name": "sesame oil",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "honey",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "rice vinegar",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i8",
+        "name": "sesame seeds",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Cook rice according to the package directions.",
+      "Pat tofu dry and cube; brown in sesame oil, then add broccoli and cook until tender-crisp.",
+      "Mix soy sauce, honey, and vinegar; glaze tofu and broccoli and serve over rice with sesame seeds."
+    ]
+  }
+]

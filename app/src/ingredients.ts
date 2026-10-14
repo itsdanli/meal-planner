@@ -6,6 +6,19 @@ export const INGREDIENT_RULES_VERSION = 1;
 export const normalizeIngredient = (name: string) => name.trim().toLowerCase().replace(/\s+/g, ' ');
 
 const groups: string[][] = [
+  // Ingredients introduced by the expanded dinner, breakfast, and lunch catalog.
+  ['apple', 'apples'], ['banana', 'bananas'], ['berries', 'mixed berries'],
+  ['butter lettuce'], ['green cabbage'], ['kale'], ['frozen corn', 'corn kernels'],
+  ['frozen mixed vegetables'], ['brown lentils', 'dried brown lentils'],
+  ['red lentils', 'dried red lentils'], ['french green lentils', 'puy lentils'],
+  ['brown rice'], ['short-grain white rice'], ['quinoa'], ['couscous'],
+  ['soba noodles'], ['rolled oats'], ['ditalini'], ['jumbo pasta shells'], ['shelf-stable gnocchi'],
+  ['burger buns'], ['pita bread'], ['puff pastry'], ['walnuts'], ['chia seeds'],
+  ['canned butter beans', 'butter beans'], ['crushed tomatoes'], ['marinara sauce'],
+  ['capers'], ['balsamic vinegar'], ['red wine vinegar'], ['dijon mustard'],
+  ['garam masala'], ['dried thyme'], ['miso paste'], ['salsa'], ['hummus'],
+  ['prepared falafel'], ['mayonnaise'], ['cottage cheese'], ['paneer'], ['ricotta'],
+  ['firm tofu'], ['maple syrup'],
   ['heavy cream'], ['chicken'], ['rice vinegar'], ['jasmine rice'], ['basmati rice'],
   ['spaghetti'], ['tomato paste'], ['brown sugar'], ['sugar'], ['honey'],
   ['smoked paprika'], ['chili powder'], ['curry powder'], ['diced tomatoes (14oz can)'],

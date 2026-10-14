@@ -1,5 +1,5 @@
 // Finds a freely licensed Wikimedia Commons photo for each recipe and saves it with its credit.
-// Usage (from app/): node scripts/fetch-recipe-images.mjs [--candidates out.json]
+// Usage (from app/): node scripts/fetch-recipe-images.mjs [--candidates out.json] [--ids id1,id2] [--selected-only]
 // The manifest at ../recipe-images.json may set "query" (search words) or "commonsTitle" (an exact
 // "File:..." page) per recipe id before running. Recipes that already have a downloaded file are skipped.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -35,14 +35,19 @@ const usable = c => c.mime === 'image/jpeg' && c.width >= 800 && c.width >= c.he
 const search = words => query({ generator: 'search', gsrsearch: `${words} filetype:bitmap`, gsrnamespace: '6', gsrlimit: '20' }).then(found => found.filter(usable));
 
 const manifest = existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath, 'utf8')) : {};
-const recipes = ['recipes.json', 'cocktails.json', 'smoker-recipes.json', 'smoothies.json'].flatMap(file => JSON.parse(readFileSync(join(root, file), 'utf8')));
+const recipes = ['recipes.json', 'daytime-recipes.json', 'daytime-recipe-expansion.json', 'cocktails.json', 'smoker-recipes.json', 'smoothies.json']
+  .filter(file => existsSync(join(root, file)))
+  .flatMap(file => JSON.parse(readFileSync(join(root, file), 'utf8')));
 const candidatesOut = process.argv.includes('--candidates') ? process.argv[process.argv.indexOf('--candidates') + 1] : null;
+const onlyIds = process.argv.includes('--ids') ? new Set(process.argv[process.argv.indexOf('--ids') + 1].split(',')) : null;
 const candidates = {};
 mkdirSync(imageDir, { recursive: true });
 
 for (const recipe of recipes) {
+  if (onlyIds && !onlyIds.has(recipe.id)) continue;
   const entry = manifest[recipe.id] ?? {};
-  if (!candidatesOut && entry.file && existsSync(join(imageDir, entry.file))) continue;
+  if (entry.file && existsSync(join(imageDir, entry.file))) continue;
+  if (process.argv.includes('--selected-only') && !entry.commonsTitle) continue;
   try {
     if (candidatesOut) {
       candidates[recipe.id] = { name: recipe.name, options: (await search(entry.query ?? recipe.name)).slice(0, 6) };

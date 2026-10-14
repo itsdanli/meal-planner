@@ -502,5 +502,426 @@
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Blueberry_Cacao_Coconut_Smoothie_(12912829224).jpg"
+  },
+  "chana-masala": {
+    "query": "chana masala",
+    "file": "chana-masala.jpg",
+    "commonsTitle": "File:Simple chana masala.jpg",
+    "author": "Billjones94",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Simple_chana_masala.jpg"
+  },
+  "red-lentil-dal": {
+    "query": "red lentil dal",
+    "file": "red-lentil-dal.jpg",
+    "commonsTitle": "File:Red Gram Dal - Kolkata 2011-11-15 7055.JPG",
+    "author": "Biswarup Ganguly",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Red_Gram_Dal_-_Kolkata_2011-11-15_7055.JPG"
+  },
+  "palak-paneer": {
+    "query": "palak paneer",
+    "file": "palak-paneer.jpg",
+    "commonsTitle": "File:Palak Paneer curry on plate.jpg",
+    "author": "Daniel Zemans",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palak_Paneer_curry_on_plate.jpg"
+  },
+  "aloo-gobi": {
+    "query": "aloo gobi cauliflower potato",
+    "file": "aloo-gobi.jpg",
+    "commonsTitle": "File:Aloo gobi.jpg",
+    "author": "Unknown",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aloo_gobi.jpg"
+  },
+  "minestrone": {
+    "query": "minestrone soup",
+    "file": "minestrone.jpg",
+    "commonsTitle": "File:Minestrone soup.jpg",
+    "author": "Katrin Morenz from Aachen, Deutschland",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Minestrone_soup.jpg"
+  },
+  "pasta-aglio-e-olio": {
+    "query": "pasta aglio e olio",
+    "file": "pasta-aglio-e-olio.jpg",
+    "commonsTitle": "File:Aglio Olio DoughnDolce.jpg",
+    "author": "Vincent60030",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aglio_Olio_DoughnDolce.jpg"
+  },
+  "pasta-puttanesca": {
+    "query": "pasta puttanesca",
+    "file": "pasta-puttanesca.jpg",
+    "commonsTitle": "File:Pasta Puttanesca.jpg",
+    "author": "Popo le Chien",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pasta_Puttanesca.jpg"
+  },
+  "ricotta-spinach-stuffed-shells": {
+    "query": "stuffed shells",
+    "file": "ricotta-spinach-stuffed-shells.jpg",
+    "commonsTitle": "File:Stuffed shells 002.jpg",
+    "author": "Adam S. Keck",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stuffed_shells_002.jpg"
+  },
+  "mujadara": {
+    "query": "mujadara",
+    "file": "mujadara.jpg",
+    "commonsTitle": "File:Mejadrah.s.jpg",
+    "author": "The original uploader was Yish at English Wikibooks.",
+    "license": "CC BY-SA 2.5",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mejadrah.s.jpg"
+  },
+  "falafel-hummus-bowls": {
+    "query": "falafel bowl",
+    "file": "falafel-hummus-bowls.jpg",
+    "commonsTitle": "File:Falafel Super Bowl Salad - Leon 2025-10-27.jpg",
+    "author": "Andy Li",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Falafel_Super_Bowl_Salad_-_Leon_2025-10-27.jpg"
+  },
+  "roasted-vegetable-couscous": {
+    "query": "vegetable couscous",
+    "file": "roasted-vegetable-couscous.jpg",
+    "commonsTitle": "File:Grilled veggies with couscous (3756130734).jpg",
+    "author": "Karen and Brad Emerson",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Grilled_veggies_with_couscous_(3756130734).jpg"
+  },
+  "greek-lemon-potatoes-beans": {
+    "query": "roasted potatoes beans"
+  },
+  "vegetarian-stuffed-peppers": {
+    "query": "stuffed peppers",
+    "file": "vegetarian-stuffed-peppers.jpg",
+    "commonsTitle": "File:Quinoa stuffed peppers.jpg",
+    "author": "Mark Bonica",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Quinoa_stuffed_peppers.jpg"
+  },
+  "huevos-rancheros": {
+    "query": "huevos rancheros",
+    "file": "huevos-rancheros.jpg",
+    "commonsTitle": "File:Huevos rancheros - Pescadero.jpg",
+    "author": "Daderot",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Huevos_rancheros_-_Pescadero.jpg"
+  },
+  "sweet-potato-black-bean-tacos": {
+    "query": "sweet potato black bean tacos",
+    "file": "sweet-potato-black-bean-tacos.jpg",
+    "commonsTitle": "File:Roasted sweet potato + black bean tacos (7784822910).jpg",
+    "author": "Karen and Brad Emerson",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Roasted_sweet_potato_%2B_black_bean_tacos_(7784822910).jpg"
+  },
+  "elote-rice-bowls": {
+    "query": "corn rice bowl",
+    "file": "veggie-burrito-bowls.jpg",
+    "author": "Missvain",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Los_Gallitos_-_October_31_2022_-_Sarah_Stierch_04.jpg"
+  },
+  "bibimbap": {
+    "query": "vegetable bibimbap",
+    "file": "bibimbap.jpg",
+    "commonsTitle": "File:Vegetable Dolsot Bibimbap - Goshen (4844718827).jpg",
+    "author": "Alpha from Melbourne, Australia",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vegetable_Dolsot_Bibimbap_-_Goshen_(4844718827).jpg"
+  },
+  "ginger-miso-eggplant-noodles": {
+    "query": "eggplant noodles",
+    "file": "ginger-miso-eggplant-noodles.jpg",
+    "commonsTitle": "File:Vegan eggplant noodles - Noodles veganos con berenjena (4860775055).jpg",
+    "author": "Lablascovegmenu from London",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vegan_eggplant_noodles_-_Noodles_veganos_con_berenjena_(4860775055).jpg"
+  },
+  "sesame-soba-peas": {
+    "query": "soba noodles",
+    "file": "sesame-soba-peas.jpg",
+    "commonsTitle": "File:Two bowls of soba noodles with chopsticks 2.jpg",
+    "author": "Shisma",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Two_bowls_of_soba_noodles_with_chopsticks_2.jpg"
+  },
+  "tofu-lettuce-wraps": {
+    "query": "vegetarian lettuce wraps"
+  },
+  "sheet-pan-gnocchi": {
+    "query": "gnocchi tomato",
+    "file": "sheet-pan-gnocchi.jpg",
+    "commonsTitle": "File:Gnocchi alla sorrentina.jpg",
+    "author": "Davide Zambelli",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gnocchi_alla_sorrentina.jpg"
+  },
+  "broccoli-cheddar-soup": {
+    "query": "broccoli cheddar soup",
+    "file": "broccoli-cheddar-soup.jpg",
+    "commonsTitle": "File:Broccoli and cheddar soup - Pausa Cafe, Dunelm Shoreham 2026-01-13.jpg",
+    "author": "Andy Li",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Broccoli_and_cheddar_soup_-_Pausa_Cafe,_Dunelm_Shoreham_2026-01-13.jpg"
+  },
+  "chickpea-salad-sandwiches": {
+    "query": "chickpea salad sandwiches",
+    "file": "chickpea-salad-sandwiches.jpg",
+    "commonsTitle": "File:Chickpea salad sandwich - 01.jpg",
+    "author": "https://www.flickr.com/photos/thedelicious/",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chickpea_salad_sandwich_-_01.jpg"
+  },
+  "vegetable-pot-pie": {
+    "query": "vegetable pie",
+    "file": "vegetable-pot-pie.jpg",
+    "commonsTitle": "File:Vegan vegetable pie (4937505602).jpg",
+    "author": "Suzette - www.suzette.nu from Arnhem, Netherlands",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vegan_vegetable_pie_(4937505602).jpg"
+  },
+  "black-bean-burgers": {
+    "query": "black bean burgers",
+    "file": "black-bean-burgers.jpg",
+    "commonsTitle": "File:Black Bean Burger with the Works (4733182546).jpg",
+    "author": "Vegan Feast Catering",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Black_Bean_Burger_with_the_Works_(4733182546).jpg"
+  },
+  "french-lentil-salad": {
+    "query": "lentil salad",
+    "file": "french-lentil-salad.jpg",
+    "commonsTitle": "File:Lentil salad (29308018298).jpg",
+    "author": "Joey Doll",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lentil_salad_(29308018298).jpg"
+  },
+  "cabbage-bean-skillet": {
+    "query": "sauteed cabbage",
+    "file": "cabbage-bean-skillet.jpg",
+    "commonsTitle": "File:Ginisang Repolyo (Sauteed Cabbage).jpg",
+    "author": "Ralff Nestor Nacor",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ginisang_Repolyo_(Sauteed_Cabbage).jpg"
+  },
+  "tomato-butter-beans": {
+    "query": "butter beans tomato",
+    "file": "white-bean-tomato-skillet.jpg",
+    "author": "Hevesli",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gigandes_plaki.jpg"
+  },
+  "orzo-feta-stuffed-peppers": {
+    "query": "stuffed bell pepper",
+    "file": "orzo-feta-stuffed-peppers.jpg",
+    "commonsTitle": "File:Quinoa stuffed peppers.jpg",
+    "author": "Mark Bonica",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Quinoa_stuffed_peppers.jpg"
+  },
+  "spinach-pasta-roasted-vegetables": {
+    "query": "spinach pasta",
+    "file": "spinach-pasta-roasted-vegetables.jpg",
+    "commonsTitle": "File:Spinach pasta (3383218355).jpg",
+    "author": "Karen and Brad Emerson",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spinach_pasta_(3383218355).jpg"
+  },
+  "breakfast-overnight-oats": {
+    "query": "overnight oats",
+    "file": "breakfast-overnight-oats.jpg",
+    "commonsTitle": "File:-2019-02-07 Overnight Oats, Cromer.JPG",
+    "author": "Kolforn (Kolforn) I'd appreciate if you could mail me (Kolforn@gmail.com) if you want to use this picture out of the Wikimedia project scope. This file is licensed under the Creative Commons Attribution-Share Alike 4.0 International license. You are free: to share – to copy, distribute and transmit the work to remix – to adapt the work Under the following conditions: attribution – You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use. share alike – If you remix, transform, or build upon the material, you must distribute your contributions under the same or compatible license as the original.https://creativecommons.org/licenses/by-sa/4.0CC BY-SA 4.0 Creative Commons Attribution-Share Alike 4.0 truetrue",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:-2019-02-07_Overnight_Oats,_Cromer.JPG"
+  },
+  "breakfast-mushroom-omelets": {
+    "query": "mushroom and cheddar omelets",
+    "file": "breakfast-mushroom-omelets.jpg",
+    "commonsTitle": "File:190908 022 Chicago Botanic Gdn - Visitor Center, Garden View Café Brunch, mushroom and cheddar omelet, roasted baby red potatoes, delicious food, great service (48861661177).jpg",
+    "author": "cultivar413 from Fallbrook, California",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:190908_022_Chicago_Botanic_Gdn_-_Visitor_Center,_Garden_View_Caf%C3%A9_Brunch,_mushroom_and_cheddar_omelet,_roasted_baby_red_potatoes,_delicious_food,_great_service_(48861661177).jpg"
+  },
+  "breakfast-avocado-egg-toast": {
+    "query": "avocado egg toast",
+    "file": "breakfast-avocado-egg-toast.jpg",
+    "commonsTitle": "File:Smashed Avocado On Toast (with one poached egg) - Jonny's 2026-01-06.jpg",
+    "author": "Andy Li",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Smashed_Avocado_On_Toast_(with_one_poached_egg)_-_Jonny%27s_2026-01-06.jpg"
+  },
+  "breakfast-apple-cinnamon-oats": {
+    "query": "apple cinnamon oatmeal",
+    "file": "breakfast-apple-cinnamon-oats.jpg",
+    "commonsTitle": "File:Apple cinnamon oatmeal.jpg",
+    "author": "Shisma",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Apple_cinnamon_oatmeal.jpg"
+  },
+  "breakfast-shakshuka-beans": {
+    "query": "shakshuka eggs beans",
+    "file": "shakshuka.jpg",
+    "author": "Calliopejen1",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shakshuka_by_Calliopejen1.jpg"
+  },
+  "breakfast-cottage-cheese-bowls": {
+    "query": "cottage cheese berries"
+  },
+  "breakfast-spinach-feta-frittata": {
+    "query": "spinach frittata",
+    "file": "breakfast-spinach-feta-frittata.jpg",
+    "commonsTitle": "File:Фритата со спанаќ (02).jpg",
+    "author": "Deodora333",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%A4%D1%80%D0%B8%D1%82%D0%B0%D1%82%D0%B0_%D1%81%D0%BE_%D1%81%D0%BF%D0%B0%D0%BD%D0%B0%D1%9C_(02).jpg"
+  },
+  "breakfast-peanut-butter-banana-toast": {
+    "query": "peanut butter banana toast",
+    "file": "breakfast-peanut-butter-banana-toast.jpg",
+    "commonsTitle": "File:Peanut butter and banana on toasted homemade bread - Massachusetts.jpg",
+    "author": "Daderot",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peanut_butter_and_banana_on_toasted_homemade_bread_-_Massachusetts.jpg"
+  },
+  "breakfast-savory-oats": {
+    "query": "oatmeal egg",
+    "file": "breakfast-savory-oats.jpg",
+    "commonsTitle": "File:Blødkogt æg, brød, cheddar og havregrød med slåensnaps og kaffe (6088553240).jpg",
+    "author": "cyclonebill from Copenhagen, Denmark",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bl%C3%B8dkogt_%C3%A6g,_br%C3%B8d,_cheddar_og_havregr%C3%B8d_med_sl%C3%A5ensnaps_og_kaffe_(6088553240).jpg"
+  },
+  "lunch-mediterranean-chickpea-pitas": {
+    "query": "chickpea sandwich",
+    "file": "lunch-mediterranean-chickpea-pitas.jpg",
+    "commonsTitle": "File:Chickpea salad sandwich - 01.jpg",
+    "author": "https://www.flickr.com/photos/thedelicious/",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chickpea_salad_sandwich_-_01.jpg"
+  },
+  "lunch-caprese-pasta-salad": {
+    "query": "caprese pasta salad",
+    "file": "pasta-caprese.jpg",
+    "author": "Lablascovegmenu from London",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pasta_al_pomodoro_crudo_(5184624902).jpg"
+  },
+  "lunch-lentil-soup": {
+    "query": "lentil vegetable soup",
+    "file": "lunch-lentil-soup.jpg",
+    "commonsTitle": "File:Lentil and vegetable soup with avocado (6964882187).jpg",
+    "author": "Jennifer from Vancouver, Canada",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lentil_and_vegetable_soup_with_avocado_(6964882187).jpg"
+  },
+  "lunch-hummus-vegetable-wraps": {
+    "query": "vegetable wrap",
+    "file": "lunch-hummus-vegetable-wraps.jpg",
+    "commonsTitle": "File:Vegetables-filled wrap - Vegan (4724722231).jpg",
+    "author": "Suzette - www.suzette.nu from Arnhem, Netherlands",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vegetables-filled_wrap_-_Vegan_(4724722231).jpg"
+  },
+  "lunch-tuna-free-chickpea-melts": {
+    "query": "chickpea cheese sandwich"
+  },
+  "lunch-quinoa-black-bean-salad": {
+    "query": "quinoa black bean salad",
+    "file": "greek-grain-bowl.jpg",
+    "author": "Geoff Peters from Vancouver, BC, Canada",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Quinoa_Salad_(5045982815).jpg"
+  },
+  "lunch-tomato-white-bean-soup": {
+    "query": "tomato white bean soup",
+    "file": "lunch-tomato-white-bean-soup.jpg",
+    "commonsTitle": "File:White Bean, Tomato, and Rosemary Soup (2267968994).jpg",
+    "author": "Kari Sullivan from Austin, TX",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:White_Bean,_Tomato,_and_Rosemary_Soup_(2267968994).jpg"
+  },
+  "lunch-egg-salad-sandwiches": {
+    "query": "egg salad sandwiches",
+    "file": "lunch-egg-salad-sandwiches.jpg",
+    "commonsTitle": "File:Egg Salad Sandwich.jpg",
+    "author": "Kiwima",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Egg_Salad_Sandwich.jpg"
+  },
+  "lunch-falafel-pitas": {
+    "query": "falafel salad pitas",
+    "file": "lunch-falafel-pitas.jpg",
+    "commonsTitle": "File:Falafel is everywhere in Israel. Delicious deep-fried chickpea paired with hummus, Israeli salad, other Middle Eastern treats, is served as a burger in a pita bread. Falafel is safest bet for vegetarians.jpg",
+    "author": "Mohammad Shad Siddiqui",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Falafel_is_everywhere_in_Israel._Delicious_deep-fried_chickpea_paired_with_hummus,_Israeli_salad,_other_Middle_Eastern_treats,_is_served_as_a_burger_in_a_pita_bread._Falafel_is_safest_bet_for_vegetarians.jpg"
+  },
+  "lunch-sesame-tofu-rice-bowls": {
+    "query": "tofu rice bowl",
+    "file": "lunch-sesame-tofu-rice-bowls.jpg",
+    "commonsTitle": "File:Salt & Pepper Tofu Rice Bowl - Tiger Bites Pig 2025-11-20.jpg",
+    "author": "Andy Li",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Salt_%26_Pepper_Tofu_Rice_Bowl_-_Tiger_Bites_Pig_2025-11-20.jpg"
+  },
+  "breakfast-bean-egg-burritos": {
+    "query": "bean and egg breakfast burritos",
+    "file": "breakfast-bean-egg-burritos.jpg",
+    "commonsTitle": "File:BREKKIE BURRITTO (cross section) - Giraffe 2025-11-01.jpg",
+    "author": "Andy Li",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:BREKKIE_BURRITTO_(cross_section)_-_Giraffe_2025-11-01.jpg"
   }
 }

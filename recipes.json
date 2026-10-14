@@ -5178,5 +5178,2840 @@
         "instructions": "Drain and rinse. Warm in a small pan with 1 tbsp oil and a pinch of cumin for 3–4 min, then stir into individual bowls for a heartier soup."
       }
     ]
+  },
+  {
+    "id": "chana-masala",
+    "name": "Chana Masala",
+    "bucket": "in",
+    "bucketLabel": "Indian",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Chickpeas simmer in a deeply spiced tomato sauce, finished with cilantro and lime.",
+    "source": "https://www.loveandlemons.com/chana-masala/",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "canned chickpeas",
+        "amount": 2,
+        "unit": "cans",
+        "category": "pantry"
+      },
+      {
+        "id": "i2",
+        "name": "diced tomatoes (14oz can)",
+        "amount": 1,
+        "unit": "can",
+        "category": "pantry"
+      },
+      {
+        "id": "i3",
+        "name": "onion",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "garlic",
+        "amount": 3,
+        "unit": "cloves",
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "ginger",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "produce"
+      },
+      {
+        "id": "i6",
+        "name": "garam masala",
+        "amount": 2,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "cumin",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i8",
+        "name": "olive oil",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i9",
+        "name": "basmati rice",
+        "amount": 1.5,
+        "unit": "cups",
+        "category": "grains"
+      },
+      {
+        "id": "i10",
+        "name": "cilantro",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "produce"
+      }
+    ],
+    "steps": [
+      "Cook the rice according to the package directions.",
+      "Soften the onion in oil, then stir in garlic, ginger, garam masala, and cumin until fragrant.",
+      "Add tomatoes and chickpeas; simmer until the sauce thickens, about 20 minutes. Serve over rice with cilantro."
+    ],
+    "proteins": [
+      {
+        "name": "Spiced lamb",
+        "amount": "12 oz",
+        "instructions": "Sear ground lamb separately with cumin and salt until browned and 160°F; spoon onto individual portions."
+      },
+      {
+        "name": "Tandoori-style chicken",
+        "amount": "1 lb",
+        "instructions": "Toss chicken pieces with yogurt and garam masala; cook separately in a skillet until the center reaches 165°F."
+      },
+      {
+        "name": "Seared paneer",
+        "amount": "8 oz",
+        "instructions": "Cube paneer and sear separately in a little oil until golden on all sides; serve on individual portions."
+      }
+    ]
+  },
+  {
+    "id": "red-lentil-dal",
+    "name": "Red Lentil Dal",
+    "bucket": "in",
+    "bucketLabel": "Indian",
+    "time": 20,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Red lentils turn creamy with turmeric, cumin, and a bright lemon finish.",
+    "source": "classic Indian dal technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "red lentils",
+        "amount": 1.5,
+        "unit": "cups",
+        "category": "pantry"
+      },
+      {
+        "id": "i2",
+        "name": "onion",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i3",
+        "name": "garlic",
+        "amount": 3,
+        "unit": "cloves",
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "ginger",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "ground turmeric",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "cumin",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "vegetable broth",
+        "amount": 4,
+        "unit": "cups",
+        "category": "pantry"
+      },
+      {
+        "id": "i8",
+        "name": "olive oil",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i9",
+        "name": "lemon juice",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "produce"
+      },
+      {
+        "id": "i10",
+        "name": "basmati rice",
+        "amount": 1.5,
+        "unit": "cups",
+        "category": "grains"
+      }
+    ],
+    "steps": [
+      "Cook the rice according to the package directions.",
+      "Soften onion in oil; stir in garlic, ginger, turmeric, and cumin for 1 minute.",
+      "Add rinsed lentils and broth; simmer 20–25 minutes until creamy, stirring occasionally. Finish with lemon and serve over rice."
+    ],
+    "proteins": [
+      {
+        "name": "Spiced lamb",
+        "amount": "12 oz",
+        "instructions": "Sear ground lamb separately with cumin and salt until browned and 160°F; spoon onto individual portions."
+      },
+      {
+        "name": "Tandoori-style chicken",
+        "amount": "1 lb",
+        "instructions": "Toss chicken pieces with yogurt and garam masala; cook separately in a skillet until the center reaches 165°F."
+      },
+      {
+        "name": "Seared paneer",
+        "amount": "8 oz",
+        "instructions": "Cube paneer and sear separately in a little oil until golden on all sides; serve on individual portions."
+      }
+    ]
+  },
+  {
+    "id": "palak-paneer",
+    "name": "Palak Paneer",
+    "bucket": "in",
+    "bucketLabel": "Indian",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Tender paneer in a silky spinach sauce with warm spices.",
+    "source": "classic North Indian palak paneer technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "paneer",
+        "amount": 12,
+        "unit": "oz",
+        "category": "dairy"
+      },
+      {
+        "id": "i2",
+        "name": "spinach",
+        "amount": 10,
+        "unit": "oz",
+        "category": "produce"
+      },
+      {
+        "id": "i3",
+        "name": "onion",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "garlic",
+        "amount": 3,
+        "unit": "cloves",
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "ginger",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "produce"
+      },
+      {
+        "id": "i6",
+        "name": "garam masala",
+        "amount": 2,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "heavy cream",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i8",
+        "name": "neutral oil",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i9",
+        "name": "basmati rice",
+        "amount": 1.5,
+        "unit": "cups",
+        "category": "grains"
+      }
+    ],
+    "steps": [
+      "Cook the rice according to the package directions.",
+      "Sear paneer cubes in oil until lightly golden and set aside; soften onion, garlic, and ginger in the same pan.",
+      "Wilt spinach with the spices, blend with a splash of water until smooth, then return to the pan. Stir in cream and paneer; warm gently and serve over rice."
+    ],
+    "proteins": [
+      {
+        "name": "Spiced lamb",
+        "amount": "12 oz",
+        "instructions": "Sear ground lamb separately with cumin and salt until browned and 160°F; spoon onto individual portions."
+      },
+      {
+        "name": "Tandoori-style chicken",
+        "amount": "1 lb",
+        "instructions": "Toss chicken pieces with yogurt and garam masala; cook separately in a skillet until the center reaches 165°F."
+      },
+      {
+        "name": "Seared paneer",
+        "amount": "8 oz",
+        "instructions": "Cube paneer and sear separately in a little oil until golden on all sides; serve on individual portions."
+      }
+    ]
+  },
+  {
+    "id": "aloo-gobi",
+    "name": "Aloo Gobi with Peas",
+    "bucket": "in",
+    "bucketLabel": "Indian",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Cauliflower and potatoes become tender and fragrant with turmeric and cumin.",
+    "source": "classic Indian aloo gobi technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "cauliflower",
+        "amount": 1,
+        "unit": "head",
+        "category": "produce"
+      },
+      {
+        "id": "i2",
+        "name": "yukon gold potatoes",
+        "amount": 1,
+        "unit": "lb",
+        "category": "produce"
+      },
+      {
+        "id": "i3",
+        "name": "frozen peas",
+        "amount": 1,
+        "unit": "cup",
+        "category": "pantry"
+      },
+      {
+        "id": "i4",
+        "name": "onion",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "ginger",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "produce"
+      },
+      {
+        "id": "i6",
+        "name": "ground turmeric",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "cumin",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i8",
+        "name": "neutral oil",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i9",
+        "name": "basmati rice",
+        "amount": 1.5,
+        "unit": "cups",
+        "category": "grains"
+      }
+    ],
+    "steps": [
+      "Cook the rice according to the package directions.",
+      "Dice potatoes small and cut cauliflower into florets; soften onion and ginger in oil with turmeric and cumin.",
+      "Add potatoes and a splash of water, cover for 8 minutes, then add cauliflower and cover until tender. Stir in peas to heat through and serve with rice."
+    ],
+    "proteins": [
+      {
+        "name": "Spiced lamb",
+        "amount": "12 oz",
+        "instructions": "Sear ground lamb separately with cumin and salt until browned and 160°F; spoon onto individual portions."
+      },
+      {
+        "name": "Tandoori-style chicken",
+        "amount": "1 lb",
+        "instructions": "Toss chicken pieces with yogurt and garam masala; cook separately in a skillet until the center reaches 165°F."
+      },
+      {
+        "name": "Seared paneer",
+        "amount": "8 oz",
+        "instructions": "Cube paneer and sear separately in a little oil until golden on all sides; serve on individual portions."
+      }
+    ]
+  },
+  {
+    "id": "minestrone",
+    "name": "Minestrone Soup",
+    "bucket": "it",
+    "bucketLabel": "Italian",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "A hearty vegetable, bean, and pasta soup that welcomes what is already in the fridge.",
+    "source": "https://www.loveandlemons.com/minestrone-soup/",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "onion",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i2",
+        "name": "carrots",
+        "amount": 2,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i3",
+        "name": "celery",
+        "amount": 2,
+        "unit": "stalks",
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "zucchini",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "canned kidney beans",
+        "amount": 1,
+        "unit": "can",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "diced tomatoes (14oz can)",
+        "amount": 1,
+        "unit": "can",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "vegetable broth",
+        "amount": 5,
+        "unit": "cups",
+        "category": "pantry"
+      },
+      {
+        "id": "i8",
+        "name": "ditalini",
+        "amount": 1,
+        "unit": "cup",
+        "category": "grains"
+      },
+      {
+        "id": "i9",
+        "name": "olive oil",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i10",
+        "name": "parmesan",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "dairy"
+      }
+    ],
+    "steps": [
+      "Soften diced onion, carrots, and celery in olive oil.",
+      "Add zucchini, tomatoes, beans, and broth; simmer until the vegetables are nearly tender.",
+      "Add ditalini and simmer until al dente. Ladle into bowls and finish with parmesan."
+    ],
+    "proteins": [
+      {
+        "name": "Seared beef",
+        "amount": "12 oz",
+        "instructions": "Season thin beef strips with salt and pepper; sear separately in a hot skillet until cooked to your liking, then serve over individual portions."
+      },
+      {
+        "name": "Garlic shrimp",
+        "amount": "1 lb",
+        "instructions": "Sauté peeled shrimp separately in olive oil with garlic until opaque and 145°F; add to individual portions."
+      },
+      {
+        "name": "Crispy white beans",
+        "amount": "1 can",
+        "instructions": "Drain and dry white beans; pan-fry separately in olive oil until golden, season, and spoon over individual portions."
+      }
+    ]
+  },
+  {
+    "id": "pasta-aglio-e-olio",
+    "name": "Pasta Aglio e Olio",
+    "bucket": "it",
+    "bucketLabel": "Italian",
+    "time": 20,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Garlic, olive oil, and chili flakes coat spaghetti in a glossy sauce.",
+    "source": "classic Neapolitan aglio e olio technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "spaghetti",
+        "amount": 12,
+        "unit": "oz",
+        "category": "grains"
+      },
+      {
+        "id": "i2",
+        "name": "garlic",
+        "amount": 6,
+        "unit": "cloves",
+        "category": "produce"
+      },
+      {
+        "id": "i3",
+        "name": "olive oil",
+        "amount": 0.33,
+        "unit": "cup",
+        "category": "pantry"
+      },
+      {
+        "id": "i4",
+        "name": "red pepper flakes",
+        "amount": 0.5,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i5",
+        "name": "parsley",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "produce"
+      },
+      {
+        "id": "i6",
+        "name": "lemon juice",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "produce"
+      }
+    ],
+    "steps": [
+      "Cook spaghetti in salted water until just shy of al dente; reserve 1 cup of cooking water.",
+      "Gently cook thinly sliced garlic in olive oil until pale gold; stir in chili flakes.",
+      "Toss spaghetti with garlic oil and enough cooking water to form a glossy sauce. Finish with parsley and lemon."
+    ],
+    "proteins": [
+      {
+        "name": "Seared beef",
+        "amount": "12 oz",
+        "instructions": "Season thin beef strips with salt and pepper; sear separately in a hot skillet until cooked to your liking, then serve over individual portions."
+      },
+      {
+        "name": "Garlic shrimp",
+        "amount": "1 lb",
+        "instructions": "Sauté peeled shrimp separately in olive oil with garlic until opaque and 145°F; add to individual portions."
+      },
+      {
+        "name": "Crispy white beans",
+        "amount": "1 can",
+        "instructions": "Drain and dry white beans; pan-fry separately in olive oil until golden, season, and spoon over individual portions."
+      }
+    ]
+  },
+  {
+    "id": "pasta-puttanesca",
+    "name": "Pasta Puttanesca",
+    "bucket": "it",
+    "bucketLabel": "Italian",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "A punchy tomato sauce gets depth from olives and capers.",
+    "source": "classic Italian puttanesca technique; vegetarian adaptation",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "spaghetti",
+        "amount": 12,
+        "unit": "oz",
+        "category": "grains"
+      },
+      {
+        "id": "i2",
+        "name": "crushed tomatoes",
+        "amount": 1,
+        "unit": "can",
+        "category": "pantry"
+      },
+      {
+        "id": "i3",
+        "name": "kalamata olives",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "pantry"
+      },
+      {
+        "id": "i4",
+        "name": "capers",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i5",
+        "name": "garlic",
+        "amount": 4,
+        "unit": "cloves",
+        "category": "produce"
+      },
+      {
+        "id": "i6",
+        "name": "red pepper flakes",
+        "amount": 0.5,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "olive oil",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i8",
+        "name": "parsley",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "produce"
+      }
+    ],
+    "steps": [
+      "Cook spaghetti until al dente, reserving some pasta water.",
+      "Warm garlic and chili flakes in olive oil; add tomatoes, olives, and capers and simmer for 15 minutes.",
+      "Toss pasta into the sauce, loosening with pasta water as needed; finish with parsley."
+    ],
+    "proteins": [
+      {
+        "name": "Seared beef",
+        "amount": "12 oz",
+        "instructions": "Season thin beef strips with salt and pepper; sear separately in a hot skillet until cooked to your liking, then serve over individual portions."
+      },
+      {
+        "name": "Garlic shrimp",
+        "amount": "1 lb",
+        "instructions": "Sauté peeled shrimp separately in olive oil with garlic until opaque and 145°F; add to individual portions."
+      },
+      {
+        "name": "Crispy white beans",
+        "amount": "1 can",
+        "instructions": "Drain and dry white beans; pan-fry separately in olive oil until golden, season, and spoon over individual portions."
+      }
+    ]
+  },
+  {
+    "id": "ricotta-spinach-stuffed-shells",
+    "name": "Spinach Ricotta Stuffed Shells",
+    "bucket": "it",
+    "bucketLabel": "Italian",
+    "time": 30,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Pasta shells filled with creamy ricotta and spinach bake in tomato sauce.",
+    "source": "classic Italian-American stuffed shells technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "jumbo pasta shells",
+        "amount": 20,
+        "unit": null,
+        "category": "grains"
+      },
+      {
+        "id": "i2",
+        "name": "ricotta",
+        "amount": 15,
+        "unit": "oz",
+        "category": "dairy"
+      },
+      {
+        "id": "i3",
+        "name": "spinach",
+        "amount": 5,
+        "unit": "oz",
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "marinara sauce",
+        "amount": 3,
+        "unit": "cups",
+        "category": "pantry"
+      },
+      {
+        "id": "i5",
+        "name": "fresh mozzarella",
+        "amount": 6,
+        "unit": "oz",
+        "category": "dairy"
+      },
+      {
+        "id": "i6",
+        "name": "parmesan",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i7",
+        "name": "garlic",
+        "amount": 2,
+        "unit": "cloves",
+        "category": "produce"
+      }
+    ],
+    "steps": [
+      "Heat the oven to 400°F and boil shells until just pliable.",
+      "Wilt spinach with garlic, squeeze dry, and combine with ricotta and parmesan.",
+      "Spread sauce in a baking dish, fill shells, top with remaining sauce and mozzarella, and bake until bubbling, about 25 minutes."
+    ],
+    "proteins": [
+      {
+        "name": "Seared beef",
+        "amount": "12 oz",
+        "instructions": "Season thin beef strips with salt and pepper; sear separately in a hot skillet until cooked to your liking, then serve over individual portions."
+      },
+      {
+        "name": "Garlic shrimp",
+        "amount": "1 lb",
+        "instructions": "Sauté peeled shrimp separately in olive oil with garlic until opaque and 145°F; add to individual portions."
+      },
+      {
+        "name": "Crispy white beans",
+        "amount": "1 can",
+        "instructions": "Drain and dry white beans; pan-fry separately in olive oil until golden, season, and spoon over individual portions."
+      }
+    ]
+  },
+  {
+    "id": "mujadara",
+    "name": "Mujadara",
+    "bucket": "med",
+    "bucketLabel": "Middle Eastern",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Lentils and rice meet a generous pile of deeply browned onions.",
+    "source": "https://www.themediterraneandish.com/mujadara-lentils-and-rice-with-crispy-onions/",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "brown lentils",
+        "amount": 1,
+        "unit": "cup",
+        "category": "pantry"
+      },
+      {
+        "id": "i2",
+        "name": "basmati rice",
+        "amount": 1,
+        "unit": "cup",
+        "category": "grains"
+      },
+      {
+        "id": "i3",
+        "name": "onion",
+        "amount": 3,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "olive oil",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "pantry"
+      },
+      {
+        "id": "i5",
+        "name": "cumin",
+        "amount": 1.5,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "ground coriander",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "greek yogurt",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "dairy"
+      }
+    ],
+    "steps": [
+      "Simmer lentils in water until nearly tender, about 15 minutes; drain.",
+      "Thinly slice onions and cook in olive oil, stirring often, until deeply browned; reserve half.",
+      "Stir rice, lentils, spices, and water into the remaining onions; cover and cook until rice is tender. Top with reserved onions and yogurt."
+    ],
+    "proteins": [
+      {
+        "name": "Lemon beef",
+        "amount": "12 oz",
+        "instructions": "Season thin beef strips with salt and oregano; sear separately in a hot skillet until cooked to your liking, then finish with lemon."
+      },
+      {
+        "name": "Lemon chicken",
+        "amount": "1 lb",
+        "instructions": "Season chicken strips with salt and oregano; cook separately until the center reaches 165°F, then squeeze lemon over them."
+      },
+      {
+        "name": "Crispy chickpeas",
+        "amount": "1 can",
+        "instructions": "Drain and dry chickpeas; fry separately in olive oil with paprika until crisp, then spoon over individual portions."
+      }
+    ]
+  },
+  {
+    "id": "falafel-hummus-bowls",
+    "name": "Falafel Hummus Bowls",
+    "bucket": "med",
+    "bucketLabel": "Middle Eastern",
+    "time": 20,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Warm falafel, hummus, crunchy vegetables, and pita make an easy mezze dinner.",
+    "source": "https://www.themediterraneandish.com/falafel-bowl-recipe/",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "prepared falafel",
+        "amount": 12,
+        "unit": null,
+        "category": "pantry"
+      },
+      {
+        "id": "i2",
+        "name": "hummus",
+        "amount": 1,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i3",
+        "name": "pita bread",
+        "amount": 4,
+        "unit": null,
+        "category": "grains"
+      },
+      {
+        "id": "i4",
+        "name": "cucumber",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "cherry tomatoes",
+        "amount": 2,
+        "unit": "cups",
+        "category": "produce"
+      },
+      {
+        "id": "i6",
+        "name": "red onion",
+        "amount": 0.5,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i7",
+        "name": "feta",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i8",
+        "name": "lemon juice",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "produce"
+      }
+    ],
+    "steps": [
+      "Warm prepared falafel and pita according to package directions.",
+      "Chop cucumber, tomatoes, and red onion; toss with lemon juice.",
+      "Spread hummus in bowls and arrange falafel, vegetables, pita, and feta on top."
+    ],
+    "proteins": [
+      {
+        "name": "Lemon beef",
+        "amount": "12 oz",
+        "instructions": "Season thin beef strips with salt and oregano; sear separately in a hot skillet until cooked to your liking, then finish with lemon."
+      },
+      {
+        "name": "Lemon chicken",
+        "amount": "1 lb",
+        "instructions": "Season chicken strips with salt and oregano; cook separately until the center reaches 165°F, then squeeze lemon over them."
+      },
+      {
+        "name": "Crispy chickpeas",
+        "amount": "1 can",
+        "instructions": "Drain and dry chickpeas; fry separately in olive oil with paprika until crisp, then spoon over individual portions."
+      }
+    ]
+  },
+  {
+    "id": "roasted-vegetable-couscous",
+    "name": "Chickpea Vegetable Couscous",
+    "bucket": "med",
+    "bucketLabel": "North African",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Spiced roasted vegetables and chickpeas sit over fluffy couscous.",
+    "source": "https://www.themediterraneandish.com/roasted-vegetable-couscous/",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "couscous",
+        "amount": 1.5,
+        "unit": "cups",
+        "category": "grains"
+      },
+      {
+        "id": "i2",
+        "name": "canned chickpeas",
+        "amount": 2,
+        "unit": "cans",
+        "category": "pantry"
+      },
+      {
+        "id": "i3",
+        "name": "carrots",
+        "amount": 2,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "zucchini",
+        "amount": 2,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "red bell pepper",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i6",
+        "name": "olive oil",
+        "amount": 3,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "ground coriander",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i8",
+        "name": "cinnamon",
+        "amount": 0.25,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i9",
+        "name": "vegetable broth",
+        "amount": 1.5,
+        "unit": "cups",
+        "category": "pantry"
+      },
+      {
+        "id": "i10",
+        "name": "lemon juice",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "produce"
+      }
+    ],
+    "steps": [
+      "Heat the oven to 425°F; toss chopped vegetables and drained chickpeas with oil, coriander, and cinnamon.",
+      "Roast until the vegetables brown and soften, about 25 minutes.",
+      "Pour hot broth over couscous, cover for 5 minutes, then fluff and top with vegetables and lemon."
+    ],
+    "proteins": [
+      {
+        "name": "Lemon beef",
+        "amount": "12 oz",
+        "instructions": "Season thin beef strips with salt and oregano; sear separately in a hot skillet until cooked to your liking, then finish with lemon."
+      },
+      {
+        "name": "Lemon chicken",
+        "amount": "1 lb",
+        "instructions": "Season chicken strips with salt and oregano; cook separately until the center reaches 165°F, then squeeze lemon over them."
+      },
+      {
+        "name": "Crispy chickpeas",
+        "amount": "1 can",
+        "instructions": "Drain and dry chickpeas; fry separately in olive oil with paprika until crisp, then spoon over individual portions."
+      }
+    ]
+  },
+  {
+    "id": "greek-lemon-potatoes-beans",
+    "name": "Greek Lemon Potatoes and Beans",
+    "bucket": "med",
+    "bucketLabel": "Mediterranean",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Roasted lemon potatoes and white beans make a bright, satisfying tray dinner.",
+    "source": "classic Greek lemon potato technique; vegetarian adaptation",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "yukon gold potatoes",
+        "amount": 1.5,
+        "unit": "lb",
+        "category": "produce"
+      },
+      {
+        "id": "i2",
+        "name": "canned cannellini beans",
+        "amount": 2,
+        "unit": "cans",
+        "category": "pantry"
+      },
+      {
+        "id": "i3",
+        "name": "lemon",
+        "amount": 2,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "garlic",
+        "amount": 4,
+        "unit": "cloves",
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "dried oregano",
+        "amount": 2,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "olive oil",
+        "amount": 3,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "feta",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i8",
+        "name": "parsley",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "produce"
+      }
+    ],
+    "steps": [
+      "Heat the oven to 425°F and cut potatoes into small wedges.",
+      "Toss potatoes with oil, lemon juice, garlic, and oregano; roast about 25 minutes until tender.",
+      "Add drained beans to the pan and roast 8 minutes more. Finish with feta, parsley, and lemon zest."
+    ],
+    "proteins": [
+      {
+        "name": "Lemon beef",
+        "amount": "12 oz",
+        "instructions": "Season thin beef strips with salt and oregano; sear separately in a hot skillet until cooked to your liking, then finish with lemon."
+      },
+      {
+        "name": "Lemon chicken",
+        "amount": "1 lb",
+        "instructions": "Season chicken strips with salt and oregano; cook separately until the center reaches 165°F, then squeeze lemon over them."
+      },
+      {
+        "name": "Crispy chickpeas",
+        "amount": "1 can",
+        "instructions": "Drain and dry chickpeas; fry separately in olive oil with paprika until crisp, then spoon over individual portions."
+      }
+    ]
+  },
+  {
+    "id": "vegetarian-stuffed-peppers",
+    "name": "Rice and Bean Stuffed Peppers",
+    "bucket": "mx",
+    "bucketLabel": "Mexican",
+    "time": 30,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Peppers hold a savory rice, black bean, and corn filling under melted cheese.",
+    "source": "https://www.loveandlemons.com/vegetarian-stuffed-peppers/",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "red bell pepper",
+        "amount": 4,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i2",
+        "name": "canned black beans",
+        "amount": 1,
+        "unit": "can",
+        "category": "pantry"
+      },
+      {
+        "id": "i3",
+        "name": "frozen corn",
+        "amount": 1,
+        "unit": "cup",
+        "category": "pantry"
+      },
+      {
+        "id": "i4",
+        "name": "brown rice",
+        "amount": 1,
+        "unit": "cup",
+        "category": "grains"
+      },
+      {
+        "id": "i5",
+        "name": "onion",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i6",
+        "name": "tomato paste",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "chili powder",
+        "amount": 2,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i8",
+        "name": "cheddar",
+        "amount": 1,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i9",
+        "name": "olive oil",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Cook the rice according to the package directions and heat the oven to 400°F.",
+      "Halve and seed peppers; soften onion in oil, then stir in tomato paste, chili powder, beans, corn, and cooked rice.",
+      "Fill peppers, top with cheese, and bake until peppers soften and cheese browns, about 25–30 minutes."
+    ],
+    "proteins": [
+      {
+        "name": "Seared steak",
+        "amount": "12 oz",
+        "instructions": "Season thin steak with salt and cumin; sear in a separate hot skillet for 3–4 minutes per side, rest, slice, and serve on individual plates."
+      },
+      {
+        "name": "Lime chicken",
+        "amount": "1 lb",
+        "instructions": "Season chicken strips with salt and chili powder; cook in a separate oiled skillet until the center reaches 165°F, then finish with lime."
+      },
+      {
+        "name": "Crispy tofu",
+        "amount": "14 oz",
+        "instructions": "Pat firm tofu dry, cube, season with cumin, and pan-fry separately in oil until crisp; add to individual portions."
+      }
+    ]
+  },
+  {
+    "id": "huevos-rancheros",
+    "name": "Huevos Rancheros",
+    "bucket": "mx",
+    "bucketLabel": "Mexican",
+    "time": 20,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Eggs, beans, and warm tortillas make a substantial breakfast-for-dinner.",
+    "source": "classic Mexican huevos rancheros technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "eggs",
+        "amount": 4,
+        "unit": null,
+        "category": "dairy"
+      },
+      {
+        "id": "i2",
+        "name": "corn tortillas",
+        "amount": 8,
+        "unit": null,
+        "category": "grains"
+      },
+      {
+        "id": "i3",
+        "name": "canned black beans",
+        "amount": 1,
+        "unit": "can",
+        "category": "pantry"
+      },
+      {
+        "id": "i4",
+        "name": "salsa",
+        "amount": 1,
+        "unit": "cup",
+        "category": "pantry"
+      },
+      {
+        "id": "i5",
+        "name": "avocado",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i6",
+        "name": "feta",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i7",
+        "name": "cilantro",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "produce"
+      },
+      {
+        "id": "i8",
+        "name": "neutral oil",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Warm beans and salsa in separate small pans; warm tortillas until pliable.",
+      "Fry eggs in oil until whites set and yolks reach your preference.",
+      "Layer tortillas with beans, salsa, and eggs; finish with avocado, feta, and cilantro."
+    ],
+    "proteins": [
+      {
+        "name": "Seared steak",
+        "amount": "12 oz",
+        "instructions": "Season thin steak with salt and cumin; sear in a separate hot skillet for 3–4 minutes per side, rest, slice, and serve on individual plates."
+      },
+      {
+        "name": "Lime chicken",
+        "amount": "1 lb",
+        "instructions": "Season chicken strips with salt and chili powder; cook in a separate oiled skillet until the center reaches 165°F, then finish with lime."
+      },
+      {
+        "name": "Crispy tofu",
+        "amount": "14 oz",
+        "instructions": "Pat firm tofu dry, cube, season with cumin, and pan-fry separately in oil until crisp; add to individual portions."
+      }
+    ]
+  },
+  {
+    "id": "sweet-potato-black-bean-tacos",
+    "name": "Sweet Potato Black Bean Tacos",
+    "bucket": "mx",
+    "bucketLabel": "Mexican",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Smoky roasted sweet potato and black beans fill warm tortillas.",
+    "source": "classic vegetarian taco technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "sweet potato",
+        "amount": 2,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i2",
+        "name": "canned black beans",
+        "amount": 1,
+        "unit": "can",
+        "category": "pantry"
+      },
+      {
+        "id": "i3",
+        "name": "corn tortillas",
+        "amount": 12,
+        "unit": null,
+        "category": "grains"
+      },
+      {
+        "id": "i4",
+        "name": "smoked paprika",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i5",
+        "name": "cumin",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "olive oil",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "red cabbage",
+        "amount": 2,
+        "unit": "cups",
+        "category": "produce"
+      },
+      {
+        "id": "i8",
+        "name": "lime",
+        "amount": 2,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i9",
+        "name": "greek yogurt",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "dairy"
+      }
+    ],
+    "steps": [
+      "Heat the oven to 425°F; dice sweet potato small and toss with oil, paprika, and cumin.",
+      "Roast until browned and tender, about 25 minutes; warm beans and tortillas.",
+      "Fill tortillas with potato and beans, then add cabbage, lime, and yogurt."
+    ],
+    "proteins": [
+      {
+        "name": "Seared steak",
+        "amount": "12 oz",
+        "instructions": "Season thin steak with salt and cumin; sear in a separate hot skillet for 3–4 minutes per side, rest, slice, and serve on individual plates."
+      },
+      {
+        "name": "Lime chicken",
+        "amount": "1 lb",
+        "instructions": "Season chicken strips with salt and chili powder; cook in a separate oiled skillet until the center reaches 165°F, then finish with lime."
+      },
+      {
+        "name": "Crispy tofu",
+        "amount": "14 oz",
+        "instructions": "Pat firm tofu dry, cube, season with cumin, and pan-fry separately in oil until crisp; add to individual portions."
+      }
+    ]
+  },
+  {
+    "id": "elote-rice-bowls",
+    "name": "Elote Rice Bowls",
+    "bucket": "mx",
+    "bucketLabel": "Mexican",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Charred corn, beans, and tangy lime crema make a colorful rice bowl.",
+    "source": "Mexican street corn bowl adaptation",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "basmati rice",
+        "amount": 1.5,
+        "unit": "cups",
+        "category": "grains"
+      },
+      {
+        "id": "i2",
+        "name": "frozen corn",
+        "amount": 2,
+        "unit": "cups",
+        "category": "pantry"
+      },
+      {
+        "id": "i3",
+        "name": "canned pinto beans",
+        "amount": 1,
+        "unit": "can",
+        "category": "pantry"
+      },
+      {
+        "id": "i4",
+        "name": "greek yogurt",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i5",
+        "name": "feta",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i6",
+        "name": "lime",
+        "amount": 2,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i7",
+        "name": "chili powder",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i8",
+        "name": "cilantro",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "produce"
+      },
+      {
+        "id": "i9",
+        "name": "avocado",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      }
+    ],
+    "steps": [
+      "Cook the rice and warm the drained beans.",
+      "Char corn in a hot dry skillet; stir together yogurt, lime juice, and chili powder.",
+      "Build bowls with rice, beans, corn, avocado, feta, cilantro, and lime crema."
+    ],
+    "proteins": [
+      {
+        "name": "Seared steak",
+        "amount": "12 oz",
+        "instructions": "Season thin steak with salt and cumin; sear in a separate hot skillet for 3–4 minutes per side, rest, slice, and serve on individual plates."
+      },
+      {
+        "name": "Lime chicken",
+        "amount": "1 lb",
+        "instructions": "Season chicken strips with salt and chili powder; cook in a separate oiled skillet until the center reaches 165°F, then finish with lime."
+      },
+      {
+        "name": "Crispy tofu",
+        "amount": "14 oz",
+        "instructions": "Pat firm tofu dry, cube, season with cumin, and pan-fry separately in oil until crisp; add to individual portions."
+      }
+    ]
+  },
+  {
+    "id": "bibimbap",
+    "name": "Vegetable Bibimbap",
+    "bucket": "as",
+    "bucketLabel": "Korean",
+    "time": 30,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Seasoned vegetables, rice, a fried egg, and gochujang make a generous bowl.",
+    "source": "https://www.loveandlemons.com/bibimbap-recipe/",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "short-grain white rice",
+        "amount": 1.5,
+        "unit": "cups",
+        "category": "grains"
+      },
+      {
+        "id": "i2",
+        "name": "eggs",
+        "amount": 4,
+        "unit": null,
+        "category": "dairy"
+      },
+      {
+        "id": "i3",
+        "name": "spinach",
+        "amount": 5,
+        "unit": "oz",
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "carrots",
+        "amount": 2,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "cucumber",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i6",
+        "name": "cremini mushrooms",
+        "amount": 8,
+        "unit": "oz",
+        "category": "produce"
+      },
+      {
+        "id": "i7",
+        "name": "gochujang",
+        "amount": 3,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i8",
+        "name": "rice vinegar",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i9",
+        "name": "sesame oil",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i10",
+        "name": "sesame seeds",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Cook the rice; toss sliced cucumber with rice vinegar.",
+      "Sauté carrots, mushrooms, and spinach separately with a little sesame oil; fry eggs until whites set.",
+      "Arrange rice and vegetables in bowls, top with eggs, and finish with gochujang and sesame seeds."
+    ],
+    "proteins": [
+      {
+        "name": "Ginger beef",
+        "amount": "12 oz",
+        "instructions": "Sear thin beef strips separately with ginger and soy sauce until cooked to your liking; serve over individual portions."
+      },
+      {
+        "name": "Soy chicken",
+        "amount": "1 lb",
+        "instructions": "Cook chicken strips separately in a hot oiled skillet with soy sauce until the center reaches 165°F; serve over individual portions."
+      },
+      {
+        "name": "Crispy tofu",
+        "amount": "14 oz",
+        "instructions": "Pat firm tofu dry, cube, and pan-fry separately in oil until golden; season with soy sauce and add to individual portions."
+      }
+    ]
+  },
+  {
+    "id": "ginger-miso-eggplant-noodles",
+    "name": "Ginger Miso Eggplant Noodles",
+    "bucket": "as",
+    "bucketLabel": "Asian",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Eggplant, mushrooms, and noodles take on a savory ginger-miso glaze.",
+    "source": "https://www.loveandlemons.com/ginger-miso-noodles-eggplant/",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "soba noodles",
+        "amount": 10,
+        "unit": "oz",
+        "category": "grains"
+      },
+      {
+        "id": "i2",
+        "name": "eggplant",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i3",
+        "name": "cremini mushrooms",
+        "amount": 8,
+        "unit": "oz",
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "spinach",
+        "amount": 3,
+        "unit": "cups",
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "miso paste",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "ginger",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "produce"
+      },
+      {
+        "id": "i7",
+        "name": "soy sauce",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i8",
+        "name": "sesame oil",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i9",
+        "name": "green onions",
+        "amount": 3,
+        "unit": null,
+        "category": "produce"
+      }
+    ],
+    "steps": [
+      "Cook soba noodles according to the package directions.",
+      "Brown diced eggplant and mushrooms in sesame oil; add spinach and cook until wilted.",
+      "Whisk miso, grated ginger, soy sauce, and a splash of water; toss with vegetables and noodles. Finish with green onions."
+    ],
+    "proteins": [
+      {
+        "name": "Ginger beef",
+        "amount": "12 oz",
+        "instructions": "Sear thin beef strips separately with ginger and soy sauce until cooked to your liking; serve over individual portions."
+      },
+      {
+        "name": "Soy chicken",
+        "amount": "1 lb",
+        "instructions": "Cook chicken strips separately in a hot oiled skillet with soy sauce until the center reaches 165°F; serve over individual portions."
+      },
+      {
+        "name": "Crispy tofu",
+        "amount": "14 oz",
+        "instructions": "Pat firm tofu dry, cube, and pan-fry separately in oil until golden; season with soy sauce and add to individual portions."
+      }
+    ]
+  },
+  {
+    "id": "sesame-soba-peas",
+    "name": "Sesame Basil Soba with Peas",
+    "bucket": "as",
+    "bucketLabel": "Asian",
+    "time": 20,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Soba, peas, basil, and sesame oil make a fast, fragrant noodle dinner.",
+    "source": "https://www.loveandlemons.com/sesame-basil-soba-noodles/",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "soba noodles",
+        "amount": 12,
+        "unit": "oz",
+        "category": "grains"
+      },
+      {
+        "id": "i2",
+        "name": "frozen peas",
+        "amount": 2,
+        "unit": "cups",
+        "category": "pantry"
+      },
+      {
+        "id": "i3",
+        "name": "basil",
+        "amount": 1,
+        "unit": "cup",
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "soy sauce",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i5",
+        "name": "sesame oil",
+        "amount": 1.5,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "parmesan",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i7",
+        "name": "lemon juice",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "produce"
+      },
+      {
+        "id": "i8",
+        "name": "sesame seeds",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Cook soba according to the package directions, adding peas during the last minute; drain.",
+      "Toss warm noodles and peas with sesame oil, soy sauce, lemon juice, basil, and parmesan.",
+      "Divide into bowls and finish with sesame seeds."
+    ],
+    "proteins": [
+      {
+        "name": "Ginger beef",
+        "amount": "12 oz",
+        "instructions": "Sear thin beef strips separately with ginger and soy sauce until cooked to your liking; serve over individual portions."
+      },
+      {
+        "name": "Soy chicken",
+        "amount": "1 lb",
+        "instructions": "Cook chicken strips separately in a hot oiled skillet with soy sauce until the center reaches 165°F; serve over individual portions."
+      },
+      {
+        "name": "Crispy tofu",
+        "amount": "14 oz",
+        "instructions": "Pat firm tofu dry, cube, and pan-fry separately in oil until golden; season with soy sauce and add to individual portions."
+      }
+    ]
+  },
+  {
+    "id": "tofu-lettuce-wraps",
+    "name": "Tofu Lettuce Wraps",
+    "bucket": "as",
+    "bucketLabel": "Asian",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Crisp tofu and mushrooms tuck into lettuce cups with a savory sauce.",
+    "source": "classic lettuce-wrap technique; vegetarian adaptation",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "firm tofu",
+        "amount": 14,
+        "unit": "oz",
+        "category": "dairy"
+      },
+      {
+        "id": "i2",
+        "name": "cremini mushrooms",
+        "amount": 8,
+        "unit": "oz",
+        "category": "produce"
+      },
+      {
+        "id": "i3",
+        "name": "butter lettuce",
+        "amount": 1,
+        "unit": "head",
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "carrots",
+        "amount": 2,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "green onions",
+        "amount": 3,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i6",
+        "name": "soy sauce",
+        "amount": 3,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "rice vinegar",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i8",
+        "name": "ginger",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "produce"
+      },
+      {
+        "id": "i9",
+        "name": "sesame oil",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Pat tofu dry and crumble it; finely chop mushrooms, carrots, and scallions.",
+      "Brown tofu and mushrooms in sesame oil, then add carrots and ginger.",
+      "Stir in soy sauce and vinegar; spoon into washed lettuce leaves and top with scallions."
+    ],
+    "proteins": [
+      {
+        "name": "Ginger beef",
+        "amount": "12 oz",
+        "instructions": "Sear thin beef strips separately with ginger and soy sauce until cooked to your liking; serve over individual portions."
+      },
+      {
+        "name": "Soy chicken",
+        "amount": "1 lb",
+        "instructions": "Cook chicken strips separately in a hot oiled skillet with soy sauce until the center reaches 165°F; serve over individual portions."
+      },
+      {
+        "name": "Crispy tofu",
+        "amount": "14 oz",
+        "instructions": "Pat firm tofu dry, cube, and pan-fry separately in oil until golden; season with soy sauce and add to individual portions."
+      }
+    ]
+  },
+  {
+    "id": "sheet-pan-gnocchi",
+    "name": "Sheet Pan Gnocchi and Vegetables",
+    "bucket": "it",
+    "bucketLabel": "Italian",
+    "time": 20,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Crisp gnocchi roast alongside peppers, tomatoes, and onions.",
+    "source": "established sheet-pan gnocchi technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "shelf-stable gnocchi",
+        "amount": 18,
+        "unit": "oz",
+        "category": "grains"
+      },
+      {
+        "id": "i2",
+        "name": "cherry tomatoes",
+        "amount": 2,
+        "unit": "cups",
+        "category": "produce"
+      },
+      {
+        "id": "i3",
+        "name": "red bell pepper",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "red onion",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "olive oil",
+        "amount": 3,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "dried oregano",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "fresh mozzarella",
+        "amount": 6,
+        "unit": "oz",
+        "category": "dairy"
+      },
+      {
+        "id": "i8",
+        "name": "basil",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "produce"
+      }
+    ],
+    "steps": [
+      "Heat the oven to 425°F; toss gnocchi and chopped vegetables with olive oil and oregano on a sheet pan.",
+      "Roast 20–25 minutes, stirring once, until gnocchi is crisp and vegetables are tender.",
+      "Scatter mozzarella over the pan to soften, then finish with basil."
+    ],
+    "proteins": [
+      {
+        "name": "Seared beef",
+        "amount": "12 oz",
+        "instructions": "Season thin beef strips with salt and pepper; sear separately in a hot skillet until cooked to your liking, then serve over individual portions."
+      },
+      {
+        "name": "Garlic shrimp",
+        "amount": "1 lb",
+        "instructions": "Sauté peeled shrimp separately in olive oil with garlic until opaque and 145°F; add to individual portions."
+      },
+      {
+        "name": "Crispy white beans",
+        "amount": "1 can",
+        "instructions": "Drain and dry white beans; pan-fry separately in olive oil until golden, season, and spoon over individual portions."
+      }
+    ]
+  },
+  {
+    "id": "broccoli-cheddar-soup",
+    "name": "Broccoli Cheddar Soup",
+    "bucket": "am",
+    "bucketLabel": "American",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Broccoli and sharp cheddar make a creamy, comforting bowl.",
+    "source": "classic broccoli cheddar soup technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "broccoli",
+        "amount": 1,
+        "unit": "lb",
+        "category": "produce"
+      },
+      {
+        "id": "i2",
+        "name": "onion",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i3",
+        "name": "carrots",
+        "amount": 2,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "butter",
+        "amount": 3,
+        "unit": "tbsp",
+        "category": "dairy"
+      },
+      {
+        "id": "i5",
+        "name": "flour",
+        "amount": 3,
+        "unit": "tbsp",
+        "category": "grains"
+      },
+      {
+        "id": "i6",
+        "name": "vegetable broth",
+        "amount": 3,
+        "unit": "cups",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "milk",
+        "amount": 2,
+        "unit": "cups",
+        "category": "dairy"
+      },
+      {
+        "id": "i8",
+        "name": "cheddar",
+        "amount": 2,
+        "unit": "cups",
+        "category": "dairy"
+      },
+      {
+        "id": "i9",
+        "name": "bread",
+        "amount": 4,
+        "unit": "slices",
+        "category": "grains"
+      }
+    ],
+    "steps": [
+      "Soften onion and carrots in butter, then stir in flour for 1 minute.",
+      "Gradually whisk in broth and milk; add chopped broccoli and simmer until tender.",
+      "Turn off heat and stir in cheddar until melted; serve with bread."
+    ],
+    "proteins": [
+      {
+        "name": "Seared beef",
+        "amount": "12 oz",
+        "instructions": "Season thin beef strips with salt and pepper; cook separately in a hot skillet until done to your liking and serve alongside."
+      },
+      {
+        "name": "Paprika chicken",
+        "amount": "1 lb",
+        "instructions": "Season chicken strips with paprika and salt; cook separately in a skillet until the center reaches 165°F, then serve alongside."
+      },
+      {
+        "name": "Crispy chickpeas",
+        "amount": "1 can",
+        "instructions": "Drain and dry chickpeas; pan-fry separately with olive oil and paprika until crisp, then serve on top."
+      }
+    ]
+  },
+  {
+    "id": "chickpea-salad-sandwiches",
+    "name": "Chickpea Salad Sandwiches",
+    "bucket": "am",
+    "bucketLabel": "American",
+    "time": 20,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Mashed chickpeas, celery, and lemon make a crunchy sandwich filling.",
+    "source": "classic chickpea salad sandwich technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "canned chickpeas",
+        "amount": 2,
+        "unit": "cans",
+        "category": "pantry"
+      },
+      {
+        "id": "i2",
+        "name": "celery",
+        "amount": 2,
+        "unit": "stalks",
+        "category": "produce"
+      },
+      {
+        "id": "i3",
+        "name": "red onion",
+        "amount": 0.25,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "mayonnaise",
+        "amount": 0.33,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i5",
+        "name": "dijon mustard",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "lemon juice",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "produce"
+      },
+      {
+        "id": "i7",
+        "name": "bread",
+        "amount": 8,
+        "unit": "slices",
+        "category": "grains"
+      },
+      {
+        "id": "i8",
+        "name": "butter lettuce",
+        "amount": 4,
+        "unit": "leaves",
+        "category": "produce"
+      }
+    ],
+    "steps": [
+      "Drain and mash chickpeas, leaving some texture.",
+      "Finely dice celery and red onion; fold into chickpeas with mayonnaise, mustard, and lemon.",
+      "Toast bread and pile with chickpea salad and lettuce."
+    ],
+    "proteins": [
+      {
+        "name": "Seared beef",
+        "amount": "12 oz",
+        "instructions": "Season thin beef strips with salt and pepper; cook separately in a hot skillet until done to your liking and serve alongside."
+      },
+      {
+        "name": "Paprika chicken",
+        "amount": "1 lb",
+        "instructions": "Season chicken strips with paprika and salt; cook separately in a skillet until the center reaches 165°F, then serve alongside."
+      },
+      {
+        "name": "Crispy chickpeas",
+        "amount": "1 can",
+        "instructions": "Drain and dry chickpeas; pan-fry separately with olive oil and paprika until crisp, then serve on top."
+      }
+    ]
+  },
+  {
+    "id": "vegetable-pot-pie",
+    "name": "Skillet Vegetable Pot Pie",
+    "bucket": "am",
+    "bucketLabel": "American",
+    "time": 30,
+    "servings": 4,
+    "leftovers": true,
+    "description": "A creamy vegetable filling bakes beneath a golden puff pastry lid.",
+    "source": "classic vegetable pot pie technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "frozen mixed vegetables",
+        "amount": 4,
+        "unit": "cups",
+        "category": "pantry"
+      },
+      {
+        "id": "i2",
+        "name": "onion",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i3",
+        "name": "butter",
+        "amount": 3,
+        "unit": "tbsp",
+        "category": "dairy"
+      },
+      {
+        "id": "i4",
+        "name": "flour",
+        "amount": 3,
+        "unit": "tbsp",
+        "category": "grains"
+      },
+      {
+        "id": "i5",
+        "name": "vegetable broth",
+        "amount": 1.5,
+        "unit": "cups",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "milk",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i7",
+        "name": "puff pastry",
+        "amount": 1,
+        "unit": "sheet",
+        "category": "grains"
+      },
+      {
+        "id": "i8",
+        "name": "dried thyme",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Heat the oven to 425°F; soften diced onion in butter in an oven-safe skillet.",
+      "Stir in flour, then gradually add broth and milk; simmer with vegetables and thyme until thick.",
+      "Cover with thawed pastry, cut a vent, and bake until deeply golden, about 25 minutes."
+    ],
+    "proteins": [
+      {
+        "name": "Seared beef",
+        "amount": "12 oz",
+        "instructions": "Season thin beef strips with salt and pepper; cook separately in a hot skillet until done to your liking and serve alongside."
+      },
+      {
+        "name": "Paprika chicken",
+        "amount": "1 lb",
+        "instructions": "Season chicken strips with paprika and salt; cook separately in a skillet until the center reaches 165°F, then serve alongside."
+      },
+      {
+        "name": "Crispy chickpeas",
+        "amount": "1 can",
+        "instructions": "Drain and dry chickpeas; pan-fry separately with olive oil and paprika until crisp, then serve on top."
+      }
+    ]
+  },
+  {
+    "id": "black-bean-burgers",
+    "name": "Black Bean Burgers",
+    "bucket": "am",
+    "bucketLabel": "American",
+    "time": 30,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Smoky black bean patties hold together with oats and egg.",
+    "source": "classic black bean burger technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "canned black beans",
+        "amount": 2,
+        "unit": "cans",
+        "category": "pantry"
+      },
+      {
+        "id": "i2",
+        "name": "rolled oats",
+        "amount": 0.75,
+        "unit": "cup",
+        "category": "grains"
+      },
+      {
+        "id": "i3",
+        "name": "egg",
+        "amount": 1,
+        "unit": null,
+        "category": "dairy"
+      },
+      {
+        "id": "i4",
+        "name": "onion",
+        "amount": 0.5,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "smoked paprika",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "cumin",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "burger buns",
+        "amount": 4,
+        "unit": null,
+        "category": "grains"
+      },
+      {
+        "id": "i8",
+        "name": "cheddar",
+        "amount": 4,
+        "unit": "slices",
+        "category": "dairy"
+      },
+      {
+        "id": "i9",
+        "name": "neutral oil",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      }
+    ],
+    "steps": [
+      "Drain and dry beans; mash with oats, egg, finely diced onion, paprika, and cumin.",
+      "Form four patties and chill briefly while warming a skillet.",
+      "Cook patties in oil until browned and hot through, about 5 minutes per side; serve on buns with cheddar."
+    ],
+    "proteins": [
+      {
+        "name": "Seared beef",
+        "amount": "12 oz",
+        "instructions": "Season thin beef strips with salt and pepper; cook separately in a hot skillet until done to your liking and serve alongside."
+      },
+      {
+        "name": "Paprika chicken",
+        "amount": "1 lb",
+        "instructions": "Season chicken strips with paprika and salt; cook separately in a skillet until the center reaches 165°F, then serve alongside."
+      },
+      {
+        "name": "Crispy chickpeas",
+        "amount": "1 can",
+        "instructions": "Drain and dry chickpeas; pan-fry separately with olive oil and paprika until crisp, then serve on top."
+      }
+    ]
+  },
+  {
+    "id": "french-lentil-salad",
+    "name": "French Lentil Salad",
+    "bucket": "med",
+    "bucketLabel": "French",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Lentils, crunchy vegetables, herbs, and mustard vinaigrette make a sturdy dinner salad.",
+    "source": "https://www.themediterraneandish.com/french-lentil-salad-recipe/",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "french green lentils",
+        "amount": 1.5,
+        "unit": "cups",
+        "category": "pantry"
+      },
+      {
+        "id": "i2",
+        "name": "cucumber",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i3",
+        "name": "red bell pepper",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "parsley",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "dijon mustard",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "red wine vinegar",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "olive oil",
+        "amount": 3,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i8",
+        "name": "feta",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "dairy"
+      }
+    ],
+    "steps": [
+      "Simmer lentils in salted water until tender but intact, about 20–25 minutes; drain.",
+      "Dice cucumber and pepper; whisk mustard, vinegar, and olive oil.",
+      "Toss warm lentils with vegetables, parsley, and dressing; finish with feta."
+    ],
+    "proteins": [
+      {
+        "name": "Lemon beef",
+        "amount": "12 oz",
+        "instructions": "Season thin beef strips with salt and oregano; sear separately in a hot skillet until cooked to your liking, then finish with lemon."
+      },
+      {
+        "name": "Lemon chicken",
+        "amount": "1 lb",
+        "instructions": "Season chicken strips with salt and oregano; cook separately until the center reaches 165°F, then squeeze lemon over them."
+      },
+      {
+        "name": "Crispy chickpeas",
+        "amount": "1 can",
+        "instructions": "Drain and dry chickpeas; fry separately in olive oil with paprika until crisp, then spoon over individual portions."
+      }
+    ]
+  },
+  {
+    "id": "cabbage-bean-skillet",
+    "name": "Cabbage and White Bean Skillet",
+    "bucket": "med",
+    "bucketLabel": "Mediterranean",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Sweet seared cabbage and creamy beans become a filling one-pan supper.",
+    "source": "classic Mediterranean cabbage-and-bean technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "green cabbage",
+        "amount": 0.5,
+        "unit": "head",
+        "category": "produce"
+      },
+      {
+        "id": "i2",
+        "name": "canned cannellini beans",
+        "amount": 2,
+        "unit": "cans",
+        "category": "pantry"
+      },
+      {
+        "id": "i3",
+        "name": "onion",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "garlic",
+        "amount": 3,
+        "unit": "cloves",
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "olive oil",
+        "amount": 3,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "smoked paprika",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "lemon juice",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "produce"
+      },
+      {
+        "id": "i8",
+        "name": "bread",
+        "amount": 4,
+        "unit": "slices",
+        "category": "grains"
+      }
+    ],
+    "steps": [
+      "Cut cabbage into thin ribbons and sear in olive oil until browned at the edges.",
+      "Add onion and garlic; cook until soft, then stir in paprika and drained beans.",
+      "Warm beans through, finish with lemon juice, and serve over toasted bread."
+    ],
+    "proteins": [
+      {
+        "name": "Lemon beef",
+        "amount": "12 oz",
+        "instructions": "Season thin beef strips with salt and oregano; sear separately in a hot skillet until cooked to your liking, then finish with lemon."
+      },
+      {
+        "name": "Lemon chicken",
+        "amount": "1 lb",
+        "instructions": "Season chicken strips with salt and oregano; cook separately until the center reaches 165°F, then squeeze lemon over them."
+      },
+      {
+        "name": "Crispy chickpeas",
+        "amount": "1 can",
+        "instructions": "Drain and dry chickpeas; fry separately in olive oil with paprika until crisp, then spoon over individual portions."
+      }
+    ]
+  },
+  {
+    "id": "tomato-butter-beans",
+    "name": "Tomato Butter Beans on Toast",
+    "bucket": "med",
+    "bucketLabel": "Mediterranean",
+    "time": 20,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Large butter beans simmer in garlic tomato sauce and pile onto toast.",
+    "source": "classic Mediterranean butter-bean skillet technique",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "canned butter beans",
+        "amount": 2,
+        "unit": "cans",
+        "category": "pantry"
+      },
+      {
+        "id": "i2",
+        "name": "crushed tomatoes",
+        "amount": 1,
+        "unit": "can",
+        "category": "pantry"
+      },
+      {
+        "id": "i3",
+        "name": "garlic",
+        "amount": 4,
+        "unit": "cloves",
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "olive oil",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i5",
+        "name": "red pepper flakes",
+        "amount": 0.5,
+        "unit": "tsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "spinach",
+        "amount": 3,
+        "unit": "cups",
+        "category": "produce"
+      },
+      {
+        "id": "i7",
+        "name": "bread",
+        "amount": 4,
+        "unit": "slices",
+        "category": "grains"
+      },
+      {
+        "id": "i8",
+        "name": "parmesan",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "dairy"
+      }
+    ],
+    "steps": [
+      "Warm garlic and chili flakes in olive oil; add tomatoes and simmer for 10 minutes.",
+      "Stir in drained butter beans and spinach until beans are hot and greens wilt.",
+      "Toast bread, spoon beans over it, and finish with parmesan."
+    ],
+    "proteins": [
+      {
+        "name": "Lemon beef",
+        "amount": "12 oz",
+        "instructions": "Season thin beef strips with salt and oregano; sear separately in a hot skillet until cooked to your liking, then finish with lemon."
+      },
+      {
+        "name": "Lemon chicken",
+        "amount": "1 lb",
+        "instructions": "Season chicken strips with salt and oregano; cook separately until the center reaches 165°F, then squeeze lemon over them."
+      },
+      {
+        "name": "Crispy chickpeas",
+        "amount": "1 can",
+        "instructions": "Drain and dry chickpeas; fry separately in olive oil with paprika until crisp, then spoon over individual portions."
+      }
+    ]
+  },
+  {
+    "id": "orzo-feta-stuffed-peppers",
+    "name": "Orzo Feta Stuffed Peppers",
+    "bucket": "med",
+    "bucketLabel": "Mediterranean",
+    "time": 30,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Roasted pepper halves cradle lemony orzo, chickpeas, herbs, and feta.",
+    "source": "https://www.loveandlemons.com/orzo-feta-stuffed-peppers/",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "red bell pepper",
+        "amount": 4,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i2",
+        "name": "orzo",
+        "amount": 1,
+        "unit": "cup",
+        "category": "grains"
+      },
+      {
+        "id": "i3",
+        "name": "canned chickpeas",
+        "amount": 1,
+        "unit": "can",
+        "category": "pantry"
+      },
+      {
+        "id": "i4",
+        "name": "kale",
+        "amount": 3,
+        "unit": "cups",
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "feta",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "dairy"
+      },
+      {
+        "id": "i6",
+        "name": "lemon juice",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "produce"
+      },
+      {
+        "id": "i7",
+        "name": "olive oil",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i8",
+        "name": "mint",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "produce"
+      }
+    ],
+    "steps": [
+      "Heat the oven to 425°F; halve and seed peppers and roast cut-side up until tender, about 20 minutes.",
+      "Cook orzo; toss warm orzo with drained chickpeas, chopped kale, feta, lemon, oil, and mint.",
+      "Fill warm pepper halves with the orzo mixture and serve."
+    ],
+    "proteins": [
+      {
+        "name": "Lemon beef",
+        "amount": "12 oz",
+        "instructions": "Season thin beef strips with salt and oregano; sear separately in a hot skillet until cooked to your liking, then finish with lemon."
+      },
+      {
+        "name": "Lemon chicken",
+        "amount": "1 lb",
+        "instructions": "Season chicken strips with salt and oregano; cook separately until the center reaches 165°F, then squeeze lemon over them."
+      },
+      {
+        "name": "Crispy chickpeas",
+        "amount": "1 can",
+        "instructions": "Drain and dry chickpeas; fry separately in olive oil with paprika until crisp, then spoon over individual portions."
+      }
+    ]
+  },
+  {
+    "id": "spinach-pasta-roasted-vegetables",
+    "name": "Spinach Pasta with Roasted Vegetables",
+    "bucket": "it",
+    "bucketLabel": "Italian",
+    "time": 25,
+    "servings": 4,
+    "leftovers": true,
+    "description": "Roasted broccoli and pepper meet spinach pasta in a light balsamic sauce.",
+    "source": "https://cookieandkate.com/spinach-pasta-recipe/",
+    "ingredients": [
+      {
+        "id": "i1",
+        "name": "spaghetti",
+        "amount": 12,
+        "unit": "oz",
+        "category": "grains"
+      },
+      {
+        "id": "i2",
+        "name": "broccoli",
+        "amount": 1,
+        "unit": "lb",
+        "category": "produce"
+      },
+      {
+        "id": "i3",
+        "name": "red bell pepper",
+        "amount": 1,
+        "unit": null,
+        "category": "produce"
+      },
+      {
+        "id": "i4",
+        "name": "spinach",
+        "amount": 5,
+        "unit": "oz",
+        "category": "produce"
+      },
+      {
+        "id": "i5",
+        "name": "balsamic vinegar",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i6",
+        "name": "olive oil",
+        "amount": 3,
+        "unit": "tbsp",
+        "category": "pantry"
+      },
+      {
+        "id": "i7",
+        "name": "garlic",
+        "amount": 3,
+        "unit": "cloves",
+        "category": "produce"
+      },
+      {
+        "id": "i8",
+        "name": "parmesan",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "dairy"
+      }
+    ],
+    "steps": [
+      "Heat the oven to 425°F; toss broccoli and pepper with oil and roast until browned, about 20 minutes.",
+      "Cook spaghetti, reserving 1 cup pasta water; wilt spinach and garlic in a skillet.",
+      "Toss pasta, roasted vegetables, balsamic vinegar, and enough pasta water to coat; finish with parmesan."
+    ],
+    "proteins": [
+      {
+        "name": "Seared beef",
+        "amount": "12 oz",
+        "instructions": "Season thin beef strips with salt and pepper; sear separately in a hot skillet until cooked to your liking, then serve over individual portions."
+      },
+      {
+        "name": "Garlic shrimp",
+        "amount": "1 lb",
+        "instructions": "Sauté peeled shrimp separately in olive oil with garlic until opaque and 145°F; add to individual portions."
+      },
+      {
+        "name": "Crispy white beans",
+        "amount": "1 can",
+        "instructions": "Drain and dry white beans; pan-fry separately in olive oil until golden, season, and spoon over individual portions."
+      }
+    ]
   }
 ]

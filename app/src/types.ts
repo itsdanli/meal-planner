@@ -1,6 +1,7 @@
 export interface Ingredient { id: string; ingredientId?: string; optional?: boolean; name: string; amount: number | null; unit: string | null; category: string }
 export interface Protein { name: string; amount: string; instructions?: string }
-export interface Recipe { id: string; name: string; bucket: string; bucketLabel: string; time: number; servings: number; description: string; ingredients: Ingredient[]; steps: string[]; proteins?: Protein[]; source?: string }
+export type MealType = 'breakfast' | 'lunch' | 'dinner';
+export interface Recipe { mealType?: MealType; id: string; name: string; bucket: string; bucketLabel: string; time: number; servings: number; description: string; ingredients: Ingredient[]; steps: string[]; proteins?: Protein[]; source?: string }
 export interface Meal { id: string; recipeId: string; servings: number; proteinIndex?: number; recipeSnapshot?: Recipe }
 export type PantryStatus = 'have' | 'low' | 'out';
 export interface PantryEntry { id: string; name: string; status: PantryStatus; quantity?: number; unit?: string; confirmedEnough?: boolean; updatedAt: string }
