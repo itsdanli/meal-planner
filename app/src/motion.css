@@ -41,6 +41,9 @@
     animation: content-enter 220ms var(--motion-ease) backwards;
   }
 
+  .swap-button svg { transition: transform 320ms var(--motion-ease); }
+  .swap-button:hover svg { transform: rotate(180deg); }
+
   .favorite-button svg { transition: transform 220ms var(--motion-ease); }
   .favorite-button[aria-pressed=true] svg { transform: scale(1.12); }
 

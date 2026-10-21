@@ -120,7 +120,13 @@ export default function App(props: PlannerProps) {
   };
   const addRecipe = (r: Recipe, servings = r.servings, proteinIndex?: number) => { setState(s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: [...s.meals, { id: uid(), recipeId: r.id, servings, proteinIndex, recipeSnapshot: structuredClone(r) }] })); setPicker(false); setSearch(''); setMealType(r.mealType ?? 'dinner'); setView('week'); };
   const randomizeMeals = () => setState(s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: [...s.meals.filter(m => ((m.recipeSnapshot ?? recipes.find(r => r.id === m.recipeId))?.mealType ?? 'dinner') !== mealType), ...pickRandomRecipes(recipes.filter(r => (r.mealType ?? 'dinner') === mealType), 3, s.meals.map(m => m.recipeId)).map(r => ({ id: uid(), recipeId: r.id, servings: r.servings, recipeSnapshot: structuredClone(r) }))] }));
-  const planFromFavorites = (list: Recipe[]) => { setState(s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: pickRandomRecipes(list, 3, s.meals.map(m => m.recipeId)).map(r => ({ id: uid(), recipeId: r.id, servings: r.servings, recipeSnapshot: structuredClone(r) })) })); setView('week'); };
+  // Replaces one planned meal with a random recipe of the same meal time, keeping its spot and servings.
+  const swapMeal = (meal: Meal, recipe: Recipe) => setState(s => {
+    const [next] = pickRandomRecipes(recipes.filter(r => (r.mealType ?? 'dinner') === (recipe.mealType ?? 'dinner') && r.id !== recipe.id), 1, s.meals.map(m => m.recipeId));
+    if (!next) return s;
+    return { ...s, pantry: clearConfirmation(s.pantry), meals: s.meals.map(m => m.id === meal.id ? { id: uid(), recipeId: next.id, servings: m.servings, recipeSnapshot: structuredClone(next) } : m) };
+  });
+  const planFromFavorites =(list: Recipe[]) => { setState(s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: pickRandomRecipes(list, 3, s.meals.map(m => m.recipeId)).map(r => ({ id: uid(), recipeId: r.id, servings: r.servings, recipeSnapshot: structuredClone(r) })) })); setView('week'); };
   const openPicker = (mode: 'pantry' | 'all') => { setPickerMode(suggestions.length ? mode : 'all'); setSuggestionFilter('all'); setPicker(true); };
   const clearConfirmation = (pantry: PantryEntry[]) => pantry.map(p => ({ ...p, confirmedEnough: false }));
   const updateMeal = (id: string, changes: Partial<Meal>) => setState(s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: s.meals.map(m => m.id === id ? { ...m, ...changes } : m) }));
@@ -196,6 +202,7 @@ export default function App(props: PlannerProps) {
               <div className={`meal-art ${image ? 'has-photo' : `tint-${index % 4}`}`}>
                 {image ? <img src={image.url} alt="" loading="lazy" /> : <span className="plate" aria-hidden="true"><PlateIcon kind={index % 4} /></span>}
                 <span className="meal-meta">{recipe.bucketLabel} · {recipe.time} min</span>
+                <button className="swap-button" aria-label={`Swap ${recipe.name} for another recipe`} title="Swap for another recipe" onClick={() => swapMeal(meal, recipe)}><Cycle /></button>
                 <button className="recipe-title" onClick={() => setDetail(mealEntry(recipe))}>{recipe.name}</button>
               </div>
               <div className="meal-controls">
@@ -260,6 +267,7 @@ export default function App(props: PlannerProps) {
 }
 
 const Arrow = () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>;
+const Cycle = () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4.5L4 8M4 4v4h4M4 13a8 8 0 0 0 14.5 4.5L20 16M20 20v-4h-4" /></svg>;
 const Plus = () => <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>;
 // Line drawings for the meal card plates: taco, bowl, skillet, noodles.
 const plates = [
