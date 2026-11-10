@@ -164,3 +164,22 @@ test('one component of a combination never covers the combined amount', () => {
   assert.equal(item.covered, 0);
   assert.equal(item.status, 'review');
 });
+
+test('shopping combines reviewed egg, fresh herb and juice names with original meal amounts', () => {
+  const a = recipe('Breakfast', [ingredient('Eggs', 4, null), ingredient('Cilantro', 2, 'tbsp'), ingredient('Lime Juice', 1, 'tbsp')]);
+  const b = recipe('Dinner', [ingredient('Large Eggs', 5, 'each'), ingredient('Fresh Cilantro', 3, 'tbsp'), ingredient('Fresh Lime Juice', 3, 'tsp')]);
+  const items = calculateGroceries([a, b], [meal('Breakfast'), meal('Dinner')], []);
+  assert.equal(items.length, 3);
+  const eggs = items.find(item => item.name === 'eggs')!;
+  assert.equal(eggs.needed, 9);
+  assert.deepEqual(eggs.contributions?.map(item => [item.recipe, item.name, item.amount]), [['Breakfast', 'Eggs', 4], ['Dinner', 'Large Eggs', 5]]);
+  assert.equal(items.find(item => item.name === 'cilantro')?.needed, 5);
+  assert.equal(items.find(item => item.name === 'lime juice')?.needed, 2);
+});
+
+test('consolidated ingredients keep separate incompatible subtotals and preserve package sizes', () => {
+  const a = recipe('A', [ingredient('Fresh Cilantro', 1, 'bunch'), ingredient('Cilantro', 2, 'tbsp'), ingredient('Eggs', 1, 'cup'), ingredient('Large Eggs', 2, null), ingredient('black beans (15oz can)', 1, 'can'), ingredient('black beans (28oz can)', 1, 'can')]);
+  const items = calculateGroceries([a], [meal('A')], []);
+  assert.equal(items.length, 6);
+  assert.ok(items.filter(item => ['cilantro', 'eggs'].includes(item.name)).every(item => item.status === 'review'));
+});

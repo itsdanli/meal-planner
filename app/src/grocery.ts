@@ -26,6 +26,16 @@ export function canonicalIngredient(name: string): string {
   return aliases[key] ?? key;
 }
 
+const shoppingAliases: Record<string, string> = {
+  'egg': 'eggs', 'large eggs': 'eggs', 'fresh cilantro': 'cilantro', 'fresh cilantro, for serving': 'cilantro',
+  'fresh lime juice': 'lime juice', 'fresh lime juice (2 limes)': 'lime juice',
+  'fresh lemon juice': 'lemon juice', 'fresh lemon juice (1 large lemon)': 'lemon juice', 'fresh lemon juice (½ medium lemon)': 'lemon juice',
+};
+export function groceryIngredientName(name: string): string {
+  const canonical = canonicalIngredient(name);
+  return shoppingAliases[canonical] ?? canonical;
+}
+
 function hasIngredientChoice(name: string): boolean {
   // These conjunctions describe preparation of one ingredient, not a second food.
   // Keep the full name for matching; only omit them from ambiguity detection.
@@ -86,15 +96,16 @@ export function calculateGroceries(recipes: Recipe[], meals: Meal[], pantry: Pan
     if (protein) ingredients.push(proteinIngredient(protein.name, protein.amount));
     for (const ingredient of ingredients) {
       if ((ingredient.optional ?? isOptionalIngredient(ingredient.name)) || sameIngredient(ingredient.name, 'water') || sameIngredient(ingredient.name, 'ice')) continue;
-      const canonical = canonicalIngredient(ingredient.name);
+      const canonical = groceryIngredientName(ingredient.name);
       const unit = unitOf(ingredient.unit);
       const key = `${canonical}|${unit.dimension}`;
       let group = groups.get(key);
       if (!group) {
-        group = { canonical, unit, item: { id: key, name: canonical, category: ingredient.category, unit: unit.name, needed: 0, covered: 0, shortage: 0, status: 'needed', reasons: [], meals: [] } };
+        group = { canonical, unit, item: { id: key, name: canonical, category: ingredient.category, unit: unit.name, needed: 0, covered: 0, shortage: 0, status: 'needed', reasons: [], meals: [], contributions: [] } };
         groups.set(key, group);
       }
       const { item } = group;
+      item.contributions!.push({ recipe: recipe.name, name: ingredient.name, amount: ingredient.amount === null ? null : ingredient.amount * scale, unit: ingredient.unit ?? '' });
       if (!item.meals.includes(recipe.name)) item.meals.push(recipe.name);
       if (!validAmount(ingredient.amount) || !validScale) {
         item.needed = null;
@@ -112,11 +123,11 @@ export function calculateGroceries(recipes: Recipe[], meals: Meal[], pantry: Pan
     const { item, canonical, unit } = group;
     const siblings = [...groups.values()].filter(other => other.canonical === canonical);
     if (siblings.length > 1) item.reasons.push('Different units need review; no density or package size was assumed.');
-    for (const entry of pantry.filter(entry => (canonicalIngredient(entry.name) === canonical || pantryContributes(entry.name, canonical)) && entry.status !== 'out')) {
+    for (const entry of pantry.filter(entry => (groceryIngredientName(entry.name) === canonical || pantryContributes(entry.name, canonical)) && entry.status !== 'out')) {
       if (entry.status === 'low') item.reasons.push('Pantry is running low; check what remains.');
       if (validAmount(entry.quantity)) {
         const pantryUnit = unitOf(entry.unit);
-        const exactAmountForm = canonicalIngredient(entry.name) === canonical;
+        const exactAmountForm = groceryIngredientName(entry.name) === canonical;
         const liquid = ['olive oil', 'neutral oil', 'soy sauce', 'vegetable broth', 'sesame oil', 'milk'].some(name => sameIngredient(name, entry.name));
         const compatibleForm = exactAmountForm || unit.dimension === 'mass' || (unit.dimension === 'volume' && liquid);
         // Alternatives require a choice before consuming shared stock.
@@ -126,7 +137,7 @@ export function calculateGroceries(recipes: Recipe[], meals: Meal[], pantry: Pan
           item.covered += used / unit.factor;
           remaining.set(entry.id, available - used);
         } else item.reasons.push('Check the amount, food form or package size before buying.');
-      } else if (entry.status === 'have' && entry.confirmedEnough && canonicalIngredient(entry.name) === canonical && siblings.length === 1 && item.needed !== null) {
+      } else if (entry.status === 'have' && entry.confirmedEnough && groceryIngredientName(entry.name) === canonical && siblings.length === 1 && item.needed !== null) {
         item.covered = Math.max(item.covered, item.needed);
       } else item.reasons.push('Confirm whether the pantry has enough.');
     }
@@ -136,7 +147,7 @@ export function calculateGroceries(recipes: Recipe[], meals: Meal[], pantry: Pan
     item.reasons = [...new Set(item.reasons)];
     item.status = item.reasons.length || item.shortage === null ? 'review' : item.shortage === 0 ? 'covered' : 'needed';
     // An explicit "have enough" confirmation settles the item, whatever else was open for review.
-    if (pantry.some(entry => canonicalIngredient(entry.name) === canonical && entry.status === 'have' && entry.confirmedEnough && !validAmount(entry.quantity))) {
+    if (pantry.some(entry => groceryIngredientName(entry.name) === canonical && entry.status === 'have' && entry.confirmedEnough && !validAmount(entry.quantity))) {
       item.covered = item.needed ?? 0;
       item.shortage = 0;
       item.reasons = [];

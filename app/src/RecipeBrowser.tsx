@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import SelectionTabs from './SelectionTabs';
 import { cocktails, mealEntry, recipeImage, smokerRecipes, smoothies, type LibraryEntry } from './library';
 import type { Recipe } from './types';
 
@@ -31,7 +32,7 @@ export default function RecipeBrowser({ recipes, plannedIds, favorites, onToggle
   const shown = entries.filter(e => `${e.name} ${e.label} ${e.ingredients.map(i => i.name).join(' ')}`.toLowerCase().includes(search.trim().toLowerCase()));
   return <section>
     <div className="library-bar">
-      <div className="picker-modes" role="group" aria-label="Recipe type">{sections.map(([key, label, list]) => <button key={key} aria-pressed={section === key} onClick={() => setSection(key)}>{label} · {list.length}</button>)}</div>
+      <SelectionTabs label="Recipe type" panelId="library-results" value={section} onChange={setSection} options={sections.map(([key, label, list]) => [key, `${label} · ${list.length}`] as const)} />
       <input className="search-input" placeholder="Search recipes or ingredients" aria-label="Search recipes" value={search} onChange={e => setSearch(e.target.value)} />
     </div>
     {section === 'favorites' && (favoriteRecipes.length
@@ -39,7 +40,7 @@ export default function RecipeBrowser({ recipes, plannedIds, favorites, onToggle
       : <p className="empty-state">No favorites yet. Use the heart on a recipe to add it here.</p>)}
     {['cocktails', 'smoker', 'smoothies'].includes(section) && <p className="section-note">For browsing only. These are not added to the week or the grocery list.</p>}
     {!canFavorite && ['breakfast', 'lunch', 'dinners'].includes(section) && <p className="section-note">Sign in to save favorites.</p>}
-    <div className="library-grid">{shown.map(entry => { const image = recipeImage(entry.id); const favorite = !!favorites?.includes(entry.id); const planned = plannedIds.includes(entry.id); return <article className="library-card" key={entry.id}>
+    <div className="library-grid" id="library-results" role="tabpanel" aria-label={`${section} recipes`}>{shown.map(entry => { const image = recipeImage(entry.id); const favorite = !!favorites?.includes(entry.id); const planned = plannedIds.includes(entry.id); return <article className="library-card" key={entry.id}>
       <button className="library-photo" onClick={() => onOpen(entry)} aria-label={`Open ${entry.name}`}>{image && <img src={image.url} alt="" loading="lazy" />}</button>
       <div className="library-body">
         <small>{entry.label} · {entry.facts[0]}</small>
@@ -51,6 +52,6 @@ export default function RecipeBrowser({ recipes, plannedIds, favorites, onToggle
         </div>}
       </div>
     </article>; })}</div>
-    {!shown.length && entries.length > 0 && <p className="empty-state">No recipes match your search.</p>}
+    {!shown.length && entries.length > 0 && <div className="empty-state"><p>No recipes match “{search}”.</p><button className="button secondary compact" onClick={() => setSearch('')}>Clear search</button></div>}
   </section>;
 }

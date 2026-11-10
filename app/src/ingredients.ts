@@ -2,7 +2,8 @@
  * Preparation aliases do not imply that counts, package sizes or food forms convert.
  * Unrecognized names keep their exact identity; there is deliberately no fuzzy match.
  */
-export const INGREDIENT_RULES_VERSION = 2;
+// Grocery identity consolidation changes coverage, so previous confirmations need review.
+export const INGREDIENT_RULES_VERSION = 3;
 export const normalizeIngredient = (name: string) => name.trim().toLowerCase().replace(/\s+/g, ' ');
 
 const groups: string[][] = [

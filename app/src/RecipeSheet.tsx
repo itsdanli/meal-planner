@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import { flushSync } from 'react-dom';
 import type { Meal, Recipe } from './types';
 
-const amount = (n: number | null) => n === null ? '' : Number(n.toFixed(2)).toString();
+import { formatAmount as amount, scaledProteinAmount } from './quantities';
 const SMALLEST = 6.5;
 const READABLE = 7.5;
 
@@ -43,7 +43,7 @@ const RecipeSheet = forwardRef<HTMLDivElement, Props>(({ weekLabel, meals, sides
   const front = sides === 2 ? Math.ceil(meals.length / 2) : meals.length;
   const groups = [meals.slice(0, front), meals.slice(front)].filter(group => group.length);
   return <div className="recipe-sheet" ref={ref}>{groups.map((group, index) => <div className="sheet-page" key={index} style={{ gridTemplateColumns: `repeat(${group.length}, minmax(0, 1fr))` }}>
-    <header style={{ gridColumn: '1 / -1' }}><strong>wmp</strong> · Week of {weekLabel} · {meals.length} {meals.length === 1 ? 'dinner' : 'dinners'}{groups.length > 1 ? ` · ${index === 0 ? 'front' : 'back'}` : ''}</header>
+    <header style={{ gridColumn: '1 / -1' }}><strong>wmp</strong> · Week of {weekLabel} · {meals.length} {meals.length === 1 ? 'meal' : 'meals'}{groups.length > 1 ? ` · ${index === 0 ? 'front' : 'back'}` : ''}</header>
     {group.map(({ meal, recipe }) => {
       const scale = meal.servings / recipe.servings;
       const protein = meal.proteinIndex === undefined ? undefined : recipe.proteins?.[meal.proteinIndex];
@@ -52,8 +52,8 @@ const RecipeSheet = forwardRef<HTMLDivElement, Props>(({ weekLabel, meals, sides
         <p className="sheet-meta">{meal.servings} servings · {recipe.time} min{protein ? ` · with ${protein.name}` : ''}</p>
         <h3>Ingredients</h3>
         <ul>{recipe.ingredients.map(i => <li key={i.id}>{amount(i.amount === null ? null : i.amount * scale)} {i.unit} {i.name}</li>)}
-          {protein && <li><strong>{protein.name}: {protein.amount}{scale !== 1 ? ` × ${amount(scale)}` : ''}</strong></li>}</ul>
-        <h3>Method</h3>
+          {protein && <li><strong>{protein.name}: {scaledProteinAmount(protein.amount, scale)}</strong></li>}</ul>
+        <h3>Method</h3>{scale !== 1 && <p>Method ingredient amounts are for {recipe.servings} servings; multiply by {amount(scale)}. Keep temperatures unchanged and check doneness.</p>}
         <ol>{recipe.steps.map((step, i) => <li key={i}>{step}</li>)}</ol>
         {protein?.instructions && <p className="sheet-protein"><strong>{protein.name}:</strong> {protein.instructions}</p>}
       </section>;
