@@ -35,9 +35,9 @@ test('uncertain items retain a check note in the shopping export', () => {
   assert.deepEqual(list, [{ item: 'salt', quantity: 1, note: 'check before buying: confirm the amount needed' }, { item: 'olive oil', quantity: 1, note: 'check before buying: confirm the amount needed' }]);
 });
 
-test('store brand preference is added to every note', () => {
-  const list = buildShoppingList([item('limes', { unit: '', shortage: 2 }), item('spinach', { shortage: 60 })], { preferStoreBrand: true });
-  assert.deepEqual(list.map(i => i.note), ['store brand preferred', 'need about 60 g; store brand preferred']);
+test('items never carry a per-item store brand note', () => {
+  const list = buildShoppingList([item('limes', { unit: '', shortage: 2 }), item('spinach', { shortage: 60 })]);
+  assert.deepEqual(list.map(i => i.note), [undefined, 'need about 60 g']);
 });
 
 test('formats one item per line as valid JSON', () => {

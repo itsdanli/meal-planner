@@ -9,6 +9,8 @@ import SelectionTabs from './SelectionTabs';
 import { normalizeWeek } from './cloud';
 import { rankTonight } from './tonightMatching';
 import { formatAmount, scaledProteinAmount } from './quantities';
+import { buildAlexaParts } from './alexaList';
+import { applyDislike, readIdList, withoutDisliked } from './preferences';
 import { suggestRecipes, suggestionGroupLabel, type Suggestion, type SuggestionGroup } from './suggest';
 import { ingredientIdentity, ingredientLabel, ingredientOptions, sameIngredient, searchIngredients } from './ingredients';
 import { rankedCommonItems, suggestedCommonItems } from './pantrySeeds';
@@ -22,6 +24,7 @@ import { buildShoppingList, formatShoppingList } from './shoppingList';
 type View = 'tonight' | 'week' | 'recipes' | 'pantry' | 'groceries';
 const amount = formatAmount;
 const STORE_BRAND_KEY = 'wmp.preferStoreBrand';
+const DISLIKED_KEY = 'wmp.dislikedRecipes';
 const uid = () => crypto.randomUUID();
 const matchLabel = (s: Suggestion) => `${s.have.length} ingredients saved in your kitchen${s.low.length ? ` · ${s.low.length} running low` : ''}`;
 const missingLabel = (s: Suggestion) => {
@@ -42,6 +45,8 @@ interface PlannerProps {
   preferStoreBrand?: boolean;
   onPreferStoreBrand?: (value: boolean) => void;
   favorites?: string[];
+  dislikedRecipes?: string[];
+  onSetDisliked?: (id: string, disliked: boolean) => void;
   onToggleFavorite?: (id: string) => void;
 }
 export default function App(props: PlannerProps) {
@@ -49,6 +54,11 @@ export default function App(props: PlannerProps) {
   const cloud = !!props.account;
   const dirty = cloud && JSON.stringify(state) !== JSON.stringify(props.initialState);
   const recipes = libraryRecipes;
+  const [localDisliked, setLocalDisliked] = useState<string[]>(() => { try { return readIdList(JSON.parse(localStorage.getItem(DISLIKED_KEY) || '[]')); } catch { return []; } });
+  const disliked = props.dislikedRecipes ?? localDisliked;
+  const setDisliked = (id: string, value: boolean) => { if (props.onSetDisliked) return props.onSetDisliked(id, value); setLocalDisliked(previous => { const next = applyDislike({ favorites: [], disliked: previous }, id, value).disliked; try { localStorage.setItem(DISLIKED_KEY, JSON.stringify(next)); } catch { /* The choice still applies for this visit. */ } return next; }); };
+  // Recipes the user did not like stay available for meals already planned, but are not suggested again.
+  const activeRecipes = useMemo(() => withoutDisliked(libraryRecipes, disliked), [disliked]);
   const leaveEdits = () => !dirty || window.confirm('You have unsaved changes. Discard them?');
   useEffect(() => {
     if (!dirty) return;
@@ -137,9 +147,9 @@ export default function App(props: PlannerProps) {
   const review = groceries.filter(i => i.status === 'review');
   const covered = groceries.filter(i => i.status === 'covered');
   const selected = state.meals.map(meal => ({ meal, recipe: meal.recipeSnapshot ?? recipes.find(r => r.id === meal.recipeId) })).filter((x): x is { meal: Meal; recipe: Recipe } => !!x.recipe);
-  const suggestions = useMemo(() => suggestRecipes(recipes.filter(r => (r.mealType ?? 'dinner') === mealType), state.pantry, true).filter(s => !state.meals.some(m => m.recipeId === s.recipe.id)), [recipes, state.pantry, state.meals, mealType]);
+  const suggestions = useMemo(() => suggestRecipes(activeRecipes.filter(r => (r.mealType ?? 'dinner') === mealType), state.pantry, true).filter(s => !state.meals.some(m => m.recipeId === s.recipe.id)), [activeRecipes, state.pantry, state.meals, mealType]);
   const mealTypes = [['breakfast', 'Breakfast'], ['lunch', 'Lunch'], ['dinner', 'Dinner']] as const;
-  const dinnerRecipes = recipes.filter(r => (r.mealType ?? 'dinner') === 'dinner');
+  const dinnerRecipes = activeRecipes.filter(r => (r.mealType ?? 'dinner') === 'dinner');
   const commonGroups = useMemo(() => rankedCommonItems(recipes), [recipes]);
   const commonSuggestions = suggestedCommonItems(commonGroups, state.pantry.filter(item => !addingCommon.has(ingredientIdentity(item.name))), newItem);
   const ingredientSearch = searchIngredients(newItem);
@@ -159,7 +169,7 @@ export default function App(props: PlannerProps) {
       changeWithUndo(`Replaced ${selected.find(item => item.meal.id === replacing)?.recipe.name ?? 'meal'} with ${r.name}.`, previous => ({ ...previous, pantry: clearConfirmation(previous.pantry), meals: previous.meals.map(meal => meal.id === replacing ? { ...meal, recipeId: r.id, recipeSnapshot: structuredClone(r), servings: old?.servings ?? servings, proteinIndex: undefined } : meal) }));
       setPicker(false); setReplacing(null); setSearch(''); return;
     } setState(s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: [...s.meals, { id: uid(), recipeId: r.id, servings, proteinIndex, recipeSnapshot: structuredClone(r) }] })); setPicker(false); setSearch(''); setMealType(r.mealType ?? 'dinner'); setView('week'); };
-  const randomizeMeals = () => changeWithUndo(`Randomized ${mealType} meals.`, s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: [...s.meals.filter(m => ((m.recipeSnapshot ?? recipes.find(r => r.id === m.recipeId))?.mealType ?? 'dinner') !== mealType), ...pickRandomRecipes(recipes.filter(r => (r.mealType ?? 'dinner') === mealType), 3, s.meals.map(m => m.recipeId)).map(r => ({ id: uid(), recipeId: r.id, servings: tonightServings, recipeSnapshot: structuredClone(r) }))] }));
+  const randomizeMeals = () => changeWithUndo(`Randomized ${mealType} meals.`, s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: [...s.meals.filter(m => ((m.recipeSnapshot ?? recipes.find(r => r.id === m.recipeId))?.mealType ?? 'dinner') !== mealType), ...pickRandomRecipes(activeRecipes.filter(r => (r.mealType ?? 'dinner') === mealType), 3, s.meals.map(m => m.recipeId)).map(r => ({ id: uid(), recipeId: r.id, servings: tonightServings, recipeSnapshot: structuredClone(r) }))] }));
   const planFromFavorites = (list: Recipe[]) => { changeWithUndo('Planned meals from favorites.', s => ({ ...s, pantry: clearConfirmation(s.pantry), meals: pickRandomRecipes(list, 3, s.meals.map(m => m.recipeId)).map(r => ({ id: uid(), recipeId: r.id, servings: tonightServings, recipeSnapshot: structuredClone(r) })) })); setView('week'); };
   const openPicker = (mode: 'pantry' | 'all', mealId: string | null = null) => { rememberTrigger(); setReplacing(mealId); setReadyOnly(false); setSearch(''); setPickerMode(suggestions.length ? mode : 'all'); setSuggestionFilter('all'); setPicker(true); };
   const clearConfirmation = (pantry: PantryEntry[]) => pantry.map(p => ({ ...p, confirmedEnough: false }));
@@ -200,12 +210,19 @@ export default function App(props: PlannerProps) {
   }) }));
   const dateLabel = new Date(`${state.weekOf}T12:00:00`).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
   const exportList = () => { const text = [`WMP — Week of ${dateLabel}`, '', ...selected.map(({ meal, recipe }) => `${recipe.name} · ${meal.servings} servings`), '', 'GROCERIES', ...groceries.map(i => `${i.status === 'covered' ? '[covered]' : '[ ]'} ${i.name}: ${amount(i.shortage)} ${i.unit} ${i.status === 'review' ? '(review needed)' : ''}`)].join('\n'); const url = URL.createObjectURL(new Blob([text], { type: 'text/plain' })); const a = document.createElement('a'); a.href = url; a.download = `wmp-${state.weekOf}.txt`; a.click(); URL.revokeObjectURL(url); };
-  const shoppingJson = useMemo(() => formatShoppingList(buildShoppingList(groceries, { preferStoreBrand: storeBrand })), [state, storeBrand]);
+  const shoppingItems = useMemo(() => buildShoppingList(groceries), [groceries]);
+  const shoppingJson = useMemo(() => formatShoppingList(shoppingItems), [shoppingItems]);
+  const alexaParts = useMemo(() => buildAlexaParts(shoppingItems, { preferStoreBrand: storeBrand }), [shoppingItems, storeBrand]);
+  const [copiedPart, setCopiedPart] = useState<number | null>(null);
+  const canShare = typeof navigator !== 'undefined' && typeof navigator.share === 'function';
+  const copyPart = async (index: number) => { try { await navigator.clipboard.writeText(alexaParts[index]); setCopiedPart(index); setTimeout(() => setCopiedPart(null), 2000); } catch { /* Select the text to copy it by hand. */ } };
+  const sharePart = async (index: number) => { try { await navigator.share({ text: alexaParts[index] }); } catch { /* Sharing was cancelled or is unavailable. */ } };
+  const dislikeRecipe = (entry: LibraryEntry) => { const already = disliked.includes(entry.id); setDisliked(entry.id, !already); if (!already) { setDetail(null); setUndo({ message: `Won’t suggest ${entry.name} again.`, restore: () => setDisliked(entry.id, false) }); } };
   const copyJson = async () => { try { await navigator.clipboard.writeText(shoppingJson); setCopied(true); setTimeout(() => setCopied(false), 2000); } catch { jsonRef.current?.select(); } };
   const downloadJson = () => { const url = URL.createObjectURL(new Blob([shoppingJson], { type: 'application/json' })); const a = document.createElement('a'); a.href = url; a.download = 'shopping-list.json'; a.click(); URL.revokeObjectURL(url); };
   const pickerServings = replacing ? state.meals.find(meal => meal.id === replacing)?.servings ?? tonightServings : tonightServings;
-  const readyIds = useMemo(() => new Set(picker ? rankTonight(recipes, state.pantry, pickerServings).filter(item => item.readiness === 'ready').map(item => item.recipe.id) : []), [recipes, state.pantry, pickerServings, picker]);
-  const pickerResults = ((pickerMode === 'pantry' ? suggestions.filter(item => suggestionFilter === 'all' || item.group === suggestionFilter) : recipes.map(recipe => ({ recipe }))) as ({ recipe: Recipe } | Suggestion)[])
+  const readyIds = useMemo(() => new Set(picker ? rankTonight(activeRecipes, state.pantry, pickerServings).filter(item => item.readiness === 'ready').map(item => item.recipe.id) : []), [activeRecipes, state.pantry, pickerServings, picker]);
+  const pickerResults = ((pickerMode === 'pantry' ? suggestions.filter(item => suggestionFilter === 'all' || item.group === suggestionFilter) : activeRecipes.map(recipe => ({ recipe }))) as ({ recipe: Recipe } | Suggestion)[])
     .filter(({ recipe }) => (recipe.mealType ?? 'dinner') === mealType && !state.meals.some(meal => meal.recipeId === recipe.id))
     .filter(({ recipe }) => !readyOnly || readyIds.has(recipe.id))
     .filter(({ recipe }) => `${recipe.name} ${recipe.ingredients.map(item => item.name).join(' ')}`.toLowerCase().includes(search.trim().toLowerCase()));
@@ -280,7 +297,7 @@ export default function App(props: PlannerProps) {
           <div className="suggestions"><CookTonight recipes={dinnerRecipes} pantry={state.pantry} servings={tonightServings} onServings={setTonightServings} onAdd={addRecipe} onPantry={() => setView('pantry')} compact onSeeAll={() => setView('tonight')} /></div>
         </>}
         {view === 'tonight' && <CookTonight recipes={dinnerRecipes} pantry={state.pantry} servings={tonightServings} onServings={setTonightServings} onAdd={addRecipe} onPantry={() => setView('pantry')} />}
-        {view === 'recipes' && <RecipeBrowser recipes={recipes} plannedIds={state.meals.map(m => m.recipeId)} favorites={props.favorites} onToggleFavorite={props.onToggleFavorite} onOpen={openDetail} onAdd={addRecipe} onPlanFavorites={planFromFavorites} />}
+        {view === 'recipes' && <RecipeBrowser recipes={recipes} disliked={disliked} onSetDisliked={setDisliked} plannedIds={state.meals.map(m => m.recipeId)} favorites={props.favorites} onToggleFavorite={props.onToggleFavorite} onOpen={openDetail} onAdd={addRecipe} onPlanFavorites={planFromFavorites} />}
         {view === 'pantry' && <section>
           <div className="section-heading"><h2>What’s in your kitchen?</h2><button className="button secondary compact" onClick={() => setView('tonight')}>Cook tonight</button></div>
           <p className="section-note">Optional: tag the ingredients you have. Amounts can wait until you plan your meals.</p>
@@ -311,7 +328,7 @@ export default function App(props: PlannerProps) {
             <div className="shopping-actions"><label><input type="checkbox" aria-label={`Already have enough ${item.name} ${item.unit} for this plan`} checked={item.status === 'covered'} onChange={e => setHave(item, e.target.checked)} /> Already have</label><label><input type="checkbox" aria-label={`Bought ${item.name} ${item.unit}`} checked={bought.includes(item.id)} onChange={e => markBought(item.id, e.target.checked)} /> Bought</label></div>
           </article>)}</div>)}</div></section>)}
           {bought.length > 0 && <details className="completed-shopping"><summary>{groceries.filter(item => bought.includes(item.id)).length} items bought</summary><p>Shopping progress only. Inventory stays unchanged.</p>{groceries.filter(item => bought.includes(item.id)).map(item => <p key={item.id}>{item.name} · {item.unit}<button className="text-button" onClick={() => markBought(item.id, false)}>Undo bought {item.name}</button></p>)}</details>}
-          {needed.length + review.length > 0 && <details className="grocery-group shopping-json no-print"><summary>Export shopping list</summary><button className="button secondary compact" onClick={exportList}>Download readable list</button><details><summary>Advanced: Shopping list JSON</summary><div className="json-actions"><button className="button secondary compact" onClick={copyJson}>{copied ? 'Copied' : 'Copy JSON'}</button><button className="button secondary compact" onClick={downloadJson}>Download JSON</button></div><label className="json-option"><input type="checkbox" checked={storeBrand} onChange={e => setStoreBrand(e.target.checked)} /> Prefer store brand</label><textarea ref={jsonRef} readOnly aria-label="Shopping list JSON" value={shoppingJson} rows={12} onFocus={e => e.currentTarget.select()} /></details></details>}
+          {needed.length + review.length > 0 && <details className="grocery-group shopping-json no-print"><summary>Export shopping list</summary><label className="json-option"><input type="checkbox" checked={storeBrand} onChange={e => setStoreBrand(e.target.checked)} /> Prefer store brand</label><p className="section-note">{alexaParts.length > 1 ? `Alexa takes about 500 characters at a time, so your list is split into ${alexaParts.length} parts. Paste them one after another.` : 'Copy this into Alexa.'}</p>{alexaParts.map((part, index) => <div className="alexa-part" key={index}><div className="alexa-part-bar"><strong>{alexaParts.length > 1 ? `Part ${index + 1} of ${alexaParts.length}` : 'Shopping list'}</strong><small>{part.length} characters</small></div><textarea readOnly aria-label={alexaParts.length > 1 ? `Alexa list part ${index + 1} of ${alexaParts.length}` : 'Alexa shopping list'} value={part} rows={Math.min(12, part.split('\n').length + 1)} onFocus={e => e.currentTarget.select()} /><div className="json-actions"><button className="button secondary compact" onClick={() => void copyPart(index)}>{copiedPart === index ? 'Copied ✓' : 'Copy'}</button>{canShare && <button className="button secondary compact" onClick={() => void sharePart(index)}>Share</button>}</div></div>)}<button className="button secondary compact" onClick={exportList}>Download readable list</button><details><summary>Advanced: Shopping list JSON</summary><div className="json-actions"><button className="button secondary compact" onClick={copyJson}>{copied ? 'Copied' : 'Copy JSON'}</button><button className="button secondary compact" onClick={downloadJson}>Download JSON</button></div><textarea ref={jsonRef} readOnly aria-label="Shopping list JSON" value={shoppingJson} rows={12} onFocus={e => e.currentTarget.select()} /></details></details>}
         </section>}
         </fieldset>
       </main>
@@ -324,7 +341,7 @@ export default function App(props: PlannerProps) {
       const scale = detail.recipe ? servings / detail.recipe.servings : 1;
       const protein = proteinIndex === undefined ? undefined : detail.recipe?.proteins?.[proteinIndex];
       const image = recipeImage(detail.id); const favorite = !!props.favorites?.includes(detail.id); return <div className="modal-backdrop no-print" onMouseDown={e => { if (e.target === e.currentTarget) setDetail(null); }}><section className="modal recipe-detail" role="dialog" aria-modal="true" aria-labelledby="detail-title" onClick={e => e.stopPropagation()} onKeyDown={e => { if (e.key === 'Escape') setDetail(null); }}>
-      <div className="section-heading"><h2 id="detail-title">{detail.name}</h2><div className="detail-actions">{detail.recipe && props.onToggleFavorite && <button className="favorite-button" aria-pressed={favorite} aria-label={favorite ? 'Remove from favorites' : 'Add to favorites'} onClick={() => props.onToggleFavorite?.(detail.id)}><Heart filled={favorite} /></button>}<button autoFocus className="close-button" aria-label="Close recipe" onClick={() => setDetail(null)}>×</button></div></div>
+      <div className="section-heading"><h2 id="detail-title">{detail.name}</h2><div className="detail-actions">{detail.recipe && props.onToggleFavorite && <button className="favorite-button" aria-pressed={favorite} aria-label={favorite ? 'Remove from favorites' : 'Add to favorites'} onClick={() => props.onToggleFavorite?.(detail.id)}><Heart filled={favorite} /></button>}{detail.recipe && <button className="text-button muted dislike-button" aria-pressed={disliked.includes(detail.id)} onClick={() => disliked.includes(detail.id) ? setDisliked(detail.id, false) : dislikeRecipe(detail)}>{disliked.includes(detail.id) ? 'Show again' : 'Didn’t like it'}</button>}<button autoFocus className="close-button" aria-label="Close recipe" onClick={() => setDetail(null)}>×</button></div></div>
       {image && <figure className="detail-photo"><img src={image.url} alt="" /><figcaption>Photo of a similar dish: <a href={image.sourceUrl} target="_blank" rel="noreferrer">{image.author}, {image.license}, Wikimedia Commons</a></figcaption></figure>}
       <p>{detail.recipe ? `${detail.recipe.time} min · Serves ${servings}` : detail.facts.join(' · ')}</p>
       {detail.recipe && <div className="detail-quantities"><label>Servings <select aria-label="Recipe servings" value={servings} onChange={e => planned ? updateMeal(planned.meal.id, { servings: Number(e.target.value) }) : setDetailServings(Number(e.target.value))}>{Array.from({ length: 24 }, (_, i) => <option key={i + 1} value={i + 1}>{i + 1}</option>)}</select></label>

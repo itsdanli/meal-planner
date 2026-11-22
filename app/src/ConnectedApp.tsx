@@ -5,6 +5,7 @@ import AuthPanel from './AuthPanel';
 import { supabase } from './supabase';
 import { loadCloudPlanner, saveCloudPlanner, normalizeWeek, CloudValidationError, type CloudSnapshot } from './cloud';
 import type { PlannerState } from './types';
+import { applyDislike, readIdList } from './preferences';
 
 export default function ConnectedApp() {
   const [session, setSession] = useState<Session | null>(null);
@@ -70,6 +71,17 @@ function CloudPlanner({ client, session }: { client: SupabaseClient; session: Se
     const { error } = await client.auth.updateUser({ data: { favorite_recipes: next } });
     if (error) { setFavorites(previous); setMessage(`Favorite not saved: ${error.message}`); }
   }
+  const [disliked, setDislikedIds] = useState<string[]>(() => readIdList(session.user.user_metadata?.disliked_recipes));
+  const preferences = useRef({ favorites, disliked });
+  preferences.current = { favorites, disliked };
+  // Saved in the account like favorites. Setting, not toggling, keeps a late Undo correct.
+  async function setDisliked(id: string, value: boolean) {
+    const previous = preferences.current;
+    const next = applyDislike(previous, id, value);
+    preferences.current = next; setDislikedIds(next.disliked); setFavorites(next.favorites);
+    const { error } = await client.auth.updateUser({ data: { disliked_recipes: next.disliked, favorite_recipes: next.favorites } });
+    if (error) { preferences.current = previous; setDislikedIds(previous.disliked); setFavorites(previous.favorites); setMessage(`Preference not saved: ${error.message}`); }
+  }
   async function saveStoreBrand(value: boolean) {
     setStoreBrand(value);
     const { error } = await client.auth.updateUser({ data: { prefer_store_brand: value } });
@@ -99,5 +111,6 @@ function CloudPlanner({ client, session }: { client: SupabaseClient; session: Se
     cloudMessage={message} cloudError={failed} onReload={() => setReload(n => n + 1)}
     onWeekChange={date => setWeek(normalizeWeek(date))}
     preferStoreBrand={storeBrand} onPreferStoreBrand={value => void saveStoreBrand(value)}
-    favorites={favorites} onToggleFavorite={id => void toggleFavorite(id)} />;
+    favorites={favorites} onToggleFavorite={id => void toggleFavorite(id)}
+    dislikedRecipes={disliked} onSetDisliked={(id, value) => void setDisliked(id, value)} />;
 }

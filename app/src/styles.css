@@ -441,3 +441,11 @@ select { max-width: 100%; }
 .closest-meals > h3 { margin-bottom: 8px; }
 
 .closest-meals > .section-note { margin: 0 0 16px; }
+
+/* Alexa export parts and the "didn't like" action */
+.alexa-part { margin: 0 0 18px; }
+.alexa-part-bar { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+.alexa-part-bar small { color: var(--muted); }
+.alexa-part .json-actions { margin-top: 8px; }
+.shopping-json > .button { margin-bottom: 12px; }
+.dislike-button { white-space: nowrap; }
