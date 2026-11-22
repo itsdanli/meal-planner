@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, cpSync, mkdirSync, writeFileSync, readdirSync, rmSync } from 'node:fs';
+import { mkdtempSync, cpSync, writeFileSync, readdirSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -12,11 +12,6 @@ const remote = read(['remote', 'get-url', 'origin']);
 if (remote !== 'https://github.com/itsdanli/meal-planner.git') throw new Error('Unexpected deployment repository.');
 run('npm', ['test'], app);
 run('npm', ['run', 'build', '--', '--base=/meal-planner/'], app);
-const legacy = join(app, 'dist/legacy');
-mkdirSync(legacy, { recursive: true });
-for (const name of ['index.html', 'recipes.json', 'cocktails.json', 'smoothies.json', 'smoker-recipes.json', 'prefs.json', 'current-week.json']) {
-  cpSync(join(root, name), join(legacy, name));
-}
 writeFileSync(join(app, 'dist/.nojekyll'), '');
 const source = read(['rev-parse', 'HEAD']);
 writeFileSync(join(app, 'dist/version.json'), JSON.stringify({ source, builtAt: new Date().toISOString() }) + '\n');

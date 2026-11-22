@@ -33,11 +33,8 @@ jobs:
           # Public browser connection values; row-level security protects data.
           VITE_SUPABASE_URL: https://qqugcyudrhczjbquvxqk.supabase.co
           VITE_SUPABASE_PUBLISHABLE_KEY: sb_publishable_WbEbPMOLIS3yxBDHDINxAg_8RWACqyi
-      - name: Preserve original planner
-        run: |
-          mkdir -p dist/legacy
-          cp ../index.html ../recipes.json ../cocktails.json ../smoothies.json ../smoker-recipes.json ../prefs.json ../current-week.json dist/legacy/
-          touch dist/.nojekyll
+      - name: Disable Jekyll
+        run: touch dist/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
           path: app/dist

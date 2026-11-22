@@ -1,6 +1,6 @@
 # Weeknight application
 
-The replacement application lives here while the original root website remains available.
+The Weeknight Planner application (React, TypeScript, Vite, Supabase). Recipe content is read from the JSON files in the repository root.
 
 ```sh
 cd app
